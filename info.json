@@ -25,6 +25,21 @@
     "contents": {
         "picklistNames": [
             {
+                "name": "AlertState"
+            },
+            {
+                "name": "AlertStatus"
+            },
+            {
+                "name": "AlertType"
+            },
+            {
+                "name": "AssetCategory"
+            },
+            {
+                "name": "Closure Reason"
+            },
+            {
                 "name": "Contact Title"
             },
             {
@@ -34,7 +49,40 @@
                 "name": "DeliveryVector"
             },
             {
+                "name": "Email Classification"
+            },
+            {
+                "name": "EscalatedToIncident"
+            },
+            {
                 "name": "GDPREUCountryList"
+            },
+            {
+                "name": "IncidentPhase"
+            },
+            {
+                "name": "IncidentStatus"
+            },
+            {
+                "name": "IncidentType"
+            },
+            {
+                "name": "KillChainPhases"
+            },
+            {
+                "name": "Severity"
+            },
+            {
+                "name": "SLAState"
+            },
+            {
+                "name": "TaskPriority"
+            },
+            {
+                "name": "TaskStatus"
+            },
+            {
+                "name": "TaskTeams"
             },
             {
                 "name": "TaskType"
