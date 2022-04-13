@@ -6,31 +6,15 @@
     "tag": null,
     "description": "Updates incident description task completion",
     "isActive": false,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1647201079,
     "collection": "\/api\/3\/workflow_collections\/b323648c-599a-4cfc-9b65-8c493f1a7e12",
     "versions": [],
     "triggerStep": "\/api\/3\/workflow_steps\/961631d7-dc0b-4128-92d5-96906304a4de",
     "steps": [
-        {
-            "@type": "WorkflowStep",
-            "name": "Configuration",
-            "description": null,
-            "arguments": {
-                "taskType": "{{vars.input.records[0].type.itemValue}}",
-                "description": "[]",
-                "taskTypeMapping": "{\n\"Fill up GDPR Assessment Form\" : 5,\n\"Provide DPO\/DPA Contact\" : 6,\n\"Notify DPO\" : 7,\n\"Notify DPA\" : 8\n}"
-            },
-            "status": null,
-            "top": "160",
-            "left": "120",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "c810c529-6a3c-4d8c-92eb-d975adebf480"
-        },
         {
             "@type": "WorkflowStep",
             "name": "Get Correlated Incident",
@@ -67,33 +51,6 @@
             "left": "120",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "uuid": "00b76ad6-fab6-44b1-b52b-b8000ef3ba6d"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Update GDPR Assessment Data",
-            "description": null,
-            "arguments": {
-                "resource": {
-                    "__link": {
-                        "contact": "{% if vars.contactsIRI %}{{vars.contactsIRI}}{% endif %}"
-                    },
-                    "description": "{{vars.description | join('\\n')}}"
-                },
-                "_showJson": true,
-                "operation": "Append",
-                "collection": "{{vars.incidentIRI}}",
-                "__recommend": [],
-                "collectionType": "\/api\/3\/incidents",
-                "fieldOperation": {
-                    "recordTags": "Append"
-                },
-                "step_variables": []
-            },
-            "status": null,
-            "top": "440",
-            "left": "120",
-            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
-            "uuid": "fda7458b-242d-4c3c-9959-d10f709c942d"
         },
         {
             "@type": "WorkflowStep",
@@ -161,6 +118,48 @@
             "left": "120",
             "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
             "uuid": "961631d7-dc0b-4128-92d5-96906304a4de"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "taskType": "{{vars.input.records[0].type.itemValue}}",
+                "description": "[]",
+                "taskTypeMapping": "{\n\"Fill up GDPR Assessment Form\" : 5,\n\"Provide DPO\/DPA Contact\" : 6,\n\"Notify DPO\" : 7,\n\"Notify DPA\" : 8\n}"
+            },
+            "status": null,
+            "top": "160",
+            "left": "120",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "c810c529-6a3c-4d8c-92eb-d975adebf480"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update GDPR Assessment Data",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "__link": {
+                        "contact": "{% if vars.contactsIRI %}{{vars.contactsIRI}}{% endif %}"
+                    },
+                    "description": "{{vars.description | join('\\n')}}"
+                },
+                "_showJson": true,
+                "operation": "Append",
+                "collection": "{{vars.incidentIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/incidents",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "440",
+            "left": "120",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "uuid": "fda7458b-242d-4c3c-9959-d10f709c942d"
         }
     ],
     "routes": [

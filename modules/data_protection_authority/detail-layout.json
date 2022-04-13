@@ -1,0 +1,124 @@
+{
+    "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "primaryDetail",
+                                "config": {
+                                    "wid": "ee609bd4-311a-47bc-8757-cbec200728c0",
+                                    "idField": "id",
+                                    "picklistFieldReadOnly": false,
+                                    "titleFieldReadOnly": true,
+                                    "titleFieldLinky": true,
+                                    "featuredRelationship": {
+                                        "field": null,
+                                        "preText": "Under Investigation In",
+                                        "query": null,
+                                        "statusField": null,
+                                        "sort": []
+                                    },
+                                    "titleField": "country"
+                                }
+                            },
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "4c675d8a-dd77-4da5-9076-844768634d56",
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "address",
+                                                            "highlightMode": true,
+                                                            "linky": false,
+                                                            "readOnly": false
+                                                        },
+                                                        {
+                                                            "name": "telephone",
+                                                            "highlightMode": true,
+                                                            "linky": false,
+                                                            "readOnly": false
+                                                        },
+                                                        {
+                                                            "name": "fax",
+                                                            "highlightMode": true,
+                                                            "linky": false,
+                                                            "readOnly": false
+                                                        },
+                                                        {
+                                                            "name": "email",
+                                                            "highlightMode": true,
+                                                            "linky": false,
+                                                            "readOnly": false
+                                                        },
+                                                        {
+                                                            "name": "website",
+                                                            "highlightMode": true,
+                                                            "linky": false,
+                                                            "readOnly": false
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "style": "display-inline-block"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "4d987f59-6ed6-4edd-932c-098d202ada40",
+                "_collapsed": false
+            },
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "tabs",
+                                "config": {
+                                    "tabs": [
+                                        {
+                                            "title": "Related Records",
+                                            "widget": {
+                                                "type": "relationship.subtab",
+                                                "config": {
+                                                    "excludes": [
+                                                        "notes",
+                                                        "comments",
+                                                        "userOwners",
+                                                        "attachments"
+                                                    ],
+                                                    "wid": "337b4fe1-d017-415e-aa16-73ea5c533c1a"
+                                                }
+                                            },
+                                            "show": true,
+                                            "icon": "fa fa-none"
+                                        }
+                                    ],
+                                    "wid": "319597a8-a552-407e-8180-def708ad0a0d"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "7bcfcd73-4c60-4415-8e71-44e17404b7ce",
+                "_collapsed": false
+            }
+        ],
+        "actionButtons": [],
+        "wid": "725d34f2-976d-498c-a7bb-46cde5c72bb3"
+    },
+    "uuid": "modules-data_protection_authority-detail"
+}

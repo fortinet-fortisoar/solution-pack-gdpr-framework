@@ -1,0 +1,70 @@
+{
+    "@context": "\/api\/3\/contexts\/Role",
+    "@id": "\/api\/3\/roles\/21d7a7c6-9d68-438f-b732-e8950c5f745b",
+    "@type": "Role",
+    "description": "Essentially the root user, use carefully",
+    "name": "Full App Permissions",
+    "modulePermissions": {
+        "37": {
+            "@id": "\/api\/3\/module_permissions\/cb23d1dc-d9f5-4fbe-bb74-a3916a27d5e4",
+            "@type": "ModulePermission",
+            "canCreate": true,
+            "canExecute": false,
+            "canRead": true,
+            "canUpdate": true,
+            "canDelete": true,
+            "fieldPermissions": [],
+            "module": "tasks",
+            "uuid": "cb23d1dc-d9f5-4fbe-bb74-a3916a27d5e4"
+        },
+        "38": {
+            "@id": "\/api\/3\/module_permissions\/49a4b3ed-21d6-4803-8745-e0ae71e0ad5c",
+            "@type": "ModulePermission",
+            "canCreate": true,
+            "canExecute": true,
+            "canRead": true,
+            "canUpdate": true,
+            "canDelete": true,
+            "fieldPermissions": [],
+            "module": "alerts",
+            "uuid": "49a4b3ed-21d6-4803-8745-e0ae71e0ad5c"
+        },
+        "39": {
+            "@id": "\/api\/3\/module_permissions\/156e95ef-2711-4c67-a3ff-02aa804d8abf",
+            "@type": "ModulePermission",
+            "canCreate": true,
+            "canExecute": true,
+            "canRead": true,
+            "canUpdate": true,
+            "canDelete": true,
+            "fieldPermissions": [],
+            "module": "data_protection_authority",
+            "uuid": "156e95ef-2711-4c67-a3ff-02aa804d8abf"
+        },
+        "40": {
+            "@id": "\/api\/3\/module_permissions\/c22ec778-9eea-4bd4-abad-fd53916901b0",
+            "@type": "ModulePermission",
+            "canCreate": true,
+            "canExecute": true,
+            "canRead": true,
+            "canUpdate": true,
+            "canDelete": true,
+            "fieldPermissions": [],
+            "module": "contact",
+            "uuid": "c22ec778-9eea-4bd4-abad-fd53916901b0"
+        },
+        "41": {
+            "@id": "\/api\/3\/module_permissions\/abd15dad-e886-45ac-88df-cd7c3ca7eabc",
+            "@type": "ModulePermission",
+            "canCreate": true,
+            "canExecute": true,
+            "canRead": true,
+            "canUpdate": true,
+            "canDelete": true,
+            "fieldPermissions": [],
+            "module": "scenario",
+            "uuid": "abd15dad-e886-45ac-88df-cd7c3ca7eabc"
+        }
+    },
+    "uuid": "21d7a7c6-9d68-438f-b732-e8950c5f745b"
+}

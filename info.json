@@ -15,16 +15,91 @@
     ],
     "prerequisite": null,
     "publisher": "Fortinet",
-    "description": "Solution pack demonstrates GDPR process",
+    "description": "This solution pack demonstrates procedures involved in GDPR",
     "help": "https:\/\/github.com\/fortinet-fortisoar\/solution-pack-gdpr-framework\/blob\/develop\/README.md",
     "category": [],
-    "supportInfo": "support@fortinet.com",
+    "supportInfo": "",
     "iconLarge": null,
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-03-15T06:07:50+00:00",
-    "exported_from": "tenant.fortisoar.com",
-    "exported_by": "CS Admin",
+    "date": "2022-04-13T10:22:05+00:00",
     "contents": {
+        "picklistNames": [
+            {
+                "name": "Contact Title"
+            },
+            {
+                "name": "DataBreachType"
+            },
+            {
+                "name": "DeliveryVector"
+            },
+            {
+                "name": "GDPREUCountryList"
+            },
+            {
+                "name": "TaskType"
+            },
+            {
+                "name": "YesNo Picklist"
+            }
+        ],
+        "modules": {
+            "alerts": {
+                "name": "Alerts",
+                "apiName": "alerts"
+            },
+            "contact": {
+                "name": "Contacts",
+                "apiName": "contact"
+            },
+            "data_protection_authority": {
+                "name": "Data Protection Authorities",
+                "apiName": "data_protection_authority"
+            },
+            "incidents": {
+                "name": "Incidents",
+                "apiName": "incidents"
+            },
+            "tasks": {
+                "name": "Tasks",
+                "apiName": "tasks"
+            }
+        },
+        "viewTemplates": {
+            "alerts": [
+                "list",
+                "detail",
+                "form",
+                "settings"
+            ],
+            "contact": [
+                "list",
+                "detail",
+                "form"
+            ],
+            "data_protection_authority": [
+                "list",
+                "detail",
+                "form"
+            ],
+            "incidents": [
+                "list",
+                "detail",
+                "form",
+                "settings"
+            ],
+            "tasks": [
+                "list",
+                "detail",
+                "form",
+                "settings"
+            ]
+        },
+        "roles": [
+            {
+                "name": "Full App Permissions"
+            }
+        ],
         "playbooks": [
             {
                 "name": "GDPR Framework"
@@ -34,13 +109,20 @@
             {
                 "id": 7,
                 "name": "Server_fqhn",
-                "value": "tenant.fortisoar.com",
-                "default_value": null
+                "value": "tenant.fortisoar.in",
+                "default_value": "master.fortisoar.in"
             }
         ],
         "reports": [
             {
                 "name": "GDPR Assessment Report"
+            }
+        ],
+        "recordSets": [
+            {
+                "name": "Data Protection Authorities",
+                "apiName": "data_protection_authority",
+                "count": 31
             }
         ]
     }

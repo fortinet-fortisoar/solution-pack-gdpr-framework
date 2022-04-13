@@ -6,12 +6,11 @@
     "tag": null,
     "description": "Collects GDPR assessment details completes the corresponding task",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1647323050,
     "collection": "\/api\/3\/workflow_collections\/b323648c-599a-4cfc-9b65-8c493f1a7e12",
     "versions": [],
     "triggerStep": "\/api\/3\/workflow_steps\/2ff73fe3-e0fa-4da4-983b-47aec15ae471",
@@ -368,16 +367,50 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Configuration",
+            "name": "Update GDPR Assessment Data",
             "description": null,
             "arguments": {
-                "description": "[]"
+                "message": {
+                    "tags": [],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<p>GDPR Risk assessment information has been collected.<\/p>\n<p>&nbsp;<\/p>",
+                    "records": "{{vars.incidentIRI}}"
+                },
+                "resource": {
+                    "postalCode": "{{vars.input.params.postalCode}}",
+                    "companyCity": "{{vars.input.params.companyCity}}",
+                    "companyName": "{{vars.input.params.companyName}}",
+                    "companySize": "{{vars.input.params.companySize}}",
+                    "description": "{{vars.description | join('\\n')}}",
+                    "dataRegulator": "{{vars.input.params.dataRegulator['@id']}}",
+                    "companyAddress": "{{vars.input.params.companyAddress}}",
+                    "companyCountry": "{{vars.input.params.companyCountry}}",
+                    "typeOfDataBreach": "{{vars.input.params.typeOfDataBreach['@id']}}",
+                    "causeOfDataBreach": "{{vars.input.params.causeOfDataBreach}}",
+                    "mitigationActions": "{{vars.input.params.mitigationActions}}",
+                    "noOfAffectedUsers": "{{vars.input.params['no.OfAffectedUsers']}}",
+                    "whereDataWasHosted": "{{vars.input.params['whereDataWasHosted?']}}",
+                    "affectedUsersEmails": "{{vars.input.params.affectedUsersEmails}}",
+                    "repercussionsOfBreach": "{{vars.input.params.repercussionsOfBreach}}",
+                    "noOfAffectedDataRecords": "{{vars.input.params['no.OfAffectedDataRecords']}}",
+                    "anyAdditionalInformation": "{{vars.input.params.anyAdditionalInformation}}"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.incidentIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/incidents",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
             },
             "status": null,
-            "top": "165",
+            "top": "570",
             "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "df160913-cf18-42c2-8a14-c48e55d08daf"
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "uuid": "57671b9b-fa3b-4477-a3ff-a9b3576e8673"
         },
         {
             "@type": "WorkflowStep",
@@ -416,47 +449,6 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Update GDPR Assessment Data",
-            "description": null,
-            "arguments": {
-                "resource": {
-                    "dataType": "{{vars.input.params.dataType}}",
-                    "postalCode": "{{vars.input.params.postalCode}}",
-                    "companyCity": "{{vars.input.params.companyCity}}",
-                    "companyName": "{{vars.input.params.companyName}}",
-                    "companySize": "{{vars.input.params.companySize}}",
-                    "description": "{{vars.description | join('\\n')}}",
-                    "dataRegulator": "{{vars.input.params.dataRegulator['@id']}}",
-                    "companyAddress": "{{vars.input.params.companyAddress}}",
-                    "companyCountry": "{{vars.input.params.companyCountry}}",
-                    "typeOfDataBreach": "{{vars.input.params.typeOfDataBreach['@id']}}",
-                    "causeOfDataBreach": "{{vars.input.params.causeOfDataBreach}}",
-                    "mitigationActions": "{{vars.input.params.mitigationActions}}",
-                    "noOfAffectedUsers": "{{vars.input.params['no.OfAffectedUsers']}}",
-                    "whereDataWasHosted": "{{vars.input.params['whereDataWasHosted?']}}",
-                    "affectedUsersEmails": "{{vars.input.params.affectedUsersEmails}}",
-                    "repercussionsOfBreach": "{{vars.input.params.repercussionsOfBreach}}",
-                    "noOfAffectedDataRecords": "{{vars.input.params['no.OfAffectedDataRecords']}}",
-                    "anyAdditionalInformation": "{{vars.input.params.anyAdditionalInformation}}"
-                },
-                "_showJson": false,
-                "operation": "Append",
-                "collection": "{{vars.incidentIRI}}",
-                "__recommend": [],
-                "collectionType": "\/api\/3\/incidents",
-                "fieldOperation": {
-                    "recordTags": "Append"
-                },
-                "step_variables": []
-            },
-            "status": null,
-            "top": "570",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
-            "uuid": "57671b9b-fa3b-4477-a3ff-a9b3576e8673"
-        },
-        {
-            "@type": "WorkflowStep",
             "name": "Update Task",
             "description": null,
             "arguments": {
@@ -489,9 +481,40 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "uuid": "d3a0acd0-3a26-4e69-af7a-43718b36ed76"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "description": "[]"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "df160913-cf18-42c2-8a14-c48e55d08daf"
         }
     ],
     "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update Task -> Update GDPR Assessment Data",
+            "targetStep": "\/api\/3\/workflow_steps\/57671b9b-fa3b-4477-a3ff-a9b3576e8673",
+            "sourceStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "1c1cbaa8-142a-45f6-ba19-a8ef9f7ea456"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Incident ID -> Update Task",
+            "targetStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
+            "sourceStep": "\/api\/3\/workflow_steps\/b13d127d-00e8-476e-a531-657675ce1515",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "1c633d99-24f4-4fd1-aef1-4c54bffc27ce"
+        },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Configuration",
@@ -509,24 +532,6 @@
             "label": null,
             "isExecuted": false,
             "uuid": "c188ce12-621b-46f4-a55a-2a8df8f78e47"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Get Incident ID -> Update Task",
-            "targetStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
-            "sourceStep": "\/api\/3\/workflow_steps\/b13d127d-00e8-476e-a531-657675ce1515",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "1c633d99-24f4-4fd1-aef1-4c54bffc27ce"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Update Task -> Update GDPR Assessment Data",
-            "targetStep": "\/api\/3\/workflow_steps\/57671b9b-fa3b-4477-a3ff-a9b3576e8673",
-            "sourceStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "1c1cbaa8-142a-45f6-ba19-a8ef9f7ea456"
         }
     ],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
