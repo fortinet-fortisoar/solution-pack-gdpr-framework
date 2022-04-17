@@ -1037,18 +1037,23 @@
                                                                                                     "mitretechniques",
                                                                                                     "mitresubtechniques",
                                                                                                     "mitremitigations",
-                                                                                                    "mitresoftware"
+                                                                                                    "mitresoftware",
+                                                                                                    "contact",
+                                                                                                    "incidents"
                                                                                                 ],
                                                                                                 "expandableCol": {
                                                                                                     "tasks": {
                                                                                                         "columns": [],
                                                                                                         "checkBox": false
                                                                                                     }
-                                                                                                }
+                                                                                                },
+                                                                                                "selectionType": "exclude",
+                                                                                                "enableHorizontalScroll": [],
+                                                                                                "includes": []
                                                                                             }
                                                                                         },
                                                                                         "icon": "fa fa-tasks",
-                                                                                        "show": false
+                                                                                        "show": true
                                                                                     },
                                                                                     {
                                                                                         "title": "Attachments",

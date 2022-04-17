@@ -1,6 +1,6 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/bc315242-4846-4bf1-9dd3-addab3b2d677",
+    "@id": "\/api\/3\/staging_model_metadatas\/213553ee-b837-4ba2-ad4f-03b8f93fcc50",
     "@type": "StagingModelMetadata",
     "type": "contact",
     "parentType": null,
@@ -791,7 +791,7 @@
         "delete_primary_data_after": 60
     },
     "archivalFilters": [],
-    "uuid": "bc315242-4846-4bf1-9dd3-addab3b2d677",
+    "uuid": "213553ee-b837-4ba2-ad4f-03b8f93fcc50",
     "displayName": "{{ name }}",
     "descriptions": {
         "singular": "Contact",

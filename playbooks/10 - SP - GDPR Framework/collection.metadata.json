@@ -1,7 +1,7 @@
 {
     "@context": "\/api\/3\/contexts\/WorkflowCollection",
     "@type": "WorkflowCollection",
-    "name": "GDPR Framework",
+    "name": "10 - SP - GDPR Framework",
     "description": null,
     "visible": true,
     "image": null,

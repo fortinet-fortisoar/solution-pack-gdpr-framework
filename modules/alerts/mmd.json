@@ -1,6 +1,6 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/14ba2266-28a7-4a6d-b520-651b503b9704",
+    "@id": "\/api\/3\/staging_model_metadatas\/5400ace2-4434-4b33-a2f5-eb0101ba37ea",
     "@type": "StagingModelMetadata",
     "type": "alerts",
     "parentType": null,
@@ -25,6 +25,49 @@
     "indexable": true,
     "writable": true,
     "attributes": [
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/bd2d35ab-d127-4ff6-a029-8f4cda10c3d3",
+            "@type": "AttributeMetadata",
+            "type": "events",
+            "name": "events",
+            "length": null,
+            "orderIndex": 54,
+            "formType": "oneToMany",
+            "dataSource": {
+                "model": "events"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "alerts",
+            "ownsRelationship": true,
+            "validation": {
+                "_enableRange": false,
+                "required": false,
+                "minlength": 0,
+                "maxlength": -1
+            },
+            "bulkAction": [],
+            "dataSourceFilters": [],
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": false,
+            "readable": true,
+            "writeable": true,
+            "identifier": false,
+            "unique": false,
+            "recommend": false,
+            "uuid": "bd2d35ab-d127-4ff6-a029-8f4cda10c3d3",
+            "displayName": "{{ events }}",
+            "descriptions": {
+                "singular": "Events"
+            }
+        },
         {
             "@id": "\/api\/3\/attribute_metadatas\/2edf8051-c907-4cd6-8aa4-bd8e37bbfe85",
             "@type": "AttributeMetadata",
@@ -1480,49 +1523,6 @@
             "displayName": "{{ resolveddate }}",
             "descriptions": {
                 "singular": "Resolved Date"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/bd2d35ab-d127-4ff6-a029-8f4cda10c3d3",
-            "@type": "AttributeMetadata",
-            "type": "events",
-            "name": "events",
-            "length": null,
-            "orderIndex": 54,
-            "formType": "oneToMany",
-            "dataSource": {
-                "model": "events"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": true,
-            "inversedField": "alerts",
-            "ownsRelationship": true,
-            "validation": {
-                "_enableRange": false,
-                "required": false,
-                "minlength": 0,
-                "maxlength": -1
-            },
-            "bulkAction": [],
-            "dataSourceFilters": [],
-            "defaultValue": "",
-            "tooltip": "",
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": false,
-            "readable": true,
-            "writeable": true,
-            "identifier": false,
-            "unique": false,
-            "recommend": false,
-            "uuid": "bd2d35ab-d127-4ff6-a029-8f4cda10c3d3",
-            "displayName": "{{ events }}",
-            "descriptions": {
-                "singular": "Events"
             }
         },
         {
@@ -6496,7 +6496,7 @@
         "delete_primary_data_after": 60
     },
     "archivalFilters": [],
-    "uuid": "14ba2266-28a7-4a6d-b520-651b503b9704",
+    "uuid": "5400ace2-4434-4b33-a2f5-eb0101ba37ea",
     "displayName": "{{ name }}",
     "descriptions": {
         "plural": "Alerts",

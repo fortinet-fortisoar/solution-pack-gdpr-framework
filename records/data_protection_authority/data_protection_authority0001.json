@@ -14,6 +14,9 @@
         "createDate": 1641116589,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116732,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 1,
         "recordTags": []
     },
@@ -32,6 +35,9 @@
         "createDate": 1641116590,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116732,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 2,
         "recordTags": []
     },
@@ -50,6 +56,9 @@
         "createDate": 1641116597,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116745,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 3,
         "recordTags": []
     },
@@ -68,6 +77,9 @@
         "createDate": 1641116603,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116746,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 4,
         "recordTags": []
     },
@@ -86,6 +98,9 @@
         "createDate": 1641116590,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116732,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 5,
         "recordTags": []
     },
@@ -104,6 +119,9 @@
         "createDate": 1641116589,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116732,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 6,
         "recordTags": []
     },
@@ -122,6 +140,9 @@
         "createDate": 1641116588,
         "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
         "modifyDate": 1641197804,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 7,
         "recordTags": []
     },
@@ -140,6 +161,9 @@
         "createDate": 1641116591,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116738,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 8,
         "recordTags": []
     },
@@ -158,6 +182,9 @@
         "createDate": 1641116591,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116739,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 9,
         "recordTags": []
     },
@@ -176,6 +203,9 @@
         "createDate": 1641116591,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116738,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 10,
         "recordTags": []
     },
@@ -194,6 +224,9 @@
         "createDate": 1641116603,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116746,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 11,
         "recordTags": []
     },
@@ -212,6 +245,9 @@
         "createDate": 1641116590,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116733,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 12,
         "recordTags": []
     },
@@ -230,6 +266,9 @@
         "createDate": 1641116597,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116740,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 13,
         "recordTags": []
     },
@@ -248,6 +287,9 @@
         "createDate": 1641116596,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116739,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 14,
         "recordTags": []
     },
@@ -266,6 +308,9 @@
         "createDate": 1641116603,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116746,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 15,
         "recordTags": []
     },
@@ -284,6 +329,9 @@
         "createDate": 1641116589,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116732,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 16,
         "recordTags": []
     },
@@ -302,6 +350,9 @@
         "createDate": 1641116596,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116739,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 17,
         "recordTags": []
     },
@@ -320,6 +371,9 @@
         "createDate": 1641116596,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116739,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 18,
         "recordTags": []
     },
@@ -338,6 +392,9 @@
         "createDate": 1641116597,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116739,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 19,
         "recordTags": []
     },
@@ -356,6 +413,9 @@
         "createDate": 1641116590,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116733,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 20,
         "recordTags": []
     },
@@ -374,6 +434,9 @@
         "createDate": 1641116596,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116739,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 21,
         "recordTags": []
     },
@@ -392,6 +455,9 @@
         "createDate": 1641116589,
         "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
         "modifyDate": 1641197842,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 22,
         "recordTags": []
     },
@@ -410,6 +476,9 @@
         "createDate": 1641116597,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116740,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 23,
         "recordTags": []
     },
@@ -428,6 +497,9 @@
         "createDate": 1641116590,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116733,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 24,
         "recordTags": []
     },
@@ -446,6 +518,9 @@
         "createDate": 1641116608,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116746,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 25,
         "recordTags": []
     },
@@ -464,6 +539,9 @@
         "createDate": 1641116603,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116745,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 26,
         "recordTags": []
     },
@@ -482,6 +560,9 @@
         "createDate": 1641116597,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116739,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 27,
         "recordTags": []
     },
@@ -500,6 +581,9 @@
         "createDate": 1641116590,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116733,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 28,
         "recordTags": []
     },
@@ -518,6 +602,9 @@
         "createDate": 1641116597,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116740,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 29,
         "recordTags": []
     },
@@ -536,6 +623,9 @@
         "createDate": 1641116603,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116746,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 30,
         "recordTags": []
     },
@@ -554,6 +644,9 @@
         "createDate": 1641116603,
         "modifyUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
         "modifyDate": 1641116745,
+        "owners": [
+            "\/api\/3\/teams\/6e569c09-3bd4-40f1-98b0-cc994464c3c5"
+        ],
         "id": 31,
         "recordTags": []
     }

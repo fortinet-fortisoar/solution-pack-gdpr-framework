@@ -16,12 +16,12 @@
     "prerequisite": null,
     "publisher": "Fortinet",
     "description": "This solution pack demonstrates procedures involved in GDPR",
-    "help": "https:\/\/github.com\/fortinet-fortisoar\/solution-pack-gdpr-framework\/blob\/develop\/README.md",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/develop/README.md",
     "category": [],
     "supportInfo": "",
     "iconLarge": null,
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-04-13T10:22:05+00:00",
+    "date": "2022-04-17T22:04:50+00:00",
     "contents": {
         "picklistNames": [
             {
@@ -70,10 +70,10 @@
                 "name": "KillChainPhases"
             },
             {
-                "name": "Severity"
+                "name": "SLAState"
             },
             {
-                "name": "SLAState"
+                "name": "Severity"
             },
             {
                 "name": "TaskPriority"
@@ -114,34 +114,57 @@
             }
         },
         "viewTemplates": {
-            "alerts": [
-                "list",
-                "detail",
-                "form",
-                "settings"
-            ],
-            "contact": [
-                "list",
-                "detail",
-                "form"
-            ],
-            "data_protection_authority": [
-                "list",
-                "detail",
-                "form"
-            ],
-            "incidents": [
-                "list",
-                "detail",
-                "form",
-                "settings"
-            ],
-            "tasks": [
-                "list",
-                "detail",
-                "form",
-                "settings"
-            ]
+            "alerts": {
+                "name": "Alerts",
+                "apiName": "alerts",
+                "views": [
+                    "detail",
+                    "list",
+                    "form",
+                    "settings",
+                    "settings"
+                ]
+            },
+            "contact": {
+                "name": "Contacts",
+                "apiName": "contact",
+                "views": [
+                    "detail",
+                    "list",
+                    "form"
+                ]
+            },
+            "data_protection_authority": {
+                "name": "Data Protection Authorities",
+                "apiName": "data_protection_authority",
+                "views": [
+                    "detail",
+                    "list",
+                    "form"
+                ]
+            },
+            "incidents": {
+                "name": "Incidents",
+                "apiName": "incidents",
+                "views": [
+                    "detail",
+                    "list",
+                    "form",
+                    "settings",
+                    "settings"
+                ]
+            },
+            "tasks": {
+                "name": "Tasks",
+                "apiName": "tasks",
+                "views": [
+                    "detail",
+                    "list",
+                    "form",
+                    "settings",
+                    "settings"
+                ]
+            }
         },
         "roles": [
             {
@@ -150,17 +173,10 @@
         ],
         "playbooks": [
             {
-                "name": "GDPR Framework"
+                "name": "10 - SP - GDPR Framework"
             }
         ],
-        "globalVariables": [
-            {
-                "id": 7,
-                "name": "Server_fqhn",
-                "value": "tenant.fortisoar.in",
-                "default_value": "master.fortisoar.in"
-            }
-        ],
+        "globalVariables": [],
         "reports": [
             {
                 "name": "GDPR Assessment Report"
@@ -168,7 +184,7 @@
         ],
         "recordSets": [
             {
-                "name": "Data Protection Authorities",
+                "name": null,
                 "apiName": "data_protection_authority",
                 "count": 31
             }
