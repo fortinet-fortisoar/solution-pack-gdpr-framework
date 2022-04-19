@@ -1,0 +1,3514 @@
+{
+    "@id": "\/api\/3\/staging_model_metadatas\/b22b412d-64c3-4ac8-9d9e-2ef3be1459d7",
+    "uuid": "b22b412d-64c3-4ac8-9d9e-2ef3be1459d7",
+    "descriptions": {
+        "plural": "Incidents",
+        "singular": "Incident"
+    },
+    "type": "incidents",
+    "attributes": [
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/b3637570-7975-4cb7-bd32-fabf22d507a0",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "dPOName",
+            "length": null,
+            "orderIndex": 14,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "dPOName",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "b3637570-7975-4cb7-bd32-fabf22d507a0",
+            "displayName": "{{ dPOName }}",
+            "descriptions": {
+                "singular": "DPO Name"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/9661e35b-3b48-46f0-8cb1-a488f90c29dd",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "mitigationActions",
+            "length": null,
+            "orderIndex": 20,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": "Describe the measures taken or proposed to be taken by the controller to address the personal data breach",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "mitigationActions",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "9661e35b-3b48-46f0-8cb1-a488f90c29dd",
+            "displayName": "{{ mitigationActions }}",
+            "descriptions": {
+                "singular": "Mitigation Actions"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/ba39a1eb-6113-4346-93d1-237337b32e26",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "reasonToPerformDPIA",
+            "length": null,
+            "orderIndex": 6,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "reasonToPerformDPIA",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "ba39a1eb-6113-4346-93d1-237337b32e26",
+            "displayName": "{{ reasonToPerformDPIA }}",
+            "descriptions": {
+                "singular": "Reason To Perform DPIA"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/7ee965ca-e2f6-4573-9412-498a6bade878",
+            "@type": "AttributeMetadata",
+            "type": "picklists",
+            "name": "impactSeverityOnAffectedUsers",
+            "length": null,
+            "orderIndex": 5,
+            "formType": "picklist",
+            "dataSource": {
+                "model": "picklists",
+                "query": {
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "listName__name",
+                            "operator": "eq",
+                            "value": "Severity"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "orderIndex",
+                            "direction": "ASC"
+                        }
+                    ]
+                },
+                "displayConditions": {
+                    "0d609b08-45e0-469f-8910-41145c0b7c03": {
+                        "visibility": "hidden",
+                        "conditions": null
+                    },
+                    "40187287-89fc-4e9c-b717-e9443d57eedb": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "58d0753f-f7e4-403b-953c-b0f521eab759": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "7efa2220-39bb-44e4-961f-ac368776e3b0": {
+                        "visibility": "hidden",
+                        "conditions": null
+                    },
+                    "b3c20a3a-ecfd-4adc-a225-0205968e6793": {
+                        "visibility": "visible",
+                        "conditions": null
+                    }
+                },
+                "useDisplayConditions": true
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "display": "GDPR Data Breach",
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "impactSeverityOnAffectedUsers",
+                            "operator": "isnull",
+                            "value": "false",
+                            "_value": {
+                                "display": "",
+                                "itemValue": "",
+                                "@id": "false"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "7ee965ca-e2f6-4573-9412-498a6bade878",
+            "displayName": "{{ impactSeverityOnAffectedUsers }}",
+            "descriptions": {
+                "singular": "Impact Severity on Affected Users"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/d37224c3-3c32-47e3-a819-e67e6e955148",
+            "@type": "AttributeMetadata",
+            "type": "picklists",
+            "name": "breachNotificationSLA",
+            "length": null,
+            "orderIndex": 27,
+            "formType": "picklist",
+            "dataSource": {
+                "model": "picklists",
+                "query": {
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "listName__name",
+                            "operator": "eq",
+                            "value": "SLAState"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "orderIndex",
+                            "direction": "ASC"
+                        }
+                    ]
+                },
+                "displayConditions": {
+                    "090115d7-90fc-4dc6-97ca-27950fc30c1c": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "5230b20c-d408-4b36-ad8f-610167d84d34": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "3654f428-d23d-4683-a44e-82cc54f4f32b": {
+                        "visibility": "hidden",
+                        "conditions": null
+                    },
+                    "72979f64-e8b9-4888-a965-957e0ec24818": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "3f4ef2dc-7f56-4886-b215-ee08b344cbdf": {
+                        "visibility": "hidden",
+                        "conditions": null
+                    }
+                },
+                "useDisplayConditions": true
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "OR",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "wasPersonalDataOrInformationInvolved",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                            "_value": {
+                                "itemValue": "Yes",
+                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "d37224c3-3c32-47e3-a819-e67e6e955148",
+            "displayName": "{{ breachNotificationSLA }}",
+            "descriptions": {
+                "singular": "Breach Notification SLA"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/ab3616d2-12d0-4b81-a13b-15cb8e553e53",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "whereDataWasHosted",
+            "length": null,
+            "orderIndex": 19,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": "For Example. Cloud, Third-Party, On-Premise",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "whereDataWasHosted",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "ab3616d2-12d0-4b81-a13b-15cb8e553e53",
+            "displayName": "{{ whereDataWasHosted }}",
+            "descriptions": {
+                "singular": "Where data was hosted?"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/35c454e1-d58a-4f2b-9ec9-3d7900aa23f4",
+            "@type": "AttributeMetadata",
+            "type": "picklists",
+            "name": "wasTheExposureResolved",
+            "length": null,
+            "orderIndex": 31,
+            "formType": "picklist",
+            "dataSource": {
+                "model": "picklists",
+                "query": {
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "listName__name",
+                            "operator": "eq",
+                            "value": "YesNo Picklist"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "orderIndex",
+                            "direction": "ASC"
+                        }
+                    ]
+                },
+                "displayConditions": {
+                    "a3293f95-e423-49e5-8b12-b73401d92779": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "9f56a3e0-26ab-40e5-a29b-160d54f3e97b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "aff396b6-963d-4c4f-bd50-750f707ffe8b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    }
+                }
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": [
+                    {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "field": "wasPersonalDataOrInformationInvolved",
+                                "operator": "eq",
+                                "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                                "_value": {
+                                    "itemValue": "Yes",
+                                    "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                                },
+                                "type": "object"
+                            }
+                        ]
+                    }
+                ],
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "wasPersonalDataOrInformationInvolved",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                            "_value": {
+                                "itemValue": "Yes",
+                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "35c454e1-d58a-4f2b-9ec9-3d7900aa23f4",
+            "displayName": "{{ wasTheExposureResolved }}",
+            "descriptions": {
+                "singular": "Was the exposure resolved?"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/2241aa29-ea04-48be-b452-b3813e38849b",
+            "@type": "AttributeMetadata",
+            "type": "picklists",
+            "name": "gDPRAssessmentCompleted",
+            "length": null,
+            "orderIndex": 23,
+            "formType": "picklist",
+            "dataSource": {
+                "model": "picklists",
+                "query": {
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "listName__name",
+                            "operator": "eq",
+                            "value": "YesNo Picklist"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "orderIndex",
+                            "direction": "ASC"
+                        }
+                    ]
+                },
+                "displayConditions": {
+                    "a3293f95-e423-49e5-8b12-b73401d92779": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "9f56a3e0-26ab-40e5-a29b-160d54f3e97b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "aff396b6-963d-4c4f-bd50-750f707ffe8b": {
+                        "visibility": "hidden",
+                        "conditions": null
+                    }
+                },
+                "useDisplayConditions": true
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": [
+                    {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "field": "status",
+                                "operator": "eq",
+                                "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                                "_value": {
+                                    "itemValue": "Resolved",
+                                    "@id": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae"
+                                },
+                                "type": "object"
+                            }
+                        ]
+                    }
+                ],
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "status",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                            "_value": {
+                                "itemValue": "Resolved",
+                                "@id": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "2241aa29-ea04-48be-b452-b3813e38849b",
+            "displayName": "{{ gDPRAssessmentCompleted }}",
+            "descriptions": {
+                "singular": "GDPR Assessment Completed"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/3a7e7725-6b38-4cc0-b4db-3266ffea1a42",
+            "@type": "AttributeMetadata",
+            "type": "picklists",
+            "name": "wasPersonalDataOrInformationInvolved",
+            "length": null,
+            "orderIndex": 33,
+            "formType": "picklist",
+            "dataSource": {
+                "model": "picklists",
+                "query": {
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "listName__name",
+                            "operator": "eq",
+                            "value": "YesNo Picklist"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "orderIndex",
+                            "direction": "ASC"
+                        }
+                    ]
+                },
+                "displayConditions": {
+                    "a3293f95-e423-49e5-8b12-b73401d92779": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "9f56a3e0-26ab-40e5-a29b-160d54f3e97b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "aff396b6-963d-4c4f-bd50-750f707ffe8b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    }
+                }
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "3a7e7725-6b38-4cc0-b4db-3266ffea1a42",
+            "displayName": "{{ wasPersonalDataOrInformationInvolved }}",
+            "descriptions": {
+                "singular": "Was personal data affected?"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/87b40ba9-787f-4619-8beb-2efecd6bcd58",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "dPAEmail",
+            "length": null,
+            "orderIndex": 10,
+            "formType": "email",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "dPAEmail",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "87b40ba9-787f-4619-8beb-2efecd6bcd58",
+            "displayName": "{{ dPAEmail }}",
+            "descriptions": {
+                "singular": "DPA Email"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/86dcb1a3-42a3-4feb-9b80-aaa35d8d4f6f",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "dPOEmail",
+            "length": null,
+            "orderIndex": 13,
+            "formType": "email",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "dPOEmail",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "86dcb1a3-42a3-4feb-9b80-aaa35d8d4f6f",
+            "displayName": "{{ dPOEmail }}",
+            "descriptions": {
+                "singular": "DPO Email"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/9358273b-9a80-42dd-8462-0f35a72470a0",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "dPAWebsite",
+            "length": null,
+            "orderIndex": 9,
+            "formType": "url",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "dPAWebsite",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "9358273b-9a80-42dd-8462-0f35a72470a0",
+            "displayName": "{{ dPAWebsite }}",
+            "descriptions": {
+                "singular": "DPA Website"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/5cdebf8b-bb6d-4e48-b937-225ff398d3d1",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "repercussionsOfBreach",
+            "length": null,
+            "orderIndex": 15,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": "Describe like consequences of personal data breach",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "repercussionsOfBreach",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        },
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "display": "GDPR Data Breach",
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "5cdebf8b-bb6d-4e48-b937-225ff398d3d1",
+            "displayName": "{{ repercussionsOfBreach }}",
+            "descriptions": {
+                "singular": "Repercussions of Breach"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/41d7bd6e-67cf-4845-b9b5-eef9356e9d47",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "anyAdditionalInformation",
+            "length": null,
+            "orderIndex": 18,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "anyAdditionalInformation",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "41d7bd6e-67cf-4845-b9b5-eef9356e9d47",
+            "displayName": "{{ anyAdditionalInformation }}",
+            "descriptions": {
+                "singular": "Any Additional Information"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/583fc587-cf6b-4dec-bd64-06c5a09715bc",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "postalCode",
+            "length": null,
+            "orderIndex": 17,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "postalCode",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "583fc587-cf6b-4dec-bd64-06c5a09715bc",
+            "displayName": "{{ postalCode }}",
+            "descriptions": {
+                "singular": "Postal Code"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/edc4ed1e-86cc-4df8-8d0e-c962ed7ecc28",
+            "@type": "AttributeMetadata",
+            "type": "number",
+            "name": "noOfAffectedDataRecords",
+            "length": null,
+            "orderIndex": 37,
+            "formType": "decimal",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": "The approximate number of data records concerned",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "noOfAffectedDataRecords",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "edc4ed1e-86cc-4df8-8d0e-c962ed7ecc28",
+            "displayName": "{{ noOfAffectedDataRecords }}",
+            "descriptions": {
+                "singular": "No. of Affected Data Records"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/215f1f5c-9030-4218-8877-b0d28833181f",
+            "@type": "AttributeMetadata",
+            "type": "picklists",
+            "name": "typeOfDataBreach",
+            "length": null,
+            "orderIndex": 16,
+            "formType": "picklist",
+            "dataSource": {
+                "model": "picklists",
+                "query": {
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "listName__name",
+                            "operator": "eq",
+                            "value": "DataBreachType"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "orderIndex",
+                            "direction": "ASC"
+                        }
+                    ]
+                },
+                "displayConditions": {
+                    "a188fe8d-ef76-48a5-b743-f54208655576": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "0bf8ed14-98cf-420b-8a6d-abcea0e16132": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "f9859b5f-c2d2-4f07-9d43-d7ecda104900": {
+                        "visibility": "visible",
+                        "conditions": null
+                    }
+                }
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "typeOfDataBreach",
+                            "operator": "isnull",
+                            "value": "false",
+                            "_value": {
+                                "display": "",
+                                "itemValue": "",
+                                "@id": "false"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "215f1f5c-9030-4218-8877-b0d28833181f",
+            "displayName": "{{ typeOfDataBreach }}",
+            "descriptions": {
+                "singular": "Type of Data Breach"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/e6ad8e85-3201-434b-843d-906cc73f1fe5",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "companySize",
+            "length": null,
+            "orderIndex": 39,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": "No. of Employees",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "companySize",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "e6ad8e85-3201-434b-843d-906cc73f1fe5",
+            "displayName": "{{ companySize }}",
+            "descriptions": {
+                "singular": "Company Size"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/634d8ac4-af58-4573-b477-e5ba59201882",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "dPAAddress",
+            "length": null,
+            "orderIndex": 11,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "dPAAddress",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "634d8ac4-af58-4573-b477-e5ba59201882",
+            "displayName": "{{ dPAAddress }}",
+            "descriptions": {
+                "singular": "DPA Address"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/426d1e42-21bb-451e-be5c-203070b9bd5c",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "dPOTelephone",
+            "length": null,
+            "orderIndex": 12,
+            "formType": "phone",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "dPOTelephone",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "426d1e42-21bb-451e-be5c-203070b9bd5c",
+            "displayName": "{{ dPOTelephone }}",
+            "descriptions": {
+                "singular": "DPO Telephone"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/e95ac06a-568f-4548-894e-247368c748e8",
+            "@type": "AttributeMetadata",
+            "type": "picklists",
+            "name": "wasTheDataEncrypted",
+            "length": null,
+            "orderIndex": 26,
+            "formType": "picklist",
+            "dataSource": {
+                "model": "picklists",
+                "query": {
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "listName__name",
+                            "operator": "eq",
+                            "value": "YesNo Picklist"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "orderIndex",
+                            "direction": "ASC"
+                        }
+                    ]
+                },
+                "displayConditions": {
+                    "a3293f95-e423-49e5-8b12-b73401d92779": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "9f56a3e0-26ab-40e5-a29b-160d54f3e97b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "aff396b6-963d-4c4f-bd50-750f707ffe8b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    }
+                }
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": [
+                    {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "field": "wasPersonalDataOrInformationInvolved",
+                                "operator": "eq",
+                                "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                                "_value": {
+                                    "itemValue": "Yes",
+                                    "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                                },
+                                "type": "object"
+                            }
+                        ]
+                    }
+                ],
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "wasPersonalDataOrInformationInvolved",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                            "_value": {
+                                "itemValue": "Yes",
+                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "e95ac06a-568f-4548-894e-247368c748e8",
+            "displayName": "{{ wasTheDataEncrypted }}",
+            "descriptions": {
+                "singular": "Was the data encrypted?"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/30dfb864-8703-4a7b-8e8f-510129b5af52",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "breachOccurrenceDate",
+            "length": null,
+            "orderIndex": 25,
+            "formType": "datetime",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": [
+                    {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "field": "wasPersonalDataOrInformationInvolved",
+                                "operator": "eq",
+                                "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                                "_value": {
+                                    "itemValue": "Yes",
+                                    "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                                },
+                                "type": "object"
+                            }
+                        ]
+                    }
+                ],
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "OR",
+                    "filters": [
+                        {
+                            "field": "wasPersonalDataOrInformationInvolved",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                            "_value": {
+                                "itemValue": "Yes",
+                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "30dfb864-8703-4a7b-8e8f-510129b5af52",
+            "displayName": "{{ breachOccurrenceDate }}",
+            "descriptions": {
+                "singular": "Breach Occurrence Date"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/2d4bc59c-0da7-42ad-a648-0889643288bd",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "companyCity",
+            "length": null,
+            "orderIndex": 40,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "companyCity",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "2d4bc59c-0da7-42ad-a648-0889643288bd",
+            "displayName": "{{ companyCity }}",
+            "descriptions": {
+                "singular": "Company City"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/b42b8f86-34d2-48af-8160-4f92cf31b363",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "breachPausedDate",
+            "length": null,
+            "orderIndex": 28,
+            "formType": "datetime",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": false,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "b42b8f86-34d2-48af-8160-4f92cf31b363",
+            "displayName": "{{ breachPausedDate }}",
+            "descriptions": {
+                "singular": "Breach Paused Date"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/ed8760b7-4256-4597-82d0-effe7d282c69",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "companyCountry",
+            "length": null,
+            "orderIndex": 41,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": "Country of origin for the company",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "companyCountry",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "ed8760b7-4256-4597-82d0-effe7d282c69",
+            "displayName": "{{ companyCountry }}",
+            "descriptions": {
+                "singular": "Company Country"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/93ab94d5-c4f8-4903-99bb-81937a892c36",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "breachNotificationDueDate",
+            "length": null,
+            "orderIndex": 34,
+            "formType": "datetime",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "OR",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "wasPersonalDataOrInformationInvolved",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                            "_value": {
+                                "itemValue": "Yes",
+                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "93ab94d5-c4f8-4903-99bb-81937a892c36",
+            "displayName": "{{ breachNotificationDueDate }}",
+            "descriptions": {
+                "singular": "Breach Notify Due Date"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/a3bfe8ab-81a0-4fc7-9593-0e14d57a5337",
+            "@type": "AttributeMetadata",
+            "type": "contact",
+            "name": "contact",
+            "length": null,
+            "orderIndex": 118,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "contact"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": false,
+            "validation": null,
+            "bulkAction": null,
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "a3bfe8ab-81a0-4fc7-9593-0e14d57a5337",
+            "displayName": "{{Contact}}",
+            "descriptions": {
+                "singular": "Contact"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/299d0c71-0180-4948-a7c8-a47a13a3da86",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "causeOfDataBreach",
+            "length": null,
+            "orderIndex": 35,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": "Describe the cause of the data breach, For example. 'Due to malicious activity or 'Due to Unauthorized Access'",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "causeOfDataBreach",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "299d0c71-0180-4948-a7c8-a47a13a3da86",
+            "displayName": "{{ causeOfDataBreach }}",
+            "descriptions": {
+                "singular": "Cause of Data Breach"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/c5cb5bf3-7a11-4990-8d37-17dd71767df9",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "breachDetectionDate",
+            "length": null,
+            "orderIndex": 24,
+            "formType": "datetime",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": [
+                    {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "field": "wasPersonalDataOrInformationInvolved",
+                                "operator": "eq",
+                                "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                                "_value": {
+                                    "itemValue": "Yes",
+                                    "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                                },
+                                "type": "object"
+                            }
+                        ]
+                    }
+                ],
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "OR",
+                    "filters": [
+                        {
+                            "field": "wasPersonalDataOrInformationInvolved",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                            "_value": {
+                                "itemValue": "Yes",
+                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "c5cb5bf3-7a11-4990-8d37-17dd71767df9",
+            "displayName": "{{ breachDetectionDate }}",
+            "descriptions": {
+                "singular": "Breach Detection Date"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/13a3c7ac-e92b-4c6b-916b-8a503d0fd5bd",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "affectedUsersEmails",
+            "length": null,
+            "orderIndex": 36,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": "A comma-separated list of affected users emails IDs",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "affectedUsersEmails",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "13a3c7ac-e92b-4c6b-916b-8a503d0fd5bd",
+            "displayName": "{{ affectedUsersEmails }}",
+            "descriptions": {
+                "singular": "Affected Users Emails"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/c8755085-b096-4a28-9f4d-30cf352bcc04",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "whatWasTheDataSource",
+            "length": null,
+            "orderIndex": 30,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": [
+                    {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "field": "wasPersonalDataOrInformationInvolved",
+                                "operator": "eq",
+                                "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                                "_value": {
+                                    "itemValue": "Yes",
+                                    "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                                },
+                                "type": "object"
+                            }
+                        ]
+                    }
+                ],
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "wasPersonalDataOrInformationInvolved",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                            "_value": {
+                                "itemValue": "Yes",
+                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "c8755085-b096-4a28-9f4d-30cf352bcc04",
+            "displayName": "{{ whatWasTheDataSource }}",
+            "descriptions": {
+                "singular": "What was the data source?"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/12a51e88-9452-4648-bace-f3871dc4944b",
+            "@type": "AttributeMetadata",
+            "type": "number",
+            "name": "noOfAffectedUsers",
+            "length": null,
+            "orderIndex": 38,
+            "formType": "decimal",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": "The approximate number of users concerned",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "noOfAffectedUsers",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "12a51e88-9452-4648-bace-f3871dc4944b",
+            "displayName": "{{ noOfAffectedUsers }}",
+            "descriptions": {
+                "singular": "No. of Affected Users"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/52e0f641-4fdb-4175-9b72-6a16f2141221",
+            "@type": "AttributeMetadata",
+            "type": "picklists",
+            "name": "isHarmRiskOrMisuseForeseeable",
+            "length": null,
+            "orderIndex": 32,
+            "formType": "picklist",
+            "dataSource": {
+                "model": "picklists",
+                "query": {
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "listName__name",
+                            "operator": "eq",
+                            "value": "YesNo Picklist"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "orderIndex",
+                            "direction": "ASC"
+                        }
+                    ]
+                },
+                "displayConditions": {
+                    "a3293f95-e423-49e5-8b12-b73401d92779": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "9f56a3e0-26ab-40e5-a29b-160d54f3e97b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "aff396b6-963d-4c4f-bd50-750f707ffe8b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    }
+                }
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": [
+                    {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "field": "wasPersonalDataOrInformationInvolved",
+                                "operator": "eq",
+                                "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                                "_value": {
+                                    "itemValue": "Yes",
+                                    "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                                },
+                                "type": "object"
+                            }
+                        ]
+                    }
+                ],
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "wasPersonalDataOrInformationInvolved",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                            "_value": {
+                                "itemValue": "Yes",
+                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "52e0f641-4fdb-4175-9b72-6a16f2141221",
+            "displayName": "{{ isHarmRiskOrMisuseForeseeable }}",
+            "descriptions": {
+                "singular": "Is harm, risk or misuse foreseeable?"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/38eb80e4-ae02-43ef-b79f-208fc887416a",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "companyAddress",
+            "length": null,
+            "orderIndex": 22,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "companyAddress",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "38eb80e4-ae02-43ef-b79f-208fc887416a",
+            "displayName": "{{ companyAddress }}",
+            "descriptions": {
+                "singular": "Company Address"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/7c12dd1a-f767-4660-a9ac-458416c8a9dd",
+            "@type": "AttributeMetadata",
+            "type": "picklists",
+            "name": "dataRegulator",
+            "length": null,
+            "orderIndex": 21,
+            "formType": "picklist",
+            "dataSource": {
+                "model": "picklists",
+                "query": {
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "listName__name",
+                            "operator": "eq",
+                            "value": "GDPREUCountryList"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "orderIndex",
+                            "direction": "ASC"
+                        }
+                    ]
+                },
+                "displayConditions": {
+                    "2ecefcd0-b738-43a6-ace7-5787150c79af": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "4ac88c4d-f0d8-4ecf-bf10-71411148cbcf": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "b0d7684e-9d8e-47af-8918-61ca9befb87f": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "104bad78-9949-40dc-883c-6bbd0bd41913": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "5576fbb7-073e-485d-9261-6368d3b6033d": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "b1a4ddce-870a-4f0a-8b1e-01484a03ed70": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "f9ce0f08-02c1-4a98-8342-83d765797dde": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "9bc42f4e-ce89-40a5-8f6c-3c9960b19bab": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "49a43e44-0eb9-4418-9045-d2e6ad042f2b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "39ae31c2-68ea-4241-a1b4-e721b078216c": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "9c8e5da4-ff98-4359-87ec-528381d8cd64": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "4db7fd21-f25b-49d0-b296-db54e7a264f0": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "4af061e5-e1c0-4945-bdfd-86e86b3ee9a0": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "8485d3d9-6796-49c8-b97d-11d8e7b266f1": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "051980f7-db21-47e4-af23-58b434e8f165": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "8b83ae3d-6c19-4639-8820-81eabdcb97ba": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "fc4de9bd-010a-4993-a34f-d0e5276292f4": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "a1fa039f-6e4f-4f8f-9141-eb018e06a56a": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "2a4e9662-d10b-4fa5-9563-4ce237ba12a8": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "a7509ad3-69da-466a-85aa-5ea76ada6056": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "f0698e06-33e7-4a67-83f7-19417c3006a0": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "bf2a32e6-1f08-4ab4-97ff-9882a42e3546": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "a7a73e65-7bcf-4c01-89fb-12699845ab98": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "713533f2-d3ad-4911-a95e-254c7956b13a": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "7f35592e-ba03-4b08-91d0-a96c710b2c5c": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "b6c6f644-6e8a-4d56-8553-f36c9914f0e6": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "8867340b-a49f-497b-8ba6-49e697e4d33a": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "bddd222b-6d9e-47c3-b231-ed30f27a6a75": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "3ae54314-2007-4be7-add1-d1bd37b320dc": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "9fec9651-9c69-4ea9-85b3-2e2ad5418a58": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "1f75fd41-517f-4016-9dc8-19fc59bd6e71": {
+                        "visibility": "visible",
+                        "conditions": null
+                    }
+                }
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": [
+                    {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "field": "category",
+                                "operator": "eq",
+                                "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                                "_value": {
+                                    "itemValue": "GDPR Data Breach",
+                                    "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                                },
+                                "type": "object"
+                            }
+                        ]
+                    }
+                ],
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": "Choose the country of relevant Data Regulatory Authority",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "dataRegulator",
+                            "operator": "isnull",
+                            "value": "false",
+                            "_value": {
+                                "display": "",
+                                "itemValue": "",
+                                "@id": "false"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "7c12dd1a-f767-4660-a9ac-458416c8a9dd",
+            "displayName": "{{ dataRegulator }}",
+            "descriptions": {
+                "singular": "Data Regulator"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/492d22ac-c969-4cff-a1a5-9e4a56a07a28",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "whatWasTheDataFormat",
+            "length": null,
+            "orderIndex": 29,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": [
+                    {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "field": "wasPersonalDataOrInformationInvolved",
+                                "operator": "eq",
+                                "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                                "_value": {
+                                    "itemValue": "Yes",
+                                    "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                                },
+                                "type": "object"
+                            }
+                        ]
+                    }
+                ],
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": "",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "wasPersonalDataOrInformationInvolved",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                            "_value": {
+                                "itemValue": "Yes",
+                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "492d22ac-c969-4cff-a1a5-9e4a56a07a28",
+            "displayName": "{{ whatWasTheDataFormat }}",
+            "descriptions": {
+                "singular": "What was the data format?"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/1e2db3c1-a6a1-41aa-8b80-4f39fc9dbef9",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "companyName",
+            "length": null,
+            "orderIndex": 42,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "companyName",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "1e2db3c1-a6a1-41aa-8b80-4f39fc9dbef9",
+            "displayName": "{{ companyName }}",
+            "descriptions": {
+                "singular": "Company Name"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/052d6e44-932a-4d48-9611-c4a12ead4ad0",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "measuresToReduceFutureRisks",
+            "length": null,
+            "orderIndex": 4,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "display": "GDPR Data Breach",
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "measuresToReduceFutureRisks",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "052d6e44-932a-4d48-9611-c4a12ead4ad0",
+            "displayName": "{{ measuresToReduceFutureRisks }}",
+            "descriptions": {
+                "singular": "Measures to Reduce Future Risks"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/ad4e8e7f-3fb1-4043-aeb8-0f8e4ed4ce6d",
+            "@type": "AttributeMetadata",
+            "type": "picklists",
+            "name": "isValidBreach",
+            "length": null,
+            "orderIndex": 2,
+            "formType": "picklist",
+            "dataSource": {
+                "model": "picklists",
+                "query": {
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "listName__name",
+                            "operator": "eq",
+                            "value": "YesNo Picklist"
+                        }
+                    ],
+                    "sort": [
+                        {
+                            "field": "orderIndex",
+                            "direction": "ASC"
+                        }
+                    ]
+                },
+                "displayConditions": {
+                    "a3293f95-e423-49e5-8b12-b73401d92779": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "9f56a3e0-26ab-40e5-a29b-160d54f3e97b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    },
+                    "aff396b6-963d-4c4f-bd50-750f707ffe8b": {
+                        "visibility": "visible",
+                        "conditions": null
+                    }
+                }
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "isValidBreach",
+                            "operator": "isnull",
+                            "value": "false",
+                            "_value": {
+                                "display": "",
+                                "itemValue": "",
+                                "@id": "false"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "ad4e8e7f-3fb1-4043-aeb8-0f8e4ed4ce6d",
+            "displayName": "{{ isValidBreach }}",
+            "descriptions": {
+                "singular": "Is Valid Breach?"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/c13365c1-88b4-4f72-860b-0563339d451a",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "summaryOfDPOAdvice",
+            "length": null,
+            "orderIndex": 3,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "summaryOfDPOAdvice",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "c13365c1-88b4-4f72-860b-0563339d451a",
+            "displayName": "{{ summaryOfDPOAdvice }}",
+            "descriptions": {
+                "singular": "Summary of DPO Advice"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/13cb22c5-5f48-4e89-bd45-a1c229bd9130",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "isDPIARequired",
+            "length": null,
+            "orderIndex": 7,
+            "formType": "text",
+            "dataSource": [],
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": "Data Protection Impact Assessment(DPIA)",
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "isDPIARequired",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        },
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "13cb22c5-5f48-4e89-bd45-a1c229bd9130",
+            "displayName": "{{ isDPIARequired }}",
+            "descriptions": {
+                "singular": "Is DPIA Required?"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/c6c47866-df60-43d7-a2fb-b9202aaef8e2",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "dataType",
+            "length": null,
+            "orderIndex": 1,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": [
+                {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "field": "category",
+                            "operator": "eq",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "itemValue": "GDPR Data Breach",
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a"
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "field": "dataType",
+                            "operator": "isnull",
+                            "_operator": "isnull",
+                            "value": "false",
+                            "type": "primitive"
+                        }
+                    ]
+                }
+            ],
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "c6c47866-df60-43d7-a2fb-b9202aaef8e2",
+            "displayName": "{{ dataType }}",
+            "descriptions": {
+                "singular": "Data Type"
+            }
+        }
+    ],
+    "tableName": "incidents",
+    "displayName": "{{ name }}"
+}

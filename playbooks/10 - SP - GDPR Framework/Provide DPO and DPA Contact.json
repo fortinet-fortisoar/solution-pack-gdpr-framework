@@ -1,0 +1,676 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Provide DPO and DPA Contact",
+    "aliasName": null,
+    "tag": null,
+    "description": "Provide DPO and DPA contact details",
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/b323648c-599a-4cfc-9b65-8c493f1a7e12",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/cb06bbf5-2823-4fc8-8109-e2a462a78c1c",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "taskType": "{{vars.input.records[0].type.itemValue}}",
+                "contactIRI": "[]",
+                "description": "[]",
+                "foundDPOContact": "false"
+            },
+            "status": null,
+            "top": "165",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "01e70d1f-e83b-46bf-a593-33d8aa447aed"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update GDPR Assessment Data",
+            "description": null,
+            "arguments": {
+                "message": {
+                    "tags": [],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<p>DPO and DPA contact details have been collected.<\/p>",
+                    "records": "{{vars.incidentIRI}}"
+                },
+                "resource": {
+                    "__link": {
+                        "contact": "{{vars.contactIRI}}"
+                    },
+                    "dPOName": "{{vars.steps.Find_DPO_Contact[0].name or vars.steps.Create_DPO_Contact.name}}",
+                    "dPAEmail": "{{vars.steps.Get_DPA_Contact.eMailAddress}}",
+                    "dPOEmail": "{{vars.steps.Find_DPO_Contact[0].eMailAddress or vars.steps.Create_DPO_Contact.eMailAddress}}",
+                    "dPAAddress": "{{vars.steps.Get_DPA_Contact.address}}, {{vars.steps.Get_DPA_Contact.postalCode}}, {{vars.steps.Get_DPA_Contact.city}}",
+                    "dPAWebsite": "{{vars.steps.Get_DPA_Contact.website}}",
+                    "description": "{{vars.description | join('\\n')}}",
+                    "dPOTelephone": "{{vars.steps.Find_DPO_Contact[0].telephoneNumber or vars.steps.Create_DPO_Contact.telephoneNumber}}",
+                    "dataRegulator": "{{vars.input.params.dataRegulator['@id']}}"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.incidentIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/incidents",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "980",
+            "left": "120",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "uuid": "1129eb49-6b05-4984-80ad-ae314389126a"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Is DPO Contact Present",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "option": "Yes",
+                        "step_iri": "\/api\/3\/workflow_steps\/f815d59a-6075-4b03-9694-abe429b5eb86",
+                        "condition": "{{ vars.steps.Find_DPO_Contact | length > 0 }}",
+                        "step_name": "Update Task"
+                    },
+                    {
+                        "option": "No",
+                        "default": true,
+                        "step_iri": "\/api\/3\/workflow_steps\/2aa3885b-5fea-4892-b5ea-3c5315a44749",
+                        "step_name": "Create DPO Contact"
+                    }
+                ]
+            },
+            "status": null,
+            "top": "705",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "uuid": "141bb3f3-6e12-4430-bdd9-cc9cc6d6a611"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Incident ID",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "id",
+                            "value": "{{vars.input.records[0].id}}",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        }
+                    ],
+                    "__selectFields": [
+                        "incidents"
+                    ]
+                },
+                "module": "tasks?$limit=30&$relationships=true",
+                "checkboxFields": true,
+                "step_variables": {
+                    "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}",
+                    "placeholder": "{% for item in vars.result[0].incidents[0].description.split('\\n') %}\n{% if loop.index == 6 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}"
+                }
+            },
+            "status": null,
+            "top": "300",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "uuid": "1c29f2f0-a13f-42a6-8e11-d9305d0cf098"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create DPO Contact",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "name": "{{vars.input.params.dPOName}}",
+                    "__replace": "true",
+                    "recordTags": [
+                        "\/api\/3\/tags\/DPO"
+                    ],
+                    "eMailAddress": "{{vars.input.params.dPOEmail}}",
+                    "telephoneNumber": "{{vars.input.params.dPOTelephone}}"
+                },
+                "_showJson": false,
+                "operation": "Overwrite",
+                "collection": "\/api\/3\/upsert\/contact",
+                "__recommend": [],
+                "fieldOperation": {
+                    "recordTags": "Overwrite"
+                },
+                "step_variables": {
+                    "temp": "{{vars.contactIRI.append(vars.result['@id'])}}"
+                }
+            },
+            "status": null,
+            "top": "840",
+            "left": "475",
+            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
+            "uuid": "2aa3885b-5fea-4892-b5ea-3c5315a44749"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get DPA Contact",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "dpaCountry": "{{vars.input.params.dataRegulator.itemValue}}"
+                },
+                "apply_async": false,
+                "step_variables": {
+                    "temp": "{{vars.contactIRI.append(vars.result['@id'])}}"
+                },
+                "workflowReference": "\/api\/3\/workflows\/77f188a6-d970-4397-81af-84cc3f10ac0d"
+            },
+            "status": null,
+            "top": "440",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "55c83d6e-cf32-40b1-9fd9-20ed26c96547"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "route": "7ea5256c-a033-4ffe-97ca-89de0550e322",
+                "title": "Provide DPO Contact Details",
+                "resources": [
+                    "tasks"
+                ],
+                "inputVariables": [
+                    {
+                        "name": "dPOName",
+                        "type": "string",
+                        "label": "DPO Name",
+                        "tooltip": "",
+                        "dataType": "text",
+                        "formType": "text",
+                        "required": false,
+                        "_expanded": false,
+                        "defaultValue": null,
+                        "_previousName": "dPO",
+                        "visibilityQuery": {
+                            "sort": [],
+                            "limit": 30,
+                            "logic": "AND",
+                            "filters": []
+                        },
+                        "useRecordFieldDefault": false,
+                        "_addVisibilityConditions": true
+                    },
+                    {
+                        "name": "dPOEmail",
+                        "type": "string",
+                        "label": "DPO Email",
+                        "title": "Email Field",
+                        "usable": true,
+                        "tooltip": "",
+                        "dataType": "email",
+                        "formType": "email",
+                        "required": true,
+                        "_expanded": false,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "searchable": true,
+                        "templateUrl": "app\/components\/form\/fields\/email.html",
+                        "defaultValue": null,
+                        "_previousName": "dPO",
+                        "visibilityQuery": {
+                            "sort": [],
+                            "limit": 30,
+                            "logic": "AND",
+                            "filters": []
+                        },
+                        "lengthConstraint": true,
+                        "allowedEncryption": true,
+                        "allowedGridColumn": true,
+                        "useRecordFieldDefault": false,
+                        "_addVisibilityConditions": true
+                    },
+                    {
+                        "name": "dPOTelephone",
+                        "type": "string",
+                        "label": "DPO Telephone",
+                        "title": "Phone Field",
+                        "usable": true,
+                        "tooltip": "",
+                        "dataType": "phone",
+                        "formType": "phone",
+                        "required": false,
+                        "_expanded": false,
+                        "mmdUpdate": true,
+                        "bulkAction": [],
+                        "collection": false,
+                        "dataSource": [],
+                        "searchable": true,
+                        "templateUrl": "app\/components\/form\/fields\/phone.html",
+                        "defaultValue": null,
+                        "_previousName": "dPOTelep",
+                        "inversedField": null,
+                        "displayTemplate": "{{ itemValue }}",
+                        "visibilityQuery": {
+                            "sort": [],
+                            "limit": 30,
+                            "logic": "AND",
+                            "filters": []
+                        },
+                        "lengthConstraint": true,
+                        "ownsRelationship": false,
+                        "allowedEncryption": false,
+                        "allowedGridColumn": true,
+                        "useRecordFieldDefault": false,
+                        "_addVisibilityConditions": true
+                    },
+                    {
+                        "name": "dataRegulator",
+                        "type": "picklists",
+                        "label": "Data Regulator",
+                        "title": "Picklist",
+                        "usable": true,
+                        "tooltip": "",
+                        "dataType": "picklist",
+                        "formType": "picklist",
+                        "required": true,
+                        "_expanded": false,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "dataSource": {
+                            "model": "picklists",
+                            "query": {
+                                "sort": [
+                                    {
+                                        "field": "orderIndex",
+                                        "direction": "ASC"
+                                    }
+                                ],
+                                "logic": "AND",
+                                "filters": [
+                                    {
+                                        "field": "listName__name",
+                                        "value": "GDPREUCountryList",
+                                        "operator": "eq"
+                                    }
+                                ]
+                            },
+                            "displayConditions": {
+                                "0472d368-bd15-4f52-a119-d403470cbe43": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "051980f7-db21-47e4-af23-58b434e8f165": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "104bad78-9949-40dc-883c-6bbd0bd41913": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "1f75fd41-517f-4016-9dc8-19fc59bd6e71": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "2a4e9662-d10b-4fa5-9563-4ce237ba12a8": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "2ecefcd0-b738-43a6-ace7-5787150c79af": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "39ae31c2-68ea-4241-a1b4-e721b078216c": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "3ae54314-2007-4be7-add1-d1bd37b320dc": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "47004ad3-721e-43e0-b729-2ad8ee6441c0": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "49a43e44-0eb9-4418-9045-d2e6ad042f2b": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "4ac88c4d-f0d8-4ecf-bf10-71411148cbcf": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "4af061e5-e1c0-4945-bdfd-86e86b3ee9a0": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "4db7fd21-f25b-49d0-b296-db54e7a264f0": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "5576fbb7-073e-485d-9261-6368d3b6033d": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "713533f2-d3ad-4911-a95e-254c7956b13a": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "7bff95b7-6438-4b01-b23a-0fe8cb5b33d3": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "7f35592e-ba03-4b08-91d0-a96c710b2c5c": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "815d21f7-787b-4480-8009-558aa64fe776": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "8485d3d9-6796-49c8-b97d-11d8e7b266f1": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "8867340b-a49f-497b-8ba6-49e697e4d33a": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "8b83ae3d-6c19-4639-8820-81eabdcb97ba": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "9bc42f4e-ce89-40a5-8f6c-3c9960b19bab": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "9c8e5da4-ff98-4359-87ec-528381d8cd64": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "9fec9651-9c69-4ea9-85b3-2e2ad5418a58": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "a1fa039f-6e4f-4f8f-9141-eb018e06a56a": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "a7509ad3-69da-466a-85aa-5ea76ada6056": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "a7a73e65-7bcf-4c01-89fb-12699845ab98": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "b0d7684e-9d8e-47af-8918-61ca9befb87f": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "b1a4ddce-870a-4f0a-8b1e-01484a03ed70": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "b6c6f644-6e8a-4d56-8553-f36c9914f0e6": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "bddd222b-6d9e-47c3-b231-ed30f27a6a75": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "bf2a32e6-1f08-4ab4-97ff-9882a42e3546": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "f0698e06-33e7-4a67-83f7-19417c3006a0": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "f9ce0f08-02c1-4a98-8342-83d765797dde": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "fc4de9bd-010a-4993-a34f-d0e5276292f4": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                }
+                            }
+                        },
+                        "searchable": false,
+                        "templateUrl": "app\/components\/form\/fields\/typeahead.html",
+                        "defaultValue": null,
+                        "_previousName": "dataRegu",
+                        "displayTemplate": "%7B%7B%20itemValue%20%7D%7D",
+                        "lengthConstraint": false,
+                        "allowedEncryption": false,
+                        "allowedGridColumn": true,
+                        "useRecordFieldDefault": false
+                    }
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": {
+                            "dPOName": "{{vars.request.data[\"dPOName\"]}}",
+                            "dPOEmail": "{{vars.request.data[\"dPOEmail\"]}}",
+                            "dPOTelephone": "{{vars.request.data[\"dPOTelephone\"]}}",
+                            "dataRegulator": "{{vars.request.data[\"dataRegulator\"]}}"
+                        },
+                        "records": "{{vars.input.records}}"
+                    }
+                },
+                "_promptexpanded": true,
+                "displayConditions": {
+                    "tasks": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "OR",
+                        "filters": [
+                            {
+                                "type": "object",
+                                "field": "type",
+                                "value": "\/api\/3\/picklists\/d6529234-1bdc-41d0-8cc4-d7066fc4a21c",
+                                "_value": {
+                                    "@id": "\/api\/3\/picklists\/d6529234-1bdc-41d0-8cc4-d7066fc4a21c",
+                                    "itemValue": "Provide DPO Contact"
+                                },
+                                "operator": "eq"
+                            }
+                        ]
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": false
+            },
+            "status": null,
+            "top": "20",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "cb06bbf5-2823-4fc8-8109-e2a462a78c1c"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update Task",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "__link": {
+                        "contact": "{{vars.contactIRI}}"
+                    },
+                    "status": {
+                        "id": 44,
+                        "@id": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
+                        "icon": null,
+                        "uuid": "343f4b67-e929-4205-bf95-ba5b70545fed",
+                        "@type": "Picklist",
+                        "color": "#3ec210",
+                        "display": "Completed",
+                        "listName": "\/api\/3\/picklist_names\/21ddbcfd-b4a3-4273-adea-c674fe47d643",
+                        "itemValue": "Completed",
+                        "orderIndex": 2
+                    },
+                    "description": "####  Data Protection Officer[DPO]\n\n*  **Name**: {{vars.steps.Find_DPO_Contact[0].name or vars.steps.Create_DPO_Contact.name}}\n*  **Email**: {{vars.steps.Find_DPO_Contact[0].eMailAddress or vars.steps.Create_DPO_Contact.eMailAddress}}\n*  **Telephone**: {{vars.steps.Find_DPO_Contact[0].telephoneNumber or vars.steps.Create_DPO_Contact.telephoneNumber}}\n\n####  Data Protection Authority[DPA]\n\n**{{vars.steps.Get_DPA_Contact.name}}**\n*  **Address**: {{vars.steps.Get_DPA_Contact.address}}, {{vars.steps.Get_DPA_Contact.postalCode}}, {{vars.steps.Get_DPA_Contact.city}}, {{vars.steps.Get_DPA_Contact.country}}\n*  **Email**: {{vars.steps.Get_DPA_Contact.eMailAddress or 'NA'}}\n*  **Telephone**: {{vars.steps.Get_DPA_Contact.telephoneNumber or 'NA'}}"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.input.records[0]['@id']}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/tasks",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "840",
+            "left": "120",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "uuid": "f815d59a-6075-4b03-9694-abe429b5eb86"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Find DPO Contact",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "eMailAddress",
+                            "value": "{{vars.input.params.dPOEmail}}",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        },
+                        {
+                            "type": "primitive",
+                            "field": "telephoneNumber",
+                            "value": "{{vars.input.params.dPOTelephone}}",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        }
+                    ]
+                },
+                "module": "contact?$limit=30",
+                "step_variables": {
+                    "temp": "{% if vars.result | length > 0 %}{{vars.contactIRI.append(vars.result[0]['@id'])}}{% endif %}",
+                    "foundDPOContact": "{% if vars.result | length > 0 %}true{% else %}false{% endif %}"
+                }
+            },
+            "status": null,
+            "top": "570",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "uuid": "fe245fb7-0b31-424b-92cd-7641d283ac61"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create DPO Contact -> Update Task",
+            "targetStep": "\/api\/3\/workflow_steps\/f815d59a-6075-4b03-9694-abe429b5eb86",
+            "sourceStep": "\/api\/3\/workflow_steps\/2aa3885b-5fea-4892-b5ea-3c5315a44749",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "067d1bec-d424-4871-8c5d-27e416e8e35e"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/01e70d1f-e83b-46bf-a593-33d8aa447aed",
+            "sourceStep": "\/api\/3\/workflow_steps\/cb06bbf5-2823-4fc8-8109-e2a462a78c1c",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "0a6cb19f-3672-4f59-bc7d-2f2c8cd7219e"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Is DPO Contact Present -> Create DPO Contact",
+            "targetStep": "\/api\/3\/workflow_steps\/2aa3885b-5fea-4892-b5ea-3c5315a44749",
+            "sourceStep": "\/api\/3\/workflow_steps\/141bb3f3-6e12-4430-bdd9-cc9cc6d6a611",
+            "label": "No",
+            "isExecuted": false,
+            "uuid": "430d0b8c-a777-47d3-9a78-225f97c34329"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy  of Get Incident ID -> Get DPA Contact",
+            "targetStep": "\/api\/3\/workflow_steps\/55c83d6e-cf32-40b1-9fd9-20ed26c96547",
+            "sourceStep": "\/api\/3\/workflow_steps\/1c29f2f0-a13f-42a6-8e11-d9305d0cf098",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "490d548b-a15f-411f-a066-59b62657196f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get DPA Contact -> Find DPO Contact",
+            "targetStep": "\/api\/3\/workflow_steps\/fe245fb7-0b31-424b-92cd-7641d283ac61",
+            "sourceStep": "\/api\/3\/workflow_steps\/55c83d6e-cf32-40b1-9fd9-20ed26c96547",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4fb9d53e-abcf-46ad-970b-5c49d1f061cc"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Configuration -> Copy  of Get Incident ID",
+            "targetStep": "\/api\/3\/workflow_steps\/1c29f2f0-a13f-42a6-8e11-d9305d0cf098",
+            "sourceStep": "\/api\/3\/workflow_steps\/01e70d1f-e83b-46bf-a593-33d8aa447aed",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "53ba62c7-a0a5-4fd4-ac1a-1f92dc5d114d"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Find DPO Contact -> Is DPO Contact Present",
+            "targetStep": "\/api\/3\/workflow_steps\/141bb3f3-6e12-4430-bdd9-cc9cc6d6a611",
+            "sourceStep": "\/api\/3\/workflow_steps\/fe245fb7-0b31-424b-92cd-7641d283ac61",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "5abb629e-d068-4d16-ac5b-d525018abb8b"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update Task -> Update GDPR Assessment Data",
+            "targetStep": "\/api\/3\/workflow_steps\/1129eb49-6b05-4984-80ad-ae314389126a",
+            "sourceStep": "\/api\/3\/workflow_steps\/f815d59a-6075-4b03-9694-abe429b5eb86",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "93a1dbc9-16a9-47d5-9944-2a642dc5a50f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Is DPO Contact Present -> Update Task",
+            "targetStep": "\/api\/3\/workflow_steps\/f815d59a-6075-4b03-9694-abe429b5eb86",
+            "sourceStep": "\/api\/3\/workflow_steps\/141bb3f3-6e12-4430-bdd9-cc9cc6d6a611",
+            "label": "Yes",
+            "isExecuted": false,
+            "uuid": "b1c95c77-d403-4047-8f7d-26255b776999"
+        }
+    ],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "b2e46872-a618-4a2e-926a-63f768143b7e",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [
+        "ManualTrigger"
+    ]
+}

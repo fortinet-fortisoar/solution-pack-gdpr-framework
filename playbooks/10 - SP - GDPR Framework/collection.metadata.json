@@ -1,0 +1,11 @@
+{
+    "@context": "\/api\/3\/contexts\/WorkflowCollection",
+    "@type": "WorkflowCollection",
+    "name": "10 - SP - GDPR Framework",
+    "description": null,
+    "visible": true,
+    "image": null,
+    "uuid": "b323648c-599a-4cfc-9b65-8c493f1a7e12",
+    "deletedAt": null,
+    "recordTags": []
+}

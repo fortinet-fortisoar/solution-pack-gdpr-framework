@@ -1,0 +1,96 @@
+{
+    "name": "gDPRFramework",
+    "version": "1.0.0",
+    "type": "solutionpack",
+    "local": true,
+    "label": "GDPR Framework",
+    "dependencies": [
+        {
+            "name": "sOARFramework",
+            "type": "solutionpack",
+            "label": "SOAR Framework",
+            "version": "1.0.0",
+            "minVersion": null
+        }
+    ],
+    "prerequisite": null,
+    "publisher": "Fortinet",
+    "description": "This solution pack demonstrates procedures involved in GDPR",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/develop/README.md",
+    "category": [],
+    "supportInfo": "",
+    "iconLarge": null,
+    "fsrMinCompatibility": "7.2.0",
+    "date": "2022-04-19T12:33:31+00:00",
+    "contents": {
+        "picklistNames": [
+            {
+                "name": "Contact Title"
+            },
+            {
+                "name": "DataBreachType"
+            },
+            {
+                "name": "GDPREUCountryList"
+            },
+            {
+                "name": "IncidentType"
+            },
+            {
+                "name": "KillChainPhases"
+            },
+            {
+                "name": "TaskType"
+            },
+            {
+                "name": "YesNo Picklist"
+            }
+        ],
+        "modules": {
+            "contact": {
+                "name": "Contacts",
+                "apiName": "contact"
+            },
+            "": {
+                "name": "Incidents",
+                "apiName": "incidents"
+            }
+        },
+        "viewTemplates": {
+            "contact": {
+                "name": "Contacts",
+                "apiName": "contact",
+                "views": [
+                    "list",
+                    "detail",
+                    "form"
+                ]
+            },
+            "incidents": {
+                "name": "Incidents",
+                "apiName": "incidents",
+                "views": [
+                    "list",
+                    "detail",
+                    "form",
+                    "settings"
+                ]
+            }
+        },
+        "roles": [
+            {
+                "name": "Full App Permissions"
+            }
+        ],
+        "playbooks": [
+            {
+                "name": "10 - SP - GDPR Framework"
+            }
+        ],
+        "reports": [
+            {
+                "name": "GDPR Assessment Report"
+            }
+        ]
+    }
+}
