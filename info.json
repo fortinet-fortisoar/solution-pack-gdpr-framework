@@ -21,7 +21,7 @@
     "supportInfo": "",
     "iconLarge": null,
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-04-19T12:33:31+00:00",
+    "date": "2022-04-19T12:47:14+00:00",
     "contents": {
         "picklistNames": [
             {
@@ -35,9 +35,6 @@
             },
             {
                 "name": "IncidentType"
-            },
-            {
-                "name": "KillChainPhases"
             },
             {
                 "name": "TaskType"
@@ -73,6 +70,14 @@
                     "list",
                     "detail",
                     "form",
+                    "settings"
+                ]
+            },
+            "tasks": {
+                "name": "Tasks",
+                "apiName": "tasks",
+                "views": [
+                    "detail",
                     "settings"
                 ]
             }
