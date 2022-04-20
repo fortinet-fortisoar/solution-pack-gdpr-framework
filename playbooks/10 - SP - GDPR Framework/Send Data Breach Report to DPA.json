@@ -159,14 +159,14 @@
                     "dpaEmail": "{{vars.result[0].incidents[0].dPAEmail}}",
                     "incidentID": "{{vars.result[0].incidents[0].id}}",
                     "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}",
-                    "placeholder": "{% for item in vars.result[0].incidents[0].description.split('\\n') %}\n{% if loop.index == 10 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
+                    "placeholder": "{% for item in vars.result[0].incidents[0].description.split('\\n') %}\n{% if 'Notify Data Protection Authority' in item %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
                     "incidentName": "{{vars.result[0].incidents[0].name}}",
                     "breachNotificationDueDate": "{{vars.result[0].incidents[0].breachNotificationDueDate}}"
                 }
             },
             "status": null,
             "top": "300",
-            "left": "125",
+            "left": "120",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "uuid": "c97399d1-727c-4c8d-80fb-00bc37d2b32a"
         },

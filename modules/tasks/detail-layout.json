@@ -22,7 +22,12 @@
             {
                 "id": "\/api\/3\/workflows\/0e727ede-cffa-4222-afc2-ab7e26043382",
                 "name": "Notify Affected Users",
-                "icon": "fa fa-none"
+                "icon": "fa fa-user"
+            },
+            {
+                "id": "\/api\/3\/workflows\/8d679fb4-f503-4556-8a74-952ae5feed9b",
+                "name": "Send Data Breach Report to DPA",
+                "icon": "fa fa-th-list"
             }
         ],
         "rows": [
