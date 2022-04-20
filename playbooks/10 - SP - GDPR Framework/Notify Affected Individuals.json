@@ -1,0 +1,367 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Notify Affected Individuals",
+    "aliasName": null,
+    "tag": null,
+    "description": "Notifies affected users regarding the data breach",
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [
+        "affectedUsersEmailIDs",
+        "incidentIRI",
+        "incidentName",
+        "incidentID"
+    ],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/b323648c-599a-4cfc-9b65-8c493f1a7e12",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/0b03c3bd-f1ac-4ac9-99d9-bfd5b041cf82",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "description": "[]"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "3128a929-c73e-400c-a4c3-f4d7dc831335"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Send Data Breach Notification",
+            "description": null,
+            "arguments": {
+                "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
+                "params": {
+                    "cc": "",
+                    "to": "{{vars.affectedUsersEmails}}",
+                    "bcc": "",
+                    "from": "",
+                    "type": "Manual Input",
+                    "content": "<p>Hello,<\/p>\n<p>&nbsp;<\/p>\n<p>We are writing to you because of an incident involving personal data breach associated with our platform. Although we are unaware of any actual misuse of your information, we are providing notice to you and other potentially affected customers about the incident.<\/p>\n<p>&nbsp;<\/p>\n<p><strong>What Happened?<\/strong><\/p>\n<p>{{vars.steps.Data_Breach_Notification.input['whatHappened?']}}<\/p>\n<p>&nbsp;<\/p>\n<p><strong>What Information was involved?<\/strong><\/p>\n<p>{{vars.steps.Data_Breach_Notification.input['whatInformationWasInvolved?']}}<\/p>\n<p>&nbsp;<\/p>\n<p><strong>What Are We Doing?<\/strong><\/p>\n<p>{{vars.steps.Data_Breach_Notification.input['whatAreWeDoing?']}}<\/p>\n<p>&nbsp;<\/p>\n<p><strong>What You Can Do?<\/strong><\/p>\n<p>{{vars.steps.Data_Breach_Notification.input['whatYouCanDo?']}}<\/p>\n<p>&nbsp;<\/p>\n<p>Thanks,<\/p>\n<p>CS Team<\/p>\n<p>&nbsp;<\/p>\n<p>&nbsp;<\/p>",
+                    "subject": "Data Breach Notification",
+                    "iri_list": "",
+                    "body_type": "Rich Text",
+                    "file_name": "",
+                    "file_path": ""
+                },
+                "version": "2.4.3",
+                "from_str": "admin@example.com",
+                "connector": "smtp",
+                "operation": "send_email_new",
+                "operationTitle": "Send Email (Advanced)",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "570",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
+            "uuid": "c5bbd0dc-df68-4de7-b445-c8cf7383255b"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Data Breach Notification",
+            "description": null,
+            "arguments": {
+                "type": "InputBased",
+                "input": {
+                    "schema": {
+                        "title": "Breach Notification to Affected Users",
+                        "description": "Hi Team,\n\nWe have detected valid data breach incident {{vars.input.params.incidentID}} - {{vars.input.params.incidentName}}. \n\nIt is confirmed by DPO that affected users are at high risk and need to be notified about the same.\n\nPlease provide your input for notification mail.\n\nThanks,",
+                        "inputVariables": [
+                            {
+                                "name": "whatHappened?",
+                                "type": "string",
+                                "label": "What Happened?",
+                                "tooltip": "Provide brief information on the data breach incident",
+                                "dataType": "text",
+                                "formType": "text",
+                                "required": true,
+                                "_expanded": true,
+                                "defaultValue": null,
+                                "_previousName": "whatHappened",
+                                "useRecordFieldDefault": false
+                            },
+                            {
+                                "name": "whatInformationWasInvolved?",
+                                "type": "string",
+                                "label": "What Information Was Involved?",
+                                "tooltip": "Provide information on what type of data was compromised",
+                                "dataType": "text",
+                                "formType": "text",
+                                "required": true,
+                                "_expanded": true,
+                                "defaultValue": null,
+                                "_previousName": "",
+                                "useRecordFieldDefault": false
+                            },
+                            {
+                                "name": "whatAreWeDoing?",
+                                "type": "string",
+                                "label": "What Are We Doing?",
+                                "tooltip": "Provide remidiation\/mitigation actions we have taking",
+                                "dataType": "text",
+                                "formType": "text",
+                                "required": true,
+                                "_expanded": true,
+                                "defaultValue": null,
+                                "_previousName": "",
+                                "useRecordFieldDefault": false
+                            },
+                            {
+                                "name": "whatYouCanDo?",
+                                "type": "string",
+                                "label": "What You Can Do?",
+                                "tooltip": "Action to be taken by user to minimize the risk",
+                                "dataType": "text",
+                                "formType": "text",
+                                "required": true,
+                                "_expanded": true,
+                                "defaultValue": null,
+                                "_previousName": "",
+                                "useRecordFieldDefault": false
+                            }
+                        ]
+                    }
+                },
+                "record": "{{vars.input.params.incidentIRI}}",
+                "resources": "incidents",
+                "owner_detail": {
+                    "isAssigned": false
+                },
+                "isRecordLinked": true,
+                "step_variables": [],
+                "response_mapping": {
+                    "options": [
+                        {
+                            "option": "Submit",
+                            "primary": true,
+                            "step_iri": "\/api\/3\/workflow_steps\/c5bbd0dc-df68-4de7-b445-c8cf7383255b"
+                        }
+                    ],
+                    "duplicateOption": false
+                },
+                "email_notification": {
+                    "enabled": false,
+                    "smtpParameters": []
+                }
+            },
+            "status": null,
+            "top": "435",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/fc04082a-d7dc-4299-96fb-6837b1baa0fe",
+            "uuid": "4f717693-1fa2-48bc-8131-6dcf5e8c7622"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "route": "a3d9795b-525d-4e82-8ba3-6753daf87c8b",
+                "title": "Notify Affected Users",
+                "resources": [
+                    "tasks"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": "{{vars.input.records}}"
+                    }
+                },
+                "displayConditions": {
+                    "tasks": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "type": "object",
+                                "field": "type",
+                                "value": "\/api\/3\/picklists\/e10d55c2-efc6-4045-a7ba-135cd5a93a01",
+                                "_value": {
+                                    "@id": "\/api\/3\/picklists\/e10d55c2-efc6-4045-a7ba-135cd5a93a01",
+                                    "itemValue": "Notify Affected User"
+                                },
+                                "operator": "eq"
+                            }
+                        ]
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": false
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "0b03c3bd-f1ac-4ac9-99d9-bfd5b041cf82"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Incident ID",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "id",
+                            "value": "{{vars.input.records[0].id}}",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        }
+                    ],
+                    "__selectFields": [
+                        "incidents"
+                    ]
+                },
+                "module": "tasks?$limit=30&$relationships=true",
+                "checkboxFields": true,
+                "step_variables": {
+                    "dpaEmail": "{{vars.result[0].incidents[0].dPAEmail}}",
+                    "incidentID": "{{vars.result[0].incidents[0].id}}",
+                    "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}",
+                    "placeholder": "{% for item in vars.result[0].incidents[0].description.split('\\n') %}\n{% if loop.index == 8 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
+                    "incidentName": "{{vars.result[0].incidents[0].name}}",
+                    "affectedUsersEmails": "{{vars.result[0].incidents[0].affectedUsersEmails}}"
+                }
+            },
+            "status": null,
+            "top": "300",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "uuid": "d552b956-190d-48b4-b7b9-196b1241c147"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update Task to Notify Affected Users",
+            "description": null,
+            "arguments": {
+                "message": {
+                    "tags": [],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<p>Affected users are notified of data breach<\/p>",
+                    "records": "{{vars.incidentIRI}}"
+                },
+                "resource": {
+                    "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.input.records[0]['@id']}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/tasks",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "705",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "uuid": "5b2c48ab-3379-4e47-aa41-b5edc0fc024a"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update Incident Description",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "description": "{{vars.description | join('\\n')}}"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.incidentIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/incidents",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "840",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "uuid": "502be4c0-6082-491a-a329-80aff455a643"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Data Breach Notification -> Send Data Breach Notification",
+            "targetStep": "\/api\/3\/workflow_steps\/c5bbd0dc-df68-4de7-b445-c8cf7383255b",
+            "sourceStep": "\/api\/3\/workflow_steps\/4f717693-1fa2-48bc-8131-6dcf5e8c7622",
+            "label": "Submit",
+            "isExecuted": false,
+            "uuid": "b6ec57b8-4542-4c5e-a584-2e0ac6827f71"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/3128a929-c73e-400c-a4c3-f4d7dc831335",
+            "sourceStep": "\/api\/3\/workflow_steps\/0b03c3bd-f1ac-4ac9-99d9-bfd5b041cf82",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "5eb64323-2fb2-4998-9b8b-b4a7522d120b"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Configuration -> Get Incident ID",
+            "targetStep": "\/api\/3\/workflow_steps\/d552b956-190d-48b4-b7b9-196b1241c147",
+            "sourceStep": "\/api\/3\/workflow_steps\/3128a929-c73e-400c-a4c3-f4d7dc831335",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "db08475d-a4d4-4960-a6a4-b657d6b562a5"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Incident ID -> Data Breach Notification",
+            "targetStep": "\/api\/3\/workflow_steps\/4f717693-1fa2-48bc-8131-6dcf5e8c7622",
+            "sourceStep": "\/api\/3\/workflow_steps\/d552b956-190d-48b4-b7b9-196b1241c147",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "650b69b3-2894-4928-bf00-76a36f84c0a6"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Send Data Breach Notification -> Update Task to Notify Affected Users",
+            "targetStep": "\/api\/3\/workflow_steps\/5b2c48ab-3379-4e47-aa41-b5edc0fc024a",
+            "sourceStep": "\/api\/3\/workflow_steps\/c5bbd0dc-df68-4de7-b445-c8cf7383255b",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4755f13f-0366-4176-b50d-dba355b25d21"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update Task to Notify Affected Users -> Update Incident Description",
+            "targetStep": "\/api\/3\/workflow_steps\/502be4c0-6082-491a-a329-80aff455a643",
+            "sourceStep": "\/api\/3\/workflow_steps\/5b2c48ab-3379-4e47-aa41-b5edc0fc024a",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "362a7f94-8851-4591-9081-a205ac5844bf"
+        }
+    ],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "0e727ede-cffa-4222-afc2-ab7e26043382",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [
+        "Referenced"
+    ]
+}

@@ -4,82 +4,17 @@
     "name": "Create GDPR Risk Assessment Incident",
     "aliasName": null,
     "tag": null,
-    "description": "Creates and link a GDPR risk assessment incident and corresponding  task to the parent incident",
+    "description": "Creates and link a GDPR risk assessment incident and corresponding task to the parent incident",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1647323117,
     "collection": "\/api\/3\/workflow_collections\/b323648c-599a-4cfc-9b65-8c493f1a7e12",
     "versions": [],
     "triggerStep": "\/api\/3\/workflow_steps\/5449ee4b-cf71-4995-9d56-95ab467a56bf",
     "steps": [
-        {
-            "@type": "WorkflowStep",
-            "name": "Start",
-            "description": null,
-            "arguments": {
-                "resource": "incidents",
-                "resources": [
-                    "incidents"
-                ],
-                "step_variables": {
-                    "input": {
-                        "params": [],
-                        "records": [
-                            "{{vars.input.records[0]}}"
-                        ]
-                    }
-                },
-                "fieldbasedtrigger": {
-                    "sort": [],
-                    "limit": 30,
-                    "logic": "AND",
-                    "filters": [
-                        {
-                            "type": "object",
-                            "field": "wasPersonalDataOrInformationInvolved",
-                            "value": "",
-                            "_value": {
-                                "@id": "",
-                                "display": "",
-                                "itemValue": ""
-                            },
-                            "operator": "changed"
-                        },
-                        {
-                            "type": "object",
-                            "field": "wasPersonalDataOrInformationInvolved",
-                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
-                            "_value": {
-                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
-                                "display": "Yes",
-                                "itemValue": "Yes"
-                            },
-                            "operator": "eq"
-                        }
-                    ]
-                }
-            },
-            "status": null,
-            "top": "30",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
-            "uuid": "5449ee4b-cf71-4995-9d56-95ab467a56bf"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Configuration",
-            "description": null,
-            "arguments": [],
-            "status": null,
-            "top": "165",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "575c53b4-0f71-45d6-be8a-03d7859ab484"
-        },
         {
             "@type": "WorkflowStep",
             "name": "Create Incident GDPR Assessment",
@@ -162,7 +97,7 @@
                     "tags": [],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<div>Thanks for your input.<\/div>\n<div>&nbsp;<\/div>\n<div><a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/incidents\/{{vars.steps.Create_Incident_GDPR_Assessment.uuid}}\">&nbsp;GDPR Incident #{{vars.steps.Create_Incident_GDPR_Assessment.id}}<\/a> and corresponding <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/tasks\/{{vars.steps.Create_Task_GDPR_Assessment.uuid}}\">Task #{{vars.steps.Create_Task_GDPR_Assessment.id}} <\/a>has been created for the same.<\/div>",
+                    "content": "<div>Thanks for your input.<\/div>\n<div>&nbsp;<\/div>\n<div><a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/incidents\/{{vars.steps.Create_Incident_GDPR_Assessment.uuid}}\">&nbsp;GDPR Incident #{{vars.steps.Create_Incident_GDPR_Assessment.id}}<\/a> and corresponding <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/tasks\/{{vars.steps.Create_Task_GDPR_Assessment.uuid}}\">Task #{{vars.steps.Create_Task_GDPR_Assessment.id}} <\/a>has been created for the same.<\/div>",
                     "records": ""
                 },
                 "resource": {
@@ -188,27 +123,73 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "uuid": "48907c29-21a3-4837-9781-2e0c094021e7"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "resource": "incidents",
+                "resources": [
+                    "incidents"
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": [
+                            "{{vars.input.records[0]}}"
+                        ]
+                    }
+                },
+                "fieldbasedtrigger": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "object",
+                            "field": "wasPersonalDataOrInformationInvolved",
+                            "value": "",
+                            "_value": {
+                                "@id": "",
+                                "display": "",
+                                "itemValue": ""
+                            },
+                            "operator": "changed"
+                        },
+                        {
+                            "type": "object",
+                            "field": "wasPersonalDataOrInformationInvolved",
+                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
+                                "display": "Yes",
+                                "itemValue": "Yes"
+                            },
+                            "operator": "eq"
+                        }
+                    ]
+                }
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
+            "uuid": "5449ee4b-cf71-4995-9d56-95ab467a56bf"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": [],
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "575c53b4-0f71-45d6-be8a-03d7859ab484"
         }
     ],
     "routes": [
-        {
-            "@type": "WorkflowRoute",
-            "name": "Start -> Configuration",
-            "targetStep": "\/api\/3\/workflow_steps\/575c53b4-0f71-45d6-be8a-03d7859ab484",
-            "sourceStep": "\/api\/3\/workflow_steps\/5449ee4b-cf71-4995-9d56-95ab467a56bf",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "59bb4ad4-5096-49f0-961c-3a19afac0863"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Create GDPR Incident -> Create GDPR Assessment Task",
-            "targetStep": "\/api\/3\/workflow_steps\/2c898db0-ee6d-4448-bda8-936831ffd10f",
-            "sourceStep": "\/api\/3\/workflow_steps\/077a9cd3-1757-437b-9f35-cfba7109cbba",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "7a1f28a3-9a99-4619-bcbe-bd3edb0e2eaf"
-        },
         {
             "@type": "WorkflowRoute",
             "name": "Create GDPR Assessment Task -> Add Comment and Update GDPR SLA",
@@ -226,6 +207,24 @@
             "label": null,
             "isExecuted": false,
             "uuid": "57644388-1fe0-4057-bbd2-c33cf0bcdd9a"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/575c53b4-0f71-45d6-be8a-03d7859ab484",
+            "sourceStep": "\/api\/3\/workflow_steps\/5449ee4b-cf71-4995-9d56-95ab467a56bf",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "59bb4ad4-5096-49f0-961c-3a19afac0863"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create GDPR Incident -> Create GDPR Assessment Task",
+            "targetStep": "\/api\/3\/workflow_steps\/2c898db0-ee6d-4448-bda8-936831ffd10f",
+            "sourceStep": "\/api\/3\/workflow_steps\/077a9cd3-1757-437b-9f35-cfba7109cbba",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "7a1f28a3-9a99-4619-bcbe-bd3edb0e2eaf"
         }
     ],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",

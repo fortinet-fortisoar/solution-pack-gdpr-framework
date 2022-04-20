@@ -6,30 +6,33 @@
     "tag": null,
     "description": "Ingest contact details of Data Protection Authorities of various countries in EU",
     "isActive": true,
-    "debug": true,
+    "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [
         "dpaCountry"
     ],
     "synchronous": false,
-    "lastModifyDate": 1647201079,
     "collection": "\/api\/3\/workflow_collections\/b323648c-599a-4cfc-9b65-8c493f1a7e12",
     "versions": [],
     "triggerStep": "\/api\/3\/workflow_steps\/3b7ac40c-184d-4248-8248-88c57c39aa34",
     "steps": [
         {
             "@type": "WorkflowStep",
-            "name": "Configuration",
+            "name": "Start",
             "description": null,
             "arguments": {
-                "countryName": "{{vars.input.params.dpaCountry}}"
+                "step_variables": {
+                    "input": {
+                        "params": []
+                    }
+                }
             },
             "status": null,
-            "top": "165",
+            "top": "30",
             "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "8f733975-300e-475c-9f75-301819dbbde0"
+            "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+            "uuid": "3b7ac40c-184d-4248-8248-88c57c39aa34"
         },
         {
             "@type": "WorkflowStep",
@@ -53,6 +56,19 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/1fdd14cc-d6b4-4335-a3af-ab49c8ed2fd8",
             "uuid": "5c7ab151-685b-461a-8638-72ac8a6f3a24"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "countryName": "{{vars.input.params.dpaCountry}}"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "8f733975-300e-475c-9f75-301819dbbde0"
         },
         {
             "@type": "WorkflowStep",
@@ -88,35 +104,9 @@
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "uuid": "f7bc5bdf-1829-4fca-a76d-f8ff9c68516f"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Start",
-            "description": null,
-            "arguments": {
-                "step_variables": {
-                    "input": {
-                        "params": []
-                    }
-                }
-            },
-            "status": null,
-            "top": "30",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-            "uuid": "3b7ac40c-184d-4248-8248-88c57c39aa34"
         }
     ],
     "routes": [
-        {
-            "@type": "WorkflowRoute",
-            "name": "Get DPA Contacts -> Create DPA Contact",
-            "targetStep": "\/api\/3\/workflow_steps\/f7bc5bdf-1829-4fca-a76d-f8ff9c68516f",
-            "sourceStep": "\/api\/3\/workflow_steps\/5c7ab151-685b-461a-8638-72ac8a6f3a24",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "929fd8c2-bb60-4a46-b7e8-6200ff61c3e0"
-        },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Configuration",
@@ -134,6 +124,15 @@
             "label": null,
             "isExecuted": false,
             "uuid": "8764727f-8103-4287-a533-f7478e2c8e28"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get DPA Contacts -> Create DPA Contact",
+            "targetStep": "\/api\/3\/workflow_steps\/f7bc5bdf-1829-4fca-a76d-f8ff9c68516f",
+            "sourceStep": "\/api\/3\/workflow_steps\/5c7ab151-685b-461a-8638-72ac8a6f3a24",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "929fd8c2-bb60-4a46-b7e8-6200ff61c3e0"
         }
     ],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",

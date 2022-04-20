@@ -5,7 +5,12 @@
     "displayName": "GDPR Assessment Report",
     "type": "rows",
     "templateType": "reporting",
-    "roles": [],
+    "roles": [
+        "\/api\/3\/roles\/17562d60-b841-4ed7-912b-1ebaf063c8c9",
+        "\/api\/3\/roles\/21d7a7c6-9d68-438f-b732-e8950c5f745b",
+        "\/api\/3\/roles\/a501c11e-15af-49a6-a3a4-88605f32f016",
+        "\/api\/3\/roles\/c5ff8174-b3fa-41c5-b781-2b890b426a80"
+    ],
     "parentTemplateId": null,
     "config": {
         "rows": [
@@ -65,18 +70,6 @@
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
-                                                        },
-                                                        {
-                                                            "name": "wasTheDataEncrypted",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        },
-                                                        {
-                                                            "name": "whatWasTheDataSource",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
                                                         }
                                                     ],
                                                     "style": "col-lg-6"
@@ -88,13 +81,53 @@
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
-                                                        },
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "wasTheDataEncrypted",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
+                                                },
+                                                {
+                                                    "fields": [
                                                         {
                                                             "name": "wasTheExposureResolved",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
-                                                        },
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "whatWasTheDataSource",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
+                                                },
+                                                {
+                                                    "fields": [
                                                         {
                                                             "name": "whatWasTheDataFormat",
                                                             "highlightMode": true,
@@ -109,8 +142,26 @@
                                         {
                                             "columns": [
                                                 {
-                                                    "fields": [],
-                                                    "style": "col-lg-12"
+                                                    "fields": [
+                                                        {
+                                                            "name": "breachOccurrenceDate",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
+                                                },
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "breachDetectionDate",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
                                                 }
                                             ]
                                         }
@@ -131,7 +182,7 @@
                                         ]
                                     },
                                     "title": "",
-                                    "style": "",
+                                    "style": "display-inline-block",
                                     "displayType": "card-view",
                                     "gridColumns": [],
                                     "widgetAlwaysDisplay": true,
@@ -147,11 +198,23 @@
                                         "wid": "a0be558f-66e8-4f92-9797-eed1dfded02c"
                                     }
                                 }
-                            },
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "f207f02d-85f5-4187-9d7e-1e0ea8741217",
+                "container": true,
+                "_collapsed": false
+            },
+            {
+                "columns": [
+                    {
+                        "widgets": [
                             {
                                 "type": "sectionHeader",
                                 "config": {
-                                    "wid": "28a2b32a-fa90-4524-844d-1f75d6adaa83",
+                                    "wid": "f974087a-9bd5-4a6e-a212-8c25f9613bb6",
                                     "sectionText": "<h4 style=\"background: #404142; padding: 5px; text-align: left;\"><span style=\"font-size: 12pt; color: #ffffff;\"><strong>Data Breach Location Details<\/strong><\/span><\/h4>",
                                     "query": {
                                         "filters": [],
@@ -215,18 +278,6 @@
                                                     "style": "col-lg-6"
                                                 }
                                             ]
-                                        },
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [],
-                                                    "style": "col-lg-6"
-                                                },
-                                                {
-                                                    "fields": [],
-                                                    "style": "col-lg-6"
-                                                }
-                                            ]
                                         }
                                     ],
                                     "resource": "incidents",
@@ -244,7 +295,7 @@
                                             }
                                         ]
                                     },
-                                    "style": "",
+                                    "style": "display-inline-block",
                                     "displayType": "card-view",
                                     "gridColumns": [],
                                     "widgetAlwaysDisplay": true,
@@ -273,8 +324,7 @@
                         "style": "col-lg-12"
                     }
                 ],
-                "wid": "f207f02d-85f5-4187-9d7e-1e0ea8741217",
-                "container": true,
+                "wid": "674af081-63c2-42fc-9c7c-4853ed5223d9",
                 "_collapsed": false
             },
             {
@@ -284,187 +334,47 @@
                             {
                                 "type": "sectionHeader",
                                 "config": {
-                                    "wid": "2a73fc24-3a99-46d2-bd91-9f4ade043c87",
-                                    "sectionText": "<h5 style=\"background: #404142; padding: 5px; text-align: left;\"><span style=\"font-size: 12pt; color: #ffffff;\"><strong>RELATED RECORDS<\/strong><\/span><\/h5>"
-                                }
-                            },
-                            {
-                                "type": "rows",
-                                "config": {
-                                    "wid": "30aa756c-a024-41f3-8c3d-b4646011bd42",
-                                    "rows": [
-                                        {
-                                            "columns": [
-                                                {
-                                                    "widgets": [
-                                                        {
-                                                            "type": "performanceMetrics",
-                                                            "config": {
-                                                                "wid": "3908fbed-7b9f-42d2-81da-c71d2cc87177",
-                                                                "includeFailedPlaybooks": true,
-                                                                "excludeConfigActions": true,
-                                                                "days": 30,
-                                                                "showPercentageChanges": false,
-                                                                "metricsType": "totalCount",
-                                                                "title": "Related Alerts",
-                                                                "resource": "alerts",
-                                                                "query": {
-                                                                    "sort": [],
-                                                                    "limit": 30,
-                                                                    "logic": "AND",
-                                                                    "filters": [
-                                                                        {
-                                                                            "field": "incidents.id",
-                                                                            "operator": "eq",
-                                                                            "value": "{{incidentID}}",
-                                                                            "type": "primitive"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                "timeRange": "createDate"
-                                                            }
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-3"
-                                                },
-                                                {
-                                                    "widgets": [
-                                                        {
-                                                            "type": "performanceMetrics",
-                                                            "config": {
-                                                                "wid": "aa5fac42-0f72-49f9-b405-eafb2c45419c",
-                                                                "includeFailedPlaybooks": true,
-                                                                "excludeConfigActions": true,
-                                                                "days": 30,
-                                                                "showPercentageChanges": false,
-                                                                "metricsType": "totalCount",
-                                                                "title": "Related Tasks",
-                                                                "resource": "tasks",
-                                                                "query": {
-                                                                    "sort": [],
-                                                                    "limit": 30,
-                                                                    "logic": "AND",
-                                                                    "filters": [
-                                                                        {
-                                                                            "field": "incidents.id",
-                                                                            "operator": "eq",
-                                                                            "value": "{{incidentID}}",
-                                                                            "type": "primitive"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                "timeRange": "createDate"
-                                                            }
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-3"
-                                                },
-                                                {
-                                                    "widgets": [
-                                                        {
-                                                            "type": "performanceMetrics",
-                                                            "config": {
-                                                                "wid": "b2545b77-0c9c-4ae3-848f-d62cad83e46f",
-                                                                "includeFailedPlaybooks": true,
-                                                                "excludeConfigActions": true,
-                                                                "days": 30,
-                                                                "showPercentageChanges": false,
-                                                                "metricsType": "totalCount",
-                                                                "title": "Related Indicators",
-                                                                "resource": "indicators",
-                                                                "query": {
-                                                                    "sort": [],
-                                                                    "limit": 30,
-                                                                    "logic": "AND",
-                                                                    "filters": [
-                                                                        {
-                                                                            "field": "incidents.id",
-                                                                            "operator": "eq",
-                                                                            "value": "{{incidentID}}",
-                                                                            "type": "primitive"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                "timeRange": "createDate"
-                                                            }
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-3"
-                                                },
-                                                {
-                                                    "widgets": [
-                                                        {
-                                                            "type": "performanceMetrics",
-                                                            "config": {
-                                                                "wid": "d1cbe70b-d276-49ee-a4d9-be8c78ce7b59",
-                                                                "includeFailedPlaybooks": true,
-                                                                "excludeConfigActions": true,
-                                                                "days": 30,
-                                                                "showPercentageChanges": false,
-                                                                "metricsType": "totalCount",
-                                                                "title": "Related Assets",
-                                                                "resource": "assets",
-                                                                "query": {
-                                                                    "sort": [],
-                                                                    "limit": 30,
-                                                                    "logic": "AND",
-                                                                    "filters": [
-                                                                        {
-                                                                            "field": "incidents.id",
-                                                                            "operator": "eq",
-                                                                            "value": "{{incidentID}}",
-                                                                            "type": "primitive"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                "timeRange": "createDate"
-                                                            }
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-3"
-                                                }
-                                            ],
-                                            "wid": "a4ca0f75-fa90-4a47-a897-8bd0626a97b7",
-                                            "_collapsed": false
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "style": "col-lg-12"
-                    }
-                ],
-                "wid": "de2bf7f4-61f6-4f69-83d3-d7b7e802e6e0",
-                "container": true,
-                "_collapsed": false
-            },
-            {
-                "columns": [
-                    {
-                        "widgets": [
-                            {
-                                "type": "sectionHeader",
-                                "config": {
-                                    "wid": "b84b7a55-19a9-43fe-bd1e-228d70d0f769",
-                                    "sectionText": "<h6 style=\"background: #404142; padding: 5px; text-align: left;\"><span style=\"font-size: 10pt; color: #ffffff;\"><strong>Related Alerts<\/strong><\/span><\/h6>"
+                                    "wid": "164a88f5-dbd0-41a4-b660-486aa279a21f",
+                                    "sectionText": "<h4 style=\"background: #404142; padding: 5px; text-align: left;\"><span style=\"font-size: 12pt; color: #ffffff;\"><strong>Data Breach Risk Assessment&nbsp;<\/strong><\/span><\/h4>",
+                                    "query": {
+                                        "filters": [],
+                                        "sort": [],
+                                        "limit": 10
+                                    },
+                                    "editorType": "html"
                                 }
                             },
                             {
                                 "type": "readonlyFormGroup",
                                 "config": {
-                                    "wid": "eeb96425-86ab-4412-8f29-d9b4486ee6e9",
+                                    "wid": "765bfef8-b51f-4a9a-b047-5efa57dd93cb",
+                                    "gridColumns": [],
+                                    "displayType": "card-view",
+                                    "widgetAlwaysDisplay": true,
                                     "query": {
                                         "sort": [],
-                                        "limit": 10,
+                                        "limit": 1,
                                         "logic": "AND",
                                         "filters": [
                                             {
-                                                "field": "incidents.id",
+                                                "field": "id",
                                                 "operator": "eq",
+                                                "_operator": "eq",
                                                 "value": "{{incidentID}}",
                                                 "type": "primitive"
                                             }
                                         ]
+                                    },
+                                    "recordTitle": {
+                                        "type": "sectionHeader",
+                                        "wid": "f41549cf-cbdc-4d33-a2d2-488d25ca0fac",
+                                        "clone": false,
+                                        "remove": false
+                                    },
+                                    "relatedTemplate": {
+                                        "type": "rows",
+                                        "rows": [],
+                                        "wid": "bc17f46c-da5c-485e-ba61-20afd69aec9a"
                                     },
                                     "rows": [
                                         {
@@ -472,13 +382,24 @@
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "name",
+                                                            "name": "causeOfDataBreach",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
                                                         }
                                                     ],
-                                                    "style": "col-lg-12"
+                                                    "style": "col-lg-6"
+                                                },
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "typeOfDataBreach",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
                                                 }
                                             ]
                                         },
@@ -487,103 +408,24 @@
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "status",
+                                                            "name": "dataType",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
                                                         }
                                                     ],
-                                                    "style": "col-lg-3"
+                                                    "style": "col-lg-6"
                                                 },
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "severity",
+                                                            "name": "whereDataWasHosted",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
                                                         }
                                                     ],
-                                                    "style": "col-lg-3"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "type",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-3"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "assignedTo",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-3"
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    "resource": "alerts",
-                                    "style": "display-inline-block"
-                                }
-                            }
-                        ],
-                        "style": "col-lg-12"
-                    }
-                ],
-                "wid": "0d1ace32-cf1e-402b-83d5-ba863105d1b7",
-                "container": true,
-                "_collapsed": false
-            },
-            {
-                "columns": [
-                    {
-                        "widgets": [
-                            {
-                                "type": "sectionHeader",
-                                "config": {
-                                    "wid": "89d92097-f49c-4eeb-85c5-6583fa80ec19",
-                                    "sectionText": "<h6 style=\"background: #404142; padding: 5px; text-align: left;\"><span style=\"font-size: 10pt; color: #ffffff;\"><strong>Related Tasks<\/strong><\/span><\/h6>"
-                                }
-                            },
-                            {
-                                "type": "readonlyFormGroup",
-                                "config": {
-                                    "wid": "fbaead0a-a0c2-493c-9239-819c8e762b22",
-                                    "query": {
-                                        "sort": [],
-                                        "limit": 10,
-                                        "logic": "AND",
-                                        "filters": [
-                                            {
-                                                "field": "incidents.id",
-                                                "operator": "eq",
-                                                "value": "{{incidentID}}",
-                                                "type": "primitive"
-                                            }
-                                        ]
-                                    },
-                                    "rows": [
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "name",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-12"
+                                                    "style": "col-lg-6"
                                                 }
                                             ]
                                         },
@@ -592,60 +434,90 @@
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "status",
+                                                            "name": "repercussionsOfBreach",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
                                                         }
                                                     ],
-                                                    "style": "col-lg-3"
+                                                    "style": "col-lg-6"
                                                 },
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "priority",
+                                                            "name": "mitigationActions",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
                                                         }
                                                     ],
-                                                    "style": "col-lg-3"
+                                                    "style": "col-lg-6"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "noOfAffectedUsers",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
                                                 },
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "tasktype",
+                                                            "name": "noOfAffectedDataRecords",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
                                                         }
                                                     ],
-                                                    "style": "col-lg-3"
+                                                    "style": "col-lg-6"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "affectedUsersEmails",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
                                                 },
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "assignedToPerson",
+                                                            "name": "anyAdditionalInformation",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
                                                         }
                                                     ],
-                                                    "style": "col-lg-3"
+                                                    "style": "col-lg-6"
                                                 }
                                             ]
                                         }
                                     ],
-                                    "resource": "tasks",
-                                    "style": "display-inline-block"
+                                    "resource": "incidents",
+                                    "style": "display-inline-block",
+                                    "title": ""
                                 }
                             }
                         ],
                         "style": "col-lg-12"
                     }
                 ],
-                "wid": "10ecd1f0-6ec6-44a1-8786-348def8988cf",
-                "container": true,
+                "wid": "8a5ceccf-17ce-431d-be4b-0b4d7ffebd6f",
                 "_collapsed": false
             },
             {
@@ -655,26 +527,53 @@
                             {
                                 "type": "sectionHeader",
                                 "config": {
-                                    "wid": "6c8de68c-e3d1-4f2e-86c1-bb49737fbae1",
-                                    "sectionText": "<h6 style=\"background: #404142; padding: 5px; text-align: left;\"><span style=\"font-size: 10pt; color: #ffffff;\"><strong>Related Indicators<\/strong><\/span><\/h6>"
+                                    "wid": "f2c6de97-edc8-43fa-8c57-0f8b1e1f31fe",
+                                    "query": {
+                                        "filters": [],
+                                        "sort": [],
+                                        "limit": 10
+                                    },
+                                    "editorType": "html",
+                                    "sectionText": "<h4 style=\"background: #404142; padding: 5px; text-align: left;\"><span style=\"font-size: 12pt; color: #ffffff;\"><strong>DPO Assessment Details<\/strong><\/span><\/h4>"
                                 }
                             },
                             {
                                 "type": "readonlyFormGroup",
                                 "config": {
-                                    "wid": "68090a5d-4a16-4e59-a19f-c6f0b1837bc3",
+                                    "wid": "d35a8e1c-9e8a-44ad-9f25-705e7cf8b3cd",
+                                    "gridColumns": [
+                                        "isDPIARequired",
+                                        "reasonToPerformDPIA",
+                                        "summaryOfDPOAdvice",
+                                        "impactSeverityOnAffectedUsers",
+                                        "measuresToReduceFutureRisks"
+                                    ],
+                                    "displayType": "card-view",
+                                    "widgetAlwaysDisplay": true,
                                     "query": {
                                         "sort": [],
                                         "limit": 10,
                                         "logic": "AND",
                                         "filters": [
                                             {
-                                                "field": "incidents.id",
+                                                "field": "id",
                                                 "operator": "eq",
+                                                "_operator": "eq",
                                                 "value": "{{incidentID}}",
                                                 "type": "primitive"
                                             }
                                         ]
+                                    },
+                                    "recordTitle": {
+                                        "type": "sectionHeader",
+                                        "wid": "5115d1e5-c0d4-4482-ab79-eef11a12777e",
+                                        "clone": false,
+                                        "remove": false
+                                    },
+                                    "relatedTemplate": {
+                                        "type": "rows",
+                                        "rows": [],
+                                        "wid": "fa4ed7fc-a18d-4287-a086-654b9739b007"
                                     },
                                     "rows": [
                                         {
@@ -682,40 +581,71 @@
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "typeofindicator",
+                                                            "name": "dPOName",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "dPOEmail",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "isValidBreach",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "isDPIARequired",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "reasonToPerformDPIA",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
                                                         }
                                                     ],
-                                                    "style": "col-lg-4"
+                                                    "style": "col-lg-6"
                                                 },
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "value",
+                                                            "name": "dPOTelephone",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-4"
-                                                },
-                                                {
-                                                    "fields": [
+                                                        },
                                                         {
-                                                            "name": "reputation",
+                                                            "name": "impactSeverityOnAffectedUsers",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "measuresToReduceFutureRisks",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "summaryOfDPOAdvice",
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
                                                         }
                                                     ],
-                                                    "style": "col-lg-4"
+                                                    "style": "col-lg-6"
                                                 }
                                             ]
                                         }
                                     ],
-                                    "resource": "indicators",
+                                    "resource": "incidents",
                                     "style": "display-inline-block"
                                 }
                             }
@@ -723,110 +653,14 @@
                         "style": "col-lg-12"
                     }
                 ],
-                "wid": "ca9d2f12-f558-459e-a30a-05602d11d32b",
-                "container": true,
-                "_collapsed": false
-            },
-            {
-                "columns": [
-                    {
-                        "widgets": [
-                            {
-                                "type": "sectionHeader",
-                                "config": {
-                                    "wid": "644edf16-9009-440b-83f5-a6727f2bfea5",
-                                    "sectionText": "<h6 style=\"background: #404142; padding: 5px; text-align: left;\"><span style=\"font-size: 10pt; color: #ffffff;\"><strong>Related Assets<\/strong><\/span><\/h6>"
-                                }
-                            },
-                            {
-                                "type": "readonlyFormGroup",
-                                "config": {
-                                    "wid": "b9c9f668-db3c-4976-8bc8-ffbac17a4ee0",
-                                    "query": {
-                                        "sort": [],
-                                        "limit": 10,
-                                        "logic": "AND",
-                                        "filters": [
-                                            {
-                                                "field": "incidents.id",
-                                                "operator": "eq",
-                                                "value": "{{incidentID}}",
-                                                "type": "primitive"
-                                            }
-                                        ]
-                                    },
-                                    "rows": [
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "hostname",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-4"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "status",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-4"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "propertyOf",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-4"
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    "resource": "assets",
-                                    "style": "display-inline-block"
-                                }
-                            }
-                        ],
-                        "style": "col-lg-12"
-                    }
-                ],
-                "wid": "2eb5df90-9a05-4446-81b7-4d9742aa2174",
-                "container": true,
-                "_collapsed": false
-            },
-            {
-                "columns": [
-                    {
-                        "widgets": [
-                            {
-                                "type": "sectionHeader",
-                                "config": {
-                                    "wid": "171f4062-daaf-43a9-9dc0-2b99c52347f8",
-                                    "sectionText": "<p style=\"text-align: center;\"><span style=\"font-size: 10pt;\">Report Generated By FortiSOAR\u2122<\/span><\/p>"
-                                }
-                            }
-                        ],
-                        "style": "col-lg-12"
-                    }
-                ],
-                "wid": "d027f85c-fc5a-45df-9be9-09d51ede9bca",
-                "container": true,
+                "wid": "bdbbe3a0-9ce1-41c0-90a1-68e8820ddce9",
                 "_collapsed": false
             }
         ],
-        "wid": "daaaadd9-c536-462a-8e54-47f8d9897aff"
+        "wid": "daaaadd9-c536-462a-8e54-47f8d9897aff",
+        "metadata": {
+            "customTemplateTitle": "Reporting"
+        }
     },
     "filterArray": [
         {

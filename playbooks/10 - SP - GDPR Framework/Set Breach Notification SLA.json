@@ -1,0 +1,176 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Set Breach Notification SLA",
+    "aliasName": null,
+    "tag": null,
+    "description": "Sets Breach Notification SLA",
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/b323648c-599a-4cfc-9b65-8c493f1a7e12",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/75824083-3695-4274-acff-72210e3713d2",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "resource": "incidents",
+                "resources": [
+                    "incidents"
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": [
+                            "{{vars.input.records[0]}}"
+                        ]
+                    }
+                },
+                "fieldbasedtrigger": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "object",
+                            "field": "category",
+                            "value": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/d0ecc2f6-670b-4cc3-ba9b-090aab7e9c3a",
+                                "display": "GDPR Data Breach",
+                                "itemValue": "GDPR Data Breach"
+                            },
+                            "operator": "eq"
+                        },
+                        {
+                            "type": "object",
+                            "field": "status",
+                            "value": "",
+                            "_value": {
+                                "@id": "",
+                                "display": "",
+                                "itemValue": ""
+                            },
+                            "operator": "changed"
+                        },
+                        {
+                            "type": "object",
+                            "field": "status",
+                            "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                                "display": "Resolved",
+                                "itemValue": "Resolved"
+                            },
+                            "operator": "eq"
+                        }
+                    ]
+                }
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
+            "uuid": "75824083-3695-4274-acff-72210e3713d2"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update Breach Notification SLA",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "breachNotificationSLA": "{% if (vars.timeDiff | int) > 0 %}{{\"SLAState\" | picklist(\"Met\", \"@id\")}}{% else %}{{\"SLAState\" | picklist(\"Missed\", \"@id\")}}{% endif %}"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.input.records[0]['@id']}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/incidents",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "435",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "uuid": "203c3d31-e2fb-441f-9691-a4a54d133d1c"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "timeDiff": "{{(vars.input.records[0].breachNotificationDueDate | int) -(vars.input.records[0].resolveddate | int)}}"
+            },
+            "status": null,
+            "top": "300",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "c9d1499f-9787-4824-87f2-3eff58410377"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Wait for 30 Sec",
+            "description": null,
+            "arguments": {
+                "delay": {
+                    "days": 0,
+                    "hours": 0,
+                    "weeks": 0,
+                    "minutes": 0,
+                    "seconds": 30
+                }
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/6832e556-b9c7-497a-babe-feda3bd27dbf",
+            "uuid": "a0d618f2-5125-49f3-a58b-fad39584cf6b"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Configuration -> Update Breach Notification SLA",
+            "targetStep": "\/api\/3\/workflow_steps\/203c3d31-e2fb-441f-9691-a4a54d133d1c",
+            "sourceStep": "\/api\/3\/workflow_steps\/c9d1499f-9787-4824-87f2-3eff58410377",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "a1ea70fd-6217-45a9-8bc0-b37158b7e274"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Wait for 30 Sec",
+            "targetStep": "\/api\/3\/workflow_steps\/a0d618f2-5125-49f3-a58b-fad39584cf6b",
+            "sourceStep": "\/api\/3\/workflow_steps\/75824083-3695-4274-acff-72210e3713d2",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "34237c0c-b19d-4ca9-a0c0-02d5cf82051b"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Wait for 30 Sec -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/c9d1499f-9787-4824-87f2-3eff58410377",
+            "sourceStep": "\/api\/3\/workflow_steps\/a0d618f2-5125-49f3-a58b-fad39584cf6b",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "eed6cfd5-2cb5-4c9c-b5d2-7933986f8c63"
+        }
+    ],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "2d9fc06a-dea1-410b-b800-faa50136d61d",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [
+        "PostUpdate"
+    ]
+}

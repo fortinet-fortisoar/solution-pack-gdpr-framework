@@ -1,6 +1,6 @@
 [
     "Referenced",
-    "PostUpdate",
+    "ManualTrigger",
     "PostCreate",
-    "ManualTrigger"
+    "PostUpdate"
 ]

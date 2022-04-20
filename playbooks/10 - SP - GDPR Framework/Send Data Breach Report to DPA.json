@@ -1,0 +1,294 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Send Data Breach Report to DPA",
+    "aliasName": null,
+    "tag": null,
+    "description": "Send Data Breach Report to Data Protection Authority",
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/b323648c-599a-4cfc-9b65-8c493f1a7e12",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/ecd60ed1-bc88-4ad3-9baf-55ecae81b0e8",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Generate Breach Report",
+            "description": null,
+            "arguments": {
+                "name": "Report Engine",
+                "params": {
+                    "user_id": "{{vars.currentUser}}",
+                    "timezone": "{{vars.request.headers.tz}}",
+                    "report_id": "bd3f7e9b-45ba-4740-a617-164887fc754c",
+                    "query_params": "{\"qparam\": {\"incidentID\":{{vars.incidentID}}}}"
+                },
+                "version": "1.2.1",
+                "connector": "cyops-schedule-report",
+                "operation": "schedule_report_manual",
+                "operationTitle": "Generate Report From Report ID",
+                "pickFromTenant": false,
+                "step_variables": []
+            },
+            "status": null,
+            "top": "435",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "ae5f6b3b-70ce-4271-8f4b-c57cb3c40dd2"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Send Report to DPA",
+            "description": "replace 'dpaEmail@example.com' -> {{vars.dpaEmail}}",
+            "arguments": {
+                "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
+                "params": {
+                    "cc": "",
+                    "to": "dpaEmail@example.com",
+                    "bcc": "",
+                    "from": "",
+                    "type": "Manual Input",
+                    "content": "<p>Hello,<\/p>\n<p>&nbsp;<\/p>\n<p>We have observed a Personal Data Breach incident at our organization. Please refer to the attached report for data breach incident details.<\/p>\n<p>&nbsp;<\/p>\n<p>Thanks,<\/p>\n<p>&nbsp;<\/p>",
+                    "subject": "Data Breach Notification",
+                    "iri_list": "{{vars.steps.Generate_Breach_Report.data.file['@id']}}",
+                    "body_type": "Rich Text",
+                    "file_name": "",
+                    "file_path": ""
+                },
+                "version": "2.4.3",
+                "from_str": "admin@example.com",
+                "connector": "smtp",
+                "operation": "send_email_new",
+                "operationTitle": "Send Email (Advanced)",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "570",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
+            "uuid": "40eac1ff-8b76-42e4-88d4-e7030caf9ce7"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "description": "[]"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "2efd605d-779e-44a0-a8e3-cbb0f3c08b55"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "route": "1ffb1f8b-0a4b-49e6-af97-71f5299eb507",
+                "resources": [
+                    "tasks"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": "{{vars.input.records}}"
+                    }
+                },
+                "displayConditions": {
+                    "tasks": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "type": "object",
+                                "field": "type",
+                                "value": "\/api\/3\/picklists\/a8e3b530-778d-4452-a829-36254ef84bf1",
+                                "_value": {
+                                    "@id": "\/api\/3\/picklists\/a8e3b530-778d-4452-a829-36254ef84bf1",
+                                    "display": "Notify DPA",
+                                    "itemValue": "Notify DPA"
+                                },
+                                "operator": "eq"
+                            }
+                        ]
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": false
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "ecd60ed1-bc88-4ad3-9baf-55ecae81b0e8"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Incident ID",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "id",
+                            "value": "{{vars.input.records[0].id}}",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        }
+                    ],
+                    "__selectFields": [
+                        "incidents"
+                    ]
+                },
+                "module": "tasks?$limit=30&$relationships=true",
+                "checkboxFields": true,
+                "step_variables": {
+                    "dpaEmail": "{{vars.result[0].incidents[0].dPAEmail}}",
+                    "incidentID": "{{vars.result[0].incidents[0].id}}",
+                    "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}",
+                    "placeholder": "{% for item in vars.result[0].incidents[0].description.split('\\n') %}\n{% if 'Notify Data Protection Authority' in item %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
+                    "incidentName": "{{vars.result[0].incidents[0].name}}",
+                    "breachNotificationDueDate": "{{vars.result[0].incidents[0].breachNotificationDueDate}}"
+                }
+            },
+            "status": null,
+            "top": "300",
+            "left": "120",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "uuid": "c97399d1-727c-4c8d-80fb-00bc37d2b32a"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update Task Status",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.input.records[0]['@id']}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/tasks",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "705",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "uuid": "519f8608-8203-4c96-9ab1-545316cd844e"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update Incident",
+            "description": null,
+            "arguments": {
+                "message": {
+                    "tags": [],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<p>Data Breach Report has been sent to DPA. Resolving the incident.<\/p>",
+                    "records": "{{vars.incidentIRI}}"
+                },
+                "resource": {
+                    "status": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                    "description": "{{vars.description | join('\\n')}}"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.incidentIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/incidents",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "840",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "uuid": "1b231c10-7a36-49e3-bc1d-c86d1f2ca09e"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Generate Breach Report -> Send Report to DPA",
+            "targetStep": "\/api\/3\/workflow_steps\/40eac1ff-8b76-42e4-88d4-e7030caf9ce7",
+            "sourceStep": "\/api\/3\/workflow_steps\/ae5f6b3b-70ce-4271-8f4b-c57cb3c40dd2",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "5d1566fd-36a8-4e6c-989c-dde042473499"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/2efd605d-779e-44a0-a8e3-cbb0f3c08b55",
+            "sourceStep": "\/api\/3\/workflow_steps\/ecd60ed1-bc88-4ad3-9baf-55ecae81b0e8",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "d1461817-3bb8-4b67-b6ba-a26bfe723773"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Configuration -> Get Incident ID",
+            "targetStep": "\/api\/3\/workflow_steps\/c97399d1-727c-4c8d-80fb-00bc37d2b32a",
+            "sourceStep": "\/api\/3\/workflow_steps\/2efd605d-779e-44a0-a8e3-cbb0f3c08b55",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "403c10d8-b258-4e0f-b780-4ccb1662d9cf"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Send Report to DPA -> Update Task Status",
+            "targetStep": "\/api\/3\/workflow_steps\/519f8608-8203-4c96-9ab1-545316cd844e",
+            "sourceStep": "\/api\/3\/workflow_steps\/40eac1ff-8b76-42e4-88d4-e7030caf9ce7",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "e420ebcc-fb21-448a-ba38-c83bb778d5ed"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update Task Status -> Update Incident",
+            "targetStep": "\/api\/3\/workflow_steps\/1b231c10-7a36-49e3-bc1d-c86d1f2ca09e",
+            "sourceStep": "\/api\/3\/workflow_steps\/519f8608-8203-4c96-9ab1-545316cd844e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "41a454ce-f9d5-4490-a34f-cdcc37f48c47"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Incident ID -> Generate Breach Report",
+            "targetStep": "\/api\/3\/workflow_steps\/ae5f6b3b-70ce-4271-8f4b-c57cb3c40dd2",
+            "sourceStep": "\/api\/3\/workflow_steps\/c97399d1-727c-4c8d-80fb-00bc37d2b32a",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "f3928f58-28af-483f-b7f2-ee5c1a4994ee"
+        }
+    ],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "8d679fb4-f503-4556-8a74-952ae5feed9b",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [
+        "Referenced"
+    ]
+}

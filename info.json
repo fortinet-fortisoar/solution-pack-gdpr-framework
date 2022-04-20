@@ -15,27 +15,81 @@
     ],
     "prerequisite": null,
     "publisher": "Fortinet",
-    "description": "Solution pack demonstrates GDPR process",
-    "help": "https:\/\/github.com\/fortinet-fortisoar\/solution-pack-gdpr-framework\/blob\/develop\/README.md",
+    "description": "This solution pack demonstrates procedures involved in GDPR",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/develop/README.md",
     "category": [],
-    "supportInfo": "support@fortinet.com",
+    "supportInfo": "",
     "iconLarge": null,
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-03-15T06:07:50+00:00",
-    "exported_from": "tenant.fortisoar.com",
-    "exported_by": "CS Admin",
+    "date": "2022-04-19T12:47:14+00:00",
     "contents": {
-        "playbooks": [
+        "picklistNames": [
             {
-                "name": "GDPR Framework"
+                "name": "Contact Title"
+            },
+            {
+                "name": "DataBreachType"
+            },
+            {
+                "name": "GDPREUCountryList"
+            },
+            {
+                "name": "IncidentType"
+            },
+            {
+                "name": "TaskType"
+            },
+            {
+                "name": "YesNo Picklist"
             }
         ],
-        "globalVariables": [
+        "modules": {
+            "contact": {
+                "name": "Contacts",
+                "apiName": "contact"
+            },
+            "": {
+                "name": "Incidents",
+                "apiName": "incidents"
+            }
+        },
+        "viewTemplates": {
+            "contact": {
+                "name": "Contacts",
+                "apiName": "contact",
+                "views": [
+                    "list",
+                    "detail",
+                    "form"
+                ]
+            },
+            "incidents": {
+                "name": "Incidents",
+                "apiName": "incidents",
+                "views": [
+                    "list",
+                    "detail",
+                    "form",
+                    "settings"
+                ]
+            },
+            "tasks": {
+                "name": "Tasks",
+                "apiName": "tasks",
+                "views": [
+                    "detail",
+                    "settings"
+                ]
+            }
+        },
+        "roles": [
             {
-                "id": 7,
-                "name": "Server_fqhn",
-                "value": "tenant.fortisoar.com",
-                "default_value": null
+                "name": "Full App Permissions"
+            }
+        ],
+        "playbooks": [
+            {
+                "name": "10 - SP - GDPR Framework"
             }
         ],
         "reports": [
