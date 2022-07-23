@@ -1,12 +1,12 @@
 [
     {
-        "id": 16,
+        "id": 15,
         "name": "GDPR_Demo_Mode",
         "value": "Demo Mode ON",
         "default_value": "Demo Mode ON"
     },
     {
-        "id": 15,
+        "id": 16,
         "name": "GDPR_Demo_Email",
         "value": "rktest.2204@outlook.com",
         "default_value": "no-reply@example.com"
@@ -18,16 +18,16 @@
         "default_value": "{{arrow.utcnow().timestamp}}"
     },
     {
-        "id": 17,
-        "name": "Demo_mode",
-        "value": "true",
-        "default_value": "true"
-    },
-    {
         "id": 7,
         "name": "Server_fqhn",
         "value": "master.fortisoar.com",
         "default_value": null
+    },
+    {
+        "id": 17,
+        "name": "Demo_mode",
+        "value": "true",
+        "default_value": "true"
     },
     {
         "id": 2,

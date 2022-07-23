@@ -395,6 +395,17 @@
                                 "OPERATOR_KEY": "$",
                                 "previousOperator": "in_all",
                                 "previousTemplate": "tags"
+                            },
+                            {
+                                "type": "object",
+                                "field": "status",
+                                "value": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
+                                "_value": {
+                                    "@id": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
+                                    "display": "Completed",
+                                    "itemValue": "Completed"
+                                },
+                                "operator": "eq"
                             }
                         ]
                     }

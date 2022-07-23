@@ -162,9 +162,9 @@
                         {
                             "type": "object",
                             "field": "wasPersonalDataOrInformationInvolved",
-                            "value": "\/api\/3\/picklists\/cfd49634-d25a-476f-8485-99585e589a8c",
+                            "value": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
                             "_value": {
-                                "@id": "\/api\/3\/picklists\/cfd49634-d25a-476f-8485-99585e589a8c",
+                                "@id": "\/api\/3\/picklists\/a3293f95-e423-49e5-8b12-b73401d92779",
                                 "display": "Yes",
                                 "itemValue": "Yes"
                             },
@@ -174,7 +174,7 @@
                 }
             },
             "status": null,
-            "top": "30",
+            "top": "20",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
             "group": null,

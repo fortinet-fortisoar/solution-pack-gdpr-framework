@@ -1,6 +1,6 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/3176ea04-b11a-4dcd-a43b-da5657fd2fff",
+    "@id": "\/api\/3\/staging_model_metadatas\/6fc818a8-6eb2-42df-8dcf-a0f10cb51c48",
     "@type": "StagingModelMetadata",
     "type": "data_compliances",
     "parentType": null,
@@ -776,6 +776,51 @@
             }
         },
         {
+            "@id": "\/api\/3\/attribute_metadatas\/b52afb0c-b214-436a-9cde-61f97be06328",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "whatWasTheDataSource",
+            "length": null,
+            "orderIndex": 39,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "b52afb0c-b214-436a-9cde-61f97be06328",
+            "displayName": "{{ whatWasTheDataSource }}",
+            "descriptions": {
+                "singular": "What Was The Data Source?"
+            }
+        },
+        {
             "@id": "\/api\/3\/attribute_metadatas\/cbac6457-706a-4390-8ae5-69b292f16f69",
             "@type": "AttributeMetadata",
             "type": "picklists",
@@ -1505,51 +1550,6 @@
             "displayName": "{{ companyName }}",
             "descriptions": {
                 "singular": "Company Name"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/b52afb0c-b214-436a-9cde-61f97be06328",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "whatWasTheDataSource",
-            "length": null,
-            "orderIndex": 39,
-            "formType": "text",
-            "dataSource": null,
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
-            "dataSourceFilters": null,
-            "defaultValue": "",
-            "tooltip": null,
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": null,
-            "readable": true,
-            "writeable": true,
-            "identifier": null,
-            "unique": false,
-            "recommend": false,
-            "uuid": "b52afb0c-b214-436a-9cde-61f97be06328",
-            "displayName": "{{ whatWasTheDataSource }}",
-            "descriptions": {
-                "singular": "What Was The Data Source?"
             }
         },
         {
@@ -2932,7 +2932,7 @@
         "delete_primary_data_after": 60
     },
     "archivalFilters": [],
-    "uuid": "3176ea04-b11a-4dcd-a43b-da5657fd2fff",
+    "uuid": "6fc818a8-6eb2-42df-8dcf-a0f10cb51c48",
     "displayName": "{{ name }}",
     "descriptions": {
         "singular": "Data Compliance",
