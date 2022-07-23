@@ -31,6 +31,7 @@
             "top": "165",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
             "uuid": "3128a929-c73e-400c-a4c3-f4d7dc831335"
         },
         {
@@ -41,11 +42,11 @@
                 "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
                 "params": {
                     "cc": "",
-                    "to": "{{vars.affectedUsersEmails}}",
+                    "to": "{% if globalVars.Demo_mode %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.affectedUsersEmails}}{% endif %}",
                     "bcc": "",
                     "from": "",
                     "type": "Manual Input",
-                    "content": "<p>Hello,<\/p>\n<p>&nbsp;<\/p>\n<p>We are writing to you because of an incident involving personal data breach associated with our platform. Although we are unaware of any actual misuse of your information, we are providing notice to you and other potentially affected customers about the incident.<\/p>\n<p>&nbsp;<\/p>\n<p><strong>What Happened?<\/strong><\/p>\n<p>{{vars.steps.Data_Breach_Notification.input['whatHappened?']}}<\/p>\n<p>&nbsp;<\/p>\n<p><strong>What Information was involved?<\/strong><\/p>\n<p>{{vars.steps.Data_Breach_Notification.input['whatInformationWasInvolved?']}}<\/p>\n<p>&nbsp;<\/p>\n<p><strong>What Are We Doing?<\/strong><\/p>\n<p>{{vars.steps.Data_Breach_Notification.input['whatAreWeDoing?']}}<\/p>\n<p>&nbsp;<\/p>\n<p><strong>What You Can Do?<\/strong><\/p>\n<p>{{vars.steps.Data_Breach_Notification.input['whatYouCanDo?']}}<\/p>\n<p>&nbsp;<\/p>\n<p>Thanks,<\/p>\n<p>CS Team<\/p>\n<p>&nbsp;<\/p>\n<p>&nbsp;<\/p>",
+                    "content": "<p>Hello,<\/p>\n<p>We are writing to you because of an incident involving personal data breach associated with our platform. Although we are unaware of any actual misuse of your information, we are providing notice to you and other potentially affected customers about the incident.<\/p>\n<p><strong>What happened?<\/strong><br \/>{{vars.steps.Data_Breach_Notification.input['whatHappened?']}}<\/p>\n<p><strong>What information was involved?<\/strong><br \/>{{vars.steps.Data_Breach_Notification.input['whatInformationWasInvolved?']}}<\/p>\n<p><strong>What are we doing?<\/strong><br \/>{{vars.steps.Data_Breach_Notification.input['whatAreWeDoing?']}}<\/p>\n<p><strong>What you can do?<\/strong><br \/>{{vars.steps.Data_Breach_Notification.input['whatYouCanDo?']}}<\/p>\n<p>Thanks,<br \/>CS Team<\/p>",
                     "subject": "Data Breach Notification",
                     "iri_list": "",
                     "body_type": "Rich Text",
@@ -63,6 +64,7 @@
             "top": "570",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
+            "group": null,
             "uuid": "c5bbd0dc-df68-4de7-b445-c8cf7383255b"
         },
         {
@@ -74,7 +76,7 @@
                 "input": {
                     "schema": {
                         "title": "Breach Notification to Affected Users",
-                        "description": "Hi Team,\n\nWe have detected valid data breach incident {{vars.input.params.incidentID}} - {{vars.input.params.incidentName}}. \n\nIt is confirmed by DPO that affected users are at high risk and need to be notified about the same.\n\nPlease provide your input for notification mail.\n\nThanks,",
+                        "description": "Hi Team,\n\nWe have detected valid data breach. {{vars.input.params.incidentID}} - {{vars.input.params.incidentName}}. \n\nIt is confirmed by DPO that affected users are at high risk and need to be notified about the same.\n\nPlease provide your input for notification mail.\n\nThanks,",
                         "inputVariables": [
                             {
                                 "name": "whatHappened?",
@@ -131,8 +133,8 @@
                         ]
                     }
                 },
-                "record": "{{vars.input.params.incidentIRI}}",
-                "resources": "incidents",
+                "record": "{{vars.complianceIRI}}",
+                "resources": "data_compliances",
                 "owner_detail": {
                     "isAssigned": false
                 },
@@ -157,6 +159,7 @@
             "top": "435",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/fc04082a-d7dc-4299-96fb-6837b1baa0fe",
+            "group": null,
             "uuid": "4f717693-1fa2-48bc-8131-6dcf5e8c7622"
         },
         {
@@ -183,14 +186,18 @@
                         "logic": "AND",
                         "filters": [
                             {
-                                "type": "object",
-                                "field": "type",
-                                "value": "\/api\/3\/picklists\/e10d55c2-efc6-4045-a7ba-135cd5a93a01",
-                                "_value": {
-                                    "@id": "\/api\/3\/picklists\/e10d55c2-efc6-4045-a7ba-135cd5a93a01",
-                                    "itemValue": "Notify Affected User"
-                                },
-                                "operator": "eq"
+                                "type": "array",
+                                "field": "recordTags",
+                                "value": [
+                                    "\/api\/3\/tags\/Notify Affected Individuals"
+                                ],
+                                "module": "recordTags",
+                                "display": null,
+                                "operator": "in_all",
+                                "template": "tags",
+                                "OPERATOR_KEY": "$",
+                                "previousOperator": "in_all",
+                                "previousTemplate": "tags"
                             }
                         ]
                     }
@@ -203,11 +210,12 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "group": null,
             "uuid": "0b03c3bd-f1ac-4ac9-99d9-bfd5b041cf82"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Get Incident ID",
+            "name": "Get Compliance Record ID",
             "description": null,
             "arguments": {
                 "query": {
@@ -224,24 +232,25 @@
                         }
                     ],
                     "__selectFields": [
-                        "incidents"
+                        "dataCompliances"
                     ]
                 },
                 "module": "tasks?$limit=30&$relationships=true",
                 "checkboxFields": true,
                 "step_variables": {
-                    "dpaEmail": "{{vars.result[0].incidents[0].dPAEmail}}",
-                    "incidentID": "{{vars.result[0].incidents[0].id}}",
-                    "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}",
-                    "placeholder": "{% for item in vars.result[0].incidents[0].description.split('\\n') %}\n{% if loop.index == 8 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
-                    "incidentName": "{{vars.result[0].incidents[0].name}}",
-                    "affectedUsersEmails": "{{vars.result[0].incidents[0].affectedUsersEmails}}"
+                    "dpaEmail": "{{vars.result[0].dataCompliances[0].dPAEmail}}",
+                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if loop.index == 8 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
+                    "complianceID": "{{vars.result[0].dataCompliances[0].id}}",
+                    "complianceIRI": "{{vars.result[0].dataCompliances[0]['@id']}}",
+                    "complianceName": "{{vars.result[0].dataCompliances[0].name}}",
+                    "affectedUsersEmails": "{{vars.result[0].dataCompliances[0].affectedUsersEmails}}"
                 }
             },
             "status": null,
             "top": "300",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
             "uuid": "d552b956-190d-48b4-b7b9-196b1241c147"
         },
         {
@@ -254,9 +263,12 @@
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
                     "content": "<p>Affected users are notified of data breach<\/p>",
-                    "records": "{{vars.incidentIRI}}"
+                    "records": "{{vars.complianceIRI}}"
                 },
                 "resource": {
+                    "__link": {
+                        "dataCompliances": "{{vars.complianceIRI}}"
+                    },
                     "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed"
                 },
                 "_showJson": false,
@@ -273,11 +285,12 @@
             "top": "705",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
             "uuid": "5b2c48ab-3379-4e47-aa41-b5edc0fc024a"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Update Incident Description",
+            "name": "Update Compliance Record Description",
             "description": null,
             "arguments": {
                 "resource": {
@@ -285,9 +298,9 @@
                 },
                 "_showJson": false,
                 "operation": "Append",
-                "collection": "{{vars.incidentIRI}}",
+                "collection": "{{vars.complianceIRI}}",
                 "__recommend": [],
-                "collectionType": "\/api\/3\/incidents",
+                "collectionType": "\/api\/3\/data_compliances",
                 "fieldOperation": {
                     "recordTags": "Append"
                 },
@@ -297,6 +310,7 @@
             "top": "840",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
             "uuid": "502be4c0-6082-491a-a329-80aff455a643"
         }
     ],
@@ -356,6 +370,7 @@
             "uuid": "362a7f94-8851-4591-9081-a205ac5844bf"
         }
     ],
+    "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
     "uuid": "0e727ede-cffa-4222-afc2-ab7e26043382",
     "owners": [],

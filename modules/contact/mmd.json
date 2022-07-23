@@ -1,6 +1,6 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/213553ee-b837-4ba2-ad4f-03b8f93fcc50",
+    "@id": "\/api\/3\/staging_model_metadatas\/3e9380b6-8c18-489b-afac-33de3aca9560",
     "@type": "StagingModelMetadata",
     "type": "contact",
     "parentType": null,
@@ -24,6 +24,90 @@
     "indexable": true,
     "writable": true,
     "attributes": [
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/b776cc39-cf3b-4970-99e0-9e65f2c44f6c",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "alias",
+            "length": null,
+            "orderIndex": 14,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "b776cc39-cf3b-4970-99e0-9e65f2c44f6c",
+            "displayName": "{{ alias }}",
+            "descriptions": {
+                "singular": "Alias"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/49e366db-1d1c-4879-84d9-517e55cea569",
+            "@type": "AttributeMetadata",
+            "type": "data_compliances",
+            "name": "dataCompliances",
+            "length": null,
+            "orderIndex": 16,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "data_compliances"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "contacts",
+            "ownsRelationship": false,
+            "validation": null,
+            "bulkAction": null,
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "49e366db-1d1c-4879-84d9-517e55cea569",
+            "displayName": "{{Data Compliances}}",
+            "descriptions": {
+                "singular": "Data Compliances"
+            }
+        },
         {
             "@id": "\/api\/3\/attribute_metadatas\/00f43d48-6556-4c1d-831c-36146aa3d3bc",
             "@type": "AttributeMetadata",
@@ -155,52 +239,6 @@
             "displayName": "{{ name }}",
             "descriptions": {
                 "singular": "Name"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/b776cc39-cf3b-4970-99e0-9e65f2c44f6c",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "alias",
-            "length": null,
-            "orderIndex": 14,
-            "formType": "text",
-            "dataSource": null,
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761,
-                "_enableRange": false
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
-            "dataSourceFilters": null,
-            "defaultValue": "",
-            "tooltip": null,
-            "visibility": true,
-            "htmlEscape": false,
-            "orphanRemoval": null,
-            "readable": true,
-            "writeable": true,
-            "identifier": null,
-            "unique": false,
-            "recommend": false,
-            "uuid": "b776cc39-cf3b-4970-99e0-9e65f2c44f6c",
-            "displayName": "{{ alias }}",
-            "descriptions": {
-                "singular": "Alias"
             }
         },
         {
@@ -791,7 +829,7 @@
         "delete_primary_data_after": 60
     },
     "archivalFilters": [],
-    "uuid": "213553ee-b837-4ba2-ad4f-03b8f93fcc50",
+    "uuid": "3e9380b6-8c18-489b-afac-33de3aca9560",
     "displayName": "{{ name }}",
     "descriptions": {
         "singular": "Contact",

@@ -1,0 +1,455 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Reminder for SLA Breach",
+    "aliasName": null,
+    "tag": null,
+    "description": "Sends reminder for the notification SLA Breach",
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/b323648c-599a-4cfc-9b65-8c493f1a7e12",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/04331884-eb61-4eb2-82f3-6cabf1d19a1c",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "route": "2a47d3b2-d406-499d-93d3-bc412a71e23d",
+                "resources": [
+                    "data_compliances"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                    "input": {
+                        "params": [],
+                        "records": "{{vars.input.records}}"
+                    }
+                },
+                "displayConditions": {
+                    "data_compliances": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": false
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "group": null,
+            "uuid": "04331884-eb61-4eb2-82f3-6cabf1d19a1c"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "emailTo": "{% if globalVars.Demo_mode %}{{globalVars.GDPR_Demo_Email}}{% else %}{{globalVars.Default_Email}}{% endif %}",
+                "timezone": "{{vars.request.headers.tz}}"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "41cc6132-df9c-431c-9b30-cbca8d262340"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Find Records 24hrs Due Date",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "datetime",
+                            "logic": "AND",
+                            "_field": "breachNotifyDueDate",
+                            "_value": {
+                                "differenceType": "hours",
+                                "differenceValue": 24
+                            },
+                            "filters": [
+                                {
+                                    "type": "datetime",
+                                    "field": "breachNotifyDueDate",
+                                    "value": "{{getRelativeDate(0,0,0,24,\"end\",\"end\")}}",
+                                    "operator": "lte"
+                                }
+                            ],
+                            "_operator": "lte"
+                        },
+                        {
+                            "type": "object",
+                            "field": "breachNotificationSLA",
+                            "value": "\/api\/3\/picklists\/5230b20c-d408-4b36-ad8f-610167d84d34",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/5230b20c-d408-4b36-ad8f-610167d84d34",
+                                "itemValue": "Missed"
+                            },
+                            "operator": "neq"
+                        },
+                        {
+                            "type": "object",
+                            "field": "status",
+                            "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                                "itemValue": "Resolved"
+                            },
+                            "operator": "neq"
+                        },
+                        {
+                            "type": "primitive",
+                            "field": "id",
+                            "value": "{{vars.complianceRecordList}}",
+                            "operator": "nin",
+                            "_operator": "nin"
+                        }
+                    ],
+                    "__selectFields": [
+                        "assignedTo",
+                        "severity",
+                        "name",
+                        "id",
+                        "breachNotifyDueDate"
+                    ]
+                },
+                "module": "data_compliances?$limit=30",
+                "checkboxFields": true,
+                "step_variables": []
+            },
+            "status": null,
+            "top": "435",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
+            "uuid": "39f071b4-463f-4b3a-9aec-fe64e8baf4c8"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Find Records 4hrs Due Date",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "datetime",
+                            "logic": "AND",
+                            "_field": "breachNotifyDueDate",
+                            "_value": {
+                                "differenceType": "hours",
+                                "differenceValue": 4
+                            },
+                            "filters": [
+                                {
+                                    "type": "datetime",
+                                    "field": "breachNotifyDueDate",
+                                    "value": "{{getRelativeDate(0,0,0,4,\"end\",\"end\")}}",
+                                    "operator": "lte"
+                                }
+                            ],
+                            "_operator": "lte"
+                        },
+                        {
+                            "type": "object",
+                            "field": "breachNotificationSLA",
+                            "value": "\/api\/3\/picklists\/5230b20c-d408-4b36-ad8f-610167d84d34",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/5230b20c-d408-4b36-ad8f-610167d84d34",
+                                "itemValue": "Missed"
+                            },
+                            "operator": "neq"
+                        },
+                        {
+                            "type": "object",
+                            "field": "status",
+                            "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                                "itemValue": "Resolved"
+                            },
+                            "operator": "neq"
+                        }
+                    ],
+                    "__selectFields": [
+                        "assignedTo",
+                        "name",
+                        "id",
+                        "severity",
+                        "breachNotifyDueDate"
+                    ]
+                },
+                "module": "data_compliances?$limit=3000",
+                "checkboxFields": true,
+                "step_variables": {
+                    "complianceRecordList": "{{vars.result | json_query(\"[].id\")}}"
+                }
+            },
+            "status": null,
+            "top": "300",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
+            "uuid": "05e7da76-4e2a-4ae6-8748-ddeaf4bc16ba"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Find Records SLA Breached",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "object",
+                            "field": "breachNotificationSLA",
+                            "value": "\/api\/3\/picklists\/5230b20c-d408-4b36-ad8f-610167d84d34",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/5230b20c-d408-4b36-ad8f-610167d84d34",
+                                "itemValue": "Missed"
+                            },
+                            "operator": "eq"
+                        },
+                        {
+                            "type": "object",
+                            "field": "status",
+                            "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                                "itemValue": "Resolved"
+                            },
+                            "operator": "neq"
+                        }
+                    ],
+                    "__selectFields": [
+                        "assignedTo",
+                        "breachNotifyDueDate",
+                        "name",
+                        "id",
+                        "severity"
+                    ]
+                },
+                "module": "data_compliances?$limit=30",
+                "checkboxFields": true,
+                "step_variables": []
+            },
+            "status": null,
+            "top": "570",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
+            "uuid": "5708388f-7135-460f-ad10-3553a4835a22"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "SLA Warning when 24 Hrs Remaining",
+            "description": null,
+            "arguments": {
+                "when": "{{vars.steps.Find_Records_24hrs_Due_Date | length > 0}}",
+                "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
+                "params": {
+                    "cc": "",
+                    "to": "{% if globalVars.Demo_mode %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.item.assignedTo.email}}{% endif %}",
+                    "bcc": "",
+                    "from": "{{globalVars.Default_Email}}",
+                    "type": "Manual Input",
+                    "content": "<p>Dear {{vars.item.assignedTo.firstname}},<\/p>\n<p>You are receiving this email as the SLA for GDPR Assessment record assigned to you will be breached within 24 hours.<\/p>\n<table style=\"border-collapse: collapse;\" border=\"1\">\n<tbody>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record ID<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">#{{vars.item.id}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record Title<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{vars.item.name}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record Link<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\"><a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.item.uuid}}\" target=\"_blank\" rel=\"noopener\"><em>Click Here<\/em><\/a><\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Severity<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{vars.item.severity.itemValue}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Due Date<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{arrow.get(vars.item.breachNotifyDueDate).to(vars.timezone).format('YYYY-MM-DD HH:mm:ss')}}<\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<p>&nbsp;<\/p>",
+                    "subject": "SLA Warning: Compliance Record ID #{{vars.item.id}}",
+                    "iri_list": "",
+                    "body_type": "Rich Text",
+                    "file_name": "",
+                    "file_path": ""
+                },
+                "version": "2.4.3",
+                "for_each": {
+                    "item": "{{vars.steps.Find_Records_24hrs_Due_Date}}",
+                    "parallel": false,
+                    "condition": ""
+                },
+                "from_str": "admin@example.com",
+                "connector": "smtp",
+                "operation": "send_email_new",
+                "operationTitle": "Send Email (Advanced)",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "705",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
+            "group": null,
+            "uuid": "031e5ab8-8194-464d-9354-7293e5036a06"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "SLA Warning when 4 Hrs Remaining",
+            "description": null,
+            "arguments": {
+                "when": "{{vars.steps.Find_Records_4hrs_Due_Date | length > 0}}",
+                "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
+                "params": {
+                    "cc": "",
+                    "to": "{% if globalVars.Demo_mode %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.item.assignedTo.email}}{% endif %}",
+                    "bcc": "",
+                    "from": "{{globalVars.Default_Email}}",
+                    "type": "Manual Input",
+                    "content": "<p>Dear {{vars.item.assignedTo.firstname}},<\/p>\n<p>You are receiving this email as the SLA for GDPR Assessment record assigned to you will be breached within 4 hours. Please look into this on priority.<\/p>\n<table style=\"border-collapse: collapse;\" border=\"1\">\n<tbody>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record ID<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">#{{vars.item.id}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record Title<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{vars.item.name}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record Link<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\"><a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.item.uuid}}\" target=\"_blank\" rel=\"noopener\"><em>Click Here<\/em><\/a><\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Severity<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{vars.item.severity.itemValue}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Due Date<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{arrow.get(vars.item.breachNotifyDueDate).to(vars.timezone).format('YYYY-MM-DD HH:mm:ss')}}<\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<p>&nbsp;<\/p>",
+                    "subject": "[URGENT] SLA Warning: Compliance Record ID #{{vars.item.id}} is about to breach SLA",
+                    "iri_list": "",
+                    "body_type": "Rich Text",
+                    "file_name": "",
+                    "file_path": ""
+                },
+                "version": "2.4.3",
+                "for_each": {
+                    "item": "{{vars.steps.Find_Records_4hrs_Due_Date}}",
+                    "parallel": false,
+                    "condition": ""
+                },
+                "from_str": "admin@example.com",
+                "connector": "smtp",
+                "operation": "send_email_new",
+                "operationTitle": "Send Email (Advanced)",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "840",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
+            "group": null,
+            "uuid": "53356a14-ddc3-4acb-9f85-927d538867c0"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "SLA Breached Notification",
+            "description": null,
+            "arguments": {
+                "when": "{{vars.steps.Find_Records_SLA_Breached | length > 0}}",
+                "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
+                "params": {
+                    "cc": "",
+                    "to": "{% if globalVars.Demo_mode %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.item.assignedTo.email}}{% endif %}",
+                    "bcc": "",
+                    "from": "{{globalVars.Default_Email}}",
+                    "type": "Manual Input",
+                    "content": "<p>Dear {{vars.item.assignedTo.firstname}},<\/p>\n<p>You are receiving this email as the SLA for the GDPR Assessment record assigned to you is <span data-dobid=\"hdw\">violate<\/span>d.<\/p>\n<table style=\"border-collapse: collapse;\" border=\"1\">\n<tbody>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record ID<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">#{{vars.item.id}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record Title<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{vars.item.name}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record Link<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\"><a rel=\"noopener\" target=\"_blank\" href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.item.uuid}}\"><em>Click Here<\/em><\/a><\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Severity<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{vars.item.severity.itemValue}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Due Date<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{arrow.get(vars.item.breachNotifyDueDate).to(vars.timezone).format('YYYY-MM-DD HH:mm:ss')}}<\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<p>&nbsp;<\/p>",
+                    "subject": "[URGENT] SLA Violation: Compliance Record ID #{{vars.item.id}}",
+                    "iri_list": "",
+                    "body_type": "Rich Text",
+                    "file_name": "",
+                    "file_path": ""
+                },
+                "version": "2.4.3",
+                "for_each": {
+                    "item": "{{vars.steps.Find_Records_SLA_Breached}}",
+                    "parallel": false,
+                    "condition": ""
+                },
+                "from_str": "admin@example.com",
+                "connector": "smtp",
+                "operation": "send_email_new",
+                "operationTitle": "Send Email (Advanced)",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "975",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
+            "group": null,
+            "uuid": "36cdf048-f8d9-413b-9840-888ea44e1f57"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/41cc6132-df9c-431c-9b30-cbca8d262340",
+            "sourceStep": "\/api\/3\/workflow_steps\/04331884-eb61-4eb2-82f3-6cabf1d19a1c",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "07f64f94-ec82-4883-90a6-c2b3108310a8"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Find Records 24hrs Due Date -> Copy 1 of Find Records 24hrs Due Date",
+            "targetStep": "\/api\/3\/workflow_steps\/5708388f-7135-460f-ad10-3553a4835a22",
+            "sourceStep": "\/api\/3\/workflow_steps\/39f071b4-463f-4b3a-9aec-fe64e8baf4c8",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "12c00f72-99f2-42de-80ac-59670ebef134"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy of Fetch Records 24hrs Due Date -> Fetch Records 24hrs Due Date",
+            "targetStep": "\/api\/3\/workflow_steps\/39f071b4-463f-4b3a-9aec-fe64e8baf4c8",
+            "sourceStep": "\/api\/3\/workflow_steps\/05e7da76-4e2a-4ae6-8748-ddeaf4bc16ba",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "fcda636f-029b-4d03-b2d9-8f0dd53c128a"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Find Records Due Date Breached -> SLA Warning Reminder 1",
+            "targetStep": "\/api\/3\/workflow_steps\/031e5ab8-8194-464d-9354-7293e5036a06",
+            "sourceStep": "\/api\/3\/workflow_steps\/5708388f-7135-460f-ad10-3553a4835a22",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "fabedc72-2371-49fd-ad3e-4606c38ed07a"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "SLA Warning when 24 Hrs Remaining -> SLA Warning when 4 Hrs Remaining",
+            "targetStep": "\/api\/3\/workflow_steps\/53356a14-ddc3-4acb-9f85-927d538867c0",
+            "sourceStep": "\/api\/3\/workflow_steps\/031e5ab8-8194-464d-9354-7293e5036a06",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "e0efdfc8-209b-4021-94d9-ac497259e2b5"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Configuration -> Find Records 4hrs Due Date",
+            "targetStep": "\/api\/3\/workflow_steps\/05e7da76-4e2a-4ae6-8748-ddeaf4bc16ba",
+            "sourceStep": "\/api\/3\/workflow_steps\/41cc6132-df9c-431c-9b30-cbca8d262340",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "3c5f790b-ce56-43e6-bb85-af75f0663119"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "SLA Warning when 4 Hrs Remaining -> Copy of Copy of SLA Warning when 24 Hrs Remaining",
+            "targetStep": "\/api\/3\/workflow_steps\/36cdf048-f8d9-413b-9840-888ea44e1f57",
+            "sourceStep": "\/api\/3\/workflow_steps\/53356a14-ddc3-4acb-9f85-927d538867c0",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "29aea77e-475b-4873-9b91-a3c93ec8d9fa"
+        }
+    ],
+    "groups": [],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "a6ad71ed-a294-4f99-ab19-9070fdb098fd",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [
+        "Scheduled"
+    ]
+}

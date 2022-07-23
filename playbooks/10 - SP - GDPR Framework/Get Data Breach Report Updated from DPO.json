@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "Get Updated Data Breach Report from DPO",
+    "name": "Get Data Breach Report Updated from DPO",
     "aliasName": null,
     "tag": null,
     "description": "Get new\/updated data breach report from Data Protection Officer(DPO)",
@@ -21,6 +21,7 @@
             "description": null,
             "arguments": {
                 "route": "8518df58-b563-46aa-bccb-f20c32350c3f",
+                "title": "Get Updated Report",
                 "resources": [
                     "tasks"
                 ],
@@ -38,14 +39,18 @@
                         "logic": "AND",
                         "filters": [
                             {
-                                "type": "object",
-                                "field": "type",
-                                "value": "\/api\/3\/picklists\/c3089323-0afa-4813-a819-067eab62d335",
-                                "_value": {
-                                    "@id": "\/api\/3\/picklists\/c3089323-0afa-4813-a819-067eab62d335",
-                                    "itemValue": "Update Breach Report"
-                                },
-                                "operator": "eq"
+                                "type": "array",
+                                "field": "recordTags",
+                                "value": [
+                                    "\/api\/3\/tags\/Update Breach Report"
+                                ],
+                                "module": "recordTags",
+                                "display": "",
+                                "operator": "in_all",
+                                "template": "tags",
+                                "OPERATOR_KEY": "$",
+                                "previousOperator": "in_all",
+                                "previousTemplate": "tags"
                             }
                         ]
                     }
@@ -58,6 +63,7 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "group": null,
             "uuid": "028287bc-10b4-40d0-bec2-b33395ddba29"
         },
         {
@@ -73,11 +79,12 @@
             "top": "165",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
             "uuid": "f992a856-1b6d-42e6-96b8-4dfbbc41d9c3"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Get Incident ID",
+            "name": "Get Compliance Record ID",
             "description": null,
             "arguments": {
                 "query": {
@@ -94,24 +101,25 @@
                         }
                     ],
                     "__selectFields": [
-                        "incidents"
+                        "dataCompliances"
                     ]
                 },
                 "module": "tasks?$limit=30&$relationships=true",
                 "checkboxFields": true,
                 "step_variables": {
-                    "dpaEmail": "{{vars.result[0].incidents[0].dPAEmail}}",
-                    "dpoEmail": "{{vars.result[0].incidents[0].dPOEmail}}",
-                    "incidentID": "{{vars.result[0].incidents[0].id}}",
-                    "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}",
-                    "placeholder": "{% for item in vars.result[0].incidents[0].description.split('\\n') %}\n{% if loop.index == 9 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
-                    "incidentName": "{{vars.result[0].incidents[0].name}}"
+                    "dpaEmail": "{{vars.result[0].dataCompliances[0].dPAEmail}}",
+                    "dpoEmail": "{{vars.result[0].dataCompliances[0].dPOEmail}}",
+                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if loop.index == 9 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
+                    "complianceID": "{{vars.result[0].dataCompliances[0].id}}",
+                    "complianceIRI": "{{vars.result[0].dataCompliances[0]['@id']}}",
+                    "complianceName": "{{vars.result[0].dataCompliances[0].name}}"
                 }
             },
             "status": null,
             "top": "300",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
             "uuid": "98159dc5-7b16-40de-931b-429251d96de5"
         },
         {
@@ -123,7 +131,7 @@
                 "input": {
                     "schema": {
                         "title": "Update Data Breach Report",
-                        "description": "Hi {{vars.steps.Get_Incident_ID[0].incidents[0].dPOName.split(' ')[0]}},\n\nAs you have rejected previous draft of report. Please make necessary changes in the Data Breach Report as required.",
+                        "description": "Hi {{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].dPOName.split(' ')[0]}},\n\nAs you have rejected previous draft of report. Please make necessary changes in the Data Breach Report as required.",
                         "inputVariables": [
                             {
                                 "name": "companyName",
@@ -133,8 +141,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].companyName}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyName}}",
                                 "_previousName": "companyNam",
                                 "useRecordFieldDefault": false
                             },
@@ -146,8 +154,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].companySize}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companySize}}",
                                 "_previousName": "companySi",
                                 "useRecordFieldDefault": false
                             },
@@ -159,8 +167,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].companyAddress}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyAddress}}",
                                 "_previousName": "company",
                                 "useRecordFieldDefault": false
                             },
@@ -172,8 +180,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].companyCity}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyCity}}",
                                 "_previousName": "companyC",
                                 "useRecordFieldDefault": false
                             },
@@ -185,8 +193,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].companyCountry}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyCountry}}",
                                 "_previousName": "companyCoun",
                                 "useRecordFieldDefault": false
                             },
@@ -201,12 +209,12 @@
                                 "dataType": "dynamicList",
                                 "formType": "dynamicList",
                                 "required": false,
-                                "_expanded": false,
+                                "_expanded": true,
                                 "mmdUpdate": true,
                                 "collection": false,
                                 "searchable": false,
                                 "templateUrl": "app\/components\/form\/fields\/dynamicList.html",
-                                "defaultValue": "{{(vars.steps.Get_Incident_ID[0].incidents[0].wasTheDataEncrypted | fromIRI).itemValue}}",
+                                "defaultValue": "{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasTheDataEncrypted | fromIRI).itemValue}}",
                                 "_previousName": "wasTheDataEncrypted",
                                 "lengthConstraint": true,
                                 "allowedGridColumn": false,
@@ -220,8 +228,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].whatWasTheDataFormat}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatWasTheDataFormat}}",
                                 "_previousName": "",
                                 "useRecordFieldDefault": false
                             },
@@ -233,8 +241,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].whatWasTheDataSource}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatWasTheDataSource}}",
                                 "_previousName": "",
                                 "useRecordFieldDefault": false
                             },
@@ -246,8 +254,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].whereDataWasHosted}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whereDataWasHosted}}",
                                 "_previousName": "",
                                 "useRecordFieldDefault": false
                             },
@@ -262,12 +270,12 @@
                                 "dataType": "dynamicList",
                                 "formType": "dynamicList",
                                 "required": false,
-                                "_expanded": false,
+                                "_expanded": true,
                                 "mmdUpdate": true,
                                 "collection": false,
                                 "searchable": false,
                                 "templateUrl": "app\/components\/form\/fields\/dynamicList.html",
-                                "defaultValue": "{{(vars.steps.Get_Incident_ID[0].incidents[0].wasTheExposureResolved | fromIRI).itemValue}}",
+                                "defaultValue": "{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasTheExposureResolved | fromIRI).itemValue}}",
                                 "_previousName": "",
                                 "lengthConstraint": true,
                                 "allowedGridColumn": false,
@@ -284,13 +292,13 @@
                                 "dataType": "dynamicList",
                                 "formType": "dynamicList",
                                 "required": false,
-                                "_expanded": false,
+                                "_expanded": true,
                                 "mmdUpdate": true,
                                 "collection": false,
                                 "searchable": false,
                                 "templateUrl": "app\/components\/form\/fields\/dynamicList.html",
                                 "_nameTouched": true,
-                                "defaultValue": "{{(vars.steps.Get_Incident_ID[0].incidents[0].isHarmRiskOrMisuseForeseeable | fromIRI).itemValue}}",
+                                "defaultValue": "{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].isHarmRiskOrMisuseForeseeable | fromIRI).itemValue}}",
                                 "_previousName": "isHarm,RiskOrMisuseForeseeable?",
                                 "lengthConstraint": true,
                                 "allowedGridColumn": false,
@@ -304,8 +312,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].mitigationActions}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].mitigationActions}}",
                                 "_previousName": "",
                                 "useRecordFieldDefault": false
                             },
@@ -317,8 +325,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].repercussionsOfBreach}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].repercussionsOfBreach}}",
                                 "_previousName": "",
                                 "useRecordFieldDefault": false
                             },
@@ -330,8 +338,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].causeOfDataBreach}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].causeOfDataBreach}}",
                                 "_previousName": "",
                                 "useRecordFieldDefault": false
                             },
@@ -365,8 +373,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].dataType}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].dataType}}",
                                 "_previousName": "",
                                 "useRecordFieldDefault": false
                             },
@@ -380,12 +388,12 @@
                                 "dataType": "integer",
                                 "formType": "integer",
                                 "required": false,
-                                "_expanded": false,
+                                "_expanded": true,
                                 "mmdUpdate": true,
                                 "collection": false,
                                 "searchable": true,
                                 "templateUrl": "app\/components\/form\/fields\/integer.html",
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].noOfAffectedUsers}}",
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].noOfAffectedUsers}}",
                                 "_previousName": "",
                                 "lengthConstraint": true,
                                 "allowedEncryption": false,
@@ -402,12 +410,12 @@
                                 "dataType": "integer",
                                 "formType": "integer",
                                 "required": false,
-                                "_expanded": false,
+                                "_expanded": true,
                                 "mmdUpdate": true,
                                 "collection": false,
                                 "searchable": true,
                                 "templateUrl": "app\/components\/form\/fields\/integer.html",
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].noOfAffectedDataRecords}}",
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].noOfAffectedDataRecords}}",
                                 "_previousName": "",
                                 "lengthConstraint": true,
                                 "allowedEncryption": false,
@@ -422,8 +430,8 @@
                                 "dataType": "text",
                                 "formType": "text",
                                 "required": false,
-                                "_expanded": false,
-                                "defaultValue": "{{vars.steps.Get_Incident_ID[0].incidents[0].anyAdditionalInformation}}",
+                                "_expanded": true,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].anyAdditionalInformation}}",
                                 "_previousName": "",
                                 "useRecordFieldDefault": false
                             }
@@ -435,13 +443,13 @@
                     "tags": [],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>Getting Updated Data Breach Report from DPO.<\/p>",
-                    "records": "{{vars.incidentIRI}}"
+                    "content": "<p>Getting Updated Data Breach Report from Data Protection Officer(DPO).<\/p>",
+                    "records": "{{vars.complianceIRI}}"
                 },
                 "resources": "tasks",
                 "owner_detail": {
                     "isAssigned": false,
-                    "emailRecipients": "rkhune@fortinet.com"
+                    "emailRecipients": "{% if globalVars.Demo_mode %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpoEmail}}{% endif %}"
                 },
                 "isRecordLinked": true,
                 "step_variables": [],
@@ -465,6 +473,7 @@
             "top": "435",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/fc04082a-d7dc-4299-96fb-6837b1baa0fe",
+            "group": null,
             "uuid": "a6bceef9-8233-4075-aa12-98d9e2eb375d"
         },
         {
@@ -495,9 +504,9 @@
                 },
                 "_showJson": false,
                 "operation": "Append",
-                "collection": "{{vars.incidentIRI}}",
+                "collection": "{{vars.complianceIRI}}",
                 "__recommend": [],
-                "collectionType": "\/api\/3\/incidents",
+                "collectionType": "\/api\/3\/data_compliances",
                 "fieldOperation": {
                     "recordTags": "Append"
                 },
@@ -507,6 +516,7 @@
             "top": "570",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
             "uuid": "2ddda5ac-d72f-4787-abba-081e32174e00"
         },
         {
@@ -531,6 +541,7 @@
             "top": "705",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
             "uuid": "0f758157-ede9-44f7-af51-5f185818f5c3"
         }
     ],
@@ -581,6 +592,7 @@
             "uuid": "9aa1c93d-0916-419e-a324-e0f1fbebad91"
         }
     ],
+    "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
     "uuid": "70824543-e39d-4c4d-bcf1-86300752ed5f",
     "owners": [],

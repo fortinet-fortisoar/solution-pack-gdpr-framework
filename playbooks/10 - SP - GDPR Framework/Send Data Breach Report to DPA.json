@@ -38,6 +38,7 @@
             "top": "435",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "group": null,
             "uuid": "ae5f6b3b-70ce-4271-8f4b-c57cb3c40dd2"
         },
         {
@@ -48,7 +49,7 @@
                 "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
                 "params": {
                     "cc": "",
-                    "to": "dpaEmail@example.com",
+                    "to": "{% if globalVars.Demo_mode %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpaEmail}}{% endif %}",
                     "bcc": "",
                     "from": "",
                     "type": "Manual Input",
@@ -70,6 +71,7 @@
             "top": "570",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
+            "group": null,
             "uuid": "40eac1ff-8b76-42e4-88d4-e7030caf9ce7"
         },
         {
@@ -83,6 +85,7 @@
             "top": "165",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
             "uuid": "2efd605d-779e-44a0-a8e3-cbb0f3c08b55"
         },
         {
@@ -91,6 +94,7 @@
             "description": null,
             "arguments": {
                 "route": "1ffb1f8b-0a4b-49e6-af97-71f5299eb507",
+                "title": "Notify DPA",
                 "resources": [
                     "tasks"
                 ],
@@ -108,15 +112,18 @@
                         "logic": "AND",
                         "filters": [
                             {
-                                "type": "object",
-                                "field": "type",
-                                "value": "\/api\/3\/picklists\/a8e3b530-778d-4452-a829-36254ef84bf1",
-                                "_value": {
-                                    "@id": "\/api\/3\/picklists\/a8e3b530-778d-4452-a829-36254ef84bf1",
-                                    "display": "Notify DPA",
-                                    "itemValue": "Notify DPA"
-                                },
-                                "operator": "eq"
+                                "type": "array",
+                                "field": "recordTags",
+                                "value": [
+                                    "\/api\/3\/tags\/Notify DPA"
+                                ],
+                                "module": "recordTags",
+                                "display": "",
+                                "operator": "in_all",
+                                "template": "tags",
+                                "OPERATOR_KEY": "$",
+                                "previousOperator": "in_all",
+                                "previousTemplate": "tags"
                             }
                         ]
                     }
@@ -129,11 +136,12 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "group": null,
             "uuid": "ecd60ed1-bc88-4ad3-9baf-55ecae81b0e8"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Get Incident ID",
+            "name": "Get Compliance Record ID",
             "description": null,
             "arguments": {
                 "query": {
@@ -150,24 +158,25 @@
                         }
                     ],
                     "__selectFields": [
-                        "incidents"
+                        "dataCompliances"
                     ]
                 },
                 "module": "tasks?$limit=30&$relationships=true",
                 "checkboxFields": true,
                 "step_variables": {
-                    "dpaEmail": "{{vars.result[0].incidents[0].dPAEmail}}",
-                    "incidentID": "{{vars.result[0].incidents[0].id}}",
-                    "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}",
-                    "placeholder": "{% for item in vars.result[0].incidents[0].description.split('\\n') %}\n{% if 'Notify Data Protection Authority' in item %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
-                    "incidentName": "{{vars.result[0].incidents[0].name}}",
-                    "breachNotificationDueDate": "{{vars.result[0].incidents[0].breachNotificationDueDate}}"
+                    "dpaEmail": "{{vars.result[0].dataCompliances[0].dPAEmail}}",
+                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if loop.index == 10 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
+                    "complianceID": "{{vars.result[0].dataCompliances[0].id}}",
+                    "complianceIRI": "{{vars.result[0].dataCompliances[0]['@id']}}",
+                    "complianceName": "{{vars.result[0].dataCompliances[0].name}}",
+                    "breachNotificationDueDate": "{{vars.result[0].dataCompliances[0].breachNotificationDueDate}}"
                 }
             },
             "status": null,
             "top": "300",
-            "left": "120",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
             "uuid": "c97399d1-727c-4c8d-80fb-00bc37d2b32a"
         },
         {
@@ -192,19 +201,20 @@
             "top": "705",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
             "uuid": "519f8608-8203-4c96-9ab1-545316cd844e"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Update Incident",
+            "name": "Update Compliance Record",
             "description": null,
             "arguments": {
                 "message": {
                     "tags": [],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>Data Breach Report has been sent to DPA. Resolving the incident.<\/p>",
-                    "records": "{{vars.incidentIRI}}"
+                    "content": "<p>Data Breach Report has been sent to DPA. <\/p>",
+                    "records": "{{vars.complianceIRI}}"
                 },
                 "resource": {
                     "status": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
@@ -212,9 +222,9 @@
                 },
                 "_showJson": false,
                 "operation": "Append",
-                "collection": "{{vars.incidentIRI}}",
+                "collection": "{{vars.complianceIRI}}",
                 "__recommend": [],
-                "collectionType": "\/api\/3\/incidents",
+                "collectionType": "\/api\/3\/data_compliances",
                 "fieldOperation": {
                     "recordTags": "Append"
                 },
@@ -224,6 +234,7 @@
             "top": "840",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
             "uuid": "1b231c10-7a36-49e3-bc1d-c86d1f2ca09e"
         }
     ],
@@ -275,14 +286,15 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Get Incident ID -> Generate Breach Report",
+            "name": "Get Compliance Record ID -> Generate Breach Report",
             "targetStep": "\/api\/3\/workflow_steps\/ae5f6b3b-70ce-4271-8f4b-c57cb3c40dd2",
             "sourceStep": "\/api\/3\/workflow_steps\/c97399d1-727c-4c8d-80fb-00bc37d2b32a",
             "label": null,
             "isExecuted": false,
-            "uuid": "f3928f58-28af-483f-b7f2-ee5c1a4994ee"
+            "uuid": "76d7b9bc-5c64-4394-894e-761335d1fd2c"
         }
     ],
+    "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
     "uuid": "8d679fb4-f503-4556-8a74-952ae5feed9b",
     "owners": [],
