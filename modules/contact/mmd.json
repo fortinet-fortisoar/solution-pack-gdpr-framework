@@ -1,6 +1,6 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/213553ee-b837-4ba2-ad4f-03b8f93fcc50",
+    "@id": "\/api\/3\/staging_model_metadatas\/6781adf5-3fb6-4230-8bd3-e3a5667c1f4d",
     "@type": "StagingModelMetadata",
     "type": "contact",
     "parentType": null,
@@ -24,6 +24,44 @@
     "indexable": true,
     "writable": true,
     "attributes": [
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/ff579ee3-fc0f-4179-81b0-71e3b955522b",
+            "@type": "AttributeMetadata",
+            "type": "data_compliances",
+            "name": "dataCompliances",
+            "length": null,
+            "orderIndex": 16,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "data_compliances"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "contacts",
+            "ownsRelationship": false,
+            "validation": null,
+            "bulkAction": null,
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "ff579ee3-fc0f-4179-81b0-71e3b955522b",
+            "displayName": "{{Data Compliances}}",
+            "descriptions": {
+                "singular": "Data Compliances"
+            }
+        },
         {
             "@id": "\/api\/3\/attribute_metadatas\/00f43d48-6556-4c1d-831c-36146aa3d3bc",
             "@type": "AttributeMetadata",
@@ -791,7 +829,7 @@
         "delete_primary_data_after": 60
     },
     "archivalFilters": [],
-    "uuid": "213553ee-b837-4ba2-ad4f-03b8f93fcc50",
+    "uuid": "6781adf5-3fb6-4230-8bd3-e3a5667c1f4d",
     "displayName": "{{ name }}",
     "descriptions": {
         "singular": "Contact",
