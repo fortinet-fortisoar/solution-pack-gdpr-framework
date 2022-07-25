@@ -128,13 +128,13 @@
                                                                                                                                     "name": "assignedTo",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "severity",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
@@ -145,13 +145,13 @@
                                                                                                                                     "name": "status",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "regulatoryCompliance",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
@@ -175,19 +175,19 @@
                                                                                                                                     "name": "wasPersonalDataAffected",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "isHarmRiskOrMisuseForeseeable",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "wasTheExposureResolved",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
@@ -198,19 +198,19 @@
                                                                                                                                     "name": "wasTheDataEncrypted",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "whatWasTheDataFormat",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "whatWasTheDataSource",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
@@ -235,19 +235,19 @@
                                                                                                                                     "name": "companyName",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "companyAddress",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "companyCountry",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
@@ -258,19 +258,19 @@
                                                                                                                                     "name": "companySize",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "companyCity",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "postalCode",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
@@ -295,31 +295,31 @@
                                                                                                                                     "name": "causeOfDataBreach",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "dataType",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "repercussionsOfBreach",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "noOfAffectedUsers",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "affectedUsersEmails",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
@@ -330,31 +330,31 @@
                                                                                                                                     "name": "typeOfDataBreach",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "whereDataWasHosted",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "mitigationActions",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "noOfAffectedDataRecords",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "anyAdditionalInformation",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
@@ -445,19 +445,19 @@
                                                                                                                                     "name": "isValidBreach",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "isDPIARequired",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "reasonToPerformDPIA",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
@@ -468,25 +468,25 @@
                                                                                                                                     "name": "impactSeverityOnAffectedUsers",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "measuresToReduceFutureRisks",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "summaryOfDPOAdvice",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
                                                                                                                         }
                                                                                                                     ],
-                                                                                                                    "style": "display-inline-block"
+                                                                                                                    "style": ""
                                                                                                                 }
                                                                                                             ],
                                                                                                             "title": "DPO Assessment Details"
@@ -588,7 +588,8 @@
                                                                             }
                                                                         },
                                                                         "icon": "fa fa-database",
-                                                                        "show": true
+                                                                        "show": true,
+                                                                        "visible": true
                                                                     },
                                                                     {
                                                                         "title": "Playbooks",
@@ -600,7 +601,8 @@
                                                                             }
                                                                         },
                                                                         "icon": "icon icon-playbooks",
-                                                                        "show": false
+                                                                        "show": false,
+                                                                        "visible": true
                                                                     },
                                                                     {
                                                                         "title": "Audit Logs",
@@ -629,7 +631,8 @@
                                                                             }
                                                                         },
                                                                         "icon": "fa fa-eye",
-                                                                        "show": false
+                                                                        "show": false,
+                                                                        "visible": true
                                                                     }
                                                                 ],
                                                                 "isPrimaryTab": true
@@ -683,7 +686,8 @@
                                                 }
                                             },
                                             "show": true,
-                                            "icon": "fa fa-exchange"
+                                            "icon": "fa fa-exchange",
+                                            "visible": true
                                         },
                                         {
                                             "title": "Tasks",
@@ -708,7 +712,8 @@
                                                 }
                                             },
                                             "icon": "fa fa-tasks",
-                                            "show": false
+                                            "show": false,
+                                            "visible": true
                                         },
                                         {
                                             "title": "Access Control",
@@ -720,7 +725,8 @@
                                                 }
                                             },
                                             "icon": "icon icon-access-control",
-                                            "show": false
+                                            "show": false,
+                                            "visible": true
                                         }
                                     ],
                                     "wid": "86e88cd0-b5ab-4bad-8d06-2c1b82eeb1f7"

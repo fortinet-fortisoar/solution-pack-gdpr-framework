@@ -18,16 +18,16 @@
         "default_value": "{{arrow.utcnow().timestamp}}"
     },
     {
-        "id": 7,
-        "name": "Server_fqhn",
-        "value": "master.fortisoar.com",
-        "default_value": null
-    },
-    {
         "id": 17,
         "name": "Demo_mode",
         "value": "true",
         "default_value": "true"
+    },
+    {
+        "id": 7,
+        "name": "Server_fqhn",
+        "value": "master.fortisoar.com",
+        "default_value": null
     },
     {
         "id": 2,

@@ -13,43 +13,8 @@
     "synchronous": false,
     "collection": "\/api\/3\/workflow_collections\/b323648c-599a-4cfc-9b65-8c493f1a7e12",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/04331884-eb61-4eb2-82f3-6cabf1d19a1c",
+    "triggerStep": "\/api\/3\/workflow_steps\/d05f11fd-1561-4909-a7fe-5812f5a6be9e",
     "steps": [
-        {
-            "@type": "WorkflowStep",
-            "name": "Start",
-            "description": null,
-            "arguments": {
-                "route": "2a47d3b2-d406-499d-93d3-bc412a71e23d",
-                "resources": [
-                    "data_compliances"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                    "input": {
-                        "params": [],
-                        "records": "{{vars.input.records}}"
-                    }
-                },
-                "displayConditions": {
-                    "data_compliances": {
-                        "sort": [],
-                        "limit": 30,
-                        "logic": "AND",
-                        "filters": []
-                    }
-                },
-                "executeButtonText": "Execute",
-                "noRecordExecution": false,
-                "singleRecordExecution": false
-            },
-            "status": null,
-            "top": "30",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-            "group": null,
-            "uuid": "04331884-eb61-4eb2-82f3-6cabf1d19a1c"
-        },
         {
             "@type": "WorkflowStep",
             "name": "Configuration",
@@ -376,18 +341,27 @@
             "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
             "group": null,
             "uuid": "36cdf048-f8d9-413b-9840-888ea44e1f57"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "step_variables": {
+                    "input": {
+                        "params": []
+                    }
+                }
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+            "group": null,
+            "uuid": "d05f11fd-1561-4909-a7fe-5812f5a6be9e"
         }
     ],
     "routes": [
-        {
-            "@type": "WorkflowRoute",
-            "name": "Start -> Configuration",
-            "targetStep": "\/api\/3\/workflow_steps\/41cc6132-df9c-431c-9b30-cbca8d262340",
-            "sourceStep": "\/api\/3\/workflow_steps\/04331884-eb61-4eb2-82f3-6cabf1d19a1c",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "07f64f94-ec82-4883-90a6-c2b3108310a8"
-        },
         {
             "@type": "WorkflowRoute",
             "name": "Find Records 24hrs Due Date -> Copy 1 of Find Records 24hrs Due Date",
@@ -441,6 +415,15 @@
             "label": null,
             "isExecuted": false,
             "uuid": "29aea77e-475b-4873-9b91-a3c93ec8d9fa"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/41cc6132-df9c-431c-9b30-cbca8d262340",
+            "sourceStep": "\/api\/3\/workflow_steps\/d05f11fd-1561-4909-a7fe-5812f5a6be9e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "c9153a22-7118-4d6d-a435-66419d1ef610"
         }
     ],
     "groups": [],
