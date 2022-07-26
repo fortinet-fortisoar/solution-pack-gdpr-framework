@@ -24,15 +24,15 @@
         "default_value": "true"
     },
     {
-        "id": 7,
-        "name": "Server_fqhn",
-        "value": "master.fortisoar.com",
-        "default_value": null
-    },
-    {
         "id": 2,
         "name": "Default_Email",
         "value": "noreply@example.com",
+        "default_value": null
+    },
+    {
+        "id": 7,
+        "name": "Server_fqhn",
+        "value": "master.fortisoar.com",
         "default_value": null
     }
 ]

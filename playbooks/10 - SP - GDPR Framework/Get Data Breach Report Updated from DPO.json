@@ -4,7 +4,7 @@
     "name": "Get Data Breach Report Updated from DPO",
     "aliasName": null,
     "tag": null,
-    "description": "Get new\/updated data breach report from Data Protection Officer(DPO)",
+    "description": "Get updated data breach report from Data Protection Officer(DPO)",
     "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
@@ -21,7 +21,7 @@
             "description": null,
             "arguments": {
                 "route": "8518df58-b563-46aa-bccb-f20c32350c3f",
-                "title": "Get Updated Report",
+                "title": "Get Updated Breach Report",
                 "resources": [
                     "tasks"
                 ],

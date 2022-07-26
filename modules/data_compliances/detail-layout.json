@@ -360,7 +360,7 @@
                                                                                                                             "style": "col-lg-6"
                                                                                                                         }
                                                                                                                     ],
-                                                                                                                    "style": "display-inline-block"
+                                                                                                                    "style": ""
                                                                                                                 }
                                                                                                             ],
                                                                                                             "title": "Data Breach Risk Assessment"
@@ -373,6 +373,29 @@
                                                                                                             "rows": [
                                                                                                                 {
                                                                                                                     "columns": [
+                                                                                                                        {
+                                                                                                                            "fields": [
+                                                                                                                                {
+                                                                                                                                    "name": "dPOName",
+                                                                                                                                    "highlightMode": true,
+                                                                                                                                    "linky": true,
+                                                                                                                                    "readOnly": false
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "name": "dPOEmail",
+                                                                                                                                    "highlightMode": true,
+                                                                                                                                    "linky": true,
+                                                                                                                                    "readOnly": false
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "name": "dPOTelephone",
+                                                                                                                                    "highlightMode": true,
+                                                                                                                                    "linky": true,
+                                                                                                                                    "readOnly": false
+                                                                                                                                }
+                                                                                                                            ],
+                                                                                                                            "style": "col-lg-6"
+                                                                                                                        },
                                                                                                                         {
                                                                                                                             "fields": [
                                                                                                                                 {
@@ -395,29 +418,6 @@
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "dataRegulator",
-                                                                                                                                    "highlightMode": true,
-                                                                                                                                    "linky": true,
-                                                                                                                                    "readOnly": false
-                                                                                                                                }
-                                                                                                                            ],
-                                                                                                                            "style": "col-lg-6"
-                                                                                                                        },
-                                                                                                                        {
-                                                                                                                            "fields": [
-                                                                                                                                {
-                                                                                                                                    "name": "dPOName",
-                                                                                                                                    "highlightMode": true,
-                                                                                                                                    "linky": true,
-                                                                                                                                    "readOnly": false
-                                                                                                                                },
-                                                                                                                                {
-                                                                                                                                    "name": "dPOEmail",
-                                                                                                                                    "highlightMode": true,
-                                                                                                                                    "linky": true,
-                                                                                                                                    "readOnly": false
-                                                                                                                                },
-                                                                                                                                {
-                                                                                                                                    "name": "dPOTelephone",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
                                                                                                                                     "readOnly": false
@@ -685,7 +685,7 @@
                                                     "includes": []
                                                 }
                                             },
-                                            "show": true,
+                                            "show": false,
                                             "icon": "fa fa-exchange",
                                             "visible": true
                                         },
@@ -712,7 +712,7 @@
                                                 }
                                             },
                                             "icon": "fa fa-tasks",
-                                            "show": false,
+                                            "show": true,
                                             "visible": true
                                         },
                                         {

@@ -21,18 +21,20 @@
             "description": null,
             "arguments": {
                 "params": {
-                    "data": "[\n    {\n        \"Company Name\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyName}}\",\n        \"Company Size\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companySize}}\",\n        \"Company Address\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyAddress}}\",\n        \"Company City\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyCity}}\",\n        \"Company Country\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyCountry}}\",\n        \"Was personal data affected?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasPersonalDataAffected | fromIRI).itemValue}}\",\n        \"Was the data encrypted?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasTheDataEncrypted | fromIRI).itemValue}}\",\n        \"What was the data format?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatWasTheDataFormat}}\",\n        \"What was the data source?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatWasTheDataSource}}\",\n        \"Where data was hosted?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whereDataWasHosted}}\",\n        \"Was the exposure resolved?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasTheExposureResolved | fromIRI).itemValue}}\",\n        \"Is harm, risk or misuse foreseeable?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].isHarmRiskOrMisuseForeseeable | fromIRI).itemValue}}\",\n\"What mitigation actions have been implemented?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].mitigationActions}}\",\n        \"What are the repercussions of breach?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].repercussionsOfBreach}}\",\n        \"Cause of Data Breach\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].causeOfDataBreach}}\",\n        \"Type of Data Breach\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].typeOfDataBreach | fromIRI).itemValue}}\",\n        \"Data Type\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].dataType}}\",\n        \"No. of Affected Users\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].noOfAffectedUsers}}\",\n        \"No. of Affected Data Records\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].noOfAffectedDataRecords}}\",\n        \"Affected Users Emails\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].affectedUsersEmails}}\",\n        \"Any Additional Information\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].anyAdditionalInformation}}\"\n    }\n]",
+                    "data": "[\n    {\n        \"Company Name\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyName}}\",\n        \"Company Size\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companySize}}\",\n        \"Company Address\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyAddress}}\",\n        \"Company City\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyCity}}\",\n        \"Company Country\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyCountry}}\",\n        \"Was personal data affected?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasPersonalDataAffected | fromIRI).itemValue}}\",\n        \"Was the data encrypted?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasTheDataEncrypted | fromIRI).itemValue}}\",\n        \"What was the data format?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatWasTheDataFormat}}\",\n        \"What was the data source?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatWasTheDataSource}}\",\n        \"Where data was hosted?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whereDataWasHosted}}\",\n        \"Was the exposure resolved?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasTheExposureResolved | fromIRI).itemValue}}\",\n        \"Is data misuse foreseeable?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].isHarmRiskOrMisuseForeseeable | fromIRI).itemValue}}\",\n\"Mitigation Actions\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].mitigationActions}}\",\n        \"Repercussions of Breach?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].repercussionsOfBreach}}\",\n        \"Cause of Data Breach\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].causeOfDataBreach}}\",\n        \"Type of Data Breach\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].typeOfDataBreach | fromIRI).itemValue}}\",\n        \"Nature of the Affected Data\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].dataType}}\",\n        \"No. of Affected Users\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].noOfAffectedUsers}}\",\n        \"No. of Affected Data Records\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].noOfAffectedDataRecords}}\",\n        \"Affected Users Emails\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].affectedUsersEmails}}\",\n        \"Any Additional Information\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].anyAdditionalInformation}}\"\n    }\n]",
                     "display": "Vertical",
                     "styling": false,
                     "template": "Stylized with row selection",
                     "row_fields": ""
                 },
                 "message": {
-                    "tags": [],
+                    "tags": [
+                        "\/api\/3\/tags\/GDPR"
+                    ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>The Data Breach Report has been sent to DPO for reviewal and approval.<\/p>",
-                    "records": "{{vars.incidentIRI}}"
+                    "content": "<p>The Data Breach Report has been sent to DPO for review.<\/p>",
+                    "records": "{{vars.incidentIRI}},{{vars.complianceIRI}}"
                 },
                 "version": "3.2.1",
                 "connector": "cyops_utilities",
@@ -55,7 +57,8 @@
             "description": null,
             "arguments": {
                 "description": "[]",
-                "decisionList": "[\"Yes\", \"No\", \"Unknown\"]"
+                "decisionList": "[\"Yes\", \"No\", \"Unknown\"]",
+                "affectedIndividualsList": "[]"
             },
             "status": null,
             "top": "165",
@@ -543,7 +546,7 @@
                     "complianceID": "{{vars.result[0].dataCompliances[0].id}}",
                     "complianceIRI": "{{vars.result[0].dataCompliances[0]['@id']}}",
                     "complianceName": "{{vars.result[0].dataCompliances[0].name}}",
-                    "affectedUsersList": "{{vars.result[0].dataCompliances[0].affectedUsersEmails | join(',')}}",
+                    "affectedUsersTempList": "{{vars.result[0].dataCompliances[0].affectedUsersEmails.split(',')}}",
                     "breachNotificationDueDate": "{{vars.result[0].dataCompliances[0].breachNotifyDueDate}}"
                 }
             },
@@ -560,7 +563,7 @@
             "description": null,
             "arguments": {
                 "resource": {
-                    "isValidBreach": "{% if 'Valid Breach' == vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isValidBreach %}{{\"YesNo Picklist\" | picklist(\"Yes\", \"@id\")}}{% else %}{{\"YesNo Picklist\" | picklist(\"No\", \"@id\")}}{% endif %}",
+                    "isValidBreach": "{% if 'Valid Breach' == vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isValidBreach %}{{\"ChooseYesOrNo\" | picklist(\"Yes\", \"@id\")}}{% else %}{{\"ChooseYesOrNo\" | picklist(\"No\", \"@id\")}}{% endif %}",
                     "isDPIARequired": "{{vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isDPIARequired}}",
                     "summaryOfDPOAdvice": "{{vars.steps.Send_Risk_Assessment_Details_to_DPO.input.summaryOfDPOAdvice}}",
                     "reasonToPerformDPIA": "{{vars.steps.Send_Risk_Assessment_Details_to_DPO.input.reasonToPerformDPIA}}",
@@ -613,19 +616,21 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Communicate Affected Users Task",
+            "name": "Create Task to Notify Affected Users",
             "description": null,
             "arguments": {
                 "when": "{{vars.steps.Send_Risk_Assessment_Details_to_DPO.input.impactSeverityOnAffectedUsers in ['High', 'Medium']}}",
                 "message": {
-                    "tags": [],
+                    "tags": [
+                        "\/api\/3\/tags\/GDPR"
+                    ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>Created <a title=\"Task #{{vars.result.id}} - {{vars.result.name}}\" href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/tasks\/{{vars.result.uuid}}\">Task #{{vars.result.id}} - {{vars.result.name}}<\/a> to Notify Affected Individuals about Data Breach.<\/p>\n<p>&nbsp;<\/p>\n<p>&nbsp;<\/p>",
+                    "content": "<p>Created <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/tasks\/{{vars.result.uuid}}\" title=\"Task #{{vars.result.id}} - {{vars.result.name}}\">Task #{{vars.result.id}} - {{vars.result.name}}<\/a> to Notify Affected Individuals about Data Breach.<\/p>",
                     "records": "{{vars.complianceIRI}}"
                 },
                 "resource": {
-                    "name": "Communicate Affected Users of Breach",
+                    "name": "Notify Affected Users",
                     "type": "\/api\/3\/picklists\/d09e2bbf-bc2a-4d32-bf35-2a709f5a7b67",
                     "dueBy": "{{vars.breachNotificationDueDate}}",
                     "tenant": "\/api\/3\/tenants\/b3a700f7-00be-4ef9-90c6-3c8fe6e1be63",
@@ -635,7 +640,7 @@
                     "recordTags": [
                         "\/api\/3\/tags\/Notify Affected Individuals"
                     ],
-                    "description": "Below individuals are found to be at HIGH Risk by the data breach and need to be communicated about the same.\n\n\n\nClick on **Notify Affected Users** ",
+                    "description": "Below individuals are found to be at HIGH Risk by the data breach and need to be communicated about the same.\n<br>\n| Sr. No. | Affected Individuals |\n| --- | --- |\n{{vars.affectedIndividualsList | join('\\n')}}\n<br>\nClick on **\"Notify Affected Individuals\"** ",
                     "assignedOnDate": "{{arrow.utcnow().int_timestamp}}",
                     "dataCompliances": "{{vars.complianceIRI}}",
                     "assignedToPerson": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce"
@@ -653,7 +658,7 @@
             },
             "status": null,
             "top": "1380",
-            "left": "120",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
             "uuid": "18efdf0e-6251-435e-b80c-81c30867fd32"
@@ -669,6 +674,9 @@
                     "content": "<p>DPO assessment of Data Breach Report is completed.<\/p>\n<p>&nbsp;<\/p>\n<p><span style=\"color: #236fa1;\"><em><strong>DPO Assessment Summary<\/strong><\/em><\/span><\/p>\n<ul>\n<li>This as a Valid Data Breach Incident<\/li>\n<li>{% if vars.steps.Send_Risk_Assessment_Details_to_DPO.input.impactSeverityOnAffectedUsers in ['High', 'Medium'] %}Affected individuals due to this breach are at <strong><span style=\"color: #ba372a;\">High<\/span><\/strong> risk. Hence, need to be communicate about the breach.{% else %}Affected individuals due to this breach are at <strong><span style=\"color: #2dc26b;\">Low<\/span><\/strong> risk.{% endif %}<\/li>\n<li>{% if vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isReportDpoApproved == 'Approved' %}Data Breach Report has been <span style=\"color: #2dc26b;\"><strong>Approved<\/strong><\/span> by DPO{% else %}Data Breach Report has been <span style=\"color: #ba372a;\"><strong>Rejected<\/strong><\/span> by DPO{% endif %}<\/li>\n<\/ul>",
                     "__replace": "",
                     "incidents": "{{vars.incidentIRI}}",
+                    "recordTags": [
+                        "\/api\/3\/tags\/GDPR"
+                    ],
                     "isImportant": false,
                     "peopleUpdated": false,
                     "dataCompliances": "{{vars.complianceIRI}}"
@@ -691,18 +699,30 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Send Report to DPA Task",
+            "name": "Create Task to Send Report to DPA",
             "description": null,
             "arguments": {
+                "message": {
+                    "tags": [
+                        "\/api\/3\/tags\/GDPR"
+                    ],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<p>Created <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/tasks\/{{vars.result.uuid}}\" title=\"Task #{{vars.result.id}} - {{vars.result.name}}\">Task #{{vars.result.id}} - {{vars.result.name}}<\/a> to send data breach report to Data Protection Authority.<\/p>",
+                    "records": "{{vars.complianceIRI}}"
+                },
                 "resource": {
                     "name": "Notify Data Protection Authority",
                     "type": "\/api\/3\/picklists\/62322a54-a069-4f74-a917-3d864f24524a",
+                    "dueBy": "{{vars.breachNotificationDueDate}}",
                     "priority": "\/api\/3\/picklists\/90088ebe-0a7d-4aa6-9c9c-93b937a4e4f8",
                     "__replace": "",
                     "recordTags": [
                         "\/api\/3\/tags\/Notify DPA"
                     ],
-                    "dataCompliances": "{{vars.complianceIRI}}"
+                    "assignedOnDate": "{{arrow.utcnow().int_timestamp}}",
+                    "dataCompliances": "{{vars.complianceIRI}}",
+                    "assignedToPerson": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce"
                 },
                 "_showJson": false,
                 "operation": "Overwrite",
@@ -728,7 +748,9 @@
             "description": null,
             "arguments": {
                 "message": {
-                    "tags": [],
+                    "tags": [
+                        "\/api\/3\/tags\/GDPR"
+                    ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
                     "content": "<p>DPO has confirmed an Invalid Breach. The Incident can be closed now.<\/p>",
@@ -767,7 +789,7 @@
                 "operation": "Append",
                 "collection": "{{vars.complianceIRI}}",
                 "__recommend": [],
-                "collectionType": "\/api\/3\/incidents",
+                "collectionType": "\/api\/3\/data_compliances",
                 "fieldOperation": {
                     "recordTags": "Append"
                 },
@@ -782,10 +804,19 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Get Breach Report Updated by DPO",
+            "name": "Create Task to Update Breach Report",
             "description": null,
             "arguments": {
                 "when": "{{vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isReportDpoApproved == 'Rejected'}}",
+                "message": {
+                    "tags": [
+                        "\/api\/3\/tags\/GDPR"
+                    ],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<p>Created <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/tasks\/{{vars.result.uuid}}\" title=\"Task #{{vars.result.id}} - {{vars.result.name}}\">Task #{{vars.result.id}} - {{vars.result.name}}<\/a> to get updated data breach report from Data Protection Officer.<\/p>",
+                    "records": "{{vars.complianceIRI}}"
+                },
                 "resource": {
                     "name": "Get Updated Report from DPO",
                     "type": "\/api\/3\/picklists\/a6064def-fc9d-4d52-ac45-e0a55679c140",
@@ -796,9 +827,10 @@
                     "recordTags": [
                         "\/api\/3\/tags\/Update Breach Report"
                     ],
-                    "description": "The Data Breach Report was **Rejected** by DPO. Get updated data breach report from DPO.\n\nClick on **\"Get Updated Report\"** \n\n\n",
+                    "description": "The Data Breach Report was **Rejected** by DPO. Get updated data breach report from DPO.\n\nClick on **\"Get Updated Breach Report\"** \n\n\n",
                     "assignedOnDate": "{{arrow.utcnow().int_timestamp}}",
-                    "dataCompliances": "{{vars.complianceIRI}}"
+                    "dataCompliances": "{{vars.complianceIRI}}",
+                    "assignedToPerson": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce"
                 },
                 "_showJson": false,
                 "operation": "Overwrite",
@@ -820,7 +852,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Get Incident ID",
+            "name": "Get Parent Incident ID",
             "description": null,
             "arguments": {
                 "query": {
@@ -843,6 +875,7 @@
                 "module": "data_compliances?$limit=30&$relationships=true",
                 "checkboxFields": true,
                 "step_variables": {
+                    "temp": "{% for item in vars.affectedUsersTempList %}{% set _dummy = \"|\" + loop.index | string + \"|\" + item + \"|\" %}{{vars.affectedIndividualsList.append(_dummy)}}{% endfor %}",
                     "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}"
                 }
             },
@@ -979,7 +1012,7 @@
             "sourceStep": "\/api\/3\/workflow_steps\/bd094bb8-ce07-4434-be76-1a1b43d234cf",
             "label": null,
             "isExecuted": false,
-            "uuid": "92ede202-96fa-49ff-810a-e22fe9e5a764"
+            "uuid": "4cfd0e8d-23e6-42f8-9ecc-32b294b998a9"
         }
     ],
     "groups": [],
