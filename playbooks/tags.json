@@ -2,6 +2,6 @@
     "Scheduled",
     "Referenced",
     "PostUpdate",
-    "ManualTrigger",
-    "PostCreate"
+    "PostCreate",
+    "ManualTrigger"
 ]

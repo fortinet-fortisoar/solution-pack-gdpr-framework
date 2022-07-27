@@ -292,13 +292,12 @@
                                                                                                                         {
                                                                                                                             "fields": [
                                                                                                                                 {
-                                                                                                                                    "name": "causeOfDataBreach",
+                                                                                                                                    "name": "whatHappened",
                                                                                                                                     "highlightMode": true,
-                                                                                                                                    "linky": true,
-                                                                                                                                    "readOnly": true
+                                                                                                                                    "readOnly": false
                                                                                                                                 },
                                                                                                                                 {
-                                                                                                                                    "name": "dataType",
+                                                                                                                                    "name": "typeOfDataBreach",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
                                                                                                                                     "readOnly": true
@@ -327,13 +326,13 @@
                                                                                                                         {
                                                                                                                             "fields": [
                                                                                                                                 {
-                                                                                                                                    "name": "typeOfDataBreach",
+                                                                                                                                    "name": "causeOfDataBreach",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
                                                                                                                                     "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
-                                                                                                                                    "name": "whereDataWasHosted",
+                                                                                                                                    "name": "dataType",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
                                                                                                                                     "readOnly": true
@@ -346,6 +345,12 @@
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "noOfAffectedDataRecords",
+                                                                                                                                    "highlightMode": true,
+                                                                                                                                    "linky": true,
+                                                                                                                                    "readOnly": true
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "name": "whereDataWasHosted",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
                                                                                                                                     "readOnly": true

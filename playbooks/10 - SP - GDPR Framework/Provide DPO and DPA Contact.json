@@ -38,7 +38,9 @@
             "description": null,
             "arguments": {
                 "message": {
-                    "tags": [],
+                    "tags": [
+                        "\/api\/3\/tags\/GDPR"
+                    ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
                     "content": "<p>DPO and DPA contact details have been collected.<\/p>",

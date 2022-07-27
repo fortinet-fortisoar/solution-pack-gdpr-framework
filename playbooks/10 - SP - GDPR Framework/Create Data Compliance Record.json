@@ -132,10 +132,12 @@
             "description": null,
             "arguments": {
                 "message": {
-                    "tags": [],
+                    "tags": [
+                        "\/api\/3\/tags\/GDPR"
+                    ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>Initiating GDPR Data Base Risk Assessment.<\/p>",
+                    "content": "<p>Initiating Data Breach Risk Assessment.<\/p>",
                     "records": "{{vars.input.records[0]['@id']}}"
                 },
                 "resource": "incidents",
@@ -180,7 +182,7 @@
                 }
             },
             "status": null,
-            "top": "20",
+            "top": "30",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
             "group": null,
@@ -192,7 +194,7 @@
             "description": null,
             "arguments": [],
             "status": null,
-            "top": "160",
+            "top": "165",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,

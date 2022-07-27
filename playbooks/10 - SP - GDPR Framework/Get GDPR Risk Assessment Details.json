@@ -121,6 +121,28 @@
                         "useRecordFieldDefault": false
                     },
                     {
+                        "name": "whatHappened?",
+                        "type": "string",
+                        "label": "What Happened?",
+                        "title": "Text Area",
+                        "usable": true,
+                        "tooltip": "Provide brief information on the data breach incident",
+                        "dataType": "text",
+                        "formType": "textarea",
+                        "required": true,
+                        "_expanded": true,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "searchable": true,
+                        "templateUrl": "app\/components\/form\/fields\/textarea.html",
+                        "defaultValue": null,
+                        "_previousName": "whatHappened",
+                        "lengthConstraint": true,
+                        "allowedEncryption": true,
+                        "allowedGridColumn": true,
+                        "useRecordFieldDefault": false
+                    },
+                    {
                         "name": "causeOfDataBreach",
                         "type": "string",
                         "label": "Cause of Data Breach",
@@ -128,7 +150,7 @@
                         "dataType": "text",
                         "formType": "text",
                         "required": false,
-                        "_expanded": true,
+                        "_expanded": false,
                         "defaultValue": null,
                         "_previousName": "",
                         "useRecordFieldDefault": false
@@ -143,7 +165,7 @@
                         "dataType": "picklist",
                         "formType": "picklist",
                         "required": false,
-                        "_expanded": true,
+                        "_expanded": false,
                         "mmdUpdate": true,
                         "collection": false,
                         "dataSource": {
@@ -209,7 +231,7 @@
                         "dataType": "text",
                         "formType": "text",
                         "required": false,
-                        "_expanded": true,
+                        "_expanded": false,
                         "_nameTouched": true,
                         "defaultValue": null,
                         "_previousName": "",
@@ -225,7 +247,7 @@
                         "dataType": "decimal",
                         "formType": "decimal",
                         "required": false,
-                        "_expanded": true,
+                        "_expanded": false,
                         "mmdUpdate": true,
                         "collection": false,
                         "searchable": true,
@@ -247,7 +269,7 @@
                         "dataType": "decimal",
                         "formType": "decimal",
                         "required": false,
-                        "_expanded": true,
+                        "_expanded": false,
                         "mmdUpdate": true,
                         "collection": false,
                         "searchable": true,
@@ -267,7 +289,7 @@
                         "dataType": "text",
                         "formType": "text",
                         "required": false,
-                        "_expanded": true,
+                        "_expanded": false,
                         "defaultValue": null,
                         "_previousName": "",
                         "useRecordFieldDefault": false
@@ -282,7 +304,7 @@
                         "dataType": "text",
                         "formType": "textarea",
                         "required": false,
-                        "_expanded": true,
+                        "_expanded": false,
                         "mmdUpdate": true,
                         "collection": false,
                         "searchable": true,
@@ -304,7 +326,7 @@
                         "dataType": "text",
                         "formType": "textarea",
                         "required": false,
-                        "_expanded": true,
+                        "_expanded": false,
                         "mmdUpdate": true,
                         "collection": false,
                         "searchable": true,
@@ -324,7 +346,7 @@
                         "dataType": "text",
                         "formType": "text",
                         "required": false,
-                        "_expanded": true,
+                        "_expanded": false,
                         "defaultValue": null,
                         "_previousName": "",
                         "useRecordFieldDefault": false
@@ -339,7 +361,7 @@
                         "dataType": "text",
                         "formType": "textarea",
                         "required": false,
-                        "_expanded": true,
+                        "_expanded": false,
                         "mmdUpdate": true,
                         "collection": false,
                         "searchable": true,
@@ -360,6 +382,7 @@
                             "companyCity": "{{vars.request.data[\"companyCity\"]}}",
                             "companyName": "{{vars.request.data[\"companyName\"]}}",
                             "companySize": "{{vars.request.data[\"companySize\"]}}",
+                            "whatHappened?": "{{vars.request.data[\"whatHappened?\"]}}",
                             "companyAddress": "{{vars.request.data[\"companyAddress\"]}}",
                             "companyCountry": "{{vars.request.data[\"companyCountry\"]}}",
                             "typeOfDataBreach": "{{vars.request.data[\"typeOfDataBreach\"]}}",
@@ -431,7 +454,7 @@
                     ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>Necessary information for the Data Breach Risk Assessment has been collected.<\/p>\n<p>&nbsp;<\/p>",
+                    "content": "<p>Necessary information for the Data Breach Risk Assessment has been collected.<\/p>",
                     "records": "{{vars.complianceIRI}},{{vars.incidentIRI}}"
                 },
                 "resource": {
@@ -440,7 +463,7 @@
                     "companyCity": "{{vars.input.params.companyCity}}",
                     "companyName": "{{vars.input.params.companyName}}",
                     "companySize": "{{vars.input.params.companySize}}",
-                    "description": "{{vars.description | join('\\n')}}",
+                    "whatHappened": "{{vars.input.params['whatHappened?']}}",
                     "dataRegulator": "{{vars.input.params.dataRegulator['@id']}}",
                     "companyAddress": "{{vars.input.params.companyAddress}}",
                     "companyCountry": "{{vars.input.params.companyCountry}}",
@@ -465,7 +488,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "705",
+            "top": "570",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -527,7 +550,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "570",
+            "top": "705",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -581,18 +604,31 @@
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
             "uuid": "d7e39ba4-0305-4ba6-a902-e3f52410d1c1"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update Compliance Record Description",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "description": "{{vars.description | join('\\n')}}"
+                },
+                "operation": "Append",
+                "collection": "{{vars.complianceIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/data_compliances",
+                "fieldOperation": [],
+                "step_variables": []
+            },
+            "status": null,
+            "top": "840",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
+            "uuid": "f0f1f024-f9af-4342-9d8f-4f1622ba79d1"
         }
     ],
     "routes": [
-        {
-            "@type": "WorkflowRoute",
-            "name": "Update Task -> Update GDPR Assessment Data",
-            "targetStep": "\/api\/3\/workflow_steps\/57671b9b-fa3b-4477-a3ff-a9b3576e8673",
-            "sourceStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "1c1cbaa8-142a-45f6-ba19-a8ef9f7ea456"
-        },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Configuration",
@@ -622,12 +658,30 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Get Parent Incident Record ID -> Update Task Status",
-            "targetStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
+            "name": "Get Parent Incident ID -> Update GDPR Assessment Data",
+            "targetStep": "\/api\/3\/workflow_steps\/57671b9b-fa3b-4477-a3ff-a9b3576e8673",
             "sourceStep": "\/api\/3\/workflow_steps\/d7e39ba4-0305-4ba6-a902-e3f52410d1c1",
             "label": null,
             "isExecuted": false,
-            "uuid": "e1bfc37e-bca2-4023-bbea-03b4c711296c"
+            "uuid": "9bf5db32-5767-433b-9ad1-c60bad44990f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update GDPR Assessment Data -> Update Task Status",
+            "targetStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
+            "sourceStep": "\/api\/3\/workflow_steps\/57671b9b-fa3b-4477-a3ff-a9b3576e8673",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "20c758bc-3b4b-4088-acf7-be5c74cae074"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update Task Status -> Update Compliance Record Description",
+            "targetStep": "\/api\/3\/workflow_steps\/f0f1f024-f9af-4342-9d8f-4f1622ba79d1",
+            "sourceStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "740d8e6d-b18f-4158-a2a9-71b0b8f7133f"
         }
     ],
     "groups": [],

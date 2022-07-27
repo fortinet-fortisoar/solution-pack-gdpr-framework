@@ -47,7 +47,7 @@
                     "bcc": "",
                     "from": "",
                     "type": "Manual Input",
-                    "content": "<p>Hello,<\/p>\n<p>We are writing to you because of an incident involving personal data breach associated with our platform. Although we are unaware of any actual misuse of your information, we are providing notice to you and other potentially affected customers about the incident.<\/p>\n<p><strong>What happened?<\/strong><br>{{vars.steps.Data_Breach_Notification.input['whatHappened?']}}<\/p>\n<p><strong>What information was involved?<\/strong><br>{{vars.steps.Data_Breach_Notification.input['whatInformationWasInvolved?']}}<\/p>\n<p><strong>What are we doing?<\/strong><br>{{vars.steps.Data_Breach_Notification.input['whatAreWeDoing?']}}<\/p>\n<p><strong>What you can do?<\/strong><br>{{vars.steps.Data_Breach_Notification.input['whatYouCanDo?']}}<\/p>\n<p>Thanks,<br>CS Team<\/p>",
+                    "content": "<p>Hello,<\/p>\n<p>We are writing to you because of an incident involving a personal data breach associated with our platform. Although we are unaware of any actual misuse of your information, we are providing notice to you and other potentially affected customers about the incident.<\/p>\n<p><strong>What happened?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatHappened}}<\/p>\n<p><strong>What information was involved?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatInformationWasInvolved}}<\/p>\n<p><strong>What are we doing?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatAreWeDoing}}<\/p>\n<p><strong>What you can do?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatYouCanDo}}<\/p>\n<p>Thanks,<br>CS Team<\/p>",
                     "subject": "Data Breach Notification",
                     "iri_list": "",
                     "body_type": "Rich Text",
@@ -62,7 +62,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "705",
+            "top": "840",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
             "group": null,
@@ -94,7 +94,7 @@
                                 "collection": false,
                                 "searchable": true,
                                 "templateUrl": "app\/components\/form\/fields\/textarea.html",
-                                "defaultValue": null,
+                                "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatHappened}}",
                                 "_previousName": "whatHappened",
                                 "lengthConstraint": true,
                                 "allowedEncryption": true,
@@ -151,7 +151,7 @@
                                 "label": "What You Can Do?",
                                 "title": "Text Area",
                                 "usable": true,
-                                "tooltip": "Action to be taken by user to minimize the risk",
+                                "tooltip": "Action to be taken by the user to minimize the risk",
                                 "dataType": "text",
                                 "formType": "textarea",
                                 "required": true,
@@ -182,7 +182,7 @@
                         {
                             "option": "Submit",
                             "primary": true,
-                            "step_iri": "\/api\/3\/workflow_steps\/c5bbd0dc-df68-4de7-b445-c8cf7383255b"
+                            "step_iri": "\/api\/3\/workflow_steps\/a2ba2544-d007-47c2-ac6d-2caf45a062a4"
                         }
                     ],
                     "duplicateOption": false
@@ -332,7 +332,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "840",
+            "top": "975",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -357,7 +357,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "975",
+            "top": "1110",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -398,18 +398,37 @@
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
             "uuid": "7ef51a30-478c-490c-9418-fa1d65e6f0e5"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update Notification Fields",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "whatHappened": "{{vars.steps.Data_Breach_Notification.input['whatHappened?']}}",
+                    "whatYouCanDo": "{{vars.steps.Data_Breach_Notification.input['whatYouCanDo?']}}",
+                    "whatAreWeDoing": "{{vars.steps.Data_Breach_Notification.input['whatAreWeDoing?']}}",
+                    "whatInformationWasInvolved": "{{vars.steps.Data_Breach_Notification.input['whatInformationWasInvolved?']}}"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.complianceIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/data_compliances",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "705",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
+            "uuid": "a2ba2544-d007-47c2-ac6d-2caf45a062a4"
         }
     ],
     "routes": [
-        {
-            "@type": "WorkflowRoute",
-            "name": "Data Breach Notification -> Send Data Breach Notification",
-            "targetStep": "\/api\/3\/workflow_steps\/c5bbd0dc-df68-4de7-b445-c8cf7383255b",
-            "sourceStep": "\/api\/3\/workflow_steps\/4f717693-1fa2-48bc-8131-6dcf5e8c7622",
-            "label": "Submit",
-            "isExecuted": false,
-            "uuid": "b6ec57b8-4542-4c5e-a584-2e0ac6827f71"
-        },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Configuration",
@@ -463,6 +482,24 @@
             "label": null,
             "isExecuted": false,
             "uuid": "4e0f7126-e95e-4fc2-bb74-25035a0edbd2"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Data Breach Notification -> Copy of Update Compliance Record Description",
+            "targetStep": "\/api\/3\/workflow_steps\/a2ba2544-d007-47c2-ac6d-2caf45a062a4",
+            "sourceStep": "\/api\/3\/workflow_steps\/4f717693-1fa2-48bc-8131-6dcf5e8c7622",
+            "label": "Submit",
+            "isExecuted": false,
+            "uuid": "9872d850-47be-423f-a3dd-bb1f09bf8200"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy of Update Compliance Record Description -> Send Data Breach Notification",
+            "targetStep": "\/api\/3\/workflow_steps\/c5bbd0dc-df68-4de7-b445-c8cf7383255b",
+            "sourceStep": "\/api\/3\/workflow_steps\/a2ba2544-d007-47c2-ac6d-2caf45a062a4",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "83d186c1-c3e8-4ef6-9521-ec75b5d2ae22"
         }
     ],
     "groups": [],

@@ -14,7 +14,7 @@
     ],
     "prerequisite": "* Make sure to configure Code Snippet connector",
     "publisher": "Fortinet",
-    "certified": "false"
+    "certified": "false",
     "description": "This solution pack demonstrates procedures involved in GDPR",
     "help": "https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/release/1.0.1/README.md",
     "category": [
@@ -26,7 +26,7 @@
         "GDPR"
     ],
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-07-26T09:40:44+00:00",
+    "date": "2022-07-27T07:45:29+00:00",
     "contents": {
         "picklistNames": [
             {

@@ -22,7 +22,7 @@
                                 "type": "sectionHeader",
                                 "config": {
                                     "wid": "7dde165c-b423-4d31-a018-cf0399813c00",
-                                    "sectionText": "<p style=\"text-align: center;\">&nbsp;<\/p>\n<p style=\"text-align: center; background: #4e94d0; padding-top: 5px;\"><span style=\"font-size: 25pt;\"><strong><span style=\"color: #efefee;\">GDPR Assessment Report<\/span>&nbsp;<\/strong><\/span><\/p>\n<p style=\"background: #2a5173; padding: 5px; text-align: center;\"><span style=\"font-size: 12pt; color: #efefee;\">INCIDENT ID # <strong>{{incidentID}}<\/strong> | Generated On {{todayDate}}<\/span><\/p>",
+                                    "sectionText": "<p style=\"text-align: center;\">&nbsp;<\/p>\n<p style=\"text-align: center; background: #4e94d0; padding-top: 5px;\"><span style=\"font-size: 25pt;\"><strong><span style=\"color: #efefee;\">Data Breach Assessment Report<\/span>&nbsp;<\/strong><\/span><\/p>\n<p style=\"background: #2a5173; padding: 5px; text-align: center;\"><span style=\"font-size: 12pt; color: #efefee;\">INCIDENT ID # <strong>{{incidentID}}<\/strong> | Generated On {{todayDate}}<\/span><\/p>",
                                     "query": {
                                         "filters": [],
                                         "sort": [],
@@ -664,13 +664,13 @@
     },
     "filterArray": [
         {
-            "key": "incidentID",
+            "key": "complianceID",
             "open": true,
             "type": "number",
-            "label": "Incident ID",
+            "label": "Compliance ID",
             "value": null,
             "required": true,
-            "expression": "{{incidentID}}",
+            "expression": "{{complianceID}}",
             "defaultValue": null
         }
     ],
