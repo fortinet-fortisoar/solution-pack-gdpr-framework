@@ -384,19 +384,19 @@
                                                                                                                                     "name": "dPOName",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "dPOEmail",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "dPOTelephone",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
@@ -407,25 +407,25 @@
                                                                                                                                     "name": "dPAAddress",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "dPAEmail",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "dPAWebsite",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "dataRegulator",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ],
                                                                                                                             "style": "col-lg-6"
@@ -550,30 +550,30 @@
                                                                                                                                     "name": "breachOccurrenceDate",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "breachDetectionDate",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "breachNotifyDueDate",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "breachNotifiedOn",
                                                                                                                                     "highlightMode": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "breachNotificationSLA",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ]
                                                                                                                         }
@@ -611,7 +611,7 @@
                                                                             }
                                                                         },
                                                                         "icon": "icon icon-playbooks",
-                                                                        "show": true,
+                                                                        "show": false,
                                                                         "visible": true
                                                                     },
                                                                     {
