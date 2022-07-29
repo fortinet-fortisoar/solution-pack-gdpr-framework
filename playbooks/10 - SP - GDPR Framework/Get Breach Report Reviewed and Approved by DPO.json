@@ -61,7 +61,7 @@
                 "affectedIndividualsList": "[]"
             },
             "status": null,
-            "top": "165",
+            "top": "160",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,
@@ -395,7 +395,7 @@
                 "resources": "tasks",
                 "owner_detail": {
                     "isAssigned": false,
-                    "emailRecipients": "{% if globalVars.Demo_mode %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpoEmail}}{% endif %}"
+                    "emailRecipients": "{% if globalVars.Demo_mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpoEmail}}{% endif %}"
                 },
                 "isRecordLinked": true,
                 "step_variables": [],
@@ -416,7 +416,7 @@
                 "unauthenticated_input": true
             },
             "status": null,
-            "top": "705",
+            "top": "700",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/fc04082a-d7dc-4299-96fb-6837b1baa0fe",
             "group": null,
@@ -608,7 +608,7 @@
                 ]
             },
             "status": null,
-            "top": "1110",
+            "top": "1100",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
             "group": null,

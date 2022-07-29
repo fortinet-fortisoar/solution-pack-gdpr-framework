@@ -164,7 +164,7 @@
     ],
     "schedules": [
         {
-            "id": "gAAAAABi4O0XDV6-exeutDBCmJzh_VZ3C7rBoy2hUZCPYumMhfczrdJzYJ5cnzhK701CHwLsDN13lhoXlQg012Tyfv2vzSHXog==",
+            "id": "gAAAAABi47aK5mC1w3pXReqLQyl-CSzjDsTEe4oZBVgI5DXH1QZO0GOJNL727NESYUK5Q8ZnodX-HNQDHt5WQPQbJfajzGY1zA==",
             "crontab": {
                 "id": 9,
                 "minute": "*\/5",
@@ -204,8 +204,7 @@
                 "schedule_id": "a08f3bd5-7957-4636-933b-8027f04e9f91",
                 "start_time": null,
                 "expires": null,
-                "timezone": "Asia\/Kolkata",
-                "utcOffset": "UTC+05:30"
+                "expired": false
             },
             "queue": null,
             "exchange": null,
@@ -217,9 +216,9 @@
             "one_off": false,
             "start_time": null,
             "enabled": true,
-            "last_run_at": "2022-07-27T07:40:00.023357Z",
-            "total_run_count": 1005,
-            "date_changed": "2022-07-27T07:40:15.109301Z",
+            "last_run_at": null,
+            "total_run_count": 1258,
+            "date_changed": "2022-07-29T10:27:50.892476Z",
             "description": "GDPR - Check for SLA violation",
             "solar": null,
             "clocked": null

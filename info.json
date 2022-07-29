@@ -9,24 +9,24 @@
             "name": "sOARFramework",
             "type": "solutionpack",
             "label": "SOAR Framework",
+            "version": "1.1.0",
             "minVersion": "2.0.0"
         }
     ],
     "prerequisite": "* Make sure to configure Code Snippet connector",
     "publisher": "Fortinet",
-    "certified": "false",
     "description": "This solution pack demonstrates procedures involved in GDPR",
     "help": "https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/release/1.0.1/README.md",
     "category": [
         "Compliance and Reporting"
     ],
-    "supportInfo": null,
+    "supportInfo": "Fortinet Customer Support",
     "iconLarge": null,
     "recordTags": [
         "GDPR"
     ],
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-07-27T07:45:29+00:00",
+    "date": "2022-07-29T10:29:32+00:00",
     "contents": {
         "picklistNames": [
             {
@@ -42,7 +42,16 @@
                 "name": "GDPREUCountryList"
             },
             {
+                "name": "IncidentStatus"
+            },
+            {
                 "name": "RegulatoryBody"
+            },
+            {
+                "name": "Severity"
+            },
+            {
+                "name": "SLAState"
             }
         ],
         "modules": {
@@ -123,15 +132,15 @@
                 "default_value": "true"
             },
             {
-                "id": 2,
-                "name": "Default_Email",
-                "value": "noreply@example.com",
-                "default_value": null
-            },
-            {
                 "id": 7,
                 "name": "Server_fqhn",
                 "value": "master.fortisoar.com",
+                "default_value": null
+            },
+            {
+                "id": 2,
+                "name": "Default_Email",
+                "value": "noreply@example.com",
                 "default_value": null
             }
         ],

@@ -488,20 +488,21 @@
                             {
                                 "name": "anyAdditionalInformation",
                                 "type": "string",
-                                "label": "Any Additional Information",
+                                "label": "Additional Comments",
                                 "title": "Text Area",
                                 "usable": true,
                                 "tooltip": "",
                                 "dataType": "text",
                                 "formType": "textarea",
                                 "required": false,
-                                "_expanded": false,
+                                "_expanded": true,
                                 "mmdUpdate": true,
                                 "collection": false,
                                 "searchable": true,
                                 "templateUrl": "app\/components\/form\/fields\/textarea.html",
+                                "_nameTouched": true,
                                 "defaultValue": "{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].anyAdditionalInformation}}",
-                                "_previousName": "",
+                                "_previousName": "additionalComments",
                                 "lengthConstraint": true,
                                 "allowedEncryption": true,
                                 "allowedGridColumn": true,
@@ -523,7 +524,7 @@
                 "resources": "tasks",
                 "owner_detail": {
                     "isAssigned": false,
-                    "emailRecipients": "{% if globalVars.Demo_mode %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpoEmail}}{% endif %}"
+                    "emailRecipients": "{% if globalVars.Demo_mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpoEmail}}{% endif %}"
                 },
                 "isRecordLinked": true,
                 "step_variables": [],
