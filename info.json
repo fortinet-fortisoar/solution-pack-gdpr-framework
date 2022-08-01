@@ -1,6 +1,6 @@
 {
     "name": "gDPRFramework",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "solutionpack",
     "local": true,
     "label": "GDPR Framework",
@@ -9,38 +9,49 @@
             "name": "sOARFramework",
             "type": "solutionpack",
             "label": "SOAR Framework",
-            "version": "1.0.0",
-            "minVersion": null
+            "minVersion": "2.0.0"
         }
     ],
-    "prerequisite": null,
+    "prerequisite": "* Make sure to configure Code Snippet connector",
     "publisher": "Fortinet",
+    "certified": “true”,
     "description": "This solution pack demonstrates procedures involved in GDPR",
-    "help": "https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/develop/README.md",
-    "category": [],
-    "supportInfo": "",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/release/1.0.1/README.md",
+    "category": [
+        "Compliance and Reporting"
+    ],
+    "supportInfo": "Fortinet Customer Support",
     "iconLarge": null,
+    "recordTags": [
+        "GDPR"
+    ],
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-04-19T12:47:14+00:00",
+    "date": "2022-07-29T11:36:36+00:00",
     "contents": {
         "picklistNames": [
+            {
+                "name": "ChooseYesOrNo"
+            },
             {
                 "name": "Contact Title"
             },
             {
-                "name": "DataBreachType"
+                "name": "GDPRDataBreachType"
             },
             {
                 "name": "GDPREUCountryList"
             },
             {
-                "name": "IncidentType"
+                "name": "IncidentStatus"
             },
             {
-                "name": "TaskType"
+                "name": "RegulatoryBody"
             },
             {
-                "name": "YesNo Picklist"
+                "name": "Severity"
+            },
+            {
+                "name": "SLAState"
             }
         ],
         "modules": {
@@ -48,9 +59,9 @@
                 "name": "Contacts",
                 "apiName": "contact"
             },
-            "": {
-                "name": "Incidents",
-                "apiName": "incidents"
+            "data_compliances": {
+                "name": "Data Compliances",
+                "apiName": "data_compliances"
             }
         },
         "viewTemplates": {
@@ -63,24 +74,27 @@
                     "form"
                 ]
             },
-            "incidents": {
-                "name": "Incidents",
-                "apiName": "incidents",
+            "data_compliances": {
+                "name": "Data Compliances",
+                "apiName": "data_compliances",
                 "views": [
                     "list",
                     "detail",
-                    "form",
-                    "settings"
+                    "form"
                 ]
             },
             "tasks": {
                 "name": "Tasks",
                 "apiName": "tasks",
                 "views": [
-                    "detail",
-                    "settings"
+                    "detail"
                 ]
             }
+        },
+        "views": {
+            "navigation": [
+                "Data Compliances"
+            ]
         },
         "roles": [
             {
@@ -90,6 +104,44 @@
         "playbooks": [
             {
                 "name": "10 - SP - GDPR Framework"
+            }
+        ],
+        "globalVariables": [
+            {
+                "id": 15,
+                "name": "GDPR_Demo_Mode",
+                "value": "Demo Mode ON",
+                "default_value": "Demo Mode ON"
+            },
+            {
+                "id": 16,
+                "name": "GDPR_Demo_Email",
+                "value": "no-reply@example.com",
+                "default_value": "no-reply@example.com"
+            },
+            {
+                "id": 10,
+                "name": "Current_Date",
+                "value": "{{arrow.utcnow().timestamp}}",
+                "default_value": "{{arrow.utcnow().timestamp}}"
+            },
+            {
+                "id": 17,
+                "name": "Demo_mode",
+                "value": "true",
+                "default_value": "true"
+            },
+            {
+                "id": 7,
+                "name": "Server_fqhn",
+                "value": "master.fortisoar.com",
+                "default_value": null
+            },
+            {
+                "id": 2,
+                "name": "Default_Email",
+                "value": "noreply@example.com",
+                "default_value": null
             }
         ],
         "reports": [
