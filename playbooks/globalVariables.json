@@ -2,7 +2,7 @@
     {
         "id": 16,
         "name": "GDPR_Demo_Email",
-        "value": "rktest.2204@outlook.com",
+        "value": "no-reply@example.com",
         "default_value": "no-reply@example.com"
     },
     {
