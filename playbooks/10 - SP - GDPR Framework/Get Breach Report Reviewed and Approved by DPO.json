@@ -21,7 +21,7 @@
             "description": null,
             "arguments": {
                 "params": {
-                    "data": "[\n    {\n        \"Company Name\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyName}}\",\n        \"Company Size\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companySize}}\",\n        \"Company Address\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyAddress}}\",\n        \"Company City\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyCity}}\",\n        \"Company Country\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyCountry}}\",\n        \"Was personal data affected?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasPersonalDataAffected | fromIRI).itemValue}}\",\n        \"Was the data encrypted?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasTheDataEncrypted | fromIRI).itemValue}}\",\n        \"What was the data format?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatWasTheDataFormat}}\",\n        \"What was the data source?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatWasTheDataSource}}\",\n        \"Where data was hosted?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whereDataWasHosted}}\",\n        \"Was the exposure resolved?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasTheExposureResolved | fromIRI).itemValue}}\",\n        \"Is data misuse foreseeable?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].isHarmRiskOrMisuseForeseeable | fromIRI).itemValue}}\",\n        \"What Happened?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatHappened}}\",\n        \"Cause of Data Breach\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].causeOfDataBreach}}\",\n        \"Type of Data Breach\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].typeOfDataBreach | fromIRI).itemValue}}\",\n        \"Nature of the Affected Data\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].dataType}}\",\n        \"Repercussions of Breach?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].repercussionsOfBreach}}\",\n        \"Mitigation Actions\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].mitigationActions}}\",\n        \"No. of Affected Users\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].noOfAffectedUsers}}\",\n        \"No. of Affected Data Records\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].noOfAffectedDataRecords}}\",\n        \"Affected Users Emails\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].affectedUsersEmails}}\",\n        \"Any Additional Information\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].anyAdditionalInformation}}\"\n    }\n]",
+                    "data": "[\n    {\n        \"Company Name\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyName}}\",\n        \"Company Size\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companySize}}\",\n        \"Company Address\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyAddress}}\",\n        \"Company City\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyCity}}\",\n        \"Company Country\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].companyCountry}}\",\n        \"Was personal data affected?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasPersonalDataAffected | fromIRI).itemValue}}\",\n        \"Was the data encrypted?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasTheDataEncrypted | fromIRI).itemValue}}\",\n        \"What was the data format?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatWasTheDataFormat}}\",\n        \"What was the data source?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatWasTheDataSource}}\",\n        \"Where data was hosted?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whereDataWasHosted}}\",\n        \"Was the exposure resolved?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].wasTheExposureResolved | fromIRI).itemValue}}\",\n        \"Is data misuse foreseeable?\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].isHarmRiskOrMisuseForeseeable | fromIRI).itemValue}}\",\n        \"What Happened?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].whatHappened}}\",\n        \"Cause of Data Breach\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].causeOfDataBreach}}\",\n        \"Type of Data Breach\": \"{{(vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].typeOfDataBreach | fromIRI).itemValue}}\",\n        \"Nature of the Affected Data\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].dataType}}\",\n        \"Repercussions of Breach?\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].repercussionsOfBreach}}\",\n        \"Mitigation Actions\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].mitigationActions}}\",\n        \"No. of Affected Users\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].noOfAffectedUsers}}\",\n        \"No. of Affected Data Records\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].noOfAffectedDataRecords}}\",\n        \"Affected Users Emails\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].affectedUsersEmails}}\",\n        \"Additional Comments\": \"{{vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].anyAdditionalInformation}}\"\n    }\n]",
                     "display": "Vertical",
                     "styling": false,
                     "template": "Stylized with row selection",
@@ -61,7 +61,7 @@
                 "affectedIndividualsList": "[]"
             },
             "status": null,
-            "top": "160",
+            "top": "165",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,
@@ -395,7 +395,7 @@
                 "resources": "tasks",
                 "owner_detail": {
                     "isAssigned": false,
-                    "emailRecipients": "{% if globalVars.Demo_mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpoEmail}}{% endif %}"
+                    "emailRecipients": "{% if globalVars.GDPR_Demo_Mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpoEmail}}{% endif %}"
                 },
                 "isRecordLinked": true,
                 "step_variables": [],
@@ -416,7 +416,7 @@
                 "unauthenticated_input": true
             },
             "status": null,
-            "top": "700",
+            "top": "705",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/fc04082a-d7dc-4299-96fb-6837b1baa0fe",
             "group": null,
@@ -608,7 +608,7 @@
                 ]
             },
             "status": null,
-            "top": "1100",
+            "top": "1110",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
             "group": null,
@@ -626,7 +626,7 @@
                     ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>Created <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/tasks\/{{vars.result.uuid}}\" title=\"Task #{{vars.result.id}} - {{vars.result.name}}\">Task #{{vars.result.id}} - {{vars.result.name}}<\/a> to Notify Affected Individuals about Data Breach.<\/p>",
+                    "content": "<p>Created <a title=\"Task #{{vars.result.id}} - {{vars.result.name}}\" href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/tasks\/{{vars.result.uuid}}\">Task #{{vars.result.id}} - {{vars.result.name}}<\/a> to Notify Affected Individuals about Data Breach.<\/p>",
                     "records": "{{vars.complianceIRI}}"
                 },
                 "resource": {

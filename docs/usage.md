@@ -1,4 +1,4 @@
-| [Home](https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/develop/README.md) | 
+| [Home](https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/release/1.0.1/README.md) | 
 |--------------------------------------------| 
 
 # Usage
@@ -13,15 +13,23 @@
 
     ![Personal Data Additional Details](res/personal-data-additional-details.png)
 
-- The incident is updated with additional details and starts showing up during the remaining time to Notify Supervisory Authority
-- A New incident, dedicated to GDPR Assessment and the corresponding task is created. The same is updated in the comments.
+- Choose 'Demo Mode Status' as "Demo Mode On" to execute GDPR playbooks in demo mode. Also, add 'Demo Email' to which all email communications will be sent.
+
+- Select 'GDPR' in 'Regulatory Body' and provide the needed information
+
+    ![Personal Data Details](res/personal-data-details.png)
+
+
+- A New Data Compliance Record, dedicated to GDPR Assessment and the corresponding task is created. The same is updated in the Incident comments.
+
+    ![Incident Comments](res/incident-comments.png)
+
+- **GDPR Assessment Data Compliance Record**
+  - Open the newly created GDPR Data Compliance Record; the corresponding tasks appear in the Description field and the task tabs. The tasks need to be completed within 72 Hours
+
+  - The Data Compliance Record is also updated with additional details and starts showing up the remaining time to Notify Supervisory Authority.
 
     ![Notification Timer](res/notification-timer.png)
-
-- **GDPR Assessment Incident**
-  - Open the newly created GDPR incident; the corresponding tasks appear in the Description field and the task tabs. The tasks need to be completed within 72 Hours
-
-    ![GDPR Tasks](res/gdpr-tasks.png)
 
 ## Tasks
 
@@ -76,4 +84,4 @@ Based on the inputs from DPO, the following new task is created
 
   ![Data Breach Report](res/data-breach-report.png)
 
-  ![Incident Resolved](res/resolve-incident.png)
+  ![Incident Resolved](res/resolve-incident.png) 

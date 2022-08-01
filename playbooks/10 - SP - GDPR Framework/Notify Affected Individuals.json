@@ -43,11 +43,11 @@
                 "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
                 "params": {
                     "cc": "",
-                    "to": "{% if globalVars.Demo_mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.affectedUsersEmails}}{% endif %}",
+                    "to": "{% if globalVars.GDPR_Demo_Mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.affectedUsersEmails}}{% endif %}",
                     "bcc": "",
                     "from": "",
                     "type": "Manual Input",
-                    "content": "<p>Hello,<\/p>\n<p>We are writing to you because of an incident involving a personal data breach associated with our platform. Although we are unaware of any actual misuse of your information, we are providing notice to you and other potentially affected customers about the incident.<\/p>\n<p><strong>What happened?<\/strong><br \/>{{vars.steps.Update_Notification_Fields.whatHappened}}<\/p>\n<p><strong>What information was involved?<\/strong><br \/>{{vars.steps.Update_Notification_Fields.whatInformationWasInvolved}}<\/p>\n<p><strong>What are we doing?<\/strong><br \/>{{vars.steps.Update_Notification_Fields.whatAreWeDoing}}<\/p>\n<p><strong>What you can do?<\/strong><br \/>{{vars.steps.Update_Notification_Fields.whatYouCanDo}}<\/p>\n<p>Thanks,<br \/>Security Team<\/p>",
+                    "content": "<p>Hello,<\/p>\n<p>We are writing to you because of an incident involving a personal data breach associated with our platform. Although we are unaware of any actual misuse of your information, we are providing notice to you and other potentially affected customers about the incident.<\/p>\n<p><strong>What happened?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatHappened}}<\/p>\n<p><strong>What information was involved?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatInformationWasInvolved}}<\/p>\n<p><strong>What are we doing?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatAreWeDoing}}<\/p>\n<p><strong>What you can do?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatYouCanDo}}<\/p>\n<p>Thanks,<br>Security Team<\/p>",
                     "subject": "Data Breach Notification",
                     "iri_list": "",
                     "body_type": "Rich Text",
@@ -77,7 +77,7 @@
                 "input": {
                     "schema": {
                         "title": "Breach Notification to Affected Users",
-                        "description": "Hi Team,\n\nWe have detected valid data breach {{vars.complianceID}} - {{vars.complianceName}}. \n<br>\nIt is confirmed by DPO that affected users mentioned below are at high risk and need to be notified about the same.\n<br>\n| Sr. No. | Affected Individuals |\n| --- | --- |\n{{vars.affectedIndividualsList | join('\\n')}}\n<br>\nPlease provide your input for notification mail.\n\nThanks,",
+                        "description": "{% if globalVars.GDPR_Demo_Mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Mode}}{% endif %}\nHi Team,\n\nWe have detected valid data breach {{vars.complianceID}} - {{vars.complianceName}}. \n<br>\nIt is confirmed by DPO that affected users mentioned below are at high risk and need to be notified about the same.\n<br>\n| Sr. No. | Affected Individuals |\n| --- | --- |\n{{vars.affectedIndividualsList | join('\\n')}}\n<br>\nPlease provide your input for notification mail.\n\nThanks,",
                         "inputVariables": [
                             {
                                 "name": "whatHappened?",

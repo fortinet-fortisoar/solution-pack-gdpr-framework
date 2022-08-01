@@ -49,7 +49,7 @@
                 "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
                 "params": {
                     "cc": "",
-                    "to": "{% if globalVars.Demo_mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpaEmail}}{% endif %}",
+                    "to": "{% if globalVars.GDPR_Demo_Mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpaEmail}}{% endif %}",
                     "bcc": "",
                     "from": "",
                     "type": "Manual Input",
@@ -79,6 +79,8 @@
             "name": "Configuration",
             "description": null,
             "arguments": {
+                "cscd": "{% if globalVars.GDPR_Demo_Mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpaEmail}}{% endif %}",
+                "csdc": "{{globalVars.GDPR_Demo_Email}},{{globalVars.GDPR_Demo_Mode}}",
                 "description": "[]"
             },
             "status": null,
@@ -232,6 +234,7 @@
                 "resource": {
                     "status": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
                     "description": "{{vars.description | join('\\n')}}",
+                    "resolvedDate": "{{arrow.utcnow().int_timestamp}}",
                     "breachNotifiedOn": "{{arrow.utcnow().int_timestamp}}"
                 },
                 "_showJson": false,
@@ -309,15 +312,6 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Configuration -> Get Incident ID",
-            "targetStep": "\/api\/3\/workflow_steps\/c97399d1-727c-4c8d-80fb-00bc37d2b32a",
-            "sourceStep": "\/api\/3\/workflow_steps\/2efd605d-779e-44a0-a8e3-cbb0f3c08b55",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "403c10d8-b258-4e0f-b780-4ccb1662d9cf"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Send Report to DPA -> Update Task Status",
             "targetStep": "\/api\/3\/workflow_steps\/519f8608-8203-4c96-9ab1-545316cd844e",
             "sourceStep": "\/api\/3\/workflow_steps\/40eac1ff-8b76-42e4-88d4-e7030caf9ce7",
@@ -351,6 +345,15 @@
             "label": null,
             "isExecuted": false,
             "uuid": "55f97dcc-d029-4d60-8577-ab28043fda0e"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Configuration -> Get Compliance Record ID",
+            "targetStep": "\/api\/3\/workflow_steps\/c97399d1-727c-4c8d-80fb-00bc37d2b32a",
+            "sourceStep": "\/api\/3\/workflow_steps\/2efd605d-779e-44a0-a8e3-cbb0f3c08b55",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "ea5fac42-6316-4805-8738-73b30092cbff"
         }
     ],
     "groups": [],
