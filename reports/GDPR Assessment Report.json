@@ -121,7 +121,15 @@
                                         "sort": [],
                                         "limit": 30,
                                         "logic": "AND",
-                                        "filters": []
+                                        "filters": [
+                                            {
+                                                "field": "id",
+                                                "operator": "eq",
+                                                "_operator": "eq",
+                                                "value": "{{complianceID}}",
+                                                "type": "primitive"
+                                            }
+                                        ]
                                     },
                                     "title": "",
                                     "style": "",
@@ -159,7 +167,15 @@
                                         "sort": [],
                                         "limit": 10,
                                         "logic": "AND",
-                                        "filters": []
+                                        "filters": [
+                                            {
+                                                "field": "id",
+                                                "operator": "eq",
+                                                "_operator": "eq",
+                                                "value": "{{complianceID}}",
+                                                "type": "primitive"
+                                            }
+                                        ]
                                     },
                                     "recordTitle": {
                                         "type": "sectionHeader",
@@ -290,7 +306,15 @@
                                         "sort": [],
                                         "limit": 10,
                                         "logic": "AND",
-                                        "filters": []
+                                        "filters": [
+                                            {
+                                                "field": "id",
+                                                "operator": "eq",
+                                                "_operator": "eq",
+                                                "value": "{{complianceID}}",
+                                                "type": "primitive"
+                                            }
+                                        ]
                                     },
                                     "recordTitle": {
                                         "type": "sectionHeader",

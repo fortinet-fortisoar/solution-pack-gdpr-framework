@@ -22,8 +22,7 @@
             "arguments": {
                 "taskType": "{{vars.input.records[0].type.itemValue}}",
                 "contactIRI": "[]",
-                "description": "[]",
-                "foundDPOContact": "false"
+                "description": "[]"
             },
             "status": null,
             "top": "165",
@@ -53,10 +52,10 @@
                     "dPOName": "{{vars.dpoName}}",
                     "dPAEmail": "{{vars.dpaEmail}}",
                     "dPOEmail": "{{vars.dpoEmail}}",
-                    "dPAAddress": "{{vars.steps.Get_DPA_Contact.address}}, {{vars.steps.Get_DPA_Contact.postalCode}}, {{vars.steps.Get_DPA_Contact.city}}",
-                    "dPAWebsite": "{{vars.steps.Get_DPA_Contact.website}}",
+                    "dPAAddress": "{{vars.dpaAddress}}",
+                    "dPAWebsite": "{{vars.dpaWebsite}}",
                     "description": "{{vars.description | join('\\n')}}",
-                    "dPOTelephone": "{{vars.steps.Find_DPO_Contact[0].telephoneNumber or vars.steps.Create_DPO_Contact.telephoneNumber}}",
+                    "dPOTelephone": "{{vars.dpoPhone}}",
                     "dataRegulator": "{{vars.input.params.dataRegulator['@id']}}"
                 },
                 "_showJson": false,
@@ -101,8 +100,12 @@
                 "module": "tasks?$limit=30&$relationships=true",
                 "checkboxFields": true,
                 "step_variables": {
-                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if loop.index == 6 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
-                    "complianceIRI": "{{vars.result[0].dataCompliances[0]['@id']}}"
+                    "demoMode": "{% if vars.result[0].dataCompliances[0].testMode %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #73AD21; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Test Mode ON<\/strong><\/span>{% endif %}",
+                    "demoEmail": "{{vars.result[0].dataCompliances[0].testEmail}}",
+                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if 'Provide DPO and DPA Contact Details' in item %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
+                    "complianceID": "{{vars.result[0].dataCompliances[0].id}}",
+                    "complianceIRI": "{{vars.result[0].dataCompliances[0]['@id']}}",
+                    "complianceUUID": "{{vars.result[0].dataCompliances[0].uuid}}"
                 }
             },
             "status": null,
@@ -137,7 +140,8 @@
                 "step_variables": {
                     "temp": "{{vars.contactIRI.append(vars.result['@id'])}}",
                     "dpoName": "{{vars.result.name}}",
-                    "dpoEmail": "{{vars.result.eMailAddress}}"
+                    "dpoEmail": "{{vars.result.eMailAddress}}",
+                    "dpoPhone": "{{vars.result.telephoneNumber}}"
                 }
             },
             "status": null,
@@ -158,7 +162,11 @@
                 "apply_async": false,
                 "step_variables": {
                     "temp": "{{vars.contactIRI.append(vars.result['@id'])}}",
-                    "dpaEmail": "{{vars.result.eMailAddress}}"
+                    "dpaName": "{{vars.result.name}}",
+                    "dpaEmail": "{{vars.result.eMailAddress}}",
+                    "dpaAddress": "{{vars.result.address}}, {{vars.result.postalCode}}, {{vars.result.city}}, {{vars.result.country}}",
+                    "dpaWebsite": "{{vars.result.website}}",
+                    "dpaTelephone": "{{vars.result.telephoneNumber or \"NA\"}}"
                 },
                 "pass_input_record": true,
                 "workflowReference": "\/api\/3\/workflows\/77f188a6-d970-4397-81af-84cc3f10ac0d"
@@ -514,7 +522,7 @@
             "arguments": {
                 "resource": {
                     "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
-                    "description": "####  Data Protection Officer[DPO]\n\n*  **Name**: {{vars.dpoName}}\n*  **Email**: {{vars.dpoEmail}}\n*  **Telephone**: {{vars.steps.Create_DPO_Contact.telephoneNumber or vars.input.params.dPOTelephone}}\n\n####  Data Protection Authority[DPA]\n\n**{{vars.steps.Get_DPA_Contact.name}}**\n*  **Address**: {{vars.steps.Get_DPA_Contact.address or 'Demo DPA Address'}}, {{vars.steps.Get_DPA_Contact.postalCode}}, {{vars.steps.Get_DPA_Contact.city}}, {{vars.steps.Get_DPA_Contact.country}}\n*  **Email**: {{vars.dpaEmail or 'NA'}}\n*  **Telephone**: {{vars.steps.Get_DPA_Contact.telephoneNumber or 'NA'}}"
+                    "description": "{{vars.demoMode}}\n\n####  Data Protection Officer[DPO]\n\n*  **Name**: {{vars.dpoName}}\n*  **Email**: {{vars.dpoEmail}}\n*  **Telephone**: {{vars.dpoPhone}}\n\n####  Data Protection Authority[DPA]\n\n**{{vars.steps.Get_DPA_Contact.name}}**\n*  **Address**: {{vars.dpaAddress}}\n*  **Email**: {{vars.dpaEmail}}\n*  **Telephone**: {{vars.dpaTelephone}}\n\nGo back to <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\"> Data Compliance Record #{{vars.complianceID}}<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**Notify Data Protection Officer**<\/span>"
                 },
                 "_showJson": false,
                 "operation": "Append",
@@ -535,18 +543,18 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Demo Mode Status",
+            "name": "Test Mode Status",
             "description": null,
             "arguments": {
                 "conditions": [
                     {
-                        "option": "Demo Mode ON",
-                        "step_iri": "\/api\/3\/workflow_steps\/9245ebb7-8728-436d-84ad-516b14fe9a41",
-                        "condition": "{{ 'ON' in globalVars.GDPR_Demo_Mode }}",
-                        "step_name": "Create Demo DPO Contact"
+                        "option": "Test Mode ON",
+                        "step_iri": "\/api\/3\/workflow_steps\/4761b636-27ee-423a-ba9a-c66697855d39",
+                        "condition": "{{ vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].testMode }}",
+                        "step_name": "Get Demo DPA Contact"
                     },
                     {
-                        "option": "Demo Mode OFF",
+                        "option": "Test Mode OFF",
                         "default": true,
                         "step_iri": "\/api\/3\/workflow_steps\/55c83d6e-cf32-40b1-9fd9-20ed26c96547",
                         "step_name": "Get DPA Contact"
@@ -562,7 +570,7 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Create Demo DPO Contact",
+            "name": "Create Test DPO Contact",
             "description": null,
             "arguments": {
                 "resource": {
@@ -572,7 +580,7 @@
                         "\/api\/3\/tags\/DPO",
                         "\/api\/3\/tags\/Data Protection Officer"
                     ],
-                    "eMailAddress": "{{globalVars.GDPR_Demo_Email}}",
+                    "eMailAddress": "{{vars.demoEmail}}",
                     "telephoneNumber": "{{vars.input.params.dPOTelephone}}"
                 },
                 "_showJson": false,
@@ -585,41 +593,8 @@
                 "step_variables": {
                     "temp": "{{vars.contactIRI.append(vars.result['@id'])}}",
                     "dpoName": "{{vars.result.name}}",
-                    "dpoEmail": "{{globalVars.GDPR_Demo_Email}}"
-                }
-            },
-            "status": null,
-            "top": "570",
-            "left": "475",
-            "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
-            "group": null,
-            "uuid": "9245ebb7-8728-436d-84ad-516b14fe9a41"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Create Demo DPA Contact",
-            "description": null,
-            "arguments": {
-                "resource": {
-                    "name": "DPA Demo Record",
-                    "__replace": "true",
-                    "recordTags": [
-                        "\/api\/3\/tags\/DPA",
-                        "\/api\/3\/tags\/Data Protection Authority"
-                    ],
-                    "eMailAddress": "{{globalVars.GDPR_Demo_Email}}"
-                },
-                "_showJson": false,
-                "operation": "Overwrite",
-                "collection": "\/api\/3\/upsert\/contact",
-                "__recommend": [],
-                "fieldOperation": {
-                    "recordTags": "Overwrite"
-                },
-                "step_variables": {
-                    "temp": "{{vars.contactIRI.append(vars.result['@id'])}}",
-                    "dpaName": "DPA Demo Record",
-                    "dpaEmail": "{{globalVars.GDPR_Demo_Email}}"
+                    "dpoEmail": "{{vars.demoEmail}}",
+                    "dpoPhone": "{{vars.input.params.dPOTelephone}}"
                 }
             },
             "status": null,
@@ -627,7 +602,34 @@
             "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
-            "uuid": "8ca53da5-e6da-4b2f-9a78-80e2e5983445"
+            "uuid": "9245ebb7-8728-436d-84ad-516b14fe9a41"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Test DPA Contact",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "dpaCountry": "{{vars.input.params.dataRegulator.itemValue}}"
+                },
+                "apply_async": false,
+                "step_variables": {
+                    "temp": "{{vars.contactIRI.append(vars.result['@id'])}}",
+                    "dpaName": "{{vars.result.name}}",
+                    "dpaEmail": "{{vars.demoEmail}}",
+                    "dpaAddress": "{{vars.result.address}}, {{vars.result.postalCode}}, {{vars.result.city}}, {{vars.result.country}}",
+                    "dpaWebsite": "{{vars.result.website}}",
+                    "dpaTelephone": "{{vars.result.telephoneNumber or \"NA\"}}"
+                },
+                "pass_input_record": true,
+                "workflowReference": "\/api\/3\/workflows\/77f188a6-d970-4397-81af-84cc3f10ac0d"
+            },
+            "status": null,
+            "top": "570",
+            "left": "475",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "group": null,
+            "uuid": "4761b636-27ee-423a-ba9a-c66697855d39"
         }
     ],
     "routes": [
@@ -690,36 +692,36 @@
             "name": "Demo Mode Status -> Get DPA Contact",
             "targetStep": "\/api\/3\/workflow_steps\/55c83d6e-cf32-40b1-9fd9-20ed26c96547",
             "sourceStep": "\/api\/3\/workflow_steps\/eb8343e2-1395-4ba5-8334-da878f17e576",
-            "label": "Demo Mode OFF",
+            "label": "Test Mode OFF",
             "isExecuted": false,
             "uuid": "8d131f0d-582e-40e5-9f3b-d640ea18a0ad"
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Demo Mode Status -> Create Demo DPO Contact",
-            "targetStep": "\/api\/3\/workflow_steps\/9245ebb7-8728-436d-84ad-516b14fe9a41",
-            "sourceStep": "\/api\/3\/workflow_steps\/eb8343e2-1395-4ba5-8334-da878f17e576",
-            "label": "Demo Mode ON",
-            "isExecuted": false,
-            "uuid": "f19fe735-fa6e-416f-a68e-e93f38ce4154"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Create Demo DPO Contact -> Copy of Create Demo DPO Contact",
-            "targetStep": "\/api\/3\/workflow_steps\/8ca53da5-e6da-4b2f-9a78-80e2e5983445",
+            "name": "Create Demo DPO Contact -> Update Task",
+            "targetStep": "\/api\/3\/workflow_steps\/f815d59a-6075-4b03-9694-abe429b5eb86",
             "sourceStep": "\/api\/3\/workflow_steps\/9245ebb7-8728-436d-84ad-516b14fe9a41",
             "label": null,
             "isExecuted": false,
-            "uuid": "522b62cd-7fd4-4c9d-806a-0165913eb807"
+            "uuid": "c925044b-a355-4260-be9f-a6ee03f657e2"
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Create Demo DPA Contact -> Update Task",
-            "targetStep": "\/api\/3\/workflow_steps\/f815d59a-6075-4b03-9694-abe429b5eb86",
-            "sourceStep": "\/api\/3\/workflow_steps\/8ca53da5-e6da-4b2f-9a78-80e2e5983445",
+            "name": "Get Demo DPA Contact -> Create Demo DPO Contact",
+            "targetStep": "\/api\/3\/workflow_steps\/9245ebb7-8728-436d-84ad-516b14fe9a41",
+            "sourceStep": "\/api\/3\/workflow_steps\/4761b636-27ee-423a-ba9a-c66697855d39",
             "label": null,
             "isExecuted": false,
-            "uuid": "47f2c3e4-129b-49a3-8d92-1fe3cd2243c8"
+            "uuid": "0f9f4e3c-72eb-48c5-88b3-7c522f0eb545"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Demo Mode Status -> Get Demo DPA Contact",
+            "targetStep": "\/api\/3\/workflow_steps\/4761b636-27ee-423a-ba9a-c66697855d39",
+            "sourceStep": "\/api\/3\/workflow_steps\/eb8343e2-1395-4ba5-8334-da878f17e576",
+            "label": "Test Mode ON",
+            "isExecuted": false,
+            "uuid": "c8e65f87-9aed-4dcd-be5e-faeaf0f39b11"
         }
     ],
     "groups": [],

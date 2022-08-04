@@ -43,12 +43,12 @@
                 "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
                 "params": {
                     "cc": "",
-                    "to": "{% if globalVars.GDPR_Demo_Mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.affectedUsersEmails}}{% endif %}",
-                    "bcc": "",
+                    "to": "{{globalVars.Default_Email}}",
+                    "bcc": "{% if vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].testMode %}{{vars.demoEmail}}{% else %}{{vars.affectedUsersEmails}}{% endif %}",
                     "from": "",
                     "type": "Manual Input",
                     "content": "<p>Hello,<\/p>\n<p>We are writing to you because of an incident involving a personal data breach associated with our platform. Although we are unaware of any actual misuse of your information, we are providing notice to you and other potentially affected customers about the incident.<\/p>\n<p><strong>What happened?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatHappened}}<\/p>\n<p><strong>What information was involved?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatInformationWasInvolved}}<\/p>\n<p><strong>What are we doing?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatAreWeDoing}}<\/p>\n<p><strong>What you can do?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatYouCanDo}}<\/p>\n<p>Thanks,<br>Security Team<\/p>",
-                    "subject": "Data Breach Notification",
+                    "subject": "Personal Data Breach Notification",
                     "iri_list": "",
                     "body_type": "Rich Text",
                     "file_name": "",
@@ -77,7 +77,7 @@
                 "input": {
                     "schema": {
                         "title": "Breach Notification to Affected Users",
-                        "description": "{% if globalVars.GDPR_Demo_Mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Mode}}{% endif %}\nHi Team,\n\nWe have detected valid data breach {{vars.complianceID}} - {{vars.complianceName}}. \n<br>\nIt is confirmed by DPO that affected users mentioned below are at high risk and need to be notified about the same.\n<br>\n| Sr. No. | Affected Individuals |\n| --- | --- |\n{{vars.affectedIndividualsList | join('\\n')}}\n<br>\nPlease provide your input for notification mail.\n\nThanks,",
+                        "description": "{{vars.demoMode}}\n<br>\nHi Team,\n\nWe have detected valid data breach event for  **[Data Compliance Record #{{vars.complianceID}} - {{vars.complianceName}}](https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}})**. \n<br>\nIt is confirmed by DPO that individuals mentioned below are at high risk and need to be notified about the same.\n<br>\n| Sr. No. | Affected Individuals |\n| --- | --- |\n{{vars.affectedIndividualsList | join('\\n')}}\n<br>\nPlease provide your input for the corresponding notification mail.\n\nThanks,",
                         "inputVariables": [
                             {
                                 "name": "whatHappened?",
@@ -285,11 +285,14 @@
                 "module": "tasks?$limit=30&$relationships=true",
                 "checkboxFields": true,
                 "step_variables": {
+                    "demoMode": "{% if vars.result[0].dataCompliances[0].testMode %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #73AD21; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Test Mode ON<\/strong><\/span>{% endif %}",
                     "dpaEmail": "{{vars.result[0].dataCompliances[0].dPAEmail}}",
-                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if loop.index == 8 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
+                    "demoEmail": "{{vars.result[0].dataCompliances[0].testEmail}}",
+                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if 'Notify Affected Individuals' in item %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
                     "complianceID": "{{vars.result[0].dataCompliances[0].id}}",
                     "complianceIRI": "{{vars.result[0].dataCompliances[0]['@id']}}",
                     "complianceName": "{{vars.result[0].dataCompliances[0].name}}",
+                    "complianceUUID": "{{vars.result[0].dataCompliances[0].uuid}}",
                     "affectedUsersEmails": "{{vars.result[0].dataCompliances[0].affectedUsersEmails}}",
                     "affectedUsersTempList": "{{vars.result[0].dataCompliances[0].affectedUsersEmails.split(',')}}"
                 }
@@ -319,7 +322,8 @@
                     "__link": {
                         "dataCompliances": "{{vars.complianceIRI}}"
                     },
-                    "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed"
+                    "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
+                    "description": "{{vars.demoMode}}\n\n##### Below affected individuals have been notified about the data breach. \n<br>\n| Sr. No. | Affected Individuals |\n| --- | --- |\n{{vars.affectedIndividualsList | join('\\n')}}\n\nGo back to <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\"> Data Compliance Record #{{vars.complianceID}}<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**{{vars.nextTask}}**<\/span>"
                 },
                 "_showJson": false,
                 "operation": "Append",
@@ -389,6 +393,7 @@
                 "checkboxFields": true,
                 "step_variables": {
                     "temp": "{% for item in vars.affectedUsersTempList %}{% set _dummy = \"|\" + loop.index | string + \"|\" + item + \"|\" %}{{vars.affectedIndividualsList.append(_dummy)}}{% endfor %}",
+                    "nextTask": "{% for item in vars.description %}{% if '| 5' in item%}{{item.split('|')[2]}}{% endif %}{% endfor %}",
                     "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}"
                 }
             },
@@ -476,15 +481,6 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Get Parent Incident ID -> Data Breach Notification",
-            "targetStep": "\/api\/3\/workflow_steps\/4f717693-1fa2-48bc-8131-6dcf5e8c7622",
-            "sourceStep": "\/api\/3\/workflow_steps\/7ef51a30-478c-490c-9418-fa1d65e6f0e5",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "4e0f7126-e95e-4fc2-bb74-25035a0edbd2"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Data Breach Notification -> Copy of Update Compliance Record Description",
             "targetStep": "\/api\/3\/workflow_steps\/a2ba2544-d007-47c2-ac6d-2caf45a062a4",
             "sourceStep": "\/api\/3\/workflow_steps\/4f717693-1fa2-48bc-8131-6dcf5e8c7622",
@@ -500,6 +496,15 @@
             "label": null,
             "isExecuted": false,
             "uuid": "83d186c1-c3e8-4ef6-9521-ec75b5d2ae22"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Parent Incident ID -> Data Breach Notification",
+            "targetStep": "\/api\/3\/workflow_steps\/4f717693-1fa2-48bc-8131-6dcf5e8c7622",
+            "sourceStep": "\/api\/3\/workflow_steps\/7ef51a30-478c-490c-9418-fa1d65e6f0e5",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "098b8029-dfcb-480f-bbfc-1982d3bd6e83"
         }
     ],
     "groups": [],
@@ -509,6 +514,6 @@
     "isPrivate": false,
     "deletedAt": null,
     "recordTags": [
-        "Referenced"
+        "ManualTrigger"
     ]
 }
