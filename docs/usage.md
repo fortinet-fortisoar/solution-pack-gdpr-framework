@@ -3,17 +3,33 @@
 
 # Usage
 
+## Playbook Execution Modes
+
+The GDPR playbooks can be executed in 'Test Mode' as well as in 'Production Mode'
+
+  - The playbooks are by default configured to execute in "Test Mode"
+  - Under the "Test Mode", all the email communication to be towards DPO, Affected Individuals or DPA will be done using the test email ID that is configured for testing while in 'Production Mode' the actual email IDs will be used
+  - In order to change execution mode or test email-ID, follow the below procedure:
+    - Goto to the "Create Data Compliance Record" playbook under the '10 - SP - GDPR Framework' collection and open the 'Configuration' step
+    ![Execution Mode Configuration](res/execution-mode-configuration.png)
+    - To change of playbooks execution mode from "Test Mode" to "Production", Modify value of **testMode** variable to `false`
+    - Likewise, to change test email-ID change value of **testEmail** variable
+    ![Execution Mode Configuration Parameters](res/execution-mode-configuration-parametes.png)
+
+
 ## Gathering Details on Personal Data Breach
 
 - When a personal data breach is detected in an incident, choose the value of the **Was Personal Data Affected?** field as **Yes**.
 
     ![Personal Data Affected](res/personal-data-affected.png)
 
+
 - A pop-up appears that collects additional information related to the incident
+
+  **Note:-** When playbooks executed in 'Test Mode', the GREEN icon shown in below screenshot will appear in all the task in this solution pack
 
     ![Personal Data Additional Details](res/personal-data-additional-details.png)
 
-- Choose 'Demo Mode Status' as "Demo Mode On" to execute GDPR playbooks in demo mode. Also, add 'Demo Email' to which all email communications will be sent.
 
 - Select 'GDPR' in 'Regulatory Body' and provide the needed information
 
@@ -33,8 +49,8 @@
 
 ## Tasks
 
-- **Get GDPR Risk Assessment Information**
-  - Open the `Get GDPR Risk Assessment Information` Task and click on **"GDPR Risk Assessment Form"** Button
+- **Submit Risk Assessment Information**
+  - Open the `Submit Risk Assessment Information` Task and click on **"Submit Risk Assessment Information"** Button
 
     ![GDPR Risk Assessment Information Task](res/gdpr-risk-assessment-information-task.png)
 
@@ -46,25 +62,25 @@
 
     ![taskMarkedComplete](res/task-marked-complete.png)
 
-- **Get DPO and DPA Contact**
-  - Similarly, Collect DPO and DPA contact details under **Provide DPO and DPA Contact Details Task**
+- **Provide DPO and DPA Contact Details**
+  - Similarly, Collect DPO and DPA contact details under **Provide DPO and DPA Contact Details** Task
 
     ![DPO Contact Details](res/dpo-contact.png)
 
-  - Details provided reflect in the created incident as shown, and the task is marked as complete
+  - Details provided reflect in the created data compliance record as shown, and the task is marked as complete
 
     ![Incident Details](res/incident-details.png)
 
-- **Review and Approve Breach Report by DPO**
-  - Open the `Review and Approve Breach Report by DPO` Task and click on the 'Notify Data Protection Officer' Button to get the information reviewed and approve the report to send to Data Protection Authorities
+- **Notify Data Protection Officer**
+  - Open the `Notify Data Protection Officer` Task and click on the 'Notify Data Protection Officer' Button to get the information reviewed and approve the report to send to Data Protection Authorities
 
     ![Approve Data Breach Report](res/approve-data-breach-report.png)
   
 Based on the inputs from DPO, the following new task is created
 
-- **Communicate Affected Users of Breach**
+- **Notify Affected Users**
   - If affected individuals are at **High** or **Medium** Risk, this new task is created to notify the individual of a data breach
-  - Open the task and click on the `Notify Affected User` button
+  - Open the task and click on the `Notify Affected Individuals` button
   - The notification should contain the following information
     - What happened? - Provide brief information on data breach
     - What Information Was Involved? - Provide information on what type of data was compromised
