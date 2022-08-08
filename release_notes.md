@@ -1,16 +1,16 @@
 # What's New
 
 - This solution pack is now **Certified**
-- **Summary** tab contains more details and now has following sections available as part of this solution pack's details:
-    - A new category **Compliance and Reporting** &ndash; helps with filtering from the left pane when using the check-boxes under **Category**
-    - A new tag **GDPR** &ndash; helps with filtering from the left pane when using the **Search By Tags** option
-    - Added instructions to configure "Code Snippet" connector before execution of GDPR playbooks
-- A new module **Data Compliance** has been intoduced
-- A new Navigation menu added for 'Data Compliance'
+- **Summary** tab contains more details and now has the following sections available as part of this solution pack's details:
+    - A new category **Compliance and Reporting** helps with filtering from the left pane when using the check-boxes under **Category**
+    - A new tag **GDPR** helps with filtering from the left pane when using the **Search By Tags** option
+    - Added instructions to configure the "Code Snippet" connector before execution of GDPR playbooks
+- A new module **Data Compliance** has been introduced
+- A new Navigation menu was added for 'Data Compliance'
 - Added new playbooks to **Check for SLA violation** and to **Send Reminder for SLA Breach**
-- Updated **GDPR Assessment Report** to be compitable with newly created module i.e 'Data Compliance'
+- Updated **GDPR Assessment Report** to be compatible with the newly created module i.e. 'Data Compliance'
 - Added a provision to execute GDPR playbooks either in **Test Mode** or in **Production Mode**
-- The task and te form associated with **Notify Affected Individuals** now also shows list of email-IDs of the Affected Individuals
+- The task and the form associated with **Notify Affected Individuals** now also show list of email IDs of the Affected Individuals
 
 **Note:**
 * It is recommended to the users who have already installed the GDPR SP v 1.0.0 to remove the below fields and picklists from the Incident Module
