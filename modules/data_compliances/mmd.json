@@ -222,7 +222,7 @@
                         {
                             "field": "listName__name",
                             "operator": "eq",
-                            "value": "ChooseYesOrNo"
+                            "value": "YesNoInput"
                         }
                     ],
                     "sort": [
@@ -758,7 +758,7 @@
                         {
                             "field": "listName__name",
                             "operator": "eq",
-                            "value": "ChooseYesOrNo"
+                            "value": "YesNoInput"
                         }
                     ],
                     "sort": [
@@ -1266,7 +1266,7 @@
                         {
                             "field": "listName__name",
                             "operator": "eq",
-                            "value": "ChooseYesOrNo"
+                            "value": "YesNoInput"
                         }
                     ],
                     "sort": [
@@ -1344,7 +1344,7 @@
                         {
                             "field": "listName__name",
                             "operator": "eq",
-                            "value": "ChooseYesOrNo"
+                            "value": "YesNoInput"
                         }
                     ],
                     "sort": [
@@ -2066,7 +2066,7 @@
                         {
                             "field": "listName__name",
                             "operator": "eq",
-                            "value": "ChooseYesOrNo"
+                            "value": "YesNoInput"
                         }
                     ],
                     "sort": [

@@ -30,9 +30,6 @@
     "contents": {
         "picklistNames": [
             {
-                "name": "ChooseYesOrNo"
-            },
-            {
                 "name": "Contact Title"
             },
             {
@@ -41,17 +38,9 @@
             {
                 "name": "GDPREUCountryList"
             },
-            {
-                "name": "IncidentStatus"
-            },
+
             {
                 "name": "RegulatoryBody"
-            },
-            {
-                "name": "Severity"
-            },
-            {
-                "name": "SLAState"
             }
         ],
         "modules": {

@@ -159,7 +159,7 @@
                     "filters": [
                         {
                             "type": "object",
-                            "field": "wasPersonalDataOrInformationInvolved",
+                            "field": "wasPersonalDataAffected",
                             "value": "\/api\/3\/picklists\/cfd49634-d25a-476f-8485-99585e589a8c",
                             "_value": {
                                 "@id": "\/api\/3\/picklists\/cfd49634-d25a-476f-8485-99585e589a8c",
@@ -169,7 +169,7 @@
                         },
                         {
                             "type": "object",
-                            "field": "wasPersonalDataOrInformationInvolved",
+                            "field": "wasPersonalDataAffected",
                             "value": "",
                             "_value": {
                                 "@id": "",
@@ -418,7 +418,7 @@
                                         "filters": [
                                             {
                                                 "field": "listName__name",
-                                                "value": "ChooseYesOrNo",
+                                                "value": "YesNoInput",
                                                 "operator": "eq"
                                             }
                                         ]
@@ -493,7 +493,7 @@
                                         "filters": [
                                             {
                                                 "field": "listName__name",
-                                                "value": "ChooseYesOrNo",
+                                                "value": "YesNoInput",
                                                 "operator": "eq"
                                             }
                                         ]
@@ -568,7 +568,7 @@
                                         "filters": [
                                             {
                                                 "field": "listName__name",
-                                                "value": "ChooseYesOrNo",
+                                                "value": "YesNoInput",
                                                 "operator": "eq"
                                             }
                                         ]

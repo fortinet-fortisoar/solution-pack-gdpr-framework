@@ -565,7 +565,7 @@
             "description": null,
             "arguments": {
                 "resource": {
-                    "isValidBreach": "{% if 'Valid Breach' == vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isValidBreach %}{{\"ChooseYesOrNo\" | picklist(\"Yes\", \"@id\")}}{% else %}{{\"ChooseYesOrNo\" | picklist(\"No\", \"@id\")}}{% endif %}",
+                    "isValidBreach": "{% if 'Valid Breach' == vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isValidBreach %}{{\"YesNoInput\" | picklist(\"Yes\", \"@id\")}}{% else %}{{\"YesNoInput\" | picklist(\"No\", \"@id\")}}{% endif %}",
                     "isDPIARequired": "{{vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isDPIARequired}}",
                     "summaryOfDPOAdvice": "{{vars.steps.Send_Risk_Assessment_Details_to_DPO.input.summaryOfDPOAdvice}}",
                     "reasonToPerformDPIA": "{{vars.steps.Send_Risk_Assessment_Details_to_DPO.input.reasonToPerformDPIA}}",

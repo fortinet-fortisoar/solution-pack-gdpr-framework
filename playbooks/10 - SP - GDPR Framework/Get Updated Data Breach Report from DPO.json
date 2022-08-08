@@ -581,14 +581,14 @@
                     "mitigationActions": "{{vars.steps.Update_DPO_Report.input['whatMitigationActionsHaveBeenImplemented?']}}",
                     "noOfAffectedUsers": "{{vars.steps.Update_DPO_Report.input['no.OfAffectedUsers']}}",
                     "whereDataWasHosted": "{{vars.steps.Update_DPO_Report.input['whereDataWasHosted?']}}",
-                    "wasTheDataEncrypted": "{{\"ChooseYesOrNo\" | picklist(vars.steps.Update_DPO_Report.input['wasTheDataEncrypted?'], \"@id\")}}",
+                    "wasTheDataEncrypted": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['wasTheDataEncrypted?'], \"@id\")}}",
                     "whatWasTheDataFormat": "{{vars.steps.Update_DPO_Report.input['whatWasTheDataFormat?']}}",
                     "whatWasTheDataSource": "{{vars.steps.Update_DPO_Report.input['whatWasTheDataSource?']}}",
                     "repercussionsOfBreach": "{{vars.steps.Update_DPO_Report.input['whatAreTheRepercussionsOfBreach?']}}",
-                    "wasTheExposureResolved": "{{\"ChooseYesOrNo\" | picklist(vars.steps.Update_DPO_Report.input['wasTheExposureResolved?'], \"@id\")}}",
+                    "wasTheExposureResolved": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['wasTheExposureResolved?'], \"@id\")}}",
                     "noOfAffectedDataRecords": "{{vars.steps.Update_DPO_Report.input['no.OfAffectedDataRecords']}}",
                     "anyAdditionalInformation": "{{vars.steps.Update_DPO_Report.input.anyAdditionalInformation}}",
-                    "isHarmRiskOrMisuseForeseeable": "{{\"ChooseYesOrNo\" | picklist(vars.steps.Update_DPO_Report.input['riskOrMisuseForeseeable'], \"@id\")}}"
+                    "isHarmRiskOrMisuseForeseeable": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['riskOrMisuseForeseeable'], \"@id\")}}"
                 },
                 "_showJson": false,
                 "operation": "Append",
