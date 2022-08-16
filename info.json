@@ -26,12 +26,9 @@
         "GDPR"
     ],
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-07-29T11:36:36+00:00",
+    "date": "2022-08-04T09:10:30+00:00",
     "contents": {
         "picklistNames": [
-            {
-                "name": "ChooseYesOrNo"
-            },
             {
                 "name": "Contact Title"
             },
@@ -41,17 +38,9 @@
             {
                 "name": "GDPREUCountryList"
             },
-            {
-                "name": "IncidentStatus"
-            },
+
             {
                 "name": "RegulatoryBody"
-            },
-            {
-                "name": "Severity"
-            },
-            {
-                "name": "SLAState"
             }
         ],
         "modules": {
@@ -108,28 +97,10 @@
         ],
         "globalVariables": [
             {
-                "id": 15,
-                "name": "GDPR_Demo_Mode",
-                "value": "Demo Mode ON",
-                "default_value": "Demo Mode ON"
-            },
-            {
-                "id": 16,
-                "name": "GDPR_Demo_Email",
-                "value": "no-reply@example.com",
-                "default_value": "no-reply@example.com"
-            },
-            {
                 "id": 10,
                 "name": "Current_Date",
                 "value": "{{arrow.utcnow().timestamp}}",
                 "default_value": "{{arrow.utcnow().timestamp}}"
-            },
-            {
-                "id": 17,
-                "name": "Demo_mode",
-                "value": "true",
-                "default_value": "true"
             },
             {
                 "id": 7,

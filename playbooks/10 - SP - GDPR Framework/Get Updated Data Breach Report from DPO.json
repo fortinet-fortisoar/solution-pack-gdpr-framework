@@ -117,12 +117,15 @@
                 "module": "tasks?$limit=30&$relationships=true",
                 "checkboxFields": true,
                 "step_variables": {
+                    "demoMode": "{% if vars.result[0].dataCompliances[0].testMode %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #73AD21; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Test Mode ON<\/strong><\/span>{% endif %}",
                     "dpaEmail": "{{vars.result[0].dataCompliances[0].dPAEmail}}",
                     "dpoEmail": "{{vars.result[0].dataCompliances[0].dPOEmail}}",
-                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if loop.index == 9 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
+                    "demoEmail": "{{vars.result[0].dataCompliances[0].testEmail}}",
+                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if 'Get Updated Report from DPO' in item %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
                     "complianceID": "{{vars.result[0].dataCompliances[0].id}}",
                     "complianceIRI": "{{vars.result[0].dataCompliances[0]['@id']}}",
-                    "complianceName": "{{vars.result[0].dataCompliances[0].name}}"
+                    "complianceName": "{{vars.result[0].dataCompliances[0].name}}",
+                    "complianceUUID": "{{vars.result[0].dataCompliances[0].uuid}}"
                 }
             },
             "status": null,
@@ -524,7 +527,7 @@
                 "resources": "tasks",
                 "owner_detail": {
                     "isAssigned": false,
-                    "emailRecipients": "{% if globalVars.Demo_mode == 'Demo Mode ON' %}{{globalVars.GDPR_Demo_Email}}{% else %}{{vars.dpoEmail}}{% endif %}"
+                    "emailRecipients": "{% if vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].testMode %}{{vars.demoEmail}}{% else %}{{vars.dpoEmail}}{% endif %}"
                 },
                 "isRecordLinked": true,
                 "step_variables": [],
@@ -578,14 +581,14 @@
                     "mitigationActions": "{{vars.steps.Update_DPO_Report.input['whatMitigationActionsHaveBeenImplemented?']}}",
                     "noOfAffectedUsers": "{{vars.steps.Update_DPO_Report.input['no.OfAffectedUsers']}}",
                     "whereDataWasHosted": "{{vars.steps.Update_DPO_Report.input['whereDataWasHosted?']}}",
-                    "wasTheDataEncrypted": "{{\"ChooseYesOrNo\" | picklist(vars.steps.Update_DPO_Report.input['wasTheDataEncrypted?'], \"@id\")}}",
+                    "wasTheDataEncrypted": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['wasTheDataEncrypted?'], \"@id\")}}",
                     "whatWasTheDataFormat": "{{vars.steps.Update_DPO_Report.input['whatWasTheDataFormat?']}}",
                     "whatWasTheDataSource": "{{vars.steps.Update_DPO_Report.input['whatWasTheDataSource?']}}",
                     "repercussionsOfBreach": "{{vars.steps.Update_DPO_Report.input['whatAreTheRepercussionsOfBreach?']}}",
-                    "wasTheExposureResolved": "{{\"ChooseYesOrNo\" | picklist(vars.steps.Update_DPO_Report.input['wasTheExposureResolved?'], \"@id\")}}",
+                    "wasTheExposureResolved": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['wasTheExposureResolved?'], \"@id\")}}",
                     "noOfAffectedDataRecords": "{{vars.steps.Update_DPO_Report.input['no.OfAffectedDataRecords']}}",
                     "anyAdditionalInformation": "{{vars.steps.Update_DPO_Report.input.anyAdditionalInformation}}",
-                    "isHarmRiskOrMisuseForeseeable": "{{\"ChooseYesOrNo\" | picklist(vars.steps.Update_DPO_Report.input['riskOrMisuseForeseeable'], \"@id\")}}"
+                    "isHarmRiskOrMisuseForeseeable": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['riskOrMisuseForeseeable'], \"@id\")}}"
                 },
                 "_showJson": false,
                 "operation": "Append",
@@ -610,7 +613,8 @@
             "description": null,
             "arguments": {
                 "resource": {
-                    "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed"
+                    "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
+                    "description": "{{vars.demoMode}}\n\nThe updated data breach report has been received from DPO.\n\nGo back to <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\"> **Data Compliance Record #{{vars.complianceID}}**<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**{{vars.nextTask}}**<\/span>"
                 },
                 "_showJson": false,
                 "operation": "Append",
@@ -654,6 +658,7 @@
                 "module": "data_compliances?$limit=30&$relationships=true",
                 "checkboxFields": true,
                 "step_variables": {
+                    "nextTask": "Notify Data Protection Authority",
                     "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}"
                 }
             },
@@ -735,21 +740,21 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Get Parent Incident ID -> Update DPO Report",
-            "targetStep": "\/api\/3\/workflow_steps\/a6bceef9-8233-4075-aa12-98d9e2eb375d",
-            "sourceStep": "\/api\/3\/workflow_steps\/9ff376d9-eb64-4716-8301-e98e2ac8fefc",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "ce9d6faa-ac93-4c2a-b24c-0d1606a4f195"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Update Task Status -> Update Compliance Record Description",
             "targetStep": "\/api\/3\/workflow_steps\/a8d12ff1-9085-43c8-92af-3b82c5253c01",
             "sourceStep": "\/api\/3\/workflow_steps\/0f758157-ede9-44f7-af51-5f185818f5c3",
             "label": null,
             "isExecuted": false,
             "uuid": "ad2069d7-c00a-430e-8595-32c1ece2d255"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Parent Incident ID -> Update DPO Report",
+            "targetStep": "\/api\/3\/workflow_steps\/a6bceef9-8233-4075-aa12-98d9e2eb375d",
+            "sourceStep": "\/api\/3\/workflow_steps\/9ff376d9-eb64-4716-8301-e98e2ac8fefc",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "98efd851-e839-491f-9d12-43c2a23d23ac"
         }
     ],
     "groups": [],

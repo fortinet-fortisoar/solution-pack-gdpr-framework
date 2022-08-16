@@ -1,7 +1,7 @@
 # Release Information
 
-- **Version**:  1.0.0
-- **Certified**: No
+- **Version**:  1.0.1
+- **Certified**: Yes
 - **Publisher**: Fortinet
 - **Compatible Version**: FortiSOAR v7.2.0 and above
 
@@ -21,5 +21,5 @@ This solution pack provides a set of paybooks that enables users to gather all t
 
 # Next Steps 
  
-| [Installation](https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/develop/docs/setup.md#installation) | [Configuration](https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/develop/docs/setup.md#configuration) | [Usage](https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/develop/docs/usage.md) | [Contents](https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/develop/docs/contents.md) |
+| [Installation](https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/release/1.0.1/docs/setup.md#installation) | [Configuration](https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/release/1.0.1/docs/setup.md#configuration) | [Usage](https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/release/1.0.1/docs/usage.md) | [Contents](https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/release/1.0.1/docs/contents.md) |
 |--------------------------------------------|----------------------------------------------|------------------------|------------------------------|
