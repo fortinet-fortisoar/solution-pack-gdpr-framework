@@ -562,20 +562,6 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Configuration",
-            "description": null,
-            "arguments": {
-                "description": "[]"
-            },
-            "status": null,
-            "top": "165",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "df160913-cf18-42c2-8a14-c48e55d08daf"
-        },
-        {
-            "@type": "WorkflowStep",
             "name": "Get Parent Incident ID",
             "description": null,
             "arguments": {
@@ -611,12 +597,28 @@
         },
         {
             "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "description": "[]"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "df160913-cf18-42c2-8a14-c48e55d08daf"
+        },
+        {
+            "@type": "WorkflowStep",
             "name": "Update Compliance Record Description",
             "description": null,
             "arguments": {
                 "resource": {
+                    "status": "\/api\/3\/picklists\/bb7402d6-f699-11e7-8c3f-9a214cf093ae",
                     "description": "{{vars.description | join('\\n')}}"
                 },
+                "_showJson": false,
                 "operation": "Append",
                 "collection": "{{vars.complianceIRI}}",
                 "__recommend": [],
@@ -644,12 +646,21 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Configuration -> Get Incident ID",
-            "targetStep": "\/api\/3\/workflow_steps\/b13d127d-00e8-476e-a531-657675ce1515",
-            "sourceStep": "\/api\/3\/workflow_steps\/df160913-cf18-42c2-8a14-c48e55d08daf",
+            "name": "Update GDPR Assessment Data -> Update Task Status",
+            "targetStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
+            "sourceStep": "\/api\/3\/workflow_steps\/57671b9b-fa3b-4477-a3ff-a9b3576e8673",
             "label": null,
             "isExecuted": false,
-            "uuid": "c188ce12-621b-46f4-a55a-2a8df8f78e47"
+            "uuid": "20c758bc-3b4b-4088-acf7-be5c74cae074"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update Task Status -> Update Compliance Record Description",
+            "targetStep": "\/api\/3\/workflow_steps\/f0f1f024-f9af-4342-9d8f-4f1622ba79d1",
+            "sourceStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "740d8e6d-b18f-4158-a2a9-71b0b8f7133f"
         },
         {
             "@type": "WorkflowRoute",
@@ -671,21 +682,12 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Update GDPR Assessment Data -> Update Task Status",
-            "targetStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
-            "sourceStep": "\/api\/3\/workflow_steps\/57671b9b-fa3b-4477-a3ff-a9b3576e8673",
+            "name": "Configuration -> Get Incident ID",
+            "targetStep": "\/api\/3\/workflow_steps\/b13d127d-00e8-476e-a531-657675ce1515",
+            "sourceStep": "\/api\/3\/workflow_steps\/df160913-cf18-42c2-8a14-c48e55d08daf",
             "label": null,
             "isExecuted": false,
-            "uuid": "20c758bc-3b4b-4088-acf7-be5c74cae074"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Update Task Status -> Update Compliance Record Description",
-            "targetStep": "\/api\/3\/workflow_steps\/f0f1f024-f9af-4342-9d8f-4f1622ba79d1",
-            "sourceStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "740d8e6d-b18f-4158-a2a9-71b0b8f7133f"
+            "uuid": "c188ce12-621b-46f4-a55a-2a8df8f78e47"
         }
     ],
     "groups": [],
