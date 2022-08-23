@@ -79,12 +79,12 @@
                                 "useRecordFieldDefault": false
                             },
                             {
-                                "name": "breachDetectionDate",
+                                "name": "breachOccurrenceDate",
                                 "type": "integer",
-                                "label": "Breach Detection Date",
+                                "label": "Breach Occurrence Date",
                                 "title": "Date\/Time Field",
                                 "usable": true,
-                                "tooltip": "",
+                                "tooltip": "Date and time when the personal data breach incident took place",
                                 "dataType": "datetime",
                                 "formType": "datetime",
                                 "required": true,
@@ -119,12 +119,12 @@
                                 "_addVisibilityConditions": true
                             },
                             {
-                                "name": "breachOccurrenceDate",
+                                "name": "breachDetectionDate",
                                 "type": "integer",
-                                "label": "Breach Occurrence Date",
+                                "label": "Breach Detection Date",
                                 "title": "Date\/Time Field",
                                 "usable": true,
-                                "tooltip": "",
+                                "tooltip": "Date and time when the personal data breach incident detected",
                                 "dataType": "datetime",
                                 "formType": "datetime",
                                 "required": true,

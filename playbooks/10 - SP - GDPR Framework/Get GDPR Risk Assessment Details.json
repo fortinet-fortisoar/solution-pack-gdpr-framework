@@ -360,7 +360,7 @@
                         "tooltip": "",
                         "dataType": "text",
                         "formType": "textarea",
-                        "required": true,
+                        "required": false,
                         "_expanded": true,
                         "mmdUpdate": true,
                         "collection": false,
