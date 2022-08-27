@@ -24,7 +24,7 @@
                 "input": {
                     "schema": {
                         "title": "Submit Personal Data Breach Information",
-                        "description": "{% if vars.testMode %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #73AD21; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Test Mode ON<\/strong><\/span>{% else %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #da393d; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Production Mode ON<\/strong><\/span>{% endif %}\n<br>\nChoose your 'Regulatory Body' and provide information related to personal data breach.",
+                        "description": "{% if vars.testModeStatus %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #73AD21; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Test Mode ON<\/strong><\/span>{% else %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #da393d; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Production Mode ON<\/strong><\/span>{% endif %}\n<br>\nChoose your 'Regulatory Body' and provide information related to personal data breach.",
                         "inputVariables": [
                             {
                                 "name": "regulatoryBody",
@@ -488,7 +488,7 @@
                     "name": "GDPR Assessment for Incident #{{vars.input.records[0].id}} - {{vars.input.records[0].name}}",
                     "status": "\/api\/3\/picklists\/bb73fe9e-f699-11e7-8c3f-9a214cf093ae",
                     "severity": "\/api\/3\/picklists\/40187287-89fc-4e9c-b717-e9443d57eedb",
-                    "testMode": "{{vars.testMode}}",
+                    "testMode": "{{vars.testModeStatus}}",
                     "__replace": "",
                     "incidents": "{{vars.input.records[0]['@id']}}",
                     "testEmail": "{{vars.testEmail}}",
@@ -580,7 +580,9 @@
                 },
                 "module": "incidents?$limit=30&$relationships=true",
                 "checkboxFields": true,
-                "step_variables": []
+                "step_variables": {
+                    "testModeStatus": "{% if vars.testMode %}true{% elif (not vars.testMode) and (vars.testEmail | length > 0 and vars.testEmail != 'NA') %}true{% elif (not vars.testMode) and (vars.testEmail | length == 0 or vars.testEmail == 'NA') %}false{% endif %}"
+                }
             },
             "status": null,
             "top": "300",
@@ -604,7 +606,7 @@
                     "recordTags": [
                         "\/api\/3\/tags\/GDPR Assessment"
                     ],
-                    "description": "As per GDPR guidelines provided in [*Article - 33*](https:\/\/gdpr-info.eu\/art-33-gdpr\/), in the event of a personal data breach, it is mandatory to notify Data Protection Authority within 72 hours of the breach happening.\n\nBased on your information, the following GDPR Data Compliance record has been created.\n\n[GDPR Assessment Record #{{vars.steps.Create_GDPR_Data_Compliance_Record.id}}](https:\/\/{{globalVars.Server_fqhn}}\/modules\/incidents\/{{vars.steps.Create_GDPR_Data_Compliance_Record.uuid}})\n\nPerform the tasks provided in the record and complete the GDPR Assessment",
+                    "description": "{% if vars.testModeStatus %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #73AD21; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Test Mode ON<\/strong><\/span>{% endif %}\nAs per GDPR guidelines provided in [*Article - 33*](https:\/\/gdpr-info.eu\/art-33-gdpr\/), in the event of a personal data breach, it is mandatory to notify Data Protection Authority within 72 hours of the breach happening.\n\nBased on your information, the following GDPR Data Compliance record has been created.\n\n[GDPR Assessment Record #{{vars.steps.Create_GDPR_Data_Compliance_Record.id}}](https:\/\/{{globalVars.Server_fqhn}}\/modules\/incidents\/{{vars.steps.Create_GDPR_Data_Compliance_Record.uuid}})\n\nPerform the tasks provided in the record and complete the GDPR Assessment",
                     "assignedOnDate": "{{arrow.utcnow().int_timestamp}}",
                     "assignedToPerson": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce"
                 },
