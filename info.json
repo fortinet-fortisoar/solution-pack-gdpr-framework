@@ -38,7 +38,9 @@
             {
                 "name": "GDPREUCountryList"
             },
-
+            {
+                "name": "GDPRReminderStatus"
+            },
             {
                 "name": "RegulatoryBody"
             }
