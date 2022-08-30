@@ -142,21 +142,21 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Find Open Comliance Records -> Send Reminder for SLA Breach",
-            "targetStep": "\/api\/3\/workflow_steps\/0559be90-28b9-4567-81d7-9b3f43102c44",
-            "sourceStep": "\/api\/3\/workflow_steps\/1ec181a0-aa03-4707-b5e7-d0f4b3738e20",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "9a5579a9-cdf0-4aa8-b89d-80c4504f1444"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Configuration -> Find Open Comliance Records",
+            "name": "Configuration -> Find Open Compliance Records",
             "targetStep": "\/api\/3\/workflow_steps\/1ec181a0-aa03-4707-b5e7-d0f4b3738e20",
             "sourceStep": "\/api\/3\/workflow_steps\/1ff4ec35-2d6a-4c5e-bfa2-0c5abca19ed4",
             "label": null,
             "isExecuted": false,
-            "uuid": "cacfaf8e-e4b8-4e95-a6b0-dc6baf5d043a"
+            "uuid": "5d8e37b0-4f52-423f-b0e7-a6e2034bb6bc"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Find Open Compliance Records -> Send Reminder for SLA Breach",
+            "targetStep": "\/api\/3\/workflow_steps\/0559be90-28b9-4567-81d7-9b3f43102c44",
+            "sourceStep": "\/api\/3\/workflow_steps\/1ec181a0-aa03-4707-b5e7-d0f4b3738e20",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "b6b72382-addf-4d14-b743-6e71c768ef86"
         }
     ],
     "groups": [],
@@ -170,7 +170,7 @@
     ],
     "schedules": [
         {
-            "id": "gAAAAABjDR8tzIRffudxNJIFNKs-X4KRsHX40Jdu6gVB-Tsv5Aehss0Af1r3wSUZRy3LJnMsHZ93oEfeZuxERiiZbOnSnMxSyA==",
+            "id": "gAAAAABjDZV82bpZhIqr7nDPjMm-y1jedsLKHMKmTOEbY2khZERSfWO0hrAI5KFYDGDcJpsyK6ANPA9QM_shFHodNVINii2IPg==",
             "crontab": {
                 "id": 9,
                 "minute": "*\/5",
@@ -207,7 +207,7 @@
                 },
                 "referenceid": null,
                 "schedule_entry_name": "GDPR - Check for SLA violation",
-                "schedule_id": "63ec3cc9-40a5-4259-8db1-5d05db31996a",
+                "schedule_id": "cc43b608-4ee0-4ce0-bcbd-9c2e1c74994a",
                 "start_time": null,
                 "expires": null,
                 "expired": false
@@ -224,7 +224,7 @@
             "enabled": false,
             "last_run_at": null,
             "total_run_count": 0,
-            "date_changed": "2022-08-27T18:53:07.270477Z",
+            "date_changed": "2022-08-29T20:25:50.881552Z",
             "description": "GDPR - Check for SLA violation",
             "solar": null,
             "clocked": null
