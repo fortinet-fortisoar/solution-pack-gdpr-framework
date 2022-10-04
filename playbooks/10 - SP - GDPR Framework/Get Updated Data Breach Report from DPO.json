@@ -565,7 +565,7 @@
                     ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>Received update Data Breach Report from Data Protection Officer.<\/p>",
+                    "content": "<p>Received updated Data Breach Report from Data Protection Officer.<\/p>",
                     "records": "{{vars.complianceIRI}},{{vars.incidentIRI}}"
                 },
                 "resource": {
