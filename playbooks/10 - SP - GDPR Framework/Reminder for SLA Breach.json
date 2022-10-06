@@ -12,7 +12,6 @@
     "parameters": [
         "dataComplianceMetaData",
         "secondReminderThreshold",
-        "firstReminderThreshold",
         "timeZone"
     ],
     "synchronous": false,
@@ -258,7 +257,7 @@
                     {
                         "option": "Breach Reminder",
                         "step_iri": "\/api\/3\/workflow_steps\/36cdf048-f8d9-413b-9840-888ea44e1f57",
-                        "condition": "{{ (vars.timeRemainToBreach | int < 0) }}",
+                        "condition": "{{ (vars.timeRemainToBreach | int < 0) and (\"GDPRReminderStatus\" | picklist(\"Breach Reminder Sent\", \"@id\") not in vars.reminderEmailStatus) }}",
                         "step_name": "SLA Breached Notification"
                     },
                     {
