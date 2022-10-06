@@ -95,7 +95,7 @@
             },
             "status": null,
             "top": "1245",
-            "left": "125",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
             "uuid": "18efdf0e-6251-435e-b80c-81c30867fd32"
@@ -560,7 +560,7 @@
             },
             "status": null,
             "top": "1650",
-            "left": "125",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "4c390508-754a-4d76-a0c7-eeb59a193673"
@@ -613,10 +613,34 @@
             },
             "status": null,
             "top": "1785",
-            "left": "125",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "85f2df31-28bd-4819-a48a-63a9f6890b3c"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update Parent Task Status",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed"
+                },
+                "operation": "Append",
+                "collection": "{{vars.parentTaskIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/tasks",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
+            },
+            "status": null,
+            "top": "1515",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
+            "uuid": "8d28e5d3-3940-436e-9084-0f71714bf09e"
         },
         {
             "@type": "WorkflowStep",
@@ -624,6 +648,7 @@
             "description": null,
             "arguments": {
                 "resource": {
+                    "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
                     "description": "{{vars.demoMode}}\n\n##### DPO has confirmed an Invalid Breach. The Incident can be closed now."
                 },
                 "_showJson": false,
@@ -638,7 +663,7 @@
             },
             "status": null,
             "top": "1245",
-            "left": "475",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "a013832c-4f5e-418b-9d12-e02d5e6cc97c"
@@ -686,7 +711,7 @@
             },
             "status": null,
             "top": "1380",
-            "left": "125",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
             "uuid": "b03e6c2a-94a3-454e-83a5-c9a6b1d01fb1"
@@ -720,7 +745,7 @@
             },
             "status": null,
             "top": "1110",
-            "left": "125",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
             "uuid": "bcb980e9-19b9-4ecd-bdeb-70bdc2d7fe5a"
@@ -751,6 +776,7 @@
                 "checkboxFields": true,
                 "step_variables": {
                     "temp": "{% for item in vars.affectedUsersTempList %}{% set _dummy = \"|\" + loop.index | string + \"|\" + item + \"|\" %}{{vars.affectedIndividualsList.append(_dummy)}}{% endfor %}",
+                    "incidentID": "{{vars.result[0].incidents[0].id}}",
                     "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}"
                 }
             },
@@ -837,6 +863,57 @@
         },
         {
             "@type": "WorkflowStep",
+            "name": "Get Parent Task",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "incidents.id",
+                            "value": "{{vars.incidentID}}",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        },
+                        {
+                            "type": "array",
+                            "field": "recordTags",
+                            "value": [
+                                "\/api\/3\/tags\/GDPR Assessment"
+                            ],
+                            "module": "recordTags",
+                            "display": "",
+                            "operator": "in",
+                            "template": "tags",
+                            "enableJinja": true,
+                            "OPERATOR_KEY": "$",
+                            "useInOperator": true,
+                            "previousOperator": "in",
+                            "previousTemplate": "tags"
+                        }
+                    ],
+                    "__selectFields": [
+                        "incidents"
+                    ]
+                },
+                "module": "tasks?$limit=30&$relationships=true",
+                "checkboxFields": true,
+                "step_variables": {
+                    "parentTaskIRI": "{{vars.result[0]['@id']}}"
+                }
+            },
+            "status": null,
+            "top": "1380",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
+            "uuid": "d0f73468-5eef-4add-bdba-913be857d52d"
+        },
+        {
+            "@type": "WorkflowStep",
             "name": "Create Task to Send Report to DPA",
             "description": null,
             "arguments": {
@@ -877,7 +954,7 @@
             },
             "status": null,
             "top": "1515",
-            "left": "125",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
             "uuid": "d6b9971b-9a6c-460a-b71f-5bf0dec81abb"
@@ -913,7 +990,7 @@
             },
             "status": null,
             "top": "1110",
-            "left": "475",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "f2eedf3c-c175-4072-8b1d-0bcb0c43d4f6"
@@ -1021,12 +1098,30 @@
         },
         {
             "@type": "WorkflowRoute",
+            "name": "Update Task Description -> Get Parent Task",
+            "targetStep": "\/api\/3\/workflow_steps\/d0f73468-5eef-4add-bdba-913be857d52d",
+            "sourceStep": "\/api\/3\/workflow_steps\/a013832c-4f5e-418b-9d12-e02d5e6cc97c",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "b238ebfa-3597-418f-a6a8-2afc98b86fc8"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Send Risk Assessment Details to DPO -> Update GDPR Assessment Data",
             "targetStep": "\/api\/3\/workflow_steps\/d08ef5d7-19db-417c-91c3-d3631adbfb92",
             "sourceStep": "\/api\/3\/workflow_steps\/2ad8e881-37f7-4726-a2b5-037695dd649b",
             "label": "Submit",
             "isExecuted": false,
             "uuid": "c9500e34-6562-49a1-8daa-fec619215be4"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Parent Task -> Update Parent Task Status",
+            "targetStep": "\/api\/3\/workflow_steps\/8d28e5d3-3940-436e-9084-0f71714bf09e",
+            "sourceStep": "\/api\/3\/workflow_steps\/d0f73468-5eef-4add-bdba-913be857d52d",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "cde6021e-60b2-4469-b46a-069508708b5d"
         },
         {
             "@type": "WorkflowRoute",
