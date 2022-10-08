@@ -1,79 +1,152 @@
-| [Home](https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/develop/README.md) | 
-|--------------------------------------------| 
+| [Home](../README.md) |
+|----------------------|
 
 # Usage
 
+## Playbook Execution Modes
+
+You can execute the GDPR playbooks in *Test Mode* as well as in *Production Mode*
+
+- The playbooks are by default configured to execute in *Test Mode*
+  - The *Test Mode* uses a test email address for all email communication towards Data Protection Officer (DPO), affected individuals, or Data Protection Authority(DPA)
+  - The *Production Mode* uses actual email addresses  of relevant authorities and stakeholders
+
+### Production Mode
+
+To change the execution mode to *Production* make the following changes:
+
+1. Go to the *Create Data Compliance Record* playbook under the **10 - SP - GDPR Framework** collection and open the *Configuration* step
+
+  ![Execution Mode Configuration](res/execution-mode-configuration.png)
+
+2. Modify the value of the `testMode` variable to `false`
+3. Change the value of the `testEmail` variable to a valid email address.
+
+  ![Execution Mode Configuration Parameters](res/execution-mode-configuration-parameters.png)
+
+As a failsafe, when the *Production* mode is set we append `_demo` while fetching DPA's email as shown in the following image. This action is to prevent any accidental sending of mail to the Data Protection Authority (DPA).
+
+![DPA Email Append](res/dpa-appended-email.png)
+
+It is recommended that in `Production Mode` before you execute **Provide DPO and DPA Contact** playbooks, make the following changes
+1. Go to **Provide DPO and DPA Contact** playbook
+2. Open the *Get DPA Contact* step and remove `_demo` from `dpaEmail` variable as shown
+    ![Provide DPO and DPA Contact Changes](res/provide-dpo-and-dpa-contact.png)
+
+### Test Mode
+
+To change the execution mode to *Test* make the following changes:
+
+1. Go to the *Create Data Compliance Record* playbook under the **10 - SP - GDPR Framework** collection and open the *Configuration* step
+
+  ![Execution Mode Configuration](res/execution-mode-configuration.png)
+
+2. Modify the value of the `testMode` variable to `true`
+3. Change the value of the `testEmail` variable to `null`.
+
+  ![Execution Mode Configuration Parameters](res/execution-mode-configuration-parametes.png)
+
+## Check for SLA Violation Playbook
+
+This playbook sends progressive SLA breach reminder emails. To set threshold values for reminder notifications, make the following configuration changes:
+
+1. Goto **Check for SLA violation** Playbook and open the *Configuration* step.
+2. The reminder threshold value is in hours. Change values of the following variables
+    - `firstReminderSLA`: The default value is 24 Hours which means the first reminder is sent when the SLA time remaining is less than 24 hours left.
+    - `secondReminderSLA`: The default value is 4 Hours which means the second reminder is sent when the SLA time remaining is less than 4 hours left.
+        ![Reminder Email Configuration Setting](res/reminder-mail-configuration.png)
+
 ## Gathering Details on Personal Data Breach
 
-- When a personal data breach is detected in an incident, choose the value of the **Was Personal Data Affected?** field as **Yes**.
+1. When a personal data breach is detected in an incident, choose the value of the **Was Personal Data Affected?** field as **Yes**.
 
     ![Personal Data Affected](res/personal-data-affected.png)
 
-- A pop-up appears that collects additional information related to the incident
+2. A pop-up appears that collects additional information related to the incident
 
-    ![Personal Data Additional Details](res/personal-data-additional-details.png)
+    >**NOTE:** When playbooks are executed in *Test* mode, the **Green** icon shown in the following screenshot appears in all the tasks related to this solution pack
+    >
+    >![Personal Data Additional Details](res/personal-data-additional-details.png)
+    >
+    >Similarly, when playbooks are executed in *Production* mode, a **Red** icon shown in the following screenshot appears
+    >
+    >![Personal Data Additional Details PROD](res/personal-data-additional-details-prod.png)
 
-- The incident is updated with additional details and starts showing up during the remaining time to Notify Supervisory Authority
-- A New incident, dedicated to GDPR Assessment and the corresponding task is created. The same is updated in the comments.
+3. Select **GDPR** in **Regulatory Body** and provide the required information
 
-    ![Notification Timer](res/notification-timer.png)
+    ![Personal Data Details](res/personal-data-details.png)
 
-- **GDPR Assessment Incident**
-  - Open the newly created GDPR incident; the corresponding tasks appear in the Description field and the task tabs. The tasks need to be completed within 72 Hours
+4. A New Data Compliance Record, dedicated to GDPR Assessment and the corresponding task, is created. The same is updated in the Incident comments.
 
-    ![GDPR Tasks](res/gdpr-tasks.png)
+    ![Incident Comments](res/incident-comments.png)
 
-## Tasks
+### GDPR Assessment Data Compliance Record
 
-- **Get GDPR Risk Assessment Information**
-  - Open the `Get GDPR Risk Assessment Information` Task and click on **"GDPR Risk Assessment Form"** Button
+- Open the newly created GDPR Data Compliance Record; the corresponding tasks appear in the Description field and the task tabs. The tasks need to be completed within 72 Hours.
+
+- The Data Compliance Record is also updated with additional details and starts showing up the remaining time to notify the supervisory authority.
+
+  ![Notification Timer](res/notification-timer.png)
+
+## Submit Risk Assessment Information
+
+1. Open the **Submit Risk Assessment Information** Task and click the **Submit Risk Assessment Information** button.
 
     ![GDPR Risk Assessment Information Task](res/gdpr-risk-assessment-information-task.png)
 
-  - Fill up the Risk Assessment details in the pop-up
+2. Enter the Risk Assessment details in the pop-up that appears.
 
     ![Risk Assessment Details](res/risk-assessment-details.png)
 
-  - Once the task is complete, it is highlighted in GREEN and the status is marked as **Complete**
+3. Once the task is complete, it is highlighted in **green** and the status is marked as **Complete**.
 
     ![taskMarkedComplete](res/task-marked-complete.png)
 
-- **Get DPO and DPA Contact**
-  - Similarly, Collect DPO and DPA contact details under **Provide DPO and DPA Contact Details Task**
+## Provide DPO and DPA Contact Details
+
+1. Similarly, Collect DPO and DPA contact details under **Provide DPO and DPA Contact Details** Task
 
     ![DPO Contact Details](res/dpo-contact.png)
 
-  - Details provided reflect in the created incident as shown, and the task is marked as complete
+2. Details provided reflect in the created data compliance record as shown, and the task is marked as complete
 
     ![Incident Details](res/incident-details.png)
 
-- **Review and Approve Breach Report by DPO**
-  - Open the `Review and Approve Breach Report by DPO` Task and click on the 'Notify Data Protection Officer' Button to get the information reviewed and approve the report to send to Data Protection Authorities
+## Notify Data Protection Officer
 
-    ![Approve Data Breach Report](res/approve-data-breach-report.png)
+- Open the `Notify Data Protection Officer` task and click the *Notify Data Protection Officer* button to get the information reviewed and approve the report to send to Data Protection Authorities
+
+  ![Approve Data Breach Report](res/approve-data-breach-report.png)
   
+- Details provided by DPO will be reflected in the created data compliance record as shown, and the task is marked as complete
+
+  ![Approve Data Breach Report](res/dpo-assessment-details.png)
+
 Based on the inputs from DPO, the following new task is created
 
-- **Communicate Affected Users of Breach**
-  - If affected individuals are at **High** or **Medium** Risk, this new task is created to notify the individual of a data breach
-  - Open the task and click on the `Notify Affected User` button
-  - The notification should contain the following information
-    - What happened? - Provide brief information on data breach
-    - What Information Was Involved? - Provide information on what type of data was compromised
-    - What Are We Doing? - Provide remediation/mitigation action are taken or planned to be taken
-    - What You Can Do? - Provide advisory to the user about actions to be taken to minimize the risk
+## Notify Affected Users
 
-    ![notifyAffectedUsers](res/notify-affected-users.png)
+If affected individuals are at **High** or **Medium** Risk, this new task is created to notify the individual of a data breach
+- Open the task and click on the `Notify Affected Individuals` button
+- The notification should contain the following information
+  - What happened? - Provide brief information on data breach
+  - What Information Was Involved? - Provide information on what type of data was compromised
+  - What Are We Doing? - Provide remediation/mitigation action are taken or planned to be taken
+  - What You Can Do? - Provide advisory to the user about actions to be taken to minimize the risk
 
-- **Get Updated Report from DPO**
-  - If DPO rejects the data breach report, then this new task is created where the DPO can update the Data Breach Report and submit a new data
-  - Open the task and click on the `Get Updated Breach Report` button
+  ![notifyAffectedUsers](res/notify-affected-users.png)
 
-- **Notify Data Protection Authority**
-  - This new task is created to Notify DPA of a data breach.
-  - Open the task and click on the **Send Data Breach Report to DPA** Button
-  - This task generates the following report and sends it to the DPA and resolves the GDPR Assessment Incident
+## Get Updated Report from DPO
+- If DPO rejects the data breach report, then this new task is created where the DPO can update the Data Breach Report and submit a new data
+- Open the task and click on the `Get Updated Breach Report` button
 
-  ![Data Breach Report](res/data-breach-report.png)
+## Notify Data Protection Authority
+- This new task is created to Notify DPA of a data breach.
+- Open the task and click on the **Send Data Breach Report to DPA** Button
+- This task generates the following report and sends it to the DPA and resolves the GDPR Compliance record as well as the Task `Perform GDPR Assessment` associated with the parent incident will also get completed. 
 
-  ![Incident Resolved](res/resolve-incident.png)
+![Data Breach Report](res/data-breach-report.png)
+
+![Compliance Record Resolved](res/resolve-incident.png) 
+
+![Incident Task Completed](res/incident-task-completed.png)
