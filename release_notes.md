@@ -1,58 +1,33 @@
 # What's New
 
 - This solution pack is now **Certified**
+
+## Module Enhancements 
+- A new module **Data Compliance** now replaces the *Incident* module and all the fields previously used with `Incident` module are now part of *Data Compliance* module
+  - A new Navigation menu was added for **Data Compliance**
+  - **GDPR Assessment Report** has been updated to be compatible with the newly created **Data Compliance** module
+- A new `GDPRReminderStatus` picklist keeps track of email reminders sent for SLA breach
+- `RegulatoryBody` and `GDPRDataBreachType` are new picklists available
+
+## Content Enhancements
 - **Summary** tab contains more details and now has the following sections available as part of this solution pack's details:
-    - A new category **Compliance and Reporting** helps with filtering from the left pane when using the check-boxes under **Category**
-    - A new tag **GDPR** helps with filtering from the left pane when using the **Search By Tags** option
-    - Added instructions to configure the "Code Snippet" connector before execution of GDPR playbooks
-- A new module **Data Compliance** has been introduced
-- A new Navigation menu was added for 'Data Compliance'
-- Added new playbooks to **Check for SLA violation** and to **Send Reminder for SLA Breach**
-- Updated **GDPR Assessment Report** to be compatible with the newly created module i.e. 'Data Compliance'
-- Added a provision to execute GDPR playbooks either in **Test Mode** or in **Production Mode**
-- The task and the form associated with **Notify Affected Individuals** now also show list of email IDs of the Affected Individuals
+    - A new category **Compliance and Reporting** &ndash; helps with filtering from the left pane when using the check-boxes under **Category**
+    - A new tag **GDPR** &ndash; helps with filtering from the left pane when using the **Search By Tags** option
+    - Added instructions to configure **Code Snippet** connector before execution of GDPR playbooks
 
-**Note:**
-* It is recommended to the users who have already installed the GDPR SP v 1.0.0 to remove the below fields and picklists from the Incident Module
-    * Fields
-        - Breach Detection Date 
-        - Breach Occurrence Date 
-        - Breach Notify Due Date 
-        - Breach Paused Date 
-        - Breach Notification SLA(Picklist - SLAState)
-        - Was the data encrypted? (Picklist - YesNo Picklist)
-        - Was the exposure resolved? (Picklist - YesNo Picklist)
-        - Is harm, risk or misuse foreseeable? (Picklist - YesNo Picklist)
-        - What was the data format? 
-        - What was the data source? 
-        - Company Name 
-        - Company Size 
-        - Company City
-        - Company Country 
-        - Cause of Data Breach 
-        - Type of Data Breach (Picklist - DataBreachType)
-        - Data Type 
-        - Where data was hosted?
-        - Repercussions of Breach
-        - Mitigation Actions
-        - No. of Affected Users 
-        - No. of Affected Data Records 
-        - Affected Users Emails
-        - Any Additional Information
-        - Data Regulator (Picklist - GDPREUCountryList)
-        - DPA Website
-        - DPA Email
-        - DPA Address
-        - DPO Telephone
-        - DPO Email
-        - DPO Name
-        - Summary of DPO Advice
-        - Is Valid Breach? (Picklist - YesNo Picklist)
-        - Is DPIA Required?
-        - Reason To Perform DPIA
-        - Impact Severity on Affected Users (Picklist - Severity)
-        - Measures to Reduce Future Risks
+## Playbook Enhancements
+- Renamed following playbooks for enhanced understanding of functionality
+    - **Create GDPR Risk Assessment Incident** renamed to **Create Data Compliance Record**
+    - **Get Data Protection Authorities Contact Details** renamed to **Get DPA Contact Details**
+- Added new playbooks to **10 - SP - GDPR Framework** playbook collection. For more details, 
+    - **Check for SLA violation** 
+    - **Send Reminder for SLA Breach**
+    Refer to [Check for SLA violation Playbook](./docs/usage.md#check-for-sla-violation-playbook) section on how to configure these playbooks
+    - A new schedule `GDPR - Check for SLA violation` added for **Check for SLA violation**
+    - By default this schedule is `Inactive`. We recommend that you activate this schedule and set the frequency that you prefer.
+- GDPR playbook *Create Data Compliance Record*, now has two modes for execution
+  - Test Mode
+  - Production Mode
+- Updated `Notify Affected Individuals` playbook, The task and the form associated with **Notify Affected Individuals** now also show the list of email IDs of the Affected Individuals
 
-    * Picklists
-        - DataBreachType
-        - YesNo Picklist
+>**NOTE**: Users of GDPR solution pack v1.0.0 must remove the fields and picklists mentioned in [Prerequisites](docs/setup.md#prerequisites)
