@@ -4,7 +4,7 @@
 
 ## Module Enhancements 
 - A new module **Data Compliance** now replaces the *Incident* module and all the fields previously used with `Incident` module are now part of *Data Compliance* module
-  - A new Navigation menu was added for **Data Compliance**
+  - A new Navigation menu, **Data Compliances**, now appears after installation of GDPR solution pack
   - **GDPR Assessment Report** has been updated to be compatible with the newly created **Data Compliance** module
 - A new `GDPRReminderStatus` picklist keeps track of email reminders sent for SLA breach
 - `RegulatoryBody` and `GDPRDataBreachType` are new picklists available

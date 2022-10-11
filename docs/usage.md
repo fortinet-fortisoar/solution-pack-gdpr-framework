@@ -23,7 +23,8 @@ To change the execution mode to *Test* make the following changes:
 
 2. Modify the value of the `testMode` variable to `true`.
 3. Change the value of the `testEmail` variable to a valid email address capable of receiving all GDPR email notifications.
-  >**WARNING**: When in *Test* mode, the value of the `testEmail` variable must not be empty.
+
+    >**WARNING**: When in *Test* mode, the value of the `testEmail` variable must not be empty.
 
     ![Execution Mode Configuration Parameters](./res/execution-mode-configuration-parametes.png)
 
@@ -40,11 +41,11 @@ To change the execution mode to *Production* make the following changes:
 
     ![Execution Mode Configuration Parameters](./res/execution-mode-configuration-parameters.png)
 
->**NOTE**: As a failsafe, `_demo` is appended to DPA's email as shown in the following image. This action prevents any accidental sending of mail to the Data Protection Authority (DPA).
+    >**NOTE**: As a failsafe, `_demo` is appended to DPA's email as shown in the following image. This action prevents any accidental sending of mail to the Data Protection Authority (DPA).
 
-![DPA Email Append](./res/dpa-appended-email.png)
+    ![DPA Email Append](./res/dpa-appended-email.png)
 
-In *Production* mode before you execute **Provide DPO and DPA Contact** playbooks, make the following changes:
+In *Production* mode before you execute **Provide DPO and DPA Contact** playbook, make the following changes:
 1. Go to **Provide DPO and DPA Contact** playbook.
 2. Open the *Get DPA Contact* step and remove `_demo` from `dpaEmail` variable as shown.
     ![Provide DPO and DPA Contact Changes](./res/provide-dpo-and-dpa-contact.png)
@@ -103,7 +104,7 @@ A third and final reminder, of SLA breach, is sent after the completion of 72 ho
 
     ![Risk Assessment Details](./res/risk-assessment-details.png)
 
-3. Once the task is complete, it is highlighted in **green** and the status is marked as **Complete**.
+3. Details provided by DPO is reflected in the created data compliance record as shown, and the task is marked as complete.
 
     ![taskMarkedComplete](./res/task-marked-complete.png)
 
