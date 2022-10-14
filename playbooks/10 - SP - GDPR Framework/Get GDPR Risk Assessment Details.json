@@ -21,7 +21,7 @@
             "description": null,
             "arguments": {
                 "route": "829b2f3b-52b2-4c18-ba92-785ee6795cb5",
-                "title": "GDPR Risk Assessment Form",
+                "title": "Submit Risk Assessment Information",
                 "resources": [
                     "tasks"
                 ],
@@ -33,7 +33,7 @@
                         "tooltip": "",
                         "dataType": "text",
                         "formType": "text",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "defaultValue": null,
                         "_previousName": "company",
@@ -53,7 +53,7 @@
                         "tooltip": "",
                         "dataType": "text",
                         "formType": "text",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "defaultValue": null,
                         "_previousName": "companySi",
@@ -66,7 +66,7 @@
                         "tooltip": "",
                         "dataType": "text",
                         "formType": "text",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "defaultValue": null,
                         "_previousName": "companyAdress",
@@ -79,7 +79,7 @@
                         "tooltip": "",
                         "dataType": "text",
                         "formType": "text",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "defaultValue": null,
                         "_previousName": "company",
@@ -92,7 +92,7 @@
                         "tooltip": "",
                         "dataType": "text",
                         "formType": "text",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "defaultValue": null,
                         "_previousName": "company",
@@ -107,7 +107,7 @@
                         "tooltip": "",
                         "dataType": "text",
                         "formType": "text",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "mmdUpdate": true,
                         "collection": false,
@@ -121,13 +121,35 @@
                         "useRecordFieldDefault": false
                     },
                     {
+                        "name": "whatHappened?",
+                        "type": "string",
+                        "label": "What Happened?",
+                        "title": "Text Area",
+                        "usable": true,
+                        "tooltip": "Provide brief information on the data breach incident",
+                        "dataType": "text",
+                        "formType": "textarea",
+                        "required": true,
+                        "_expanded": true,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "searchable": true,
+                        "templateUrl": "app\/components\/form\/fields\/textarea.html",
+                        "defaultValue": null,
+                        "_previousName": "whatHappened",
+                        "lengthConstraint": true,
+                        "allowedEncryption": true,
+                        "allowedGridColumn": true,
+                        "useRecordFieldDefault": false
+                    },
+                    {
                         "name": "causeOfDataBreach",
                         "type": "string",
                         "label": "Cause of Data Breach",
                         "tooltip": "Describe cause of data breach, For example. 'Due to malicious activity or 'Due to Unauthorized Access'",
                         "dataType": "text",
                         "formType": "text",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "defaultValue": null,
                         "_previousName": "",
@@ -139,10 +161,10 @@
                         "label": "Type of Data Breach",
                         "title": "Picklist",
                         "usable": true,
-                        "tooltip": "Describe type of personal data breach. E.g Confidentiality Breach, Integrity breach or Availablity Breach etc",
+                        "tooltip": "\u2022Confidentiality Breach- Unauthorised\/Accidental disclosure of or access to personal data \u2022Availability Breach- Unauthorised\/Accidental loss of access or destruction of personal data \u2022Integrity Breach- Unauthorised\/Accidental alteration of personal data",
                         "dataType": "picklist",
                         "formType": "picklist",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "mmdUpdate": true,
                         "collection": false,
@@ -159,7 +181,7 @@
                                 "filters": [
                                     {
                                         "field": "listName__name",
-                                        "value": "DataBreachType",
+                                        "value": "GDPRDataBreachType",
                                         "operator": "eq"
                                     }
                                 ]
@@ -169,7 +191,19 @@
                                     "conditions": null,
                                     "visibility": "visible"
                                 },
+                                "906447ad-6312-4341-b597-463544a05218": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
                                 "a188fe8d-ef76-48a5-b743-f54208655576": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "af93b263-7293-47bc-b310-4ffa73512602": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "db889249-5bd8-4db5-8e40-7c045e5db735": {
                                     "conditions": null,
                                     "visibility": "visible"
                                 },
@@ -192,12 +226,13 @@
                     {
                         "name": "dataType",
                         "type": "string",
-                        "label": "Data Type",
+                        "label": "Nature of Affected Data",
                         "tooltip": "Describe the Nature of the affected data, For Example          - Identification Data (Social Sec Number, License number, Passport number)         - Personal Data (DOB, Occupation, Marital Status)         - Behavioural Data (Online Behaviour, Political opinions, Religious or Philosophical beliefs)         - Sensitive Data (Racial or Ethnic origin, Medical, Physiological, Genetic, Mental, Economic, Cultural)",
                         "dataType": "text",
                         "formType": "text",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
+                        "_nameTouched": true,
                         "defaultValue": null,
                         "_previousName": "",
                         "useRecordFieldDefault": false
@@ -211,7 +246,7 @@
                         "tooltip": "The approximate number of data records concerned",
                         "dataType": "decimal",
                         "formType": "decimal",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "mmdUpdate": true,
                         "collection": false,
@@ -233,7 +268,7 @@
                         "tooltip": "The approximate number of users concerned",
                         "dataType": "decimal",
                         "formType": "decimal",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "mmdUpdate": true,
                         "collection": false,
@@ -253,7 +288,7 @@
                         "tooltip": "A comma-separated list of affected users emails IDs",
                         "dataType": "text",
                         "formType": "text",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "defaultValue": null,
                         "_previousName": "",
@@ -263,26 +298,44 @@
                         "name": "repercussionsOfBreach",
                         "type": "string",
                         "label": "Repercussions of Breach",
+                        "title": "Text Area",
+                        "usable": true,
                         "tooltip": "Describe the likely consequences of the personal data breach",
                         "dataType": "text",
-                        "formType": "text",
-                        "required": false,
+                        "formType": "textarea",
+                        "required": true,
                         "_expanded": true,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "searchable": true,
+                        "templateUrl": "app\/components\/form\/fields\/textarea.html",
                         "defaultValue": null,
                         "_previousName": "severityOfImpact",
+                        "lengthConstraint": true,
+                        "allowedEncryption": true,
+                        "allowedGridColumn": true,
                         "useRecordFieldDefault": false
                     },
                     {
                         "name": "mitigationActions",
                         "type": "string",
                         "label": "Mitigation Actions",
+                        "title": "Text Area",
+                        "usable": true,
                         "tooltip": "Describe the measures taken or proposed to be taken by the controller to address the personal data breach",
                         "dataType": "text",
-                        "formType": "text",
-                        "required": false,
+                        "formType": "textarea",
+                        "required": true,
                         "_expanded": true,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "searchable": true,
+                        "templateUrl": "app\/components\/form\/fields\/textarea.html",
                         "defaultValue": null,
                         "_previousName": "",
+                        "lengthConstraint": true,
+                        "allowedEncryption": true,
+                        "allowedGridColumn": true,
                         "useRecordFieldDefault": false
                     },
                     {
@@ -292,7 +345,7 @@
                         "tooltip": "E.g. Cloud, With Third-Party, On-Premise",
                         "dataType": "text",
                         "formType": "text",
-                        "required": false,
+                        "required": true,
                         "_expanded": true,
                         "defaultValue": null,
                         "_previousName": "",
@@ -301,14 +354,24 @@
                     {
                         "name": "anyAdditionalInformation",
                         "type": "string",
-                        "label": "Any Additional Information",
+                        "label": "Additional Comments",
+                        "title": "Text Area",
+                        "usable": true,
                         "tooltip": "",
                         "dataType": "text",
-                        "formType": "text",
+                        "formType": "textarea",
                         "required": false,
                         "_expanded": true,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "searchable": true,
+                        "templateUrl": "app\/components\/form\/fields\/textarea.html",
+                        "_nameTouched": true,
                         "defaultValue": null,
-                        "_previousName": "",
+                        "_previousName": "additionalComments",
+                        "lengthConstraint": true,
+                        "allowedEncryption": true,
+                        "allowedGridColumn": true,
                         "useRecordFieldDefault": false
                     }
                 ],
@@ -320,6 +383,7 @@
                             "companyCity": "{{vars.request.data[\"companyCity\"]}}",
                             "companyName": "{{vars.request.data[\"companyName\"]}}",
                             "companySize": "{{vars.request.data[\"companySize\"]}}",
+                            "whatHappened?": "{{vars.request.data[\"whatHappened?\"]}}",
                             "companyAddress": "{{vars.request.data[\"companyAddress\"]}}",
                             "companyCountry": "{{vars.request.data[\"companyCountry\"]}}",
                             "typeOfDataBreach": "{{vars.request.data[\"typeOfDataBreach\"]}}",
@@ -343,19 +407,33 @@
                         "logic": "AND",
                         "filters": [
                             {
+                                "type": "array",
+                                "field": "recordTags",
+                                "value": [
+                                    "\/api\/3\/tags\/GDPR Risk Assessment Form"
+                                ],
+                                "module": "recordTags",
+                                "display": "",
+                                "operator": "in_all",
+                                "template": "tags",
+                                "OPERATOR_KEY": "$",
+                                "previousOperator": "in_all",
+                                "previousTemplate": "tags"
+                            },
+                            {
                                 "type": "object",
-                                "field": "type",
-                                "value": "\/api\/3\/picklists\/d27e8517-1fca-4d89-b105-b3076f44d9f9",
+                                "field": "status",
+                                "value": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
                                 "_value": {
-                                    "@id": "\/api\/3\/picklists\/d27e8517-1fca-4d89-b105-b3076f44d9f9",
-                                    "itemValue": "GDPR Risk Assessment Form"
+                                    "@id": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
+                                    "itemValue": "Completed"
                                 },
-                                "operator": "eq"
+                                "operator": "neq"
                             }
                         ]
                     }
                 },
-                "executeButtonText": "Execute",
+                "executeButtonText": "Submit",
                 "noRecordExecution": false,
                 "singleRecordExecution": false
             },
@@ -363,6 +441,7 @@
             "top": "30",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "group": null,
             "uuid": "2ff73fe3-e0fa-4da4-983b-47aec15ae471"
         },
         {
@@ -371,11 +450,13 @@
             "description": null,
             "arguments": {
                 "message": {
-                    "tags": [],
+                    "tags": [
+                        "\/api\/3\/tags\/GDPR"
+                    ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>GDPR Risk assessment information has been collected.<\/p>\n<p>&nbsp;<\/p>",
-                    "records": "{{vars.incidentIRI}}"
+                    "content": "<p>Necessary information for the Data Breach Risk Assessment has been collected.<\/p>",
+                    "records": "{{vars.complianceIRI}},{{vars.incidentIRI}}"
                 },
                 "resource": {
                     "dataType": "{{vars.input.params.dataType}}",
@@ -383,7 +464,7 @@
                     "companyCity": "{{vars.input.params.companyCity}}",
                     "companyName": "{{vars.input.params.companyName}}",
                     "companySize": "{{vars.input.params.companySize}}",
-                    "description": "{{vars.description | join('\\n')}}",
+                    "whatHappened": "{{vars.input.params['whatHappened?']}}",
                     "dataRegulator": "{{vars.input.params.dataRegulator['@id']}}",
                     "companyAddress": "{{vars.input.params.companyAddress}}",
                     "companyCountry": "{{vars.input.params.companyCountry}}",
@@ -399,9 +480,9 @@
                 },
                 "_showJson": false,
                 "operation": "Append",
-                "collection": "{{vars.incidentIRI}}",
+                "collection": "{{vars.complianceIRI}}",
                 "__recommend": [],
-                "collectionType": "\/api\/3\/incidents",
+                "collectionType": "\/api\/3\/data_compliances",
                 "fieldOperation": {
                     "recordTags": "Append"
                 },
@@ -411,11 +492,12 @@
             "top": "570",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
             "uuid": "57671b9b-fa3b-4477-a3ff-a9b3576e8673"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Get Incident ID",
+            "name": "Get Compliance Record ID",
             "description": null,
             "arguments": {
                 "query": {
@@ -432,42 +514,36 @@
                         }
                     ],
                     "__selectFields": [
-                        "incidents"
+                        "dataCompliances"
                     ]
                 },
                 "module": "tasks?$limit=30&$relationships=true",
                 "checkboxFields": true,
                 "step_variables": {
-                    "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}",
-                    "placeholder": "{% for item in vars.result[0].incidents[0].description.split('\\n') %}\n{% if loop.index == 5 %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}"
+                    "demoMode": "{% if vars.result[0].dataCompliances[0].testMode %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #73AD21; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Test Mode ON<\/strong><\/span>{% endif %}",
+                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if 'Submit Risk Assessment Information' in item %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
+                    "complianceID": "{{vars.result[0].dataCompliances[0].id}}",
+                    "complianceIRI": "{{vars.result[0].dataCompliances[0]['@id']}}",
+                    "complianceUUID": "{{vars.result[0].dataCompliances[0].uuid}}"
                 }
             },
             "status": null,
             "top": "300",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
             "uuid": "b13d127d-00e8-476e-a531-657675ce1515"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Update Task",
+            "name": "Update Task Status",
             "description": null,
             "arguments": {
                 "resource": {
-                    "status": {
-                        "id": 44,
-                        "@id": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
-                        "icon": null,
-                        "uuid": "343f4b67-e929-4205-bf95-ba5b70545fed",
-                        "@type": "Picklist",
-                        "color": "#3ec210",
-                        "display": "Completed",
-                        "listName": "\/api\/3\/picklist_names\/21ddbcfd-b4a3-4273-adea-c674fe47d643",
-                        "itemValue": "Completed",
-                        "orderIndex": 2
-                    }
+                    "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
+                    "description": "{{vars.demoMode}}\n\n##### The information for GDPR risk assessment has been collected.\n\nGo back to <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\"> Data Compliance Record #{{vars.complianceID}}<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**Provide DPO and DPA Contact Details**<\/span>"
                 },
-                "_showJson": true,
+                "_showJson": false,
                 "operation": "Append",
                 "collection": "{{vars.input.records[0]['@id']}}",
                 "__recommend": [],
@@ -478,10 +554,46 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "435",
+            "top": "705",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
             "uuid": "d3a0acd0-3a26-4e69-af7a-43718b36ed76"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Parent Incident ID",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "id",
+                            "value": "{{vars.complianceID}}",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        }
+                    ],
+                    "__selectFields": [
+                        "incidents"
+                    ]
+                },
+                "module": "data_compliances?$limit=30&$relationships=true",
+                "checkboxFields": true,
+                "step_variables": {
+                    "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}"
+                }
+            },
+            "status": null,
+            "top": "435",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
+            "uuid": "d7e39ba4-0305-4ba6-a902-e3f52410d1c1"
         },
         {
             "@type": "WorkflowStep",
@@ -494,28 +606,35 @@
             "top": "165",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
             "uuid": "df160913-cf18-42c2-8a14-c48e55d08daf"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Update Compliance Record Description",
+            "description": null,
+            "arguments": {
+                "resource": {
+                    "status": "\/api\/3\/picklists\/bb7402d6-f699-11e7-8c3f-9a214cf093ae",
+                    "description": "{{vars.description | join('\\n')}}"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.complianceIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/data_compliances",
+                "fieldOperation": [],
+                "step_variables": []
+            },
+            "status": null,
+            "top": "840",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "group": null,
+            "uuid": "f0f1f024-f9af-4342-9d8f-4f1622ba79d1"
         }
     ],
     "routes": [
-        {
-            "@type": "WorkflowRoute",
-            "name": "Update Task -> Update GDPR Assessment Data",
-            "targetStep": "\/api\/3\/workflow_steps\/57671b9b-fa3b-4477-a3ff-a9b3576e8673",
-            "sourceStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "1c1cbaa8-142a-45f6-ba19-a8ef9f7ea456"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Get Incident ID -> Update Task",
-            "targetStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
-            "sourceStep": "\/api\/3\/workflow_steps\/b13d127d-00e8-476e-a531-657675ce1515",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "1c633d99-24f4-4fd1-aef1-4c54bffc27ce"
-        },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Configuration",
@@ -527,6 +646,42 @@
         },
         {
             "@type": "WorkflowRoute",
+            "name": "Update GDPR Assessment Data -> Update Task Status",
+            "targetStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
+            "sourceStep": "\/api\/3\/workflow_steps\/57671b9b-fa3b-4477-a3ff-a9b3576e8673",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "20c758bc-3b4b-4088-acf7-be5c74cae074"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update Task Status -> Update Compliance Record Description",
+            "targetStep": "\/api\/3\/workflow_steps\/f0f1f024-f9af-4342-9d8f-4f1622ba79d1",
+            "sourceStep": "\/api\/3\/workflow_steps\/d3a0acd0-3a26-4e69-af7a-43718b36ed76",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "740d8e6d-b18f-4158-a2a9-71b0b8f7133f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Compliance Record ID -> Get Parent Incident Record ID",
+            "targetStep": "\/api\/3\/workflow_steps\/d7e39ba4-0305-4ba6-a902-e3f52410d1c1",
+            "sourceStep": "\/api\/3\/workflow_steps\/b13d127d-00e8-476e-a531-657675ce1515",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "81421e28-c842-414d-90a0-8262b4af46fc"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Parent Incident ID -> Update GDPR Assessment Data",
+            "targetStep": "\/api\/3\/workflow_steps\/57671b9b-fa3b-4477-a3ff-a9b3576e8673",
+            "sourceStep": "\/api\/3\/workflow_steps\/d7e39ba4-0305-4ba6-a902-e3f52410d1c1",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "9bf5db32-5767-433b-9ad1-c60bad44990f"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Configuration -> Get Incident ID",
             "targetStep": "\/api\/3\/workflow_steps\/b13d127d-00e8-476e-a531-657675ce1515",
             "sourceStep": "\/api\/3\/workflow_steps\/df160913-cf18-42c2-8a14-c48e55d08daf",
@@ -535,6 +690,7 @@
             "uuid": "c188ce12-621b-46f4-a55a-2a8df8f78e47"
         }
     ],
+    "groups": [],
     "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
     "uuid": "58e70745-195b-42cc-a7c4-7a38bc980f1b",
     "owners": [],

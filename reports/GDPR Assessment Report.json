@@ -22,7 +22,7 @@
                                 "type": "sectionHeader",
                                 "config": {
                                     "wid": "7dde165c-b423-4d31-a018-cf0399813c00",
-                                    "sectionText": "<p style=\"text-align: center;\">&nbsp;<\/p>\n<p style=\"text-align: center; background: #4e94d0; padding-top: 5px;\"><span style=\"font-size: 25pt;\"><strong><span style=\"color: #efefee;\">GDPR Assessment Report<\/span>&nbsp;<\/strong><\/span><\/p>\n<p style=\"background: #2a5173; padding: 5px; text-align: center;\"><span style=\"font-size: 12pt; color: #efefee;\">INCIDENT ID # <strong>{{incidentID}}<\/strong> | Generated On {{todayDate}}<\/span><\/p>",
+                                    "sectionText": "<p style=\"text-align: center;\">&nbsp;<\/p>\n<p style=\"text-align: center; background: #4e94d0; padding-top: 5px;\"><span style=\"font-size: 25pt;\"><strong><span style=\"color: #efefee;\">Data Breach Assessment Report<\/span>&nbsp;<\/strong><\/span><\/p>\n<p style=\"background: #2a5173; padding: 5px; text-align: center;\"><span style=\"font-size: 12pt; color: #efefee;\">Generated On {{todayDate}}<\/span><\/p>",
                                     "query": {
                                         "filters": [],
                                         "sort": [],
@@ -66,189 +66,23 @@
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "wasPersonalDataOrInformationInvolved",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "isHarmRiskOrMisuseForeseeable",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "wasTheDataEncrypted",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "wasTheExposureResolved",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "whatWasTheDataSource",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "whatWasTheDataFormat",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "breachOccurrenceDate",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "breachDetectionDate",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    "resource": "incidents",
-                                    "query": {
-                                        "sort": [],
-                                        "limit": 30,
-                                        "logic": "AND",
-                                        "filters": [
-                                            {
-                                                "field": "id",
-                                                "operator": "eq",
-                                                "_operator": "eq",
-                                                "value": "{{incidentID}}",
-                                                "type": "primitive"
-                                            }
-                                        ]
-                                    },
-                                    "title": "",
-                                    "style": "display-inline-block",
-                                    "displayType": "card-view",
-                                    "gridColumns": [],
-                                    "widgetAlwaysDisplay": true,
-                                    "recordTitle": {
-                                        "type": "sectionHeader",
-                                        "wid": "f2973204-70f8-4810-a947-098051d812b8",
-                                        "clone": false,
-                                        "remove": false
-                                    },
-                                    "relatedTemplate": {
-                                        "type": "rows",
-                                        "rows": [],
-                                        "wid": "a0be558f-66e8-4f92-9797-eed1dfded02c"
-                                    }
-                                }
-                            }
-                        ],
-                        "style": "col-lg-12"
-                    }
-                ],
-                "wid": "f207f02d-85f5-4187-9d7e-1e0ea8741217",
-                "container": true,
-                "_collapsed": false
-            },
-            {
-                "columns": [
-                    {
-                        "widgets": [
-                            {
-                                "type": "sectionHeader",
-                                "config": {
-                                    "wid": "f974087a-9bd5-4a6e-a212-8c25f9613bb6",
-                                    "sectionText": "<h4 style=\"background: #404142; padding: 5px; text-align: left;\"><span style=\"font-size: 12pt; color: #ffffff;\"><strong>Data Breach Location Details<\/strong><\/span><\/h4>",
-                                    "query": {
-                                        "filters": [],
-                                        "sort": [],
-                                        "limit": 10
-                                    },
-                                    "editorType": "html"
-                                }
-                            },
-                            {
-                                "type": "readonlyFormGroup",
-                                "config": {
-                                    "wid": "721d1d40-312f-4b5c-b6bb-b1fc2784907b",
-                                    "rows": [
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [
-                                                        {
                                                             "name": "companyName",
                                                             "highlightMode": true,
-                                                            "linky": true,
                                                             "readOnly": true
                                                         },
                                                         {
                                                             "name": "companyAddress",
                                                             "highlightMode": true,
-                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "companyCity",
+                                                            "highlightMode": true,
                                                             "readOnly": true
                                                         },
                                                         {
                                                             "name": "companyCountry",
                                                             "highlightMode": true,
-                                                            "linky": true,
                                                             "readOnly": true
                                                         }
                                                     ],
@@ -257,21 +91,23 @@
                                                 {
                                                     "fields": [
                                                         {
-                                                            "name": "companySize",
+                                                            "name": "breachOccurrenceDate",
                                                             "highlightMode": true,
-                                                            "linky": true,
                                                             "readOnly": true
                                                         },
                                                         {
-                                                            "name": "companyCity",
+                                                            "name": "breachDetectionDate",
                                                             "highlightMode": true,
-                                                            "linky": true,
                                                             "readOnly": true
                                                         },
                                                         {
-                                                            "name": "postalCode",
+                                                            "name": "breachNotifyDueDate",
                                                             "highlightMode": true,
-                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "breachNotifiedOn",
+                                                            "highlightMode": true,
                                                             "readOnly": true
                                                         }
                                                     ],
@@ -280,7 +116,7 @@
                                             ]
                                         }
                                     ],
-                                    "resource": "incidents",
+                                    "resource": "data_compliances",
                                     "query": {
                                         "sort": [],
                                         "limit": 30,
@@ -290,18 +126,19 @@
                                                 "field": "id",
                                                 "operator": "eq",
                                                 "_operator": "eq",
-                                                "value": "{{incidentID}}",
+                                                "value": "{{complianceID}}",
                                                 "type": "primitive"
                                             }
                                         ]
                                     },
-                                    "style": "display-inline-block",
+                                    "title": "",
+                                    "style": "",
                                     "displayType": "card-view",
                                     "gridColumns": [],
-                                    "widgetAlwaysDisplay": true,
+                                    "widgetAlwaysDisplay": false,
                                     "recordTitle": {
                                         "type": "sectionHeader",
-                                        "wid": "68b0fb07-baf7-4fc4-83b6-6ac185d21747",
+                                        "wid": "f2973204-70f8-4810-a947-098051d812b8",
                                         "clone": false,
                                         "remove": false,
                                         "query": {
@@ -310,244 +147,20 @@
                                             "limit": 10
                                         },
                                         "editorType": "html",
-                                        "sectionText": ""
+                                        "sectionText": "<p>Breach Location and Timeline Details<\/p>"
                                     },
                                     "relatedTemplate": {
                                         "type": "rows",
                                         "rows": [],
-                                        "wid": "c044788e-f23c-4793-a15a-732d4103081e"
-                                    },
-                                    "title": ""
-                                }
-                            }
-                        ],
-                        "style": "col-lg-12"
-                    }
-                ],
-                "wid": "674af081-63c2-42fc-9c7c-4853ed5223d9",
-                "_collapsed": false
-            },
-            {
-                "columns": [
-                    {
-                        "widgets": [
-                            {
-                                "type": "sectionHeader",
-                                "config": {
-                                    "wid": "164a88f5-dbd0-41a4-b660-486aa279a21f",
-                                    "sectionText": "<h4 style=\"background: #404142; padding: 5px; text-align: left;\"><span style=\"font-size: 12pt; color: #ffffff;\"><strong>Data Breach Risk Assessment&nbsp;<\/strong><\/span><\/h4>",
-                                    "query": {
-                                        "filters": [],
-                                        "sort": [],
-                                        "limit": 10
-                                    },
-                                    "editorType": "html"
+                                        "wid": "a0be558f-66e8-4f92-9797-eed1dfded02c"
+                                    }
                                 }
                             },
                             {
                                 "type": "readonlyFormGroup",
                                 "config": {
-                                    "wid": "765bfef8-b51f-4a9a-b047-5efa57dd93cb",
+                                    "wid": "e85f538a-86f3-4625-be95-116e47854b8d",
                                     "gridColumns": [],
-                                    "displayType": "card-view",
-                                    "widgetAlwaysDisplay": true,
-                                    "query": {
-                                        "sort": [],
-                                        "limit": 1,
-                                        "logic": "AND",
-                                        "filters": [
-                                            {
-                                                "field": "id",
-                                                "operator": "eq",
-                                                "_operator": "eq",
-                                                "value": "{{incidentID}}",
-                                                "type": "primitive"
-                                            }
-                                        ]
-                                    },
-                                    "recordTitle": {
-                                        "type": "sectionHeader",
-                                        "wid": "f41549cf-cbdc-4d33-a2d2-488d25ca0fac",
-                                        "clone": false,
-                                        "remove": false
-                                    },
-                                    "relatedTemplate": {
-                                        "type": "rows",
-                                        "rows": [],
-                                        "wid": "bc17f46c-da5c-485e-ba61-20afd69aec9a"
-                                    },
-                                    "rows": [
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "causeOfDataBreach",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "typeOfDataBreach",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "dataType",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "whereDataWasHosted",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "repercussionsOfBreach",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "mitigationActions",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "noOfAffectedUsers",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "noOfAffectedDataRecords",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "columns": [
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "affectedUsersEmails",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                },
-                                                {
-                                                    "fields": [
-                                                        {
-                                                            "name": "anyAdditionalInformation",
-                                                            "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        }
-                                                    ],
-                                                    "style": "col-lg-6"
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    "resource": "incidents",
-                                    "style": "display-inline-block",
-                                    "title": ""
-                                }
-                            }
-                        ],
-                        "style": "col-lg-12"
-                    }
-                ],
-                "wid": "8a5ceccf-17ce-431d-be4b-0b4d7ffebd6f",
-                "_collapsed": false
-            },
-            {
-                "columns": [
-                    {
-                        "widgets": [
-                            {
-                                "type": "sectionHeader",
-                                "config": {
-                                    "wid": "f2c6de97-edc8-43fa-8c57-0f8b1e1f31fe",
-                                    "query": {
-                                        "filters": [],
-                                        "sort": [],
-                                        "limit": 10
-                                    },
-                                    "editorType": "html",
-                                    "sectionText": "<h4 style=\"background: #404142; padding: 5px; text-align: left;\"><span style=\"font-size: 12pt; color: #ffffff;\"><strong>DPO Assessment Details<\/strong><\/span><\/h4>"
-                                }
-                            },
-                            {
-                                "type": "readonlyFormGroup",
-                                "config": {
-                                    "wid": "d35a8e1c-9e8a-44ad-9f25-705e7cf8b3cd",
-                                    "gridColumns": [
-                                        "isDPIARequired",
-                                        "reasonToPerformDPIA",
-                                        "summaryOfDPOAdvice",
-                                        "impactSeverityOnAffectedUsers",
-                                        "measuresToReduceFutureRisks"
-                                    ],
                                     "displayType": "card-view",
                                     "widgetAlwaysDisplay": true,
                                     "query": {
@@ -559,21 +172,167 @@
                                                 "field": "id",
                                                 "operator": "eq",
                                                 "_operator": "eq",
-                                                "value": "{{incidentID}}",
+                                                "value": "{{complianceID}}",
                                                 "type": "primitive"
                                             }
                                         ]
                                     },
                                     "recordTitle": {
                                         "type": "sectionHeader",
-                                        "wid": "5115d1e5-c0d4-4482-ab79-eef11a12777e",
+                                        "wid": "34e555da-86f6-4e6f-a8e6-6afae56bf546",
                                         "clone": false,
-                                        "remove": false
+                                        "remove": false,
+                                        "query": {
+                                            "filters": [],
+                                            "sort": [],
+                                            "limit": 10
+                                        },
+                                        "editorType": "html",
+                                        "sectionText": "<p>Breach Incident Details<\/p>"
                                     },
                                     "relatedTemplate": {
                                         "type": "rows",
                                         "rows": [],
-                                        "wid": "fa4ed7fc-a18d-4287-a086-654b9739b007"
+                                        "wid": "9670d721-473c-4b30-b23d-a863555ba007"
+                                    },
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "wasPersonalDataAffected",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "wasTheDataEncrypted",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "whatWasTheDataFormat",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "causeOfDataBreach",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "typeOfDataBreach",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "noOfAffectedUsers",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "whatHappened",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "repercussionsOfBreach",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
+                                                },
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "whereDataWasHosted",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "wasTheExposureResolved",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "whatWasTheDataSource",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "isHarmRiskOrMisuseForeseeable",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "dataType",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "noOfAffectedDataRecords",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "mitigationActions",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "anyAdditionalInformation",
+                                                            "highlightMode": true,
+                                                            "readOnly": true
+                                                        }
+                                                    ],
+                                                    "style": "col-lg-6"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "resource": "data_compliances",
+                                    "style": ""
+                                }
+                            },
+                            {
+                                "type": "readonlyFormGroup",
+                                "config": {
+                                    "wid": "df612321-2a2c-4a63-b4d0-3734f5e7a1a7",
+                                    "gridColumns": [],
+                                    "displayType": "card-view",
+                                    "widgetAlwaysDisplay": true,
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 10,
+                                        "logic": "AND",
+                                        "filters": [
+                                            {
+                                                "field": "id",
+                                                "operator": "eq",
+                                                "_operator": "eq",
+                                                "value": "{{complianceID}}",
+                                                "type": "primitive"
+                                            }
+                                        ]
+                                    },
+                                    "recordTitle": {
+                                        "type": "sectionHeader",
+                                        "wid": "34faf3d3-d7d0-4ee0-ab1a-8b30b9622581",
+                                        "clone": false,
+                                        "remove": false,
+                                        "query": {
+                                            "filters": [],
+                                            "sort": [],
+                                            "limit": 10
+                                        },
+                                        "editorType": "html",
+                                        "sectionText": "<p>DPO Assessment Summary<\/p>"
+                                    },
+                                    "relatedTemplate": {
+                                        "type": "rows",
+                                        "rows": [],
+                                        "wid": "a23a4704-24d4-4af2-a686-e6441f2c7ec3"
                                     },
                                     "rows": [
                                         {
@@ -583,31 +342,26 @@
                                                         {
                                                             "name": "dPOName",
                                                             "highlightMode": true,
-                                                            "linky": true,
                                                             "readOnly": true
                                                         },
                                                         {
                                                             "name": "dPOEmail",
                                                             "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        },
-                                                        {
-                                                            "name": "isValidBreach",
-                                                            "highlightMode": true,
-                                                            "linky": true,
                                                             "readOnly": true
                                                         },
                                                         {
                                                             "name": "isDPIARequired",
                                                             "highlightMode": true,
-                                                            "linky": true,
                                                             "readOnly": true
                                                         },
                                                         {
-                                                            "name": "reasonToPerformDPIA",
+                                                            "name": "impactSeverityOnAffectedUsers",
                                                             "highlightMode": true,
-                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "summaryOfDPOAdvice",
+                                                            "highlightMode": true,
                                                             "readOnly": true
                                                         }
                                                     ],
@@ -618,25 +372,21 @@
                                                         {
                                                             "name": "dPOTelephone",
                                                             "highlightMode": true,
-                                                            "linky": true,
                                                             "readOnly": true
                                                         },
                                                         {
-                                                            "name": "impactSeverityOnAffectedUsers",
+                                                            "name": "isValidBreach",
                                                             "highlightMode": true,
-                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "reasonToPerformDPIA",
+                                                            "highlightMode": true,
                                                             "readOnly": true
                                                         },
                                                         {
                                                             "name": "measuresToReduceFutureRisks",
                                                             "highlightMode": true,
-                                                            "linky": true,
-                                                            "readOnly": true
-                                                        },
-                                                        {
-                                                            "name": "summaryOfDPOAdvice",
-                                                            "highlightMode": true,
-                                                            "linky": true,
                                                             "readOnly": true
                                                         }
                                                     ],
@@ -645,15 +395,15 @@
                                             ]
                                         }
                                     ],
-                                    "resource": "incidents",
-                                    "style": "display-inline-block"
+                                    "resource": "data_compliances"
                                 }
                             }
                         ],
                         "style": "col-lg-12"
                     }
                 ],
-                "wid": "bdbbe3a0-9ce1-41c0-90a1-68e8820ddce9",
+                "wid": "f207f02d-85f5-4187-9d7e-1e0ea8741217",
+                "container": true,
                 "_collapsed": false
             }
         ],
@@ -664,13 +414,13 @@
     },
     "filterArray": [
         {
-            "key": "incidentID",
+            "key": "complianceID",
             "open": true,
             "type": "number",
-            "label": "Incident ID",
+            "label": "Compliance ID",
             "value": null,
             "required": true,
-            "expression": "{{incidentID}}",
+            "expression": "{{complianceID}}",
             "defaultValue": null
         }
     ],

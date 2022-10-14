@@ -1,0 +1,233 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "Check for SLA violation",
+    "aliasName": null,
+    "tag": null,
+    "description": "Checks for breach notification violation and update SLA status to Missed",
+    "isActive": true,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "collection": "\/api\/3\/workflow_collections\/b323648c-599a-4cfc-9b65-8c493f1a7e12",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/27d5b17b-21de-4899-b1d4-b23ac209b993",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Send Reminder for SLA Breach",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Find_Open_Compliance_Records}}",
+                    "parallel": false,
+                    "condition": ""
+                },
+                "arguments": {
+                    "timeZone": "{{vars.timeZone}}",
+                    "dataComplianceMetaData": "{{vars.item}}",
+                    "firstReminderThreshold": "{{vars.firstReminderSLA}}",
+                    "secondReminderThreshold": "{{vars.secondReminderSLA}}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "pass_input_record": false,
+                "workflowReference": "\/api\/3\/workflows\/a6ad71ed-a294-4f99-ab19-9070fdb098fd"
+            },
+            "status": null,
+            "top": "435",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "group": null,
+            "uuid": "0559be90-28b9-4567-81d7-9b3f43102c44"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Find Open Compliance Records",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "object",
+                            "field": "status",
+                            "value": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                                "itemValue": "Resolved"
+                            },
+                            "operator": "neq"
+                        },
+                        {
+                            "type": "datetime",
+                            "field": "breachNotifyDueDate",
+                            "value": "{{(arrow.utcnow().shift(hours=+vars.firstReminderSLA))}}",
+                            "operator": "lte"
+                        }
+                    ],
+                    "__selectFields": [
+                        "testEmail",
+                        "testMode",
+                        "assignedTo",
+                        "breachNotifyDueDate",
+                        "severity",
+                        "name",
+                        "id",
+                        "recordTags",
+                        "incidents",
+                        "reminderMailStatus"
+                    ]
+                },
+                "module": "data_compliances?$limit=3000&$relationships=true",
+                "checkboxFields": true,
+                "step_variables": []
+            },
+            "status": null,
+            "top": "300",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
+            "uuid": "1ec181a0-aa03-4707-b5e7-d0f4b3738e20"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "timeZone": "{{vars.request.headers.tz}}",
+                "currentDate": "{{globalVars.Current_Date}}",
+                "firstReminderSLA": "24",
+                "secondReminderSLA": "4"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "1ff4ec35-2d6a-4c5e-bfa2-0c5abca19ed4"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "step_variables": {
+                    "input": {
+                        "params": []
+                    }
+                }
+            },
+            "status": null,
+            "top": "30",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+            "group": null,
+            "uuid": "27d5b17b-21de-4899-b1d4-b23ac209b993"
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/1ff4ec35-2d6a-4c5e-bfa2-0c5abca19ed4",
+            "sourceStep": "\/api\/3\/workflow_steps\/27d5b17b-21de-4899-b1d4-b23ac209b993",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4c1c6c15-6f53-4962-bf33-05744043165b"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Configuration -> Find Open Compliance Records",
+            "targetStep": "\/api\/3\/workflow_steps\/1ec181a0-aa03-4707-b5e7-d0f4b3738e20",
+            "sourceStep": "\/api\/3\/workflow_steps\/1ff4ec35-2d6a-4c5e-bfa2-0c5abca19ed4",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "5d8e37b0-4f52-423f-b0e7-a6e2034bb6bc"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Find Open Compliance Records -> Send Reminder for SLA Breach",
+            "targetStep": "\/api\/3\/workflow_steps\/0559be90-28b9-4567-81d7-9b3f43102c44",
+            "sourceStep": "\/api\/3\/workflow_steps\/1ec181a0-aa03-4707-b5e7-d0f4b3738e20",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "b6b72382-addf-4d14-b743-6e71c768ef86"
+        }
+    ],
+    "groups": [],
+    "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+    "uuid": "2b2bb4b0-7243-4b6f-833e-5a684f36a366",
+    "owners": [],
+    "isPrivate": false,
+    "deletedAt": null,
+    "recordTags": [
+        "Scheduled"
+    ],
+    "schedules": [
+        {
+            "id": "gAAAAABjDZV82bpZhIqr7nDPjMm-y1jedsLKHMKmTOEbY2khZERSfWO0hrAI5KFYDGDcJpsyK6ANPA9QM_shFHodNVINii2IPg==",
+            "crontab": {
+                "id": 9,
+                "minute": "*\/5",
+                "hour": "*",
+                "day_of_week": "*",
+                "day_of_month": "*",
+                "month_of_year": "*",
+                "timezone": "UTC"
+            },
+            "interval": null,
+            "name": "GDPR - Check for SLA violation",
+            "task": "workflow.tasks.periodic_task",
+            "args": "[]",
+            "kwargs": {
+                "exit_if_running": true,
+                "wf_iri": "\/api\/3\/workflows\/2b2bb4b0-7243-4b6f-833e-5a684f36a366",
+                "priority": {
+                    "@id": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+                    "@type": "Picklist",
+                    "itemValue": "Medium",
+                    "orderIndex": 1,
+                    "color": null,
+                    "icon": null,
+                    "listName": "\/api\/3\/picklist_names\/e104ef72-11b4-4d0c-be0e-e1cf3b87b5f2",
+                    "uuid": "2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+                    "id": 111,
+                    "importedBy": []
+                },
+                "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+                "name": "GDPR - Check for SLA violation",
+                "description": "GDPR - Check for SLA violation",
+                "auth": {
+                    "auth_method": "CS HMAC"
+                },
+                "referenceid": null,
+                "schedule_entry_name": "GDPR - Check for SLA violation",
+                "schedule_id": "cc43b608-4ee0-4ce0-bcbd-9c2e1c74994a",
+                "start_time": null,
+                "expires": null,
+                "expired": false
+            },
+            "queue": null,
+            "exchange": null,
+            "routing_key": null,
+            "headers": "{}",
+            "priority": 3,
+            "expires": null,
+            "expire_seconds": null,
+            "one_off": false,
+            "start_time": null,
+            "enabled": false,
+            "last_run_at": null,
+            "total_run_count": 0,
+            "date_changed": "2022-08-29T20:25:50.881552Z",
+            "description": "GDPR - Check for SLA violation",
+            "solar": null,
+            "clocked": null
+        }
+    ]
+}
