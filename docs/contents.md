@@ -39,3 +39,6 @@
 | Set Breach Notification SLA                    | Sets Breach Notification SLA                                                                                            |
 
 >**Warning:** It is recommended to clone these Playbooks before any customizations to avoid loss of information while upgrading the Solution Pack.
+
+| [Installation](./setup.md#installation) | [Configuration](./setup.md#configuration) | [Usage](./usage.md) |
+|-----------------------------------------|-------------------------------------------|---------------------|
