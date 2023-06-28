@@ -20,6 +20,12 @@ In the event of a personal data breach incident, as mandated in [GDPR Article. 3
 
 This solution pack comes with a set of playbooks that help users gather all the necessary information and send it over to the supervisory authority in time.
 
+# GDPR Framework Flow
+
+The following flowchart helps understand how GDPR Framework flow suits your needs:
+
+![GDPR Framework Flow](./docs/res/gdpr-framework-flow.svg)
+
 # Next Steps 
  
 | [Installation](./docs/setup.md#installation) | [Configuration](./docs/setup.md#configuration) | [Usage](./docs/usage.md) | [Contents](./docs/contents.md) |
