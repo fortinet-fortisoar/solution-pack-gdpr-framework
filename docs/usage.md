@@ -9,7 +9,7 @@ You can execute the GDPR playbooks in *Test Mode* as well as in *Production Mode
 
 - The playbooks are by default configured to execute in *Test Mode*
   - The *Test Mode* uses a test email address for all email communication towards Data Protection Officer (DPO), affected individuals, or Data Protection Authority(DPA)
-  - The *Production Mode* uses actual email addresses  of relevant authorities and stakeholders
+  - The *Production Mode* uses actual email addresses of relevant authorities and stakeholders
 
 >**WARNING**: Please be careful of the email addresses you use, as data breach notification emails are sent to these addresses. Hence, while in *Test* mode, do not use actual DPO and DPA email addresses.
 
@@ -137,7 +137,9 @@ Based on the inputs from DPO, new tasks may be created. Following flow diagram e
 ![New task creation flow](./res/task-creation-flow.svg)
 
 ## Get Updated Report from DPO
+
 If DPO rejects the data breach report, then this new task is created where the DPO can update the Data Breach Report and submit new data.
+
 1. Open the task and click the **Get Updated Breach Report** button.
 2. The process now is the same as described in [Notify Data Protection Officer](#notify-data-protection-officer) section.
 
@@ -153,7 +155,9 @@ If DPO rejects the data breach report, then this new task is created where the D
         ![notifyAffectedUsers](./res/notify-affected-users.png)
 
 ## Notify Data Protection Authority (DPA)
+
 This new task is created to Notify DPA of a data breach.
+
 1. Open the task and click the **Send Data Breach Report to DPA** Button.
 2. This task performs the following actions:
     - Generates the following report and sends it to the DPA
@@ -165,3 +169,6 @@ This new task is created to Notify DPA of a data breach.
     ![Compliance Record Resolved](./res/resolve-incident.png) 
 
     ![Incident Task Completed](./res/incident-task-completed.png)
+
+| [Installation](./setup.md#installation) | [Configuration](./setup.md#configuration) | [Contents](./contents.md) |
+|-----------------------------------------|-------------------------------------------|---------------------------|

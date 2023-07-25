@@ -63,3 +63,6 @@ If you have already installed the GDPR solution pack v1.0.0, remove the followin
 # Configuration 
 For optimal performance of **GDPR Framework** solution pack, configure **Code Snippet** connector to extract and build an address book of geo-specific Data Protection Authority (DPA) contacts.
 > The connector comes pre-installed and hence needs only configurations. To configure **Code Snippet** connector, refer to [Configuring Code Snippet](https://docs.fortinet.com/document/fortisoar/0.0.0/fortisoar-built-in-connectors/1/fortisoar-built-in-connectors#CodeSnippet).
+
+| [Usage](./usage.md) | [Contents](./contents.md) |
+|---------------------|---------------------------|
