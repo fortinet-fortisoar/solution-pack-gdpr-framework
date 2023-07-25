@@ -1,6 +1,6 @@
 {
     "name": "gDPRFramework",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "type": "solutionpack",
     "local": true,
     "label": "GDPR Framework",
@@ -14,9 +14,9 @@
     ],
     "prerequisite": "* Make sure to configure Code Snippet connector",
     "publisher": "Fortinet",
-    "certified": true,
+    "certified": false,
     "description": "This solution pack demonstrates procedures involved in GDPR",
-    "help": "https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/release/1.0.1/README.md",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-gdpr-framework/blob/release/1.0.2/README.md",
     "category": [
         "Compliance and Reporting"
     ],
@@ -25,7 +25,7 @@
     "recordTags": [
         "GDPR"
     ],
-    "fsrMinCompatibility": "7.2.0",
+    "fsrMinCompatibility": "7.2.1",
     "date": "2022-08-04T09:10:30+00:00",
     "contents": {
         "picklistNames": [
@@ -103,12 +103,6 @@
                 "name": "Current_Date",
                 "value": "{{arrow.utcnow().timestamp}}",
                 "default_value": "{{arrow.utcnow().timestamp}}"
-            },
-            {
-                "id": 7,
-                "name": "Server_fqhn",
-                "value": "master.fortisoar.com",
-                "default_value": null
             },
             {
                 "id": 2,
