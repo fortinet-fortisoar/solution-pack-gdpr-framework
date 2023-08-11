@@ -17,6 +17,49 @@
     "steps": [
         {
             "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "currentDate": "{{globalVars.Current_Date}}",
+                "compliaceIRI": "{{vars.input.records[0]['@id']}}",
+                "breachNotifyDueDate": "{{vars.input.records[0].breachNotifyDueDate}}"
+            },
+            "status": null,
+            "top": "165",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "82f4d92e-4093-4b04-a9bb-e19127215aaf"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Is SLA Met",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "option": "Met",
+                        "step_iri": "\/api\/3\/workflow_steps\/7413df35-fc2e-4fe3-a6a2-9f7ac4af1617",
+                        "condition": "{{ vars.currentDate < vars.breachNotifyDueDate }}",
+                        "step_name": "Update SLA to Met"
+                    },
+                    {
+                        "option": "Missed",
+                        "default": true,
+                        "step_iri": "\/api\/3\/workflow_steps\/23e7d29d-88b4-4fbd-800c-cb0fc5713e0b",
+                        "step_name": "Update SLA to Missed"
+                    }
+                ]
+            },
+            "status": null,
+            "top": "300",
+            "left": "300",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "group": null,
+            "uuid": "2f1ed0d3-5215-4658-9940-867d50b58381"
+        },
+        {
+            "@type": "WorkflowStep",
             "name": "Start",
             "description": null,
             "arguments": {
@@ -57,32 +100,26 @@
                                 "itemValue": "Resolved"
                             },
                             "operator": "eq"
+                        },
+                        {
+                            "type": "object",
+                            "field": "regulatoryCompliance",
+                            "value": "\/api\/3\/picklists\/257ec29f-5f8c-4928-a771-59f86778e9ac",
+                            "_value": {
+                                "@id": "\/api\/3\/picklists\/257ec29f-5f8c-4928-a771-59f86778e9ac",
+                                "itemValue": "GDPR"
+                            },
+                            "operator": "eq"
                         }
                     ]
                 }
             },
             "status": null,
-            "top": "30",
+            "top": "20",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/9300bf69-5063-486d-b3a6-47eb9da24872",
             "group": null,
             "uuid": "3ac419ae-7f9b-4230-a50d-296550014176"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Configuration",
-            "description": null,
-            "arguments": {
-                "currentDate": "{{globalVars.Current_Date}}",
-                "compliaceIRI": "{{vars.input.records[0]['@id']}}",
-                "breachNotifyDueDate": "{{vars.input.records[0].breachNotifyDueDate}}"
-            },
-            "status": null,
-            "top": "165",
-            "left": "300",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "82f4d92e-4093-4b04-a9bb-e19127215aaf"
         },
         {
             "@type": "WorkflowStep",
@@ -108,33 +145,6 @@
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "7413df35-fc2e-4fe3-a6a2-9f7ac4af1617"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Is SLA Met",
-            "description": null,
-            "arguments": {
-                "conditions": [
-                    {
-                        "option": "Met",
-                        "step_iri": "\/api\/3\/workflow_steps\/7413df35-fc2e-4fe3-a6a2-9f7ac4af1617",
-                        "condition": "{{ vars.currentDate < vars.breachNotifyDueDate }}",
-                        "step_name": "Update SLA to Met"
-                    },
-                    {
-                        "option": "Missed",
-                        "default": true,
-                        "step_iri": "\/api\/3\/workflow_steps\/23e7d29d-88b4-4fbd-800c-cb0fc5713e0b",
-                        "step_name": "Update SLA to Missed"
-                    }
-                ]
-            },
-            "status": null,
-            "top": "300",
-            "left": "300",
-            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "group": null,
-            "uuid": "2f1ed0d3-5215-4658-9940-867d50b58381"
         },
         {
             "@type": "WorkflowStep",
@@ -165,30 +175,13 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Start -> Configuration",
-            "targetStep": "\/api\/3\/workflow_steps\/82f4d92e-4093-4b04-a9bb-e19127215aaf",
-            "sourceStep": "\/api\/3\/workflow_steps\/3ac419ae-7f9b-4230-a50d-296550014176",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "71fcc257-e2bb-4fbe-96a4-25aea87cb7f5"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Configuration -> Is SLA Met",
             "targetStep": "\/api\/3\/workflow_steps\/2f1ed0d3-5215-4658-9940-867d50b58381",
             "sourceStep": "\/api\/3\/workflow_steps\/82f4d92e-4093-4b04-a9bb-e19127215aaf",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "6490382c-c250-4131-bdbf-a2b5f9181522"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Is SLA Met -> Update SLA to Missed",
-            "targetStep": "\/api\/3\/workflow_steps\/23e7d29d-88b4-4fbd-800c-cb0fc5713e0b",
-            "sourceStep": "\/api\/3\/workflow_steps\/2f1ed0d3-5215-4658-9940-867d50b58381",
-            "label": "Missed",
-            "isExecuted": false,
-            "uuid": "2f005c0a-e8a1-40ac-9c0d-288a33e791e6"
         },
         {
             "@type": "WorkflowRoute",
@@ -197,7 +190,28 @@
             "sourceStep": "\/api\/3\/workflow_steps\/2f1ed0d3-5215-4658-9940-867d50b58381",
             "label": "Met",
             "isExecuted": false,
+            "group": null,
             "uuid": "fbe159f7-6a45-4f7b-aa9e-248634546356"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Is SLA Met -> Update SLA to Missed",
+            "targetStep": "\/api\/3\/workflow_steps\/23e7d29d-88b4-4fbd-800c-cb0fc5713e0b",
+            "sourceStep": "\/api\/3\/workflow_steps\/2f1ed0d3-5215-4658-9940-867d50b58381",
+            "label": "Missed",
+            "isExecuted": false,
+            "group": null,
+            "uuid": "2f005c0a-e8a1-40ac-9c0d-288a33e791e6"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/82f4d92e-4093-4b04-a9bb-e19127215aaf",
+            "sourceStep": "\/api\/3\/workflow_steps\/3ac419ae-7f9b-4230-a50d-296550014176",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "71fcc257-e2bb-4fbe-96a4-25aea87cb7f5"
         }
     ],
     "groups": [],

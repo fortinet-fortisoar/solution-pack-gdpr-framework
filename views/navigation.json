@@ -5,10 +5,78 @@
     "config": {
         "navigation": [
             {
-                "title": "Data Compliances",
+                "title": "Resources",
+                "icon": "icon icon-resources",
+                "items": [
+                    {
+                        "title": "Attachments",
+                        "icon": "icon icon-attachments",
+                        "require": {
+                            "module": "attachments",
+                            "action": "read"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "attachments"
+                            }
+                        },
+                        "editMode": false
+                    },
+                    {
+                        "title": "Email Templates",
+                        "require": {
+                            "module": "email_templates",
+                            "action": "read"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "email_templates"
+                            }
+                        },
+                        "editMode": false,
+                        "icon": "icon icon-email-templates"
+                    },
+                    {
+                        "title": "Assets",
+                        "icon": "icon icon-assets",
+                        "require": {
+                            "module": "assets",
+                            "action": "read"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "assets"
+                            }
+                        },
+                        "editMode": false
+                    },
+                    {
+                        "title": "Key Store",
+                        "require": {
+                            "module": "keys",
+                            "action": "read"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "keys"
+                            }
+                        },
+                        "icon": "fa fa-key",
+                        "editMode": false
+                    }
+                ],
+                "editMode": false
+            },
+            {
+                "editMode": false,
+                "icon": "icon icon-data_sets",
                 "require": {
-                    "module": "data_compliances",
-                    "action": "read"
+                    "action": "read",
+                    "module": "data_compliances"
                 },
                 "state": {
                     "name": "main.modules.list",
@@ -16,8 +84,7 @@
                         "module": "data_compliances"
                     }
                 },
-                "icon": "icon icon-data_sets",
-                "editMode": false
+                "title": "Data Compliances"
             }
         ]
     },

@@ -17,6 +17,101 @@
     "steps": [
         {
             "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "breachType": "[\"Confidentiality Breach\", \"Integrity Breach\", \"Availability Breach\"]",
+                "description": "[]",
+                "decisionList": "[\"Yes\", \"No\", \"Unknown\"]"
+            },
+            "status": null,
+            "top": "165",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "f992a856-1b6d-42e6-96b8-4dfbbc41d9c3"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Compliance Record ID",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "id",
+                            "value": "{{vars.input.records[0].id}}",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        }
+                    ],
+                    "__selectFields": [
+                        "dataCompliances"
+                    ]
+                },
+                "module": "tasks?$limit=30&$relationships=true",
+                "checkboxFields": true,
+                "step_variables": {
+                    "demoMode": "{% if vars.result[0].dataCompliances[0].testMode %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #73AD21; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Test Mode ON<\/strong><\/span>{% endif %}",
+                    "dpaEmail": "{{vars.result[0].dataCompliances[0].dPAEmail}}",
+                    "dpoEmail": "{{vars.result[0].dataCompliances[0].dPOEmail}}",
+                    "demoEmail": "{{vars.result[0].dataCompliances[0].testEmail}}",
+                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if 'Get Updated Report from DPO' in item %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
+                    "complianceID": "{{vars.result[0].dataCompliances[0].id}}",
+                    "complianceIRI": "{{vars.result[0].dataCompliances[0]['@id']}}",
+                    "complianceName": "{{vars.result[0].dataCompliances[0].name}}",
+                    "complianceUUID": "{{vars.result[0].dataCompliances[0].uuid}}"
+                }
+            },
+            "status": null,
+            "top": "300",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
+            "uuid": "98159dc5-7b16-40de-931b-429251d96de5"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Parent Incident ID",
+            "description": null,
+            "arguments": {
+                "query": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": [
+                        {
+                            "type": "primitive",
+                            "field": "id",
+                            "value": "{{vars.complianceID}}",
+                            "operator": "eq",
+                            "_operator": "eq"
+                        }
+                    ],
+                    "__selectFields": [
+                        "incidents"
+                    ]
+                },
+                "module": "data_compliances?$limit=30&$relationships=true",
+                "checkboxFields": true,
+                "step_variables": {
+                    "nextTask": "Notify Data Protection Authority",
+                    "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}"
+                }
+            },
+            "status": null,
+            "top": "435",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "group": null,
+            "uuid": "9ff376d9-eb64-4716-8301-e98e2ac8fefc"
+        },
+        {
+            "@type": "WorkflowStep",
             "name": "Start",
             "description": null,
             "arguments": {
@@ -78,62 +173,78 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Configuration",
+            "name": "Update Compliance Record Description",
             "description": null,
             "arguments": {
-                "breachType": "[\"Confidentiality Breach\", \"Integrity Breach\", \"Availability Breach\"]",
-                "description": "[]",
-                "decisionList": "[\"Yes\", \"No\", \"Unknown\"]"
+                "resource": {
+                    "description": "{{vars.description | join('\\n')}}"
+                },
+                "operation": "Append",
+                "collection": "{{vars.complianceIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/data_compliances",
+                "fieldOperation": [],
+                "step_variables": []
             },
             "status": null,
-            "top": "165",
+            "top": "975",
             "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
-            "uuid": "f992a856-1b6d-42e6-96b8-4dfbbc41d9c3"
+            "uuid": "a8d12ff1-9085-43c8-92af-3b82c5253c01"
         },
         {
             "@type": "WorkflowStep",
-            "name": "Get Compliance Record ID",
+            "name": "Updated GDPR Assessment Data",
             "description": null,
             "arguments": {
-                "query": {
-                    "sort": [],
-                    "limit": 30,
-                    "logic": "AND",
-                    "filters": [
-                        {
-                            "type": "primitive",
-                            "field": "id",
-                            "value": "{{vars.input.records[0].id}}",
-                            "operator": "eq",
-                            "_operator": "eq"
-                        }
+                "message": {
+                    "tags": [
+                        "\/api\/3\/tags\/GDPR"
                     ],
-                    "__selectFields": [
-                        "dataCompliances"
-                    ]
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<p>Received updated Data Breach Report from Data Protection Officer.<\/p>",
+                    "records": "{{vars.complianceIRI}},{{vars.incidentIRI}}"
                 },
-                "module": "tasks?$limit=30&$relationships=true",
-                "checkboxFields": true,
-                "step_variables": {
-                    "demoMode": "{% if vars.result[0].dataCompliances[0].testMode %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #73AD21; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Test Mode ON<\/strong><\/span>{% endif %}",
-                    "dpaEmail": "{{vars.result[0].dataCompliances[0].dPAEmail}}",
-                    "dpoEmail": "{{vars.result[0].dataCompliances[0].dPOEmail}}",
-                    "demoEmail": "{{vars.result[0].dataCompliances[0].testEmail}}",
-                    "placeholder": "{% for item in vars.result[0].dataCompliances[0].description.split('\\n') %}\n{% if 'Get Updated Report from DPO' in item %}\n{% set _dummy = item | replace('10060', '9989') %}\n{{vars.description.append(_dummy)}}\n{% else %}\n{{vars.description.append(item)}}\n{% endif %}\n{% endfor %}",
-                    "complianceID": "{{vars.result[0].dataCompliances[0].id}}",
-                    "complianceIRI": "{{vars.result[0].dataCompliances[0]['@id']}}",
-                    "complianceName": "{{vars.result[0].dataCompliances[0].name}}",
-                    "complianceUUID": "{{vars.result[0].dataCompliances[0].uuid}}"
-                }
+                "resource": {
+                    "dataType": "{{vars.steps.Update_DPO_Report.input.dataType}}",
+                    "companyCity": "{{vars.steps.Update_DPO_Report.input.companyCity}}",
+                    "companyName": "{{vars.steps.Update_DPO_Report.input.companyName}}",
+                    "companySize": "{{vars.steps.Update_DPO_Report.input.companySize}}",
+                    "whatHappened": "{{vars.steps.Update_DPO_Report.input['whatHappened?']}}",
+                    "companyAddress": "{{vars.steps.Update_DPO_Report.input.companyAddress}}",
+                    "companyCountry": "{{vars.steps.Update_DPO_Report.input.companyCountry}}",
+                    "typeOfDataBreach": "{{\"GDPRDataBreachType\" | picklist(vars.steps.Update_DPO_Report.input.typeOfDataBreach, \"@id\")}}",
+                    "causeOfDataBreach": "{{vars.steps.Update_DPO_Report.input.causeOfDataBreach}}",
+                    "mitigationActions": "{{vars.steps.Update_DPO_Report.input['whatMitigationActionsHaveBeenImplemented?']}}",
+                    "noOfAffectedUsers": "{{vars.steps.Update_DPO_Report.input['no.OfAffectedUsers']}}",
+                    "whereDataWasHosted": "{{vars.steps.Update_DPO_Report.input['whereDataWasHosted?']}}",
+                    "wasTheDataEncrypted": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['wasTheDataEncrypted?'], \"@id\")}}",
+                    "whatWasTheDataFormat": "{{vars.steps.Update_DPO_Report.input['whatWasTheDataFormat?']}}",
+                    "whatWasTheDataSource": "{{vars.steps.Update_DPO_Report.input['whatWasTheDataSource?']}}",
+                    "repercussionsOfBreach": "{{vars.steps.Update_DPO_Report.input['whatAreTheRepercussionsOfBreach?']}}",
+                    "wasTheExposureResolved": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['wasTheExposureResolved?'], \"@id\")}}",
+                    "noOfAffectedDataRecords": "{{vars.steps.Update_DPO_Report.input['no.OfAffectedDataRecords']}}",
+                    "anyAdditionalInformation": "{{vars.steps.Update_DPO_Report.input.anyAdditionalInformation}}",
+                    "isHarmRiskOrMisuseForeseeable": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['riskOrMisuseForeseeable'], \"@id\")}}"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.complianceIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/data_compliances",
+                "fieldOperation": {
+                    "recordTags": "Append"
+                },
+                "step_variables": []
             },
             "status": null,
-            "top": "300",
+            "top": "705",
             "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
-            "uuid": "98159dc5-7b16-40de-931b-429251d96de5"
+            "uuid": "2ddda5ac-d72f-4787-abba-081e32174e00"
         },
         {
             "@type": "WorkflowStep",
@@ -556,59 +667,6 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Updated GDPR Assessment Data",
-            "description": null,
-            "arguments": {
-                "message": {
-                    "tags": [
-                        "\/api\/3\/tags\/GDPR"
-                    ],
-                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
-                    "tenant": "",
-                    "content": "<p>Received updated Data Breach Report from Data Protection Officer.<\/p>",
-                    "records": "{{vars.complianceIRI}},{{vars.incidentIRI}}"
-                },
-                "resource": {
-                    "dataType": "{{vars.steps.Update_DPO_Report.input.dataType}}",
-                    "companyCity": "{{vars.steps.Update_DPO_Report.input.companyCity}}",
-                    "companyName": "{{vars.steps.Update_DPO_Report.input.companyName}}",
-                    "companySize": "{{vars.steps.Update_DPO_Report.input.companySize}}",
-                    "whatHappened": "{{vars.steps.Update_DPO_Report.input['whatHappened?']}}",
-                    "companyAddress": "{{vars.steps.Update_DPO_Report.input.companyAddress}}",
-                    "companyCountry": "{{vars.steps.Update_DPO_Report.input.companyCountry}}",
-                    "typeOfDataBreach": "{{\"GDPRDataBreachType\" | picklist(vars.steps.Update_DPO_Report.input.typeOfDataBreach, \"@id\")}}",
-                    "causeOfDataBreach": "{{vars.steps.Update_DPO_Report.input.causeOfDataBreach}}",
-                    "mitigationActions": "{{vars.steps.Update_DPO_Report.input['whatMitigationActionsHaveBeenImplemented?']}}",
-                    "noOfAffectedUsers": "{{vars.steps.Update_DPO_Report.input['no.OfAffectedUsers']}}",
-                    "whereDataWasHosted": "{{vars.steps.Update_DPO_Report.input['whereDataWasHosted?']}}",
-                    "wasTheDataEncrypted": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['wasTheDataEncrypted?'], \"@id\")}}",
-                    "whatWasTheDataFormat": "{{vars.steps.Update_DPO_Report.input['whatWasTheDataFormat?']}}",
-                    "whatWasTheDataSource": "{{vars.steps.Update_DPO_Report.input['whatWasTheDataSource?']}}",
-                    "repercussionsOfBreach": "{{vars.steps.Update_DPO_Report.input['whatAreTheRepercussionsOfBreach?']}}",
-                    "wasTheExposureResolved": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['wasTheExposureResolved?'], \"@id\")}}",
-                    "noOfAffectedDataRecords": "{{vars.steps.Update_DPO_Report.input['no.OfAffectedDataRecords']}}",
-                    "anyAdditionalInformation": "{{vars.steps.Update_DPO_Report.input.anyAdditionalInformation}}",
-                    "isHarmRiskOrMisuseForeseeable": "{{\"YesNoInput\" | picklist(vars.steps.Update_DPO_Report.input['riskOrMisuseForeseeable'], \"@id\")}}"
-                },
-                "_showJson": false,
-                "operation": "Append",
-                "collection": "{{vars.complianceIRI}}",
-                "__recommend": [],
-                "collectionType": "\/api\/3\/data_compliances",
-                "fieldOperation": {
-                    "recordTags": "Append"
-                },
-                "step_variables": []
-            },
-            "status": null,
-            "top": "705",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
-            "group": null,
-            "uuid": "2ddda5ac-d72f-4787-abba-081e32174e00"
-        },
-        {
-            "@type": "WorkflowStep",
             "name": "Update Task Status",
             "description": null,
             "arguments": {
@@ -632,76 +690,9 @@
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "0f758157-ede9-44f7-af51-5f185818f5c3"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Get Parent Incident ID",
-            "description": null,
-            "arguments": {
-                "query": {
-                    "sort": [],
-                    "limit": 30,
-                    "logic": "AND",
-                    "filters": [
-                        {
-                            "type": "primitive",
-                            "field": "id",
-                            "value": "{{vars.complianceID}}",
-                            "operator": "eq",
-                            "_operator": "eq"
-                        }
-                    ],
-                    "__selectFields": [
-                        "incidents"
-                    ]
-                },
-                "module": "data_compliances?$limit=30&$relationships=true",
-                "checkboxFields": true,
-                "step_variables": {
-                    "nextTask": "Notify Data Protection Authority",
-                    "incidentIRI": "{{vars.result[0].incidents[0]['@id']}}"
-                }
-            },
-            "status": null,
-            "top": "435",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
-            "group": null,
-            "uuid": "9ff376d9-eb64-4716-8301-e98e2ac8fefc"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Update Compliance Record Description",
-            "description": null,
-            "arguments": {
-                "resource": {
-                    "description": "{{vars.description | join('\\n')}}"
-                },
-                "operation": "Append",
-                "collection": "{{vars.complianceIRI}}",
-                "__recommend": [],
-                "collectionType": "\/api\/3\/data_compliances",
-                "fieldOperation": [],
-                "step_variables": []
-            },
-            "status": null,
-            "top": "975",
-            "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
-            "group": null,
-            "uuid": "a8d12ff1-9085-43c8-92af-3b82c5253c01"
         }
     ],
     "routes": [
-        {
-            "@type": "WorkflowRoute",
-            "name": "Start -> Configuration",
-            "targetStep": "\/api\/3\/workflow_steps\/f992a856-1b6d-42e6-96b8-4dfbbc41d9c3",
-            "sourceStep": "\/api\/3\/workflow_steps\/028287bc-10b4-40d0-bec2-b33395ddba29",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "3d26ee87-abfe-4d42-891a-b3e0ebd92957"
-        },
         {
             "@type": "WorkflowRoute",
             "name": "Configuration -> Get Incident ID",
@@ -709,25 +700,8 @@
             "sourceStep": "\/api\/3\/workflow_steps\/f992a856-1b6d-42e6-96b8-4dfbbc41d9c3",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "9206d3f6-d3f3-4306-8dca-50b631e837a9"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Update DPO Report -> Updated GDPR Assessment Data",
-            "targetStep": "\/api\/3\/workflow_steps\/2ddda5ac-d72f-4787-abba-081e32174e00",
-            "sourceStep": "\/api\/3\/workflow_steps\/a6bceef9-8233-4075-aa12-98d9e2eb375d",
-            "label": "Submit",
-            "isExecuted": false,
-            "uuid": "06b5d007-3054-4d63-92e9-05ed6a3c6cbb"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Updated GDPR Assessment Data -> Update Task Status",
-            "targetStep": "\/api\/3\/workflow_steps\/0f758157-ede9-44f7-af51-5f185818f5c3",
-            "sourceStep": "\/api\/3\/workflow_steps\/2ddda5ac-d72f-4787-abba-081e32174e00",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "9aa1c93d-0916-419e-a324-e0f1fbebad91"
         },
         {
             "@type": "WorkflowRoute",
@@ -736,16 +710,8 @@
             "sourceStep": "\/api\/3\/workflow_steps\/98159dc5-7b16-40de-931b-429251d96de5",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "f3181a38-0d83-4d7f-a7b1-decbc7065d25"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Update Task Status -> Update Compliance Record Description",
-            "targetStep": "\/api\/3\/workflow_steps\/a8d12ff1-9085-43c8-92af-3b82c5253c01",
-            "sourceStep": "\/api\/3\/workflow_steps\/0f758157-ede9-44f7-af51-5f185818f5c3",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "ad2069d7-c00a-430e-8595-32c1ece2d255"
         },
         {
             "@type": "WorkflowRoute",
@@ -754,7 +720,48 @@
             "sourceStep": "\/api\/3\/workflow_steps\/9ff376d9-eb64-4716-8301-e98e2ac8fefc",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "98efd851-e839-491f-9d12-43c2a23d23ac"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/f992a856-1b6d-42e6-96b8-4dfbbc41d9c3",
+            "sourceStep": "\/api\/3\/workflow_steps\/028287bc-10b4-40d0-bec2-b33395ddba29",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "3d26ee87-abfe-4d42-891a-b3e0ebd92957"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Updated GDPR Assessment Data -> Update Task Status",
+            "targetStep": "\/api\/3\/workflow_steps\/0f758157-ede9-44f7-af51-5f185818f5c3",
+            "sourceStep": "\/api\/3\/workflow_steps\/2ddda5ac-d72f-4787-abba-081e32174e00",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "9aa1c93d-0916-419e-a324-e0f1fbebad91"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update DPO Report -> Updated GDPR Assessment Data",
+            "targetStep": "\/api\/3\/workflow_steps\/2ddda5ac-d72f-4787-abba-081e32174e00",
+            "sourceStep": "\/api\/3\/workflow_steps\/a6bceef9-8233-4075-aa12-98d9e2eb375d",
+            "label": "Submit",
+            "isExecuted": false,
+            "group": null,
+            "uuid": "06b5d007-3054-4d63-92e9-05ed6a3c6cbb"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update Task Status -> Update Compliance Record Description",
+            "targetStep": "\/api\/3\/workflow_steps\/a8d12ff1-9085-43c8-92af-3b82c5253c01",
+            "sourceStep": "\/api\/3\/workflow_steps\/0f758157-ede9-44f7-af51-5f185818f5c3",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "ad2069d7-c00a-430e-8595-32c1ece2d255"
         }
     ],
     "groups": [],

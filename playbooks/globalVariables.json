@@ -1,14 +1,1 @@
-[
-    {
-        "id": 10,
-        "name": "Current_Date",
-        "value": "{{arrow.utcnow().timestamp}}",
-        "default_value": "{{arrow.utcnow().timestamp}}"
-    },
-    {
-        "id": 2,
-        "name": "Default_Email",
-        "value": "noreply@example.com",
-        "default_value": null
-    }
-]
+[]
