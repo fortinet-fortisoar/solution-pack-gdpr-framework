@@ -21,6 +21,66 @@
     "steps": [
         {
             "@type": "WorkflowStep",
+            "name": "Check Reminder to be Sent",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "option": "Breach Reminder",
+                        "step_iri": "\/api\/3\/workflow_steps\/36cdf048-f8d9-413b-9840-888ea44e1f57",
+                        "condition": "{{ (vars.timeRemainToBreach | int < 0) and (\"GDPRReminderStatus\" | picklist(\"Breach Reminder Sent\", \"@id\") not in vars.reminderEmailStatus) }}",
+                        "step_name": "SLA Breached Notification"
+                    },
+                    {
+                        "option": "No Operation",
+                        "default": true,
+                        "step_iri": "\/api\/3\/workflow_steps\/a1b05da5-0185-4a6d-94b3-161920f6942b",
+                        "step_name": "No Operation"
+                    },
+                    {
+                        "option": "Second Reminder",
+                        "step_iri": "\/api\/3\/workflow_steps\/53356a14-ddc3-4acb-9f85-927d538867c0",
+                        "condition": "{{ (vars.timeRemainToBreach | int < vars.reminderThreshold | int) and (\"GDPRReminderStatus\" | picklist(\"Reminder 2 Sent\", \"@id\") not in vars.reminderEmailStatus) }}",
+                        "step_name": "Second SLA Reminder Notification"
+                    },
+                    {
+                        "option": "First Reminder",
+                        "step_iri": "\/api\/3\/workflow_steps\/031e5ab8-8194-464d-9354-7293e5036a06",
+                        "condition": "{{ (vars.timeRemainToBreach | int > vars.reminderThreshold | int) and (\"GDPRReminderStatus\" | picklist(\"Reminder 1 Sent\", \"@id\") not in vars.reminderEmailStatus) }}",
+                        "step_name": "First SLA Reminder Notification"
+                    }
+                ]
+            },
+            "status": null,
+            "top": "270",
+            "left": "775",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "group": null,
+            "uuid": "f2484ee2-5e75-4c52-9981-44f44ef5d053"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Configuration",
+            "description": null,
+            "arguments": {
+                "timezone": "{{vars.input.params.timeZone}}",
+                "currentTime": "{{globalVars.Current_Date}}",
+                "complianceID": "{{vars.input.params.dataComplianceMetaData.id}}",
+                "complianceIRI": "{{vars.input.params.dataComplianceMetaData['@id']}}",
+                "isSLABreached": "false",
+                "reminderThreshold": "{{vars.input.params.secondReminderThreshold * 3600}}",
+                "timeRemainToBreach": "{{(vars.input.params.dataComplianceMetaData.breachNotifyDueDate | int) - (globalVars.Current_Date | int)}}",
+                "reminderEmailStatus": "{{vars.input.params.dataComplianceMetaData.reminderMailStatus | json_query('[].\"@id\"')}}"
+            },
+            "status": null,
+            "top": "270",
+            "left": "450",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "41cc6132-df9c-431c-9b30-cbca8d262340"
+        },
+        {
+            "@type": "WorkflowStep",
             "name": "First SLA Reminder Notification",
             "description": null,
             "arguments": {
@@ -54,29 +114,100 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Update Reminder Status",
+            "name": "No Operation",
             "description": null,
             "arguments": {
-                "resource": {
-                    "reminderMailStatus": "{{vars.reminderEmailStatus}}",
-                    "breachNotificationSLA": "{% if vars.isSLABreached %}{{\"SLAState\" | picklist(\"Missed\", \"@id\")}}{% endif %}"
-                },
-                "_showJson": false,
-                "operation": "Append",
-                "collection": "{{vars.complianceIRI}}",
-                "__recommend": [],
-                "collectionType": "\/api\/3\/data_compliances",
-                "fieldOperation": {
-                    "reminderMailStatus": "Append"
-                },
+                "params": [],
+                "version": "3.2.1",
+                "connector": "cyops_utilities",
+                "operation": "no_op",
+                "operationTitle": "Utils: No Operation",
                 "step_variables": []
             },
             "status": null,
-            "top": "190",
-            "left": "1750",
-            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
+            "top": "510",
+            "left": "1100",
+            "stepType": "\/api\/3\/workflow_step_types\/0109f35d-090b-4a2b-bd8a-94cbc3508562",
             "group": null,
-            "uuid": "083d7df6-fd09-4edf-9948-c2612b929882"
+            "uuid": "a1b05da5-0185-4a6d-94b3-161920f6942b"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Second SLA Reminder Notification",
+            "description": null,
+            "arguments": {
+                "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
+                "params": {
+                    "cc": "",
+                    "to": "{% if vars.input.params.dataComplianceMetaData.testMode %}{{vars.input.params.dataComplianceMetaData.testEmail}}{% else %}{{vars.input.params.dataComplianceMetaData.assignedTo.email}}{% endif %}",
+                    "bcc": "",
+                    "from": "{{globalVars.Default_Email}}",
+                    "type": "Manual Input",
+                    "content": "<p>Dear {{vars.input.params.dataComplianceMetaData.assignedTo.firstname}},<\/p>\n<p>You are receiving this email as the SLA for the GDPR Assessment record assigned to you will be breached within {{vars.input.params.secondReminderThreshold}} hours. Please look into this on priority.<\/p>\n<table style=\"border-collapse: collapse;\" border=\"1\">\n<tbody>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record ID<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">#{{vars.input.params.dataComplianceMetaData.id}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record Title<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{vars.input.params.dataComplianceMetaData.name}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record Link<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\"><a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.input.params.dataComplianceMetaData.uuid}}\" target=\"_blank\" rel=\"noopener\"><em>Click Here<\/em><\/a><\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Severity<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{vars.input.params.dataComplianceMetaData.severity.itemValue}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Due Date<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{arrow.get(vars.input.params.dataComplianceMetaData.breachNotifyDueDate).to(vars.timezone).format('YYYY-MM-DD HH:mm:ss')}}<\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<p>&nbsp;<\/p>",
+                    "subject": "[URGENT] SLA Warning: Compliance Record ID #{{vars.input.params.dataComplianceMetaData.id}} is about to breach SLA",
+                    "iri_list": "",
+                    "body_type": "Rich Text",
+                    "file_name": "",
+                    "file_path": ""
+                },
+                "version": "2.4.3",
+                "from_str": "admin@example.com",
+                "connector": "smtp",
+                "operation": "send_email_new",
+                "operationTitle": "Send Email (Advanced)",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "30",
+            "left": "1100",
+            "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
+            "group": null,
+            "uuid": "53356a14-ddc3-4acb-9f85-927d538867c0"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Breached Notification Status",
+            "description": null,
+            "arguments": {
+                "isSLABreached": "true",
+                "reminderStatusIRI": "{{vars.reminderEmailStatus.append((\"GDPRReminderStatus\" | picklist(\"Breach Reminder Sent\", \"@id\")))}}"
+            },
+            "status": null,
+            "top": "350",
+            "left": "1425",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "b43970fe-550f-4bd3-8fcc-ef5cef848530"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set First SLA Notification Status",
+            "description": null,
+            "arguments": {
+                "isSLABreached": "false",
+                "reminderStatusIRI": "{{vars.reminderEmailStatus.append((\"GDPRReminderStatus\" | picklist(\"Reminder 1 Sent\", \"@id\")))}}"
+            },
+            "status": null,
+            "top": "190",
+            "left": "1425",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "6ab705f9-2cef-4da3-848a-01dd58db10dd"
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Second SLA Notification Status",
+            "description": null,
+            "arguments": {
+                "isSLABreached": "false",
+                "reminderStatusIRI": "{{vars.reminderEmailStatus.append((\"GDPRReminderStatus\" | picklist(\"Reminder 2 Sent\", \"@id\")))}}"
+            },
+            "status": null,
+            "top": "30",
+            "left": "1425",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "group": null,
+            "uuid": "4707ec8e-aa81-4840-8a99-b20befbd0f9d"
         },
         {
             "@type": "WorkflowStep",
@@ -114,124 +245,6 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Configuration",
-            "description": null,
-            "arguments": {
-                "timezone": "{{vars.input.params.timeZone}}",
-                "currentTime": "{{globalVars.Current_Date}}",
-                "complianceID": "{{vars.input.params.dataComplianceMetaData.id}}",
-                "complianceIRI": "{{vars.input.params.dataComplianceMetaData['@id']}}",
-                "isSLABreached": "false",
-                "reminderThreshold": "{{vars.input.params.secondReminderThreshold * 3600}}",
-                "timeRemainToBreach": "{{(vars.input.params.dataComplianceMetaData.breachNotifyDueDate | int) - (globalVars.Current_Date | int)}}",
-                "reminderEmailStatus": "{{vars.input.params.dataComplianceMetaData.reminderMailStatus | json_query('[].\"@id\"')}}"
-            },
-            "status": null,
-            "top": "270",
-            "left": "450",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "41cc6132-df9c-431c-9b30-cbca8d262340"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Set Second SLA Notification Status",
-            "description": null,
-            "arguments": {
-                "isSLABreached": "false",
-                "reminderStatusIRI": "{{vars.reminderEmailStatus.append((\"GDPRReminderStatus\" | picklist(\"Reminder 2 Sent\", \"@id\")))}}"
-            },
-            "status": null,
-            "top": "30",
-            "left": "1425",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "4707ec8e-aa81-4840-8a99-b20befbd0f9d"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Second SLA Reminder Notification",
-            "description": null,
-            "arguments": {
-                "config": "88c3d39c-2fa9-4731-b00d-29815008f17c",
-                "params": {
-                    "cc": "",
-                    "to": "{% if vars.input.params.dataComplianceMetaData.testMode %}{{vars.input.params.dataComplianceMetaData.testEmail}}{% else %}{{vars.input.params.dataComplianceMetaData.assignedTo.email}}{% endif %}",
-                    "bcc": "",
-                    "from": "{{globalVars.Default_Email}}",
-                    "type": "Manual Input",
-                    "content": "<p>Dear {{vars.input.params.dataComplianceMetaData.assignedTo.firstname}},<\/p>\n<p>You are receiving this email as the SLA for the GDPR Assessment record assigned to you will be breached within {{vars.input.params.secondReminderThreshold}} hours. Please look into this on priority.<\/p>\n<table style=\"border-collapse: collapse;\" border=\"1\">\n<tbody>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record ID<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">#{{vars.input.params.dataComplianceMetaData.id}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record Title<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{vars.input.params.dataComplianceMetaData.name}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Record Link<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\"><a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.input.params.dataComplianceMetaData.uuid}}\" target=\"_blank\" rel=\"noopener\"><em>Click Here<\/em><\/a><\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Severity<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{vars.input.params.dataComplianceMetaData.severity.itemValue}}<\/td>\n<\/tr>\n<tr>\n<td style=\"padding-left: 5px; padding-right: 10px;\">Due Date<\/td>\n<td style=\"padding-left: 5px; padding-right: 10px;\">{{arrow.get(vars.input.params.dataComplianceMetaData.breachNotifyDueDate).to(vars.timezone).format('YYYY-MM-DD HH:mm:ss')}}<\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<p>&nbsp;<\/p>",
-                    "subject": "[URGENT] SLA Warning: Compliance Record ID #{{vars.input.params.dataComplianceMetaData.id}} is about to breach SLA",
-                    "iri_list": "",
-                    "body_type": "Rich Text",
-                    "file_name": "",
-                    "file_path": ""
-                },
-                "version": "2.4.3",
-                "from_str": "admin@example.com",
-                "connector": "smtp",
-                "operation": "send_email_new",
-                "operationTitle": "Send Email (Advanced)",
-                "step_variables": []
-            },
-            "status": null,
-            "top": "30",
-            "left": "1100",
-            "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
-            "group": null,
-            "uuid": "53356a14-ddc3-4acb-9f85-927d538867c0"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Set First SLA Notification Status",
-            "description": null,
-            "arguments": {
-                "isSLABreached": "false",
-                "reminderStatusIRI": "{{vars.reminderEmailStatus.append((\"GDPRReminderStatus\" | picklist(\"Reminder 1 Sent\", \"@id\")))}}"
-            },
-            "status": null,
-            "top": "190",
-            "left": "1425",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "6ab705f9-2cef-4da3-848a-01dd58db10dd"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "No Operation",
-            "description": null,
-            "arguments": {
-                "params": [],
-                "version": "3.2.1",
-                "connector": "cyops_utilities",
-                "operation": "no_op",
-                "operationTitle": "Utils: No Operation",
-                "step_variables": []
-            },
-            "status": null,
-            "top": "510",
-            "left": "1100",
-            "stepType": "\/api\/3\/workflow_step_types\/0109f35d-090b-4a2b-bd8a-94cbc3508562",
-            "group": null,
-            "uuid": "a1b05da5-0185-4a6d-94b3-161920f6942b"
-        },
-        {
-            "@type": "WorkflowStep",
-            "name": "Set Breached Notification Status",
-            "description": null,
-            "arguments": {
-                "isSLABreached": "true",
-                "reminderStatusIRI": "{{vars.reminderEmailStatus.append((\"GDPRReminderStatus\" | picklist(\"Breach Reminder Sent\", \"@id\")))}}"
-            },
-            "status": null,
-            "top": "350",
-            "left": "1425",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "group": null,
-            "uuid": "b43970fe-550f-4bd3-8fcc-ef5cef848530"
-        },
-        {
-            "@type": "WorkflowStep",
             "name": "Start",
             "description": null,
             "arguments": {
@@ -250,63 +263,32 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Check Reminder to be Sent",
+            "name": "Update Reminder Status",
             "description": null,
             "arguments": {
-                "conditions": [
-                    {
-                        "option": "Breach Reminder",
-                        "step_iri": "\/api\/3\/workflow_steps\/36cdf048-f8d9-413b-9840-888ea44e1f57",
-                        "condition": "{{ (vars.timeRemainToBreach | int < 0) and (\"GDPRReminderStatus\" | picklist(\"Breach Reminder Sent\", \"@id\") not in vars.reminderEmailStatus) }}",
-                        "step_name": "SLA Breached Notification"
-                    },
-                    {
-                        "option": "No Operation",
-                        "default": true,
-                        "step_iri": "\/api\/3\/workflow_steps\/a1b05da5-0185-4a6d-94b3-161920f6942b",
-                        "step_name": "No Operation"
-                    },
-                    {
-                        "option": "Second Reminder",
-                        "step_iri": "\/api\/3\/workflow_steps\/53356a14-ddc3-4acb-9f85-927d538867c0",
-                        "condition": "{{ (vars.timeRemainToBreach | int < vars.reminderThreshold | int) and (\"GDPRReminderStatus\" | picklist(\"Reminder 2 Sent\", \"@id\") not in vars.reminderEmailStatus) }}",
-                        "step_name": "Second SLA Reminder Notification"
-                    },
-                    {
-                        "option": "First Reminder",
-                        "step_iri": "\/api\/3\/workflow_steps\/031e5ab8-8194-464d-9354-7293e5036a06",
-                        "condition": "{{ (vars.timeRemainToBreach | int > vars.reminderThreshold | int) and (\"GDPRReminderStatus\" | picklist(\"Reminder 1 Sent\", \"@id\") not in vars.reminderEmailStatus) }}",
-                        "step_name": "First SLA Reminder Notification"
-                    }
-                ]
+                "resource": {
+                    "reminderMailStatus": "{{vars.reminderEmailStatus}}",
+                    "breachNotificationSLA": "{% if vars.isSLABreached %}{{\"SLAState\" | picklist(\"Missed\", \"@id\")}}{% endif %}"
+                },
+                "_showJson": false,
+                "operation": "Append",
+                "collection": "{{vars.complianceIRI}}",
+                "__recommend": [],
+                "collectionType": "\/api\/3\/data_compliances",
+                "fieldOperation": {
+                    "reminderMailStatus": "Append"
+                },
+                "step_variables": []
             },
             "status": null,
-            "top": "270",
-            "left": "775",
-            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "top": "190",
+            "left": "1750",
+            "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
-            "uuid": "f2484ee2-5e75-4c52-9981-44f44ef5d053"
+            "uuid": "083d7df6-fd09-4edf-9948-c2612b929882"
         }
     ],
     "routes": [
-        {
-            "@type": "WorkflowRoute",
-            "name": "SLA Breached Notification -> Set Breached Notification Status",
-            "targetStep": "\/api\/3\/workflow_steps\/b43970fe-550f-4bd3-8fcc-ef5cef848530",
-            "sourceStep": "\/api\/3\/workflow_steps\/36cdf048-f8d9-413b-9840-888ea44e1f57",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "09a0eab6-a18c-4de5-aaf2-aa37647071fe"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Set Second SLA Notification Status -> Update Reminder Status",
-            "targetStep": "\/api\/3\/workflow_steps\/083d7df6-fd09-4edf-9948-c2612b929882",
-            "sourceStep": "\/api\/3\/workflow_steps\/4707ec8e-aa81-4840-8a99-b20befbd0f9d",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "0d9dc97a-9d1e-4b28-916b-023a29ad1d63"
-        },
         {
             "@type": "WorkflowRoute",
             "name": "Check Reminder Threshold -> SLA Breached Notification",
@@ -314,25 +296,8 @@
             "sourceStep": "\/api\/3\/workflow_steps\/f2484ee2-5e75-4c52-9981-44f44ef5d053",
             "label": "Breach Reminder",
             "isExecuted": false,
+            "group": null,
             "uuid": "1316511f-7431-4760-bbc9-6c2b00624690"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Second SLA Reminder Notification -> Set Second SLA Notification Status",
-            "targetStep": "\/api\/3\/workflow_steps\/4707ec8e-aa81-4840-8a99-b20befbd0f9d",
-            "sourceStep": "\/api\/3\/workflow_steps\/53356a14-ddc3-4acb-9f85-927d538867c0",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "25730320-b4c5-4f21-89f6-a9ab8ea0ef66"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Check Reminder to be Sent -> SLA Warning when 4 Hrs Remaining",
-            "targetStep": "\/api\/3\/workflow_steps\/53356a14-ddc3-4acb-9f85-927d538867c0",
-            "sourceStep": "\/api\/3\/workflow_steps\/f2484ee2-5e75-4c52-9981-44f44ef5d053",
-            "label": "Second Reminder",
-            "isExecuted": false,
-            "uuid": "2f1b8093-d93f-4f57-b3d8-f85b1ee681f2"
         },
         {
             "@type": "WorkflowRoute",
@@ -341,16 +306,8 @@
             "sourceStep": "\/api\/3\/workflow_steps\/f2484ee2-5e75-4c52-9981-44f44ef5d053",
             "label": "No Operation",
             "isExecuted": false,
+            "group": null,
             "uuid": "5228438f-48ac-4b13-b82a-809c3e8ff4ae"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "SLA Warning when 24 Hrs Remaining -> Copy of Set Breached Notification Status",
-            "targetStep": "\/api\/3\/workflow_steps\/6ab705f9-2cef-4da3-848a-01dd58db10dd",
-            "sourceStep": "\/api\/3\/workflow_steps\/031e5ab8-8194-464d-9354-7293e5036a06",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "7128ffa8-0b65-4777-9b78-b1053f14c200"
         },
         {
             "@type": "WorkflowRoute",
@@ -359,25 +316,18 @@
             "sourceStep": "\/api\/3\/workflow_steps\/f2484ee2-5e75-4c52-9981-44f44ef5d053",
             "label": "First Reminder",
             "isExecuted": false,
+            "group": null,
             "uuid": "8de0930f-cf13-4b57-bb74-ab9252c34271"
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Set First SLA Reminde Notification Status -> Update Reminder Status",
-            "targetStep": "\/api\/3\/workflow_steps\/083d7df6-fd09-4edf-9948-c2612b929882",
-            "sourceStep": "\/api\/3\/workflow_steps\/6ab705f9-2cef-4da3-848a-01dd58db10dd",
-            "label": null,
+            "name": "Check Reminder to be Sent -> SLA Warning when 4 Hrs Remaining",
+            "targetStep": "\/api\/3\/workflow_steps\/53356a14-ddc3-4acb-9f85-927d538867c0",
+            "sourceStep": "\/api\/3\/workflow_steps\/f2484ee2-5e75-4c52-9981-44f44ef5d053",
+            "label": "Second Reminder",
             "isExecuted": false,
-            "uuid": "9d93ba04-8950-4c00-9176-fd2d3eac3571"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Set Breached Notification Status -> Update Reminder Status",
-            "targetStep": "\/api\/3\/workflow_steps\/083d7df6-fd09-4edf-9948-c2612b929882",
-            "sourceStep": "\/api\/3\/workflow_steps\/b43970fe-550f-4bd3-8fcc-ef5cef848530",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "ace05549-0863-4e30-a20f-6132b0eea47b"
+            "group": null,
+            "uuid": "2f1b8093-d93f-4f57-b3d8-f85b1ee681f2"
         },
         {
             "@type": "WorkflowRoute",
@@ -386,7 +336,68 @@
             "sourceStep": "\/api\/3\/workflow_steps\/41cc6132-df9c-431c-9b30-cbca8d262340",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "c45f5b6f-2196-44e0-89dd-bdc9d4b18abd"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Second SLA Reminder Notification -> Set Second SLA Notification Status",
+            "targetStep": "\/api\/3\/workflow_steps\/4707ec8e-aa81-4840-8a99-b20befbd0f9d",
+            "sourceStep": "\/api\/3\/workflow_steps\/53356a14-ddc3-4acb-9f85-927d538867c0",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "25730320-b4c5-4f21-89f6-a9ab8ea0ef66"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Breached Notification Status -> Update Reminder Status",
+            "targetStep": "\/api\/3\/workflow_steps\/083d7df6-fd09-4edf-9948-c2612b929882",
+            "sourceStep": "\/api\/3\/workflow_steps\/b43970fe-550f-4bd3-8fcc-ef5cef848530",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "ace05549-0863-4e30-a20f-6132b0eea47b"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set First SLA Reminde Notification Status -> Update Reminder Status",
+            "targetStep": "\/api\/3\/workflow_steps\/083d7df6-fd09-4edf-9948-c2612b929882",
+            "sourceStep": "\/api\/3\/workflow_steps\/6ab705f9-2cef-4da3-848a-01dd58db10dd",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "9d93ba04-8950-4c00-9176-fd2d3eac3571"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Second SLA Notification Status -> Update Reminder Status",
+            "targetStep": "\/api\/3\/workflow_steps\/083d7df6-fd09-4edf-9948-c2612b929882",
+            "sourceStep": "\/api\/3\/workflow_steps\/4707ec8e-aa81-4840-8a99-b20befbd0f9d",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "0d9dc97a-9d1e-4b28-916b-023a29ad1d63"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "SLA Breached Notification -> Set Breached Notification Status",
+            "targetStep": "\/api\/3\/workflow_steps\/b43970fe-550f-4bd3-8fcc-ef5cef848530",
+            "sourceStep": "\/api\/3\/workflow_steps\/36cdf048-f8d9-413b-9840-888ea44e1f57",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "09a0eab6-a18c-4de5-aaf2-aa37647071fe"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "SLA Warning when 24 Hrs Remaining -> Copy of Set Breached Notification Status",
+            "targetStep": "\/api\/3\/workflow_steps\/6ab705f9-2cef-4da3-848a-01dd58db10dd",
+            "sourceStep": "\/api\/3\/workflow_steps\/031e5ab8-8194-464d-9354-7293e5036a06",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "7128ffa8-0b65-4777-9b78-b1053f14c200"
         },
         {
             "@type": "WorkflowRoute",
@@ -395,6 +406,7 @@
             "sourceStep": "\/api\/3\/workflow_steps\/d05f11fd-1561-4909-a7fe-5812f5a6be9e",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "c9153a22-7118-4d6d-a435-66419d1ef610"
         }
     ],

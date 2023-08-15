@@ -22,6 +22,7 @@
     ],
     "supportInfo": "Fortinet Customer Support",
     "iconLarge": null,
+    "postInstallConfig": null,
     "recordTags": [
         "GDPR"
     ],
@@ -30,7 +31,16 @@
     "contents": {
         "picklistNames": [
             {
+                "name": "ClinicalPHIType"
+            },
+            {
                 "name": "Contact Title"
+            },
+            {
+                "name": "DemographicPHIType"
+            },
+            {
+                "name": "FinancialPHIType"
             },
             {
                 "name": "GDPRDataBreachType"
@@ -40,6 +50,18 @@
             },
             {
                 "name": "GDPRReminderStatus"
+            },
+            {
+                "name": "PHIBreachLocation"
+            },
+            {
+                "name": "PHIBreachResponseActions"
+            },
+            {
+                "name": "PHISafeguardType"
+            },
+            {
+                "name": "ProtectedHealthInformationType"
             },
             {
                 "name": "RegulatoryBody"
@@ -53,6 +75,10 @@
             "data_compliances": {
                 "name": "Data Compliances",
                 "apiName": "data_compliances"
+            },
+            "keys": {
+                "name": "Key Store",
+                "apiName": "keys"
             }
         },
         "viewTemplates": {
@@ -68,6 +94,15 @@
             "data_compliances": {
                 "name": "Data Compliances",
                 "apiName": "data_compliances",
+                "views": [
+                    "list",
+                    "detail",
+                    "form"
+                ]
+            },
+            "keys": {
+                "name": "Key Store",
+                "apiName": "keys",
                 "views": [
                     "list",
                     "detail",
@@ -97,23 +132,16 @@
                 "name": "10 - SP - GDPR Framework"
             }
         ],
-        "globalVariables": [
-            {
-                "id": 10,
-                "name": "Current_Date",
-                "value": "{{arrow.utcnow().timestamp}}",
-                "default_value": "{{arrow.utcnow().timestamp}}"
-            },
-            {
-                "id": 2,
-                "name": "Default_Email",
-                "value": "noreply@example.com",
-                "default_value": null
-            }
-        ],
         "reports": [
             {
                 "name": "GDPR Assessment Report"
+            }
+        ],
+        "recordSets": [
+            {
+                "name": "Key Store",
+                "apiName": "keys",
+                "count": 1
             }
         ]
     }

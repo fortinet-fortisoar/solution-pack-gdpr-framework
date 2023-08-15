@@ -5,8 +5,7 @@
     "description": "Essentially the root user, use carefully",
     "name": "Full App Permissions",
     "modulePermissions": {
-        "39": {
-            "@id": "\/api\/3\/module_permissions\/ab9a5604-3602-4426-8878-5f1a8f1e033f",
+        "38": {
             "@type": "ModulePermission",
             "canCreate": true,
             "canExecute": true,
@@ -14,11 +13,19 @@
             "canUpdate": true,
             "canDelete": true,
             "fieldPermissions": [],
-            "module": "contact",
-            "uuid": "ab9a5604-3602-4426-8878-5f1a8f1e033f"
+            "module": "keys"
+        },
+        "39": {
+            "@type": "ModulePermission",
+            "canCreate": true,
+            "canExecute": true,
+            "canRead": true,
+            "canUpdate": true,
+            "canDelete": true,
+            "fieldPermissions": [],
+            "module": "contact"
         },
         "40": {
-            "@id": "\/api\/3\/module_permissions\/8f477419-283e-45f3-a4bc-ec7e528e71fe",
             "@type": "ModulePermission",
             "canCreate": true,
             "canExecute": true,
@@ -26,8 +33,7 @@
             "canUpdate": true,
             "canDelete": true,
             "fieldPermissions": [],
-            "module": "data_compliances",
-            "uuid": "8f477419-283e-45f3-a4bc-ec7e528e71fe"
+            "module": "data_compliances"
         }
     },
     "uuid": "21d7a7c6-9d68-438f-b732-e8950c5f745b"
