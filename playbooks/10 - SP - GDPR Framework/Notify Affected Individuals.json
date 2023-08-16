@@ -44,7 +44,7 @@
                 "input": {
                     "schema": {
                         "title": "Breach Notification to Affected Users",
-                        "description": "{{vars.demoMode}}\n<br>\nHi Team,\n\nWe have detected valid data breach event for  **[Data Compliance Record #{{vars.complianceID}} - {{vars.complianceName}}](https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}})**. \n<br>\nIt is confirmed by DPO that individuals mentioned below are at high risk and need to be notified about the same.\n<br>\n| Sr. No. | Affected Individuals |\n| --- | --- |\n{{vars.affectedIndividualsList | join('\\n')}}\n<br>\nPlease provide your input for the corresponding notification mail.\n\nThanks,",
+                        "description": "{{vars.demoMode}}\n<br>\nHi Team,\n\nWe have detected valid data breach event for  <a href=\"\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\" target=\"_parent\" rel=\"noopener\"> <strong>Data Compliance Record #{{vars.complianceID}}<\/strong><\/a>. \n<br>\nIt is confirmed by DPO that individuals mentioned below are at high risk and need to be notified about the same.\n<br>\n| Sr. No. | Affected Individuals |\n| --- | --- |\n{{vars.affectedIndividualsList | join('\\n')}}\n<br>\nPlease provide your input for the corresponding notification mail.\n\nThanks,",
                         "inputVariables": [
                             {
                                 "name": "whatHappened?",
@@ -66,6 +66,7 @@
                                 "lengthConstraint": true,
                                 "allowedEncryption": true,
                                 "allowedGridColumn": true,
+                                "jinjaExpressionView": true,
                                 "useRecordFieldDefault": false
                             },
                             {
@@ -88,6 +89,7 @@
                                 "lengthConstraint": true,
                                 "allowedEncryption": true,
                                 "allowedGridColumn": true,
+                                "jinjaExpressionView": true,
                                 "useRecordFieldDefault": false
                             },
                             {
@@ -110,6 +112,7 @@
                                 "lengthConstraint": true,
                                 "allowedEncryption": true,
                                 "allowedGridColumn": true,
+                                "jinjaExpressionView": true,
                                 "useRecordFieldDefault": false
                             },
                             {
@@ -132,12 +135,14 @@
                                 "lengthConstraint": true,
                                 "allowedEncryption": true,
                                 "allowedGridColumn": true,
+                                "jinjaExpressionView": true,
                                 "useRecordFieldDefault": false
                             }
                         ]
                     }
                 },
                 "record": "{{vars.input.records[0]['@id']}}",
+                "agent_id": null,
                 "resources": "tasks",
                 "owner_detail": {
                     "isAssigned": false
@@ -157,7 +162,10 @@
                 "email_notification": {
                     "enabled": false,
                     "smtpParameters": []
-                }
+                },
+                "inline_channel_list": [],
+                "external_channel_list": [],
+                "unauthenticated_input": false
             },
             "status": null,
             "top": "570",
@@ -413,7 +421,7 @@
                         "dataCompliances": "{{vars.complianceIRI}}"
                     },
                     "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
-                    "description": "{{vars.demoMode}}\n\n##### Below affected individuals have been notified about the data breach. \n<br>\n| Sr. No. | Affected Individuals |\n| --- | --- |\n{{vars.affectedIndividualsList | join('\\n')}}\n\nGo back to <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\"> Data Compliance Record #{{vars.complianceID}}<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**{{vars.nextTask}}**<\/span>"
+                    "description": "{{vars.demoMode}}\n\n##### Below affected individuals have been notified about the data breach. \n<br>\n| Sr. No. | Affected Individuals |\n| --- | --- |\n{{vars.affectedIndividualsList | join('\\n')}}\n\nGo back to <a href=\"\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\" target=\"_parent\" rel=\"noopener\"> Data Compliance Record #{{vars.complianceID}}<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**{{vars.nextTask}}**<\/span>"
                 },
                 "_showJson": false,
                 "operation": "Append",
