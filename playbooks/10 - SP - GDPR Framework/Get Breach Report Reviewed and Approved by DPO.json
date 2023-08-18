@@ -86,12 +86,12 @@
                     "content": "<p>The Data Breach Report has been sent to DPO for review.<\/p>",
                     "records": "{{vars.incidentIRI}},{{vars.complianceIRI}}"
                 },
-                "version": "3.2.1",
+                "version": "3.2.3",
                 "connector": "cyops_utilities",
                 "operation": "json_to_html",
                 "operationTitle": "Utils: Convert JSON into a HTML Table",
                 "step_variables": {
-                    "table": "{{vars.result.data}}"
+                    "table": "{{vars.steps.Create_Assessment_Data_Table.data}}"
                 }
             },
             "status": null,
@@ -113,8 +113,9 @@
                     ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>Created <a title=\"Task #{{vars.result.id}} - {{vars.result.name}}\" href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/tasks\/{{vars.result.uuid}}\">Task #{{vars.result.id}} - {{vars.result.name}}<\/a> to Notify Affected Individuals about Data Breach.<\/p>",
-                    "records": "{{vars.complianceIRI}}"
+                    "content": "<p>Created <a title=\"Task #{{vars.steps.Create_Task_to_Notify_Affected_Users.id}} - {{vars.steps.Create_Task_to_Notify_Affected_Users.name}}\" href=\"\/modules\/view-panel\/tasks\/{{vars.steps.Create_Task_to_Notify_Affected_Users.uuid}}\" target=\"_parent\" rel=\"noopener\">Task #{{vars.steps.Create_Task_to_Notify_Affected_Users.id}} - {{vars.steps.Create_Task_to_Notify_Affected_Users.name}}<\/a> to Notify Affected Individuals about Data Breach.<\/p>",
+                    "records": "{{vars.complianceIRI}}",
+                    "parentstepid": "\/api\/3\/workflow_steps\/0c229645-0f28-4f04-97ec-4815235dc40c"
                 },
                 "resource": {
                     "name": "Notify Affected Individuals",
@@ -140,7 +141,7 @@
                     "recordTags": "Overwrite"
                 },
                 "step_variables": {
-                    "_temp": "{% set item = vars.result['@id'] %}{% set _dummy = \"| 4 \" + \"|\" + (item | fromIRI).name + \"| [*Click Here*](https:\/\/\" + globalVars.Server_fqhn + \"\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \")| <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}"
+                    "_temp": "{% set item = vars.steps.Create_Task_to_Notify_Affected_Users['@id'] %}{% set _dummy = \"| 4 | \" + (item | fromIRI).name + \" | <a href='\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \"' target='_parent' rel='noopener'><em>Click Here<\/em><\/a> | <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}"
                 }
             },
             "status": null,
@@ -161,8 +162,9 @@
                     ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>Created <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/tasks\/{{vars.result.uuid}}\" title=\"Task #{{vars.result.id}} - {{vars.result.name}}\">Task #{{vars.result.id}} - {{vars.result.name}}<\/a> to send data breach report to Data Protection Authority.<\/p>",
-                    "records": "{{vars.complianceIRI}}"
+                    "content": "<p>Created <a title=\"Task #{{vars.result.id}} - {{vars.result.name}}\" href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/tasks\/{{vars.result.uuid}}\">Task #{{vars.result.id}} - {{vars.result.name}}<\/a> to send data breach report to Data Protection Authority.<\/p>",
+                    "records": "{{vars.complianceIRI}}",
+                    "parentstepid": "\/api\/3\/workflow_steps\/b03e6c2a-94a3-454e-83a5-c9a6b1d01fb1"
                 },
                 "resource": {
                     "name": "Notify Data Protection Authority",
@@ -187,7 +189,7 @@
                     "recordTags": "Overwrite"
                 },
                 "step_variables": {
-                    "_temp": "{% if (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.impactSeverityOnAffectedUsers in ['High', 'Medium']) and (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isReportDpoApproved == 'Rejected') %}\n{% set item = vars.result['@id'] %}{% set _dummy = \"| 6 \" + \"|\" + (item | fromIRI).name + \"| [*Click Here*](https:\/\/\" + globalVars.Server_fqhn + \"\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \")| <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}\n{% elif (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.impactSeverityOnAffectedUsers in ['High', 'Medium']) or (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isReportDpoApproved == 'Rejected') %}\n{% set item = vars.result['@id'] %}{% set _dummy = \"| 5 \" + \"|\" + (item | fromIRI).name + \"| [*Click Here*](https:\/\/\" + globalVars.Server_fqhn + \"\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \")| <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}\n{% else %}\n{% set item = vars.result['@id'] %}{% set _dummy = \"| 4 \" + \"|\" + (item | fromIRI).name + \"| [*Click Here*](https:\/\/\" + globalVars.Server_fqhn + \"\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \")| <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}\n{% endif %}"
+                    "_temp": "{% if (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.impactSeverityOnAffectedUsers in ['High', 'Medium']) and (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isReportDpoApproved == 'Rejected') %}\n{% set item = vars.result['@id'] %}{% set _dummy = \"| 6 |\" + (item | fromIRI).name + \"| <a href='\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \"' target='_parent' rel='noopener'><em>Click Here<\/em><\/a> | <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}\n{% elif (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.impactSeverityOnAffectedUsers in ['High', 'Medium']) or (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isReportDpoApproved == 'Rejected') %}\n{% set item = vars.result['@id'] %}{% set _dummy = \"| 5 |\" + (item | fromIRI).name + \"| <a href='\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \"' target='_parent' rel='noopener'><em>Click Here<\/em><\/a>| <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}\n{% else %}\n{% set item = vars.result['@id'] %}{% set _dummy = \"| 4 \" + \"|\" + (item | fromIRI).name + \"| <a href='\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \"' target='_parent' rel='noopener'><em>Click Here<\/em><\/a> | <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}\n{% endif %}"
                 }
             },
             "status": null,
@@ -209,8 +211,9 @@
                     ],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "content": "<p>Created <a title=\"Task #{{vars.result.id}} - {{vars.result.name}}\" href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/tasks\/{{vars.result.uuid}}\">Task #{{vars.result.id}} - {{vars.result.name}}<\/a> to get updated data breach report from Data Protection Officer.<\/p>",
-                    "records": "{{vars.complianceIRI}}"
+                    "content": "<p>Created <a rel=\"noopener\" target=\"_parent\" href=\"\/modules\/view-panel\/tasks\/{{vars.steps.Create_Task_to_Update_Breach_Report.uuid}}\" title=\"Task #{{vars.steps.Create_Task_to_Update_Breach_Report.id}} - {{vars.steps.Create_Task_to_Update_Breach_Report.name}}\">Task #{{vars.steps.Create_Task_to_Update_Breach_Report.id}} - {{vars.steps.Create_Task_to_Update_Breach_Report.name}}<\/a> to get updated data breach report from Data Protection Officer.<\/p>",
+                    "records": "{{vars.complianceIRI}}",
+                    "parentstepid": "\/api\/3\/workflow_steps\/18efdf0e-6251-435e-b80c-81c30867fd32"
                 },
                 "resource": {
                     "name": "Get Updated Report from DPO",
@@ -235,7 +238,7 @@
                     "recordTags": "Overwrite"
                 },
                 "step_variables": {
-                    "_temp": "{% if vars.steps.Send_Risk_Assessment_Details_to_DPO.input.impactSeverityOnAffectedUsers in ['High', 'Medium'] %}{% set item = vars.result['@id'] %}{% set _dummy = \"| 5 \" + \"|\" + (item | fromIRI).name + \"| [*Click Here*](https:\/\/\" + globalVars.Server_fqhn + \"\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \")| <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}{% else %}{% set item = vars.result['@id'] %}{% set _dummy = \"| 4 \" + \"|\" + (item | fromIRI).name + \"| [*Click Here*](https:\/\/\" + globalVars.Server_fqhn + \"\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \")| <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}{% endif %}"
+                    "_temp": "{% if (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.impactSeverityOnAffectedUsers in ['High', 'Medium']) and (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isReportDpoApproved == 'Rejected') %}\n{% set item = vars.steps.Create_Task_to_Update_Breach_Report['@id'] %}{% set _dummy = \"| 6 |\" + (item | fromIRI).name + \" | <a href='\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \"' target='_parent' rel='noopener'><em>Click Here<\/em><\/a> | <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}\n{% elif (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.impactSeverityOnAffectedUsers in ['High', 'Medium']) or (vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isReportDpoApproved == 'Rejected') %}\n{% set item = vars.steps.Create_Task_to_Update_Breach_Report['@id'] %}{% set _dummy = \"| 5 \" + \"|\" + (item | fromIRI).name + \" | <a href='\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \"' target='_parent' rel='noopener'><em>Click Here<\/em><\/a> | <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}\n{% else %}\n{% set item = vars.steps.Create_Task_to_Update_Breach_Report['@id'] %}{% set _dummy = \"| 4 \" + \"|\" + (item | fromIRI).name + \" | <a href='\/modules\/view-panel\/tasks\/\" + (item | fromIRI).uuid + \"' target='_parent' rel='noopener'><em>Click Here<\/em><\/a> | <span>&#10060;<\/span>|\" %}{{vars.description.append(_dummy)}}\n{% endif %}"
                 }
             },
             "status": null,
@@ -267,7 +270,7 @@
                         "dataCompliances"
                     ]
                 },
-                "module": "tasks?$limit=30&$relationships=true",
+                "module": "tasks?$limit=30&$relationships=true&$fsr_max_relation_count=100",
                 "checkboxFields": true,
                 "step_variables": {
                     "demoMode": "{% if vars.result[0].dataCompliances[0].testMode %}<span data-tomark-pass=\"\" style=\"border-radius: 25px; background: #73AD21; padding-left: 12px;padding-right: 12px;padding-top: 6px;padding-bottom: 6px;font-size: 11px;\"><strong>Test Mode ON<\/strong><\/span>{% endif %}",
@@ -951,7 +954,7 @@
             "arguments": {
                 "resource": {
                     "status": "\/api\/3\/picklists\/343f4b67-e929-4205-bf95-ba5b70545fed",
-                    "description": "{{vars.demoMode}}\n\n#### The 'Risk Assessment Information' has been reviewed by DPO\n\n{% if vars.steps.Send_Risk_Assessment_Details_to_DPO.input.impactSeverityOnAffectedUsers in ['High', 'Medium'] %}Go back to <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\"> Data Compliance Record #{{vars.complianceID}}<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**Notify Affected Individuals**<\/span>{% elif vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isReportDpoApproved == 'Rejected' %}Go back to <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\"> Data Compliance Record #{{vars.complianceID}}<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**Get Updated Report from DPO**{% else %}Go back to <a href=\"https:\/\/{{globalVars.Server_fqhn}}\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\"> Data Compliance Record #{{vars.complianceID}}<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**Notify Data Protection Authority**<\/span>{% endif %}"
+                    "description": "{{vars.demoMode}}\n\n#### The 'Risk Assessment Information' has been reviewed by DPO\n\n{% if vars.steps.Send_Risk_Assessment_Details_to_DPO.input.impactSeverityOnAffectedUsers in ['High', 'Medium'] %}Go back to <a href=\"\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\" target=\"_parent\" rel=\"noopener\"> Data Compliance Record #{{vars.complianceID}}<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**Notify Affected Individuals**<\/span>{% elif vars.steps.Send_Risk_Assessment_Details_to_DPO.input.isReportDpoApproved == 'Rejected' %}Go back to <a href=\"\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\" target=\"_parent\" rel=\"noopener\"> Data Compliance Record #{{vars.complianceID}}<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**Get Updated Report from DPO**{% else %}Go back to <a href=\"\/modules\/view-panel\/data_compliances\/{{vars.complianceUUID}}\" target=\"_parent\" rel=\"noopener\"> Data Compliance Record #{{vars.complianceID}}<\/a> to execute next task <span style=\"background: #5d636a; padding: 5px;\">**Notify Data Protection Authority**<\/span>{% endif %}"
                 },
                 "operation": "Append",
                 "collection": "{{vars.input.records[0]['@id']}}",
