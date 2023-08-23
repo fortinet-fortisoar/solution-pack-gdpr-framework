@@ -195,7 +195,7 @@
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
                     "thread": true,
-                    "content": "<div><a href=\"\/modules\/data_compliances\/{{vars.steps.Create_GDPR_Data_Compliance_Record.uuid}}\" target=\"_blank\" rel=\"noopener\">&nbsp;GDPR Compliance Record #{{vars.steps.Create_GDPR_Data_Compliance_Record.id}}<\/a> and corresponding <a href=\"\/modules\/tasks\/{{vars.steps.Create_Task_GDPR_Assessment.uuid}}\" target=\"_blank\" rel=\"noopener\">Task #{{vars.steps.Create_Task_GDPR_Assessment.id}} <\/a>has been created.<\/div>",
+                    "content": "<div>Thanks for your input.<\/div>\n<div>&nbsp;<\/div>\n<div><a href=\"\/modules\/data_compliances\/{{vars.steps.Create_GDPR_Data_Compliance_Record.uuid}}\" target=\"_blank\" rel=\"noopener\">&nbsp;GDPR Compliance Record #{{vars.steps.Create_GDPR_Data_Compliance_Record.id}}<\/a> and corresponding <a href=\"\/modules\/tasks\/{{vars.steps.Create_Task_GDPR_Assessment.uuid}}\" target=\"_blank\" rel=\"noopener\">Task #{{vars.steps.Create_Task_GDPR_Assessment.id}} <\/a>has been created.<\/div>",
                     "records": "",
                     "parentstepid": "\/api\/3\/workflow_steps\/1a3cbe27-45b9-4c34-8b5b-afdcb365234c"
                 },
@@ -241,7 +241,7 @@
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
                     "thread": false,
-                    "content": "<div><a rel=\"noopener\" target=\"_blank\" href=\"\/modules\/view-panel\/data_compliances\/{{vars.steps.Create_HIPAA_Data_Compliance_Record.uuid}}\">HIPAA Compliance Record #{{vars.steps.Create_HIPAA_Data_Compliance_Record.id}}<\/a> and corresponding <a rel=\"noopener\" target=\"_blank\" href=\"\/modules\/view-panel\/tasks\/{{vars.steps.Create_Task_HIPAA_Assessment.uuid}}\">Task #{{vars.steps.Create_Task_HIPAA_Assessment.id}} <\/a>has been created.<\/div>",
+                    "content": "<div>Thanks for your input.<\/div>\n<div>&nbsp;<\/div>\n<div><a rel=\"noopener\" target=\"_blank\" href=\"\/modules\/view-panel\/data_compliances\/{{vars.steps.Create_HIPAA_Data_Compliance_Record.uuid}}\">HIPAA Compliance Record #{{vars.steps.Create_HIPAA_Data_Compliance_Record.id}}<\/a> and corresponding <a rel=\"noopener\" target=\"_blank\" href=\"\/modules\/view-panel\/tasks\/{{vars.steps.Create_Task_HIPAA_Assessment.uuid}}\">Task #{{vars.steps.Create_Task_HIPAA_Assessment.id}} <\/a>has been created.<\/div>",
                     "records": "",
                     "parentstepid": "\/api\/3\/workflow_steps\/e15cf2c9-9000-4d17-b636-1f1eaa4642c0"
                 },

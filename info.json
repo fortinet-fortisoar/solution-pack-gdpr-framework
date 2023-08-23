@@ -1,6 +1,7 @@
 {
     "name": "gDPRFramework",
     "version": "1.0.2",
+    "fsrMinCompatibility": "7.2.2",
     "type": "solutionpack",
     "local": true,
     "label": "GDPR Framework",
@@ -20,14 +21,13 @@
     "category": [
         "Compliance and Reporting"
     ],
-    "supportInfo": "Fortinet Customer Support",
+    "supportInfo": "",
     "iconLarge": null,
     "postInstallConfig": null,
     "recordTags": [
         "GDPR"
     ],
-    "fsrMinCompatibility": "7.2.1",
-    "date": "2022-08-04T09:10:30+00:00",
+    "date": "2023-08-23T11:06:44+00:00",
     "contents": {
         "picklistNames": [
             {
