@@ -795,30 +795,30 @@
                                                                                                                                     "name": "breachOccurrenceDate",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "breachDetectionDate",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "breachNotifyDueDate",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "breachNotifiedOn",
                                                                                                                                     "highlightMode": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 },
                                                                                                                                 {
                                                                                                                                     "name": "breachNotificationSLA",
                                                                                                                                     "highlightMode": true,
                                                                                                                                     "linky": true,
-                                                                                                                                    "readOnly": false
+                                                                                                                                    "readOnly": true
                                                                                                                                 }
                                                                                                                             ]
                                                                                                                         }
@@ -888,7 +888,7 @@
                                                                             }
                                                                         },
                                                                         "icon": "fa fa-eye",
-                                                                        "show": true,
+                                                                        "show": false,
                                                                         "visible": true
                                                                     }
                                                                 ],
@@ -959,7 +959,7 @@
                                                     }
                                                 ]
                                             },
-                                            "show": true,
+                                            "show": false,
                                             "visible": true
                                         },
                                         {
