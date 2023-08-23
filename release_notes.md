@@ -1,33 +1,73 @@
 # What's New
 
-- This solution pack is now **Certified**
+- This solution pack is now **Uncertified**
 
 ## Module Enhancements 
-- A new module **Data Compliance** now replaces the *Incident* module and all the fields previously used with `Incident` module are now part of *Data Compliance* module
-  - A new Navigation menu, **Data Compliances**, now appears after installation of GDPR solution pack
-  - **GDPR Assessment Report** has been updated to be compatible with the newly created **Data Compliance** module
-- A new `GDPRReminderStatus` picklist keeps track of email reminders sent for SLA breach
-- `RegulatoryBody` and `GDPRDataBreachType` are new picklists available
+
+We have made changes in the module so it can be used by the both HIPAA and GDPR Framework solution packs. To support a situation when both HIPAA and GDPR solution packs are deployed on the instance, we are aligning the data compliance module in both of these solution packs to avoid any conflict during the deployment of these solution packs.
+#### 1. Data Compliance Module
+Newly Added Fields - Specifically for HIPAA Framework Solution pack
+
+- Are The Affected Individuals' Contact Details Outdated
+- Has HSO Reviewed The PHI Breach Report
+- Is Law Enforcement Agency Notified
+- Individual Notice Approved
+- Steps Taken To Investigate The Breach
+- Root Cause Analysis Findings
+- Technical Fix Summary
+- Actions for Applying Technical Fix
+- CE Phone
+- CE Email
+- CE Street Address
+- CE Name
+- HSO Email
+- HSO Phone
+- HSO Name
+- Describe Other Location Of Breach
+- Location Of Breach
+- Clinical PHI Exposed In Breach
+- Describe Other Actions Taken
+- Actions Taken In Response To Breach
+- Is Media Notice Required
+- Is Substitute Notice Required
+- Safeguards In Place Before Breach
+- Financial PHI Exposed In Breach
+- Demographic PHI Exposed In Breach
+- Type Of PHI Involved In Breach Other
+- Brief Description Of The Breach
+- Type Of PHI Involved In Breach
+- Breach Unpaused Date
+- Is PHI Misuse Or Disclosure Foreseeable
+- Was The PHI/ePHI Accessed Impermissibly
+- Is A Breach Reportable
+- Indicators
+- Who Accessed PHI/ePHI Without Permission
+- What Health Information Was Exposed
+- Was The PHI/ePHI Encrypted
+- Reminder Mail Status
+
+#### 2. Key Store Module
+- Added a Key Store Module to the SP
+- Added GDPR KeyStore Records with 'Data Compliance' tag and with 'Key' value "GDPR". This records helps to determine which solution pack is deployed on the instance
 
 ## Content Enhancements
-- **Summary** tab contains more details and now has the following sections available as part of this solution pack's details:
-    - A new category **Compliance and Reporting** &ndash; helps with filtering from the left pane when using the check-boxes under **Category**
-    - A new tag **GDPR** &ndash; helps with filtering from the left pane when using the **Search By Tags** option
-    - Added instructions to configure **Code Snippet** connector before execution of GDPR playbooks
+### Picklists
+Added/Modified the below-mentioned picklists in the Data Compliance module
+- ClinicalPHIType 
+- Contact Title
+- DemographicPHIType
+- FinancialPHIType
+- GDPRDataBreachType
+- GDPREUCountryList
+- GDPRReminderStatus
+- PHIBreachLocation
+- PHIBreachResponseActions
+- PHISafeguardType
+- ProtectedHealthInformationType
+- RegulatoryBody
 
 ## Playbook Enhancements
-- Renamed following playbooks for enhanced understanding of functionality
-    - **Create GDPR Risk Assessment Incident** renamed to **Create Data Compliance Record**
-    - **Get Data Protection Authorities Contact Details** renamed to **Get DPA Contact Details**
-- Added new playbooks to **10 - SP - GDPR Framework** playbook collection. For more details, 
-    - **Check for SLA violation** 
-    - **Send Reminder for SLA Breach**
-    Refer to [Check for SLA violation Playbook](./docs/usage.md#check-for-sla-violation-playbook) section on how to configure these playbooks
-    - A new schedule `GDPR - Check for SLA violation` added for **Check for SLA violation**
-    - By default this schedule is `Inactive`. We recommend that you activate this schedule and set the frequency that you prefer.
-- GDPR playbook *Create Data Compliance Record*, now has two modes for execution
-  - Test Mode
-  - Production Mode
-- Updated `Notify Affected Individuals` playbook, The task and the form associated with **Notify Affected Individuals** now also show the list of email IDs of the Affected Individuals
+
+- Updated `Create Data Compliance Record` playbook, The playbook is updated to support data compliance record creation for both HIPAA and GDPR.
 
 >**NOTE**: Users of GDPR solution pack v1.0.0 must remove the fields and picklists mentioned in [Prerequisites](docs/setup.md#prerequisites)

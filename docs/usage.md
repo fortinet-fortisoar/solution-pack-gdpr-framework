@@ -3,13 +3,15 @@
 
 # Usage
 
+>**WARNING**: If you have HIPAA Framework Solution Pack already installed in your system then make sure inactivate this playbook "10 - SP - GDPR Framework > Create Data Compliance Record"
+
 ## Playbook Execution Modes
 
 You can execute the GDPR playbooks in *Test Mode* as well as in *Production Mode*
 
 - The playbooks are by default configured to execute in *Test Mode*
   - The *Test Mode* uses a test email address for all email communication towards Data Protection Officer (DPO), affected individuals, or Data Protection Authority(DPA)
-  - The *Production Mode* uses actual email addresses of relevant authorities and stakeholders
+  - The *Production Mode* uses the actual email addresses of relevant authorities and stakeholders
 
 >**WARNING**: Please be careful of the email addresses you use, as data breach notification emails are sent to these addresses. Hence, while in *Test* mode, do not use actual DPO and DPA email addresses.
 
@@ -104,13 +106,13 @@ A third and final reminder, of SLA breach, is sent after the completion of 72 ho
 
     ![Risk Assessment Details](./res/risk-assessment-details.png)
 
-3. Details provided by DPO is reflected in the created data compliance record as shown, and the task is marked as complete.
+3. Details provided by DPO are reflected in the created data compliance record as shown, and the task is marked as complete.
 
     ![taskMarkedComplete](./res/task-marked-complete.png)
 
 ## Provide DPO and DPA Contact Details
 
-1. Open the **Submit Risk Assessment Information** Task and click the **Submit Risk Assessment Information** button.
+1. Open the **Provide DPO and DPA Contact Details** Task and click the **Provide DPO and DPA Contact Details** button.
 
 2. Similarly, Collect DPO and DPA contact details under **Provide DPO and DPA Contact Details** Task
 
