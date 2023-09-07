@@ -11,7 +11,12 @@ You can execute the GDPR playbooks in *Test Mode* as well as in *Production Mode
   - The *Test Mode* uses a test email address for all email communication towards Data Protection Officer (DPO), affected individuals, or Data Protection Authority(DPA)
   - The *Production Mode* uses actual email addresses of relevant authorities and stakeholders
 
->**WARNING**: Please be careful of the email addresses you use, as data breach notification emails are sent to these addresses. Hence, while in *Test* mode, do not use actual DPO and DPA email addresses.
+<table>
+    <tr>
+        <th>WARNING</th>
+        <td>Please be careful with the email addresses you use, as data breach notification emails are sent to these addresses. Hence, while in <em>Test</em> mode, do not use actual DPO and DPA email addresses.</td>
+    </tr>
+</table>
 
 ### Test Mode
 
@@ -24,7 +29,12 @@ To change the execution mode to *Test* make the following changes:
 2. Modify the value of the `testMode` variable to `true`.
 3. Change the value of the `testEmail` variable to a valid email address capable of receiving all GDPR email notifications.
 
-    >**WARNING**: When in *Test* mode, the value of the `testEmail` variable must not be empty.
+    <table>
+        <tr>
+            <th>WARNING</th>
+            <td>When in <em>Test</em> mode, ensure that the value of the <code>testEmail</code> variable is not empty.</td>
+        </tr>
+    </table>
 
     ![Execution Mode Configuration Parameters](./res/execution-mode-configuration-parametes.png)
 
@@ -41,20 +51,28 @@ To change the execution mode to *Production* make the following changes:
 
     ![Execution Mode Configuration Parameters](./res/execution-mode-configuration-parameters.png)
 
-    >**NOTE**: As a failsafe, `_demo` is appended to DPA's email as shown in the following image. This action prevents any accidental sending of mail to the Data Protection Authority (DPA).
-
-    ![DPA Email Append](./res/dpa-appended-email.png)
+    <table>
+        <tr>
+            <th>NOTE</th>
+            <td>As a failsafe, <code>_demo</code> is appended to DPA's email as shown in the following image. This action prevents any accidental sending of mail to the Data Protection Authority (DPA).
+            <img src="./res/dpa-appended-email.png" alt="DPA email address appended">
+            </td>
+        </tr>
+    </table>
 
 In *Production* mode before you execute **Provide DPO and DPA Contact** playbook, make the following changes:
+
 1. Go to **Provide DPO and DPA Contact** playbook.
+
 2. Open the *Get DPA Contact* step and remove `_demo` from `dpaEmail` variable as shown.
+
     ![Provide DPO and DPA Contact Changes](./res/provide-dpo-and-dpa-contact.png)
 
 ## Check for SLA Violation Playbook
 
 This playbook sends progressive SLA breach reminder emails. To set threshold values for reminder notifications, make the following configuration changes:
 
-1. Goto **Check for SLA violation** Playbook and open the *Configuration* step.
+1. Go to **Check for SLA violation** Playbook and open the *Configuration* step.
 2. The reminder threshold value is in hours. Change values of the following variables
     - `firstReminderSLA`: The default value is 24 Hours which means the first reminder is sent when the SLA time remaining is less than 24 hours left.
     - `secondReminderSLA`: The default value is 4 Hours which means the second reminder is sent when the SLA time remaining is less than 4 hours left.
@@ -70,13 +88,16 @@ A third and final reminder, of SLA breach, is sent after the completion of 72 ho
 
 2. A pop-up appears that collects additional information related to the incident
 
-    >**NOTE:** When playbooks are executed in *Test* mode, the **Green** icon shown in the following screenshot appears in all the tasks related to this solution pack
-    >
-    >![Personal Data Additional Details](./res/personal-data-additional-details.png)
-    >
-    >Similarly, when playbooks are executed in *Production* mode, a **Red** icon shown in the following screenshot appears
-    >
-    >![Personal Data Additional Details PROD](./res/personal-data-additional-details-prod.png)
+    <table>
+        <tr>
+            <th>NOTE</th>
+            <td>When playbooks are executed in <code>Test</code> mode, the <strong>Green</strong> icon shown in the following screenshot appears in all the tasks related to this solution pack.
+            <p><img src="./res/personal-data-additional-details.png" alt="Personal Data Additional Details"></p>
+            <p>Similarly, when playbooks are executed in <code>Production</code> mode, a <strong>Red</strong> icon shown in the following screenshot appears</p>
+            <p><img src="./res/personal-data-additional-details-prod.png" alt="Personal Data Additional Details PROD"></p>            
+            </td>
+        </tr>
+    </table>
 
 3. Select **GDPR** in **Regulatory Body** and provide the required information
 
