@@ -50,7 +50,6 @@ Newly Added Fields - Specifically for HIPAA Framework Solution pack
 - Added a Key Store Module to the SP
 - Added GDPR KeyStore Records with 'Data Compliance' tag and with 'Key' value "GDPR". This records helps to determine which solution pack is deployed on the instance
 
-
 ## Content Enhancements
 ### Picklists
 Added/Modified the below-mentioned picklists in the Data Compliance module
