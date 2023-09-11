@@ -245,70 +245,33 @@
                     },
                     {
                         "name": "typeOfDataBreach",
-                        "type": "picklists",
+                        "type": "array",
                         "label": "Type of Data Breach",
-                        "title": "Picklist",
+                        "title": "Dynamic List",
                         "usable": true,
+                        "options": [
+                            "Confidentiality Breach",
+                            "Availability Breach",
+                            "Integrity Breach"
+                        ],
                         "tooltip": "\u2022Confidentiality Breach- Unauthorised\/Accidental disclosure of or access to personal data \u2022Availability Breach- Unauthorised\/Accidental loss of access or destruction of personal data \u2022Integrity Breach- Unauthorised\/Accidental alteration of personal data",
-                        "dataType": "picklist",
-                        "formType": "picklist",
+                        "dataType": "dynamicList",
+                        "formType": "dynamicList",
                         "required": true,
                         "_expanded": true,
                         "mmdUpdate": true,
                         "collection": false,
-                        "dataSource": {
-                            "model": "picklists",
-                            "query": {
-                                "sort": [
-                                    {
-                                        "field": "orderIndex",
-                                        "direction": "ASC"
-                                    }
-                                ],
-                                "logic": "AND",
-                                "filters": [
-                                    {
-                                        "field": "listName__name",
-                                        "value": "GDPRDataBreachType",
-                                        "operator": "eq"
-                                    }
-                                ]
-                            },
-                            "displayConditions": {
-                                "0bf8ed14-98cf-420b-8a6d-abcea0e16132": {
-                                    "conditions": null,
-                                    "visibility": "visible"
-                                },
-                                "906447ad-6312-4341-b597-463544a05218": {
-                                    "conditions": null,
-                                    "visibility": "visible"
-                                },
-                                "a188fe8d-ef76-48a5-b743-f54208655576": {
-                                    "conditions": null,
-                                    "visibility": "visible"
-                                },
-                                "af93b263-7293-47bc-b310-4ffa73512602": {
-                                    "conditions": null,
-                                    "visibility": "visible"
-                                },
-                                "db889249-5bd8-4db5-8e40-7c045e5db735": {
-                                    "conditions": null,
-                                    "visibility": "visible"
-                                },
-                                "f9859b5f-c2d2-4f07-9d43-d7ecda104900": {
-                                    "conditions": null,
-                                    "visibility": "visible"
-                                }
-                            }
-                        },
+                        "dataSource": [],
                         "searchable": false,
-                        "templateUrl": "app\/components\/form\/fields\/typeahead.html",
+                        "templateUrl": "app\/components\/form\/fields\/dynamicList.html",
                         "defaultValue": null,
                         "_previousName": "",
+                        "playbookField": true,
                         "displayTemplate": "{{ itemValue }}",
-                        "lengthConstraint": false,
+                        "lengthConstraint": true,
                         "allowedEncryption": false,
-                        "allowedGridColumn": true,
+                        "allowedGridColumn": false,
+                        "jinjaExpressionView": true,
                         "useRecordFieldDefault": false
                     },
                     {
@@ -580,7 +543,7 @@
                     "dataRegulator": "{{vars.input.params.dataRegulator['@id']}}",
                     "companyAddress": "{{vars.input.params.companyAddress}}",
                     "companyCountry": "{{vars.input.params.companyCountry}}",
-                    "typeOfDataBreach": "{{vars.input.params.typeOfDataBreach['@id']}}",
+                    "typeOfDataBreach": "{{\"GDPRDataBreachType\" | picklist(vars.input.params.typeOfDataBreach, \"@id\")}}",
                     "causeOfDataBreach": "{{vars.input.params.causeOfDataBreach}}",
                     "mitigationActions": "{{vars.input.params.mitigationActions}}",
                     "noOfAffectedUsers": "{{vars.input.params['no.OfAffectedUsers']}}",
@@ -596,7 +559,10 @@
                 "__recommend": [],
                 "collectionType": "\/api\/3\/data_compliances",
                 "fieldOperation": {
-                    "recordTags": "Append"
+                    "recordTags": "Append",
+                    "locationOfBreach": "Append",
+                    "typeOfPHIInvolvedInBreach": "Append",
+                    "actionsTakenInResponseToBreach": "Append"
                 },
                 "step_variables": []
             },

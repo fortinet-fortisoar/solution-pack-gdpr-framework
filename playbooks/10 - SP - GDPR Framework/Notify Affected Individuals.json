@@ -257,6 +257,79 @@
         },
         {
             "@type": "WorkflowStep",
+            "name": "Review Email Content",
+            "description": null,
+            "arguments": {
+                "type": "InputBased",
+                "input": {
+                    "schema": {
+                        "title": "Review Email Content",
+                        "description": "Please review the email content and make any necessary changes before sending it to the affected individuals.",
+                        "inputVariables": [
+                            {
+                                "name": "emailContent",
+                                "type": "string",
+                                "label": "Email Content",
+                                "title": "Rich Text (HTML)",
+                                "usable": true,
+                                "tooltip": "",
+                                "dataType": "text",
+                                "formType": "html",
+                                "required": true,
+                                "_expanded": true,
+                                "mmdUpdate": true,
+                                "collection": false,
+                                "searchable": true,
+                                "templateUrl": "app\/components\/form\/fields\/htmlEditor.html",
+                                "defaultValue": "<p>Hello,<\/p>\n<p>We are writing to you because of an incident involving a personal data breach associated with our platform. Although we are unaware of any actual misuse of your information, we are providing notice to you and other potentially affected customers about the incident.<\/p>\n<p><strong>What happened?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatHappened}}<\/p>\n<p><strong>What information was involved?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatInformationWasInvolved}}<\/p>\n<p><strong>What are we doing?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatAreWeDoing}}<\/p>\n<p><strong>What you can do?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatYouCanDo}}<\/p>\n<p>Thanks,<br>Security Team<\/p>",
+                                "_previousName": "email",
+                                "playbookField": true,
+                                "lengthConstraint": true,
+                                "allowedEncryption": true,
+                                "allowedGridColumn": true,
+                                "jinjaExpressionView": true,
+                                "useRecordFieldDefault": false
+                            }
+                        ]
+                    }
+                },
+                "record": "{{ vars.input.records[0][\"@id\"] }}",
+                "agent_id": null,
+                "resources": "tasks",
+                "is_approval": false,
+                "owner_detail": {
+                    "isAssigned": false
+                },
+                "isRecordLinked": true,
+                "step_variables": [],
+                "response_mapping": {
+                    "options": [
+                        {
+                            "option": "Submit",
+                            "primary": true,
+                            "step_iri": "\/api\/3\/workflow_steps\/c5bbd0dc-df68-4de7-b445-c8cf7383255b"
+                        }
+                    ],
+                    "duplicateOption": false,
+                    "customSuccessMessage": "Awaiting Playbook resumed successfully."
+                },
+                "email_notification": {
+                    "enabled": false,
+                    "smtpParameters": []
+                },
+                "inline_channel_list": [],
+                "external_channel_list": [],
+                "unauthenticated_input": false
+            },
+            "status": null,
+            "top": "840",
+            "left": "125",
+            "stepType": "\/api\/3\/workflow_step_types\/fc04082a-d7dc-4299-96fb-6837b1baa0fe",
+            "group": null,
+            "uuid": "2db75bb3-a9be-43e0-b948-05d6b24cd25b"
+        },
+        {
+            "@type": "WorkflowStep",
             "name": "Send Data Breach Notification",
             "description": null,
             "arguments": {
@@ -267,14 +340,14 @@
                     "bcc": "{% if vars.steps.Get_Compliance_Record_ID[0].dataCompliances[0].testMode %}{{vars.demoEmail}}{% else %}{{vars.affectedUsersEmails}}{% endif %}",
                     "from": "",
                     "type": "Manual Input",
-                    "content": "<p>Hello,<\/p>\n<p>We are writing to you because of an incident involving a personal data breach associated with our platform. Although we are unaware of any actual misuse of your information, we are providing notice to you and other potentially affected customers about the incident.<\/p>\n<p><strong>What happened?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatHappened}}<\/p>\n<p><strong>What information was involved?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatInformationWasInvolved}}<\/p>\n<p><strong>What are we doing?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatAreWeDoing}}<\/p>\n<p><strong>What you can do?<\/strong><br>{{vars.steps.Update_Notification_Fields.whatYouCanDo}}<\/p>\n<p>Thanks,<br>Security Team<\/p>",
+                    "content": "<p>{{vars.steps.Review_Email_Content.input.emailContent}}<\/p>",
                     "subject": "Personal Data Breach Notification",
                     "iri_list": "",
                     "body_type": "Rich Text",
                     "file_name": "",
                     "file_path": ""
                 },
-                "version": "2.4.3",
+                "version": "2.5.0",
                 "from_str": "admin@example.com",
                 "connector": "smtp",
                 "operation": "send_email_new",
@@ -282,7 +355,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "840",
+            "top": "975",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/4c0019b2-055c-44d0-968c-678a0c2d762e",
             "group": null,
@@ -368,7 +441,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "1110",
+            "top": "1245",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -434,7 +507,7 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "975",
+            "top": "1110",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
@@ -451,16 +524,6 @@
             "isExecuted": false,
             "group": null,
             "uuid": "db08475d-a4d4-4960-a6a4-b657d6b562a5"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Copy of Update Compliance Record Description -> Send Data Breach Notification",
-            "targetStep": "\/api\/3\/workflow_steps\/c5bbd0dc-df68-4de7-b445-c8cf7383255b",
-            "sourceStep": "\/api\/3\/workflow_steps\/a2ba2544-d007-47c2-ac6d-2caf45a062a4",
-            "label": null,
-            "isExecuted": false,
-            "group": null,
-            "uuid": "83d186c1-c3e8-4ef6-9521-ec75b5d2ae22"
         },
         {
             "@type": "WorkflowRoute",
@@ -494,6 +557,16 @@
         },
         {
             "@type": "WorkflowRoute",
+            "name": "Review Email Content -> Send Data Breach Notification",
+            "targetStep": "\/api\/3\/workflow_steps\/c5bbd0dc-df68-4de7-b445-c8cf7383255b",
+            "sourceStep": "\/api\/3\/workflow_steps\/2db75bb3-a9be-43e0-b948-05d6b24cd25b",
+            "label": "Submit",
+            "isExecuted": false,
+            "group": null,
+            "uuid": "56c9ec15-1b8d-4b62-96f1-50f79e5d4623"
+        },
+        {
+            "@type": "WorkflowRoute",
             "name": "Send Data Breach Notification -> Update Task to Notify Affected Users",
             "targetStep": "\/api\/3\/workflow_steps\/5b2c48ab-3379-4e47-aa41-b5edc0fc024a",
             "sourceStep": "\/api\/3\/workflow_steps\/c5bbd0dc-df68-4de7-b445-c8cf7383255b",
@@ -511,6 +584,16 @@
             "isExecuted": false,
             "group": null,
             "uuid": "5eb64323-2fb2-4998-9b8b-b4a7522d120b"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Update Notification Fields -> Review Email Content",
+            "targetStep": "\/api\/3\/workflow_steps\/2db75bb3-a9be-43e0-b948-05d6b24cd25b",
+            "sourceStep": "\/api\/3\/workflow_steps\/a2ba2544-d007-47c2-ac6d-2caf45a062a4",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "851af084-9aba-437c-bc13-a8bb0c614b51"
         },
         {
             "@type": "WorkflowRoute",
