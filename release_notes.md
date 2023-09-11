@@ -50,26 +50,6 @@ Newly Added Fields - Specifically for HIPAA Framework Solution pack
 - Added a Key Store Module to the SP
 - Added GDPR KeyStore Records with 'Data Compliance' tag and with 'Key' value "GDPR". This records helps to determine which solution pack is deployed on the instance
 
-#### 3. Asset Module
-
-Rearranged the Asset List View Columns, the updated sequence of Asset fields in the list view
-- Id
-- Display Name
-- Hostname
-- MAC Address
-- IP Address
-- Device UUID
-- Vendor
-- Product
-- Category
-- Asset Criticality
-- Asset State
-- Asset Status
-- Asset Risk
-- Asset Registration Date
-- Last Scanned On
-- Property Of
-
 
 ## Content Enhancements
 ### Picklists
