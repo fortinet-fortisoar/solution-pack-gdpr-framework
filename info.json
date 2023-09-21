@@ -119,6 +119,7 @@
         },
         "views": {
             "navigation": [
+                "Resources",
                 "Data Compliances"
             ]
         },
