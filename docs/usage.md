@@ -3,66 +3,12 @@
 
 # Usage
 
->**WARNING**: If you have HIPAA Framework Solution Pack already installed in your system then make sure inactivate this playbook "10 - SP - GDPR Framework > Create Data Compliance Record"
-
-## Playbook Execution Modes
-
-You can execute the GDPR playbooks in *Test Mode* as well as in *Production Mode*
-
-- The playbooks are by default configured to execute in *Test Mode*
-  - The *Test Mode* uses a test email address for all email communication towards Data Protection Officer (DPO), affected individuals, or Data Protection Authority(DPA)
-  - The *Production Mode* uses the actual email addresses of relevant authorities and stakeholders
-
->**WARNING**: Please be careful of the email addresses you use, as data breach notification emails are sent to these addresses. Hence, while in *Test* mode, do not use actual DPO and DPA email addresses.
-
-### Test Mode
-
-To change the execution mode to *Test* make the following changes:
-
-1. Go to the *Create Data Compliance Record* playbook under the **10 - SP - GDPR Framework** collection and open the *Configuration* step
-
-    ![Execution Mode Configuration](./res/execution-mode-configuration.png)
-
-2. Modify the value of the `testMode` variable to `true`.
-3. Change the value of the `testEmail` variable to a valid email address capable of receiving all GDPR email notifications.
-
-    >**WARNING**: When in *Test* mode, the value of the `testEmail` variable must not be empty.
-
-    ![Execution Mode Configuration Parameters](./res/execution-mode-configuration-parametes.png)
-
-### Production Mode
-
-To change the execution mode to *Production* make the following changes:
-
-1. Go to the *Create Data Compliance Record* playbook under the **10 - SP - GDPR Framework** collection and open the *Configuration* step
-
-    ![Execution Mode Configuration](./res/execution-mode-configuration.png)
-
-2. Modify the value of the `testMode` variable to `false`.
-3. Keep the `testEmail` variable blank.
-
-    ![Execution Mode Configuration Parameters](./res/execution-mode-configuration-parameters.png)
-
-    >**NOTE**: As a failsafe, `_demo` is appended to DPA's email as shown in the following image. This action prevents any accidental sending of mail to the Data Protection Authority (DPA).
-
-    ![DPA Email Append](./res/dpa-appended-email.png)
-
-In *Production* mode before you execute **Provide DPO and DPA Contact** playbook, make the following changes:
-1. Go to **Provide DPO and DPA Contact** playbook.
-2. Open the *Get DPA Contact* step and remove `_demo` from `dpaEmail` variable as shown.
-    ![Provide DPO and DPA Contact Changes](./res/provide-dpo-and-dpa-contact.png)
-
-## Check for SLA Violation Playbook
-
-This playbook sends progressive SLA breach reminder emails. To set threshold values for reminder notifications, make the following configuration changes:
-
-1. Goto **Check for SLA violation** Playbook and open the *Configuration* step.
-2. The reminder threshold value is in hours. Change values of the following variables
-    - `firstReminderSLA`: The default value is 24 Hours which means the first reminder is sent when the SLA time remaining is less than 24 hours left.
-    - `secondReminderSLA`: The default value is 4 Hours which means the second reminder is sent when the SLA time remaining is less than 4 hours left.
-        ![Reminder Email Configuration Setting](./res/reminder-mail-configuration.png)
-
-A third and final reminder, of SLA breach, is sent after the completion of 72 hours.
+<table>
+    <tr>
+        <td><strong>WARNING</strong></td>
+        <td>If you have HIPAA Framework Solution Pack already installed in your system, ensure to deactivate the <strong>Create Data Compliance Record</strong> under the <em>10 - SP - GDPR Framework</em> playbook collection.</td>
+    </tr>
+</table>
 
 ## Gathering Details on Personal Data Breach
 
@@ -72,13 +18,16 @@ A third and final reminder, of SLA breach, is sent after the completion of 72 ho
 
 2. A pop-up appears that collects additional information related to the incident
 
-    >**NOTE:** When playbooks are executed in *Test* mode, the **Green** icon shown in the following screenshot appears in all the tasks related to this solution pack
-    >
-    >![Personal Data Additional Details](./res/personal-data-additional-details.png)
-    >
-    >Similarly, when playbooks are executed in *Production* mode, a **Red** icon shown in the following screenshot appears
-    >
-    >![Personal Data Additional Details PROD](./res/personal-data-additional-details-prod.png)
+    <table>
+        <tr>
+            <td><strong>NOTE</strong></td>
+            <td><p>When playbooks are executed in <em>Test</em> mode, the <strong>Green</strong> icon shown in the following screenshot appears in all the tasks related to this solution pack</p>
+                <p><img src="./res/personal-data-additional-details.png" alt="Personal Data Additional Details"></p>
+                <p>Similarly, when playbooks are executed in *Production* mode, a <strong>Red</strong> icon shown in the following screenshot appears</p>
+                <p><img src="./res/personal-data-additional-details-prod.png" alt="Personal Data Additional Details"></p>
+            </td>
+        </tr>
+    </table>
 
 3. Select **GDPR** in **Regulatory Body** and provide the required information
 
