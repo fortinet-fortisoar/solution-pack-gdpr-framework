@@ -17,31 +17,20 @@
     "steps": [
         {
             "@type": "WorkflowStep",
-            "name": "Send Reminder for SLA Breach",
+            "name": "Configuration",
             "description": null,
             "arguments": {
-                "for_each": {
-                    "item": "{{vars.steps.Find_Open_Compliance_Records}}",
-                    "parallel": false,
-                    "condition": ""
-                },
-                "arguments": {
-                    "timeZone": "{{vars.timeZone}}",
-                    "dataComplianceMetaData": "{{vars.item}}",
-                    "firstReminderThreshold": "{{vars.firstReminderSLA}}",
-                    "secondReminderThreshold": "{{vars.secondReminderSLA}}"
-                },
-                "apply_async": false,
-                "step_variables": [],
-                "pass_input_record": false,
-                "workflowReference": "\/api\/3\/workflows\/a6ad71ed-a294-4f99-ab19-9070fdb098fd"
+                "timeZone": "{{vars.request.headers.tz}}",
+                "currentDate": "{{globalVars.Current_Date}}",
+                "firstReminderSLA": "24",
+                "secondReminderSLA": "4"
             },
             "status": null,
-            "top": "435",
+            "top": "165",
             "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
             "group": null,
-            "uuid": "0559be90-28b9-4567-81d7-9b3f43102c44"
+            "uuid": "1ff4ec35-2d6a-4c5e-bfa2-0c5abca19ed4"
         },
         {
             "@type": "WorkflowStep",
@@ -96,20 +85,31 @@
         },
         {
             "@type": "WorkflowStep",
-            "name": "Configuration",
+            "name": "Send Reminder for SLA Breach",
             "description": null,
             "arguments": {
-                "timeZone": "{{vars.request.headers.tz}}",
-                "currentDate": "{{globalVars.Current_Date}}",
-                "firstReminderSLA": "24",
-                "secondReminderSLA": "4"
+                "for_each": {
+                    "item": "{{vars.steps.Find_Open_Compliance_Records}}",
+                    "parallel": false,
+                    "condition": ""
+                },
+                "arguments": {
+                    "timeZone": "{{vars.timeZone}}",
+                    "dataComplianceMetaData": "{{vars.item}}",
+                    "firstReminderThreshold": "{{vars.firstReminderSLA}}",
+                    "secondReminderThreshold": "{{vars.secondReminderSLA}}"
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "pass_input_record": false,
+                "workflowReference": "\/api\/3\/workflows\/a6ad71ed-a294-4f99-ab19-9070fdb098fd"
             },
             "status": null,
-            "top": "165",
+            "top": "435",
             "left": "125",
-            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
             "group": null,
-            "uuid": "1ff4ec35-2d6a-4c5e-bfa2-0c5abca19ed4"
+            "uuid": "0559be90-28b9-4567-81d7-9b3f43102c44"
         },
         {
             "@type": "WorkflowStep",
@@ -133,20 +133,12 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Start -> Configuration",
-            "targetStep": "\/api\/3\/workflow_steps\/1ff4ec35-2d6a-4c5e-bfa2-0c5abca19ed4",
-            "sourceStep": "\/api\/3\/workflow_steps\/27d5b17b-21de-4899-b1d4-b23ac209b993",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "4c1c6c15-6f53-4962-bf33-05744043165b"
-        },
-        {
-            "@type": "WorkflowRoute",
             "name": "Configuration -> Find Open Compliance Records",
             "targetStep": "\/api\/3\/workflow_steps\/1ec181a0-aa03-4707-b5e7-d0f4b3738e20",
             "sourceStep": "\/api\/3\/workflow_steps\/1ff4ec35-2d6a-4c5e-bfa2-0c5abca19ed4",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "5d8e37b0-4f52-423f-b0e7-a6e2034bb6bc"
         },
         {
@@ -156,7 +148,18 @@
             "sourceStep": "\/api\/3\/workflow_steps\/1ec181a0-aa03-4707-b5e7-d0f4b3738e20",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "b6b72382-addf-4d14-b743-6e71c768ef86"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Configuration",
+            "targetStep": "\/api\/3\/workflow_steps\/1ff4ec35-2d6a-4c5e-bfa2-0c5abca19ed4",
+            "sourceStep": "\/api\/3\/workflow_steps\/27d5b17b-21de-4899-b1d4-b23ac209b993",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "4c1c6c15-6f53-4962-bf33-05744043165b"
         }
     ],
     "groups": [],
@@ -170,9 +173,9 @@
     ],
     "schedules": [
         {
-            "id": "gAAAAABjDZV82bpZhIqr7nDPjMm-y1jedsLKHMKmTOEbY2khZERSfWO0hrAI5KFYDGDcJpsyK6ANPA9QM_shFHodNVINii2IPg==",
+            "id": "gAAAAABk1i5BL7ix2YNs7SnAxvBcQMlUGUlxb2YhsmSlwf0O32-xQ8ISQ1izN9Ns-VPk-sXmSGh1kxfe19WoeMuYekYXwb2cYw==",
             "crontab": {
-                "id": 9,
+                "id": 10,
                 "minute": "*\/5",
                 "hour": "*",
                 "day_of_week": "*",
@@ -207,7 +210,7 @@
                 },
                 "referenceid": null,
                 "schedule_entry_name": "GDPR - Check for SLA violation",
-                "schedule_id": "cc43b608-4ee0-4ce0-bcbd-9c2e1c74994a",
+                "schedule_id": "1deb64af-6234-4821-ae5d-1574e8cf5b9f",
                 "start_time": null,
                 "expires": null,
                 "expired": false
@@ -224,7 +227,7 @@
             "enabled": false,
             "last_run_at": null,
             "total_run_count": 0,
-            "date_changed": "2022-08-29T20:25:50.881552Z",
+            "date_changed": "2023-07-13T06:52:19.927363Z",
             "description": "GDPR - Check for SLA violation",
             "solar": null,
             "clocked": null

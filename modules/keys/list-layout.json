@@ -11,53 +11,52 @@
                             {
                                 "type": "grid",
                                 "config": {
-                                    "wid": "eb7a13c5-2b50-49f6-b99d-beab5941e21c",
-                                    "module": "data_compliances",
+                                    "wid": "1cbe4895-91a7-487d-b05d-7ad91ff4804f",
+                                    "module": "keys",
                                     "columns": [
                                         "id",
-                                        "name",
-                                        "severity",
-                                        "status",
-                                        "assignedTo",
-                                        "breachOccurrenceDate",
-                                        "breachDetectionDate",
-                                        "breachNotifyDueDate",
-                                        "breachNotificationSLA",
-                                        "tenant"
+                                        "key",
+                                        "value",
+                                        "createDate",
+                                        "createUser",
+                                        "recordTags"
                                     ],
                                     "expandableCol": [
                                         {
                                             "openTab": false,
-                                            "name": "description"
+                                            "name": "key"
+                                        },
+                                        {
+                                            "openTab": false,
+                                            "name": "value",
+                                            "renderWidget": "json"
                                         }
                                     ],
                                     "relationshipField": [],
                                     "checkboxStatus": true,
-                                    "editableFields": false,
+                                    "editableFields": true,
                                     "actionButtons": [],
                                     "query": {
                                         "sort": [],
                                         "limit": 30,
                                         "logic": "AND",
                                         "filters": []
-                                    },
-                                    "enableHorizontalScroll": true,
-                                    "lightMode": true
+                                    }
                                 }
                             }
                         ],
                         "style": "col-lg-12"
                     }
                 ],
-                "wid": "197eab36-965b-41b8-a4cf-8794fc177d2a",
+                "wid": "f5741c01-4311-4ac5-af2a-ec3c00587c58",
                 "_collapsed": false
             }
         ],
-        "wid": "8ba77141-ae3d-4a61-bf49-08d5da5ca96b",
+        "wid": "6faccb96-4dbb-48d9-9ca0-27bb67dc3309",
         "metadata": {
-            "customTemplateTitle": "Data Compliances",
-            "originalTemplateTitle": "Data Compliances"
+            "customTemplateTitle": "Key Store",
+            "originalTemplateTitle": "Key Store"
         }
     },
-    "uuid": "modules-data_compliances-list"
+    "uuid": "modules-keys-list"
 }
